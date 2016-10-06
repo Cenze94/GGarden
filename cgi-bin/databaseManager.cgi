@@ -64,7 +64,7 @@ sub updateOperation {
 		$format = $format->textContent();
 		$string = $parserxml->parse_string("<li>
 			<input type='button' id='buttonPrice$i' value='X' size='3'/>
-			<span class='existingPrices'> € $price $format</span>
+			<span class='existingPrices'> &#8364; $price $format</span>
 		</li>");
 		$string = $string->removeChild($string->firstChild());
 		$node = $node->parentNode()->insertBefore($string, $node);
@@ -162,7 +162,7 @@ if($operation eq "delete") {
 		my $child = $div->findnodes("form/fieldset/ul/li[p/label/\@for='name']")->get_node(1);
 		$child->insertAfter($form, $child->findnodes("./p[label/\@for='name']")->get_node(1));
 		$child = $div->findnodes("form/fieldset/ul")->get_node(1);
-		my $previousChild = $child->findnodes("./li[p/label/\@for='dataName']")->get_node(1);
+		my $succChild = $child->findnodes("./li[p/input/\@name='submitOperation']")->get_node(1);
 		$form = $parserxml->parse_string("<li>
 							<p>
 								<label for='plantation'>Piantagione:</label>
@@ -170,7 +170,7 @@ if($operation eq "delete") {
 							</p>
 						</li>");
 		$form = $form->removeChild($form->firstChild());
-		$child->insertAfter($form, $previousChild);
+		$child->insertBefore($form, $succChild);
 		$form = $parserxml->parse_string("<li>
 							<p>
 								<label for='care'>Cura:</label>
@@ -178,7 +178,7 @@ if($operation eq "delete") {
 							</p>
 						</li>");
 		$form = $form->removeChild($form->firstChild());
-		$child->insertAfter($form, $previousChild);
+		$child->insertBefore($form, $succChild);
 		$form = $parserxml->parse_string("<li>
 							<p>
 								<label for='otherInfos'>Altre informazioni:</label>
@@ -186,7 +186,7 @@ if($operation eq "delete") {
 							</p>
 						</li>");
 		$form = $form->removeChild($form->firstChild());
-		$child->insertAfter($form, $previousChild);
+		$child->insertBefore($form, $succChild);
 	}
 	if($operation eq "create") {
 		&createOperation($doc, $itemType);

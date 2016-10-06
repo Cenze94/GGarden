@@ -24,55 +24,35 @@
             <body>
                 <div id="header">
                     <h1><span id="logo" xml:lang="en" class="nascosto">GGarden</span></h1>
-                    <div id="contenitore-login">
-                        <input id="button_admin" type="button" onclick="nascondi();" value="Accedi come amministratore"/>
-                        <div id="login">
-                            <form action="log.cgi" method="get">
-                                <fieldset>
-                                    <legend>Login amministratore</legend>
-                                    <div class="modal hide fade in">
-                                        <div class="control-group">
-                                            <label for="inputUsername">Username:</label>
-                                            <input type="text" name="inputUsername" id="inputUsername" value="Username" tabindex="-1"/>
-                                        </div>
-                                        <div class="control-group">
-                                            <label for="inputPassword">Password :</label>
-                                            <input type="password" name="inputPassword" id="inputPassword" value="Password" tabindex="-2" />
-                                        </div>
-                                        <input type="hidden" name="update" value="no"/>
-                                        <button type="submit" id="accedi">Accedi</button>
-                                    </div>
-                                </fieldset>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-                <div id="breadcrumbs">
-                    <form class="headersearch" action="search.cgi" method="get">
-                        <fieldset>
-                            <span id="rifnav" >Ti trovi in: <a href="../home.html" xml:lang="en" accesskey="h">Home</a> / <b>Prodotti</b></span>
-                            <label for="ricerca" class="nascosto">Cerca un prodotto o un servizio</label>
-                            <input type="text" name="ricerca" id="ricerca" class="ricerca" accesskey="s" tabindex="1" />
-                            <input type="submit" name="conferma" id="conferma" class="ricerca" value="Cerca" accesskey="c" tabindex="2"/>
-                        </fieldset>
-                    </form>
-                </div>
+                	<div id="breadcrumbs">
+                    	<form class="headersearch" action="search.cgi" method="get">
+                    	    <fieldset>
+                    	        <span id="rifnav" >Ti trovi in: <a href="../home.html" xml:lang="en" accesskey="h">Home</a> / <b>Prodotti</b></span>
+                    	        <label for="ricerca" class="nascosto">Cerca un prodotto o un servizio</label>
+                    	        <input type="text" name="ricerca" id="ricerca" class="ricerca" accesskey="s" tabindex="1" />
+                    	        <input type="submit" name="conferma" id="conferma" class="ricerca" value="Cerca" accesskey="c" tabindex="2"/>
+                    	    </fieldset>
+                    	</form>
+					</div>
                 
                 
-                <div id="contenitore-menu">
-                    <div class="nascosto">
-                        <a href="#content" title="salta al contenuto principale">salta direttamente alla lista dei prodotti</a>
-                    </div>
-                    <ul class="menu">
-                        <li><a href="../home.html" id="home" class="nav" xml:lang="en" accesskey="h" tabindex="10">Home </a></li>
-                        <li><a href="../realizzazioni.html" id="real" class="nav" accesskey="r" tabindex="11">Realizzazioni </a></li>
-                        <li><a href="checkLog.cgi" id="vend" class="vnav" accesskey="v" tabindex="12">Vendita </a></li>
-                        <li><a href="../contattaci.html" id="cont" class="nav" accesskey="c" tabindex="13">Contattaci</a></li>
+                	<div id="contenitore-menu">
+                	    <div class="nascosto">
+                	        <a href="#content" title="salta al contenuto principale">salta direttamente alla lista dei prodotti</a>
+                	    </div>
+                	    <ul class="menu">
+                	        <li><a href="../home.html" id="home" class="nav" xml:lang="en" accesskey="h" tabindex="10">Home </a></li>
+                	        <li><a href="../realizzazioni.html" id="real" class="nav" accesskey="r" tabindex="11">Realizzazioni </a></li>
+                	        <li><a href="checkLog.cgi" id="vend" class="vnav" accesskey="v" tabindex="12">Vendita </a></li>
+                	        <li><a href="../contattaci.html" id="cont" class="nav" accesskey="c" tabindex="13">Contattaci</a></li>
                         
-                    </ul>
-                </div>		<div id="content">
+                	    </ul>
+                	</div>
+				</div>
+					
+				<div id="content">
                     <xsl:call-template name="esito"/>
-		</div>
+				</div>
 				
                 <div id="footer" class="footer">
                     <div class="footer-left">

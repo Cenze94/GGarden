@@ -3,6 +3,7 @@ use strict;
 use warnings;
 use XML::LibXML;
 use XML::LibXSLT;
+use CGI::Carp qw(fatalsToBrowser);
 
 sub printPage {
 	my $doc = $_[0];

@@ -5,8 +5,6 @@ use XML::LibXML;
 use CGI::Session;
 use XML::LibXSLT;
 use CGI::Carp qw(fatalsToBrowser);
-use utf8;
-use HTML::Entities;
 
 sub log {
 	my $xmlPage = "../data/database.xslt";

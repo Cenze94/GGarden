@@ -3,8 +3,8 @@ use strict;
 use warnings;
 use XML::LibXML;
 use XML::LibXSLT;
-use utf8;
-use HTML::Entities;
+use CGI::Carp qw(fatalsToBrowser);
+use CGI;
 
 sub deleteItem {
 	my $filexml = '../data/database.xml';
@@ -126,7 +126,7 @@ sub createOperation {
 	} elsif($itemType eq 'attrezzo') {
 		$node->appendTextNode('Inserisci i dati del nuovo attrezzo:');
 	}
-	$node = $node->findnodes("../../../li/p/input[\@type='submit']")->get_node(1);
+	$node = $node->findnodes("../fieldset/ul/li/p/input[\@type='submit']")->get_node(1);
 	$node->setAttribute('value', "Aggiungi prodotto");
 	print "Content-type: text/html; charset=utf-8\n\n";
 	print "<phtml>";
@@ -149,9 +149,9 @@ if($operation eq "delete") {
 	my $div = $doc->findnodes("//div[\@id='content']")->get_node(1);
 	my $form = $div->findnodes("form/input[\@name='operation']")->get_node(1);
 	$form->setAttribute('value', $operation);
-	$form = $div->findnodes("form/input/[\@name='itemType']")->get_node(1);
+	$form = $div->findnodes("form/input[\@name='itemType']")->get_node(1);
 	$form->setAttribute('value', $itemType);
-	$form = $div-findnodes("form/fieldset/ul/li/p/label[\@for='type']/text()")->get_node(1);
+	$form = $div->findnodes("form/fieldset/ul/li/p/label[\@for='type']")->get_node(1);
 	$form->appendTextNode("Tipo di $itemType:");
 	if($itemType eq "pianta") { #aggiungo i nodi di pianta comuni ad update e create
 		$form = $parserxml->parse_string("<p>
@@ -159,9 +159,9 @@ if($operation eq "delete") {
 								<input type='text' name='scientificName' id='scientificName'/>
 							</p>");
 		$form = $form->removeChild($form->firstChild());
-		my $child = $div->findnodes("./fieldset/ul/li[p/label/\@for='name']")->get_node(1);
+		my $child = $div->findnodes("form/fieldset/ul/li[p/label/\@for='name']")->get_node(1);
 		$child->insertAfter($form, $child->findnodes("./p[label/\@for='name']")->get_node(1));
-		$child = $div->findnodes("./fieldset/ul")->get_node(1);
+		$child = $div->findnodes("form/fieldset/ul")->get_node(1);
 		my $previousChild = $child->findnodes("./li[p/label/\@for='dataName']")->get_node(1);
 		$form = $parserxml->parse_string("<li>
 							<p>

@@ -33,7 +33,7 @@ sub update {
 	}
 	my $child = $parserxml->parse_string($childString);
 	$child = $child->removeChild($child->firstChild());
-	$form->insertBefore($child, $form->firstChild);
+	$form->insertAfter($child, $form->lastChild);
 	return $doc;
 }
 
@@ -106,11 +106,11 @@ sub logError {
 	$xpc->registerNs('x', 'http://www.w3.org/1999/xhtml');
 	
 	#aggiungo il messaggio di errore
-	my $form = $xpc->findnodes('//x:div[@id="login"]/x:form/x:fieldset')->get_node(1);
+	my $form = $xpc->findnodes('//x:div[@id="contenitore-login"]')->get_node(1);
 	my $childString = '<span id="logError">Dati inseriti errati</span>';
 	my $child = $parserxml->parse_string($childString); #elimino il tag che identifica la versione dell'xml perché non devo aggiungerlo
 	$child = $child->removeChild($child->firstChild());
-	$form->insertBefore($child, $form->firstChild);
+	$form->insertAfter($child, $form->lastChild);
 	
 	#modifico il collegamento al CSS per riuscirlo a caricare
 	$xpc->setContextNode($doc);

@@ -27,7 +27,7 @@
                     <div id="contenitore-login">
                         <input id="button_admin" type="button" onclick="nascondi();" value="Accedi come amministratore"/>
                         <div id="login">
-                            <form action="../cgi-bin/log.cgi" method="get">
+                            <form action="log.cgi" method="get">
                                 <fieldset>
                                     <legend>Login amministratore</legend>
                                     <div class="modal hide fade in">
@@ -48,9 +48,9 @@
                     </div>
                 </div>
                 <div id="breadcrumbs">
-                    <form class="headersearch" action="cgi-bin/search.cgi" method="get">
+                    <form class="headersearch" action="search.cgi" method="get">
                         <fieldset>
-                            <span id="rifnav" >Ti trovi in: <a href="home.html" xml:lang="en" accesskey="h">Home</a> / <b>Prodotti</b></span>
+                            <span id="rifnav" >Ti trovi in: <a href="../home.html" xml:lang="en" accesskey="h">Home</a> / <b>Prodotti</b></span>
                             <label for="ricerca" class="nascosto">Cerca un prodotto o un servizio</label>
                             <input type="text" name="ricerca" id="ricerca" class="ricerca" accesskey="s" tabindex="1" />
                             <input type="submit" name="conferma" id="conferma" class="ricerca" value="Cerca" accesskey="c" tabindex="2"/>
@@ -89,13 +89,13 @@
                     <div class="footer-left">
                         <h3><span id="logo_mini">Ggarden</span></h3>
                         <p class="footer-menu">
-                            <a href="home.html" hreflang="it" xml:lang="en" accesskey="h" tabindex="100">Home</a>
+                            <a href="../home.html" hreflang="it" xml:lang="en" accesskey="h" tabindex="100">Home</a>
                             
-                            <a href="realizzazioni.html" hreflang="it" accesskey="r" tabindex="101">Realizzazioni </a>
+                            <a href="../realizzazioni.html" hreflang="it" accesskey="r" tabindex="101">Realizzazioni </a>
                             
-                            <a href="cgi-bin/checkLog.cgi" hreflang="it" accesskey="v" tabindex="102">Vendita</a>
+                            <a href="checkLog.cgi" hreflang="it" accesskey="v" tabindex="102">Vendita</a>
                             
-                            <a href="contattaci.html" hreflang="it" accesskey="c" tabindex="103">Contattaci</a>
+                            <a href="../contattaci.html" hreflang="it" accesskey="c" tabindex="103">Contattaci</a>
                         </p>
                         
                         <p class="footer-nome-azienda">Ggarden &#169; 2016</p>

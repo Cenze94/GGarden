@@ -14,7 +14,7 @@ sub update {
 	my $doc = &log();
 	my $xpc = XML::LibXML::XPathContext->new($doc);
 	$xpc->registerNs('x', 'http://www.w3.org/1999/xhtml');
-	my $form = $xpc->findnodes('//x:div[@id="login"]/x:form/x:fieldset')->get_node(1);
+	my $form = $xpc->findnodes('//x:div[@id="contenitore-login"]')->get_node(1);
 	my $parserxml  = XML::LibXML->new;
 	my $childString;
 	if($username ne $expectedUsername || $password ne $expectedPassword) {

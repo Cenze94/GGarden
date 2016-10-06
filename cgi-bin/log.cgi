@@ -17,8 +17,15 @@ sub update {
 	my $form = $xpc->findnodes('//x:div[@id="contenitore-login"]')->get_node(1);
 	my $parserxml  = XML::LibXML->new;
 	my $childString;
-	if($username ne $expectedUsername || $password ne $expectedPassword) {
-		$childString = '<span id="updateOk">Modifica dei dati avvenuta con successo</span>';
+	if(($username ne $expectedUsername || $password ne $expectedPassword) && !($username eq '' && $password eq '')) {
+		#Se ho lo username vuoto o la password vuota mantengo il dato vecchio
+		if($username eq '') {
+			$username = $expectedUsername;
+		}
+		if($password eq '') {
+			$password = $expectedPassword;
+		}
+		$childString = "<span id='updateOk'>Modifica dei dati avvenuta con successo</span>";
 		my $filexml = "../data/profili.xml";
 		my $xml = $parserxml->parse_file($filexml);
 		my $xnode = $xml->findnodes("//p:profilo[\@tipo = 'amministratore']/p:username")->get_node(1);
@@ -29,7 +36,7 @@ sub update {
 		$xnode->appendTextNode($password);
 		$xml->toFile($filexml);
 	} else {
-		$childString = '<span id="updateError">Dati inseriti errati</span>';
+		$childString = "<span id='updateError'>Dati inseriti errati</span>";
 	}
 	my $child = $parserxml->parse_string($childString);
 	$child = $child->removeChild($child->firstChild());

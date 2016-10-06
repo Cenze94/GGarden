@@ -111,3 +111,22 @@ function replaceMap() {
 	var map = document.getElementById("visualizzaMappa");
 	map.innerHTML = "<iframe id='frameMappa' class='noprint' src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2800.9012391702986!2d11.885443115555669!3d45.41133107910034!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x477eda58b44676df%3A0xfacae5884fca17f5!2sTorre+Archimede%2C+Via+Trieste%2C+63%2C+35121+Padova+PD!5e0!3m2!1sit!2sit!4v1472819512186'></iframe><img id=\"fotoMappa\" class=\"print\" src=\"img/mappa.png\" alt=\"Mappa della sede di GGarden\" />";
 }
+
+// Funzioni per la pagina Realizzazioni
+
+function loadPics(){
+	if(!document.getElementById || !document.getElementsByTagName) return;
+	links=document.getElementById("minipics").getElementsByTagName("a");
+	for(i=0;i<links.length;i++)
+    		links[i].onclick=function(){Show(this);return(false)}
+}
+
+function Show(obj){
+	bigimg=document.getElementById("bigimage");
+	bigimg.src=obj.getAttribute("href");
+	smallimg=obj.getElementsByTagName("img")[0];
+	t=document.getElementById("titolo");
+	t.removeChild(t.lastChild);
+	t.appendChild(document.createTextNode(smallimg.title));
+}
+

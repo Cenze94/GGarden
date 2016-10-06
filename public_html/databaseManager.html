@@ -20,28 +20,6 @@
  
         <div id="header">
             <h1><span id="logo" xml:lang="en" class="nascosto">GGarden</span></h1> 
-            <div id="contenitore-login">
-                        <input id="button_admin" type="button" onclick="nascondi();" value="Accedi come amministratore"/>
-                        <div id="login">
-                            <form action="../cgi-bin/log.cgi" method="get">
-                                <fieldset>
-                                    <legend>Login amministratore</legend>
-                                    <div class="modal hide fade in">
-                                        <div class="control-group">
-                                            <label for="inputUsername">Username:</label>
-                                            <input type="text" name="inputUsername" id="inputUsername" value="Username" tabindex="-1"/>
-                                        </div>
-                                        <div class="control-group">
-                                            <label for="inputPassword">Password :</label>
-                                            <input type="password" name="inputPassword" id="inputPassword" value="Password" tabindex="-2" />
-                                        </div>
-                                        <input type="hidden" name="update" value="no"/>
-                                        <button type="submit" id="accedi">Accedi</button>
-                                    </div>
-                                </fieldset>
-                            </form>
-                        </div>
-              </div>
             <div id="breadcrumbs">
                 <form class="headersearch" action="search.cgi" method="get">
                     <fieldset>
@@ -56,14 +34,62 @@
            
             <div id="contenitore-menu">
                 <ul class="menu">
-                    <li><a href="home.html" id="home" class="nav" xml:lang="en">Home </a></li>
-                    <li><a href="realizzazioni.html" id="real" class="nav">Realizzazioni </a></li>
-                    <li><a href="cgi-bin/checkLog.cgi" id="vend" class="nav">Vendita </a></li>
-                    <li><a href="contattaci.html" id="cont" class="nav">Contattaci</a></li>
+                    <li><a href="../home.html" id="home" class="nav" xml:lang="en">Home </a></li>
+                    <li><a href="../realizzazioni.html" id="real" class="nav">Realizzazioni </a></li>
+                    <li><a href="checkLog.cgi" id="vend" class="nav">Vendita </a></li>
+                    <li><a href="../contattaci.html" id="cont" class="nav">Contattaci</a></li>
                 </ul>
             </div>
         </div>
 		<div id="content">
+			<form class='databaseManager' action='databaseExecutor.cgi' enctype='multipart/form-data' method='post'>
+				<input type='hidden' name='operation' value=''/>
+				<input type='hidden' name='itemType' value=''/>
+				<h4></h4>
+				<fieldset>
+					<ul>
+						<li>
+							<p>
+								<label for='image'>Inserisci l'immagine del prodotto:</label>
+								<input type='file' name='image' id='image' accept='image/*'/>
+							</p>
+							<p>
+								<label for='name'>Nome:</label>
+								<input type='text' name='name' id='name'/>
+							</p>
+							<p>
+								<label for='type'></label>
+								<input type='text' name='type' id='type'/>
+							</p>
+						</li>
+						<li>
+							<p>
+								<label for='price'>Prezzo: &#8364; </label>
+								<input type='text' name='price[]' id='price'/>
+								<label for='format'>Formato:</label>
+								<input type='text' name='format[]' id='format'/>
+							</p>
+						</li>
+						<li>
+							<p>
+								<label for='description'>Descrizione:</label>
+								<textarea rows='4' cols='50' name='description' id='description'></textarea>
+							</p>
+							<p>
+								<label for='dataName'>Dato:</label>
+								<input type='text' name='dataName[]' id='dataName'/>
+								<label for='dataContent'>Contenuto:</label>
+								<input type='text' name='dataContent[]' id='dataContent'/>
+							</p>
+						</li>
+						<li>
+							<p>
+								<input type='submit' name='submitOperation' value=''/>
+							</p>
+						</li>
+					</ul>
+				</fieldset>
+			</form>
 		</div>
        
        

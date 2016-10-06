@@ -147,56 +147,12 @@ if($operation eq "delete") {
 	my $parserxml  = XML::LibXML->new;
 	my $doc = $parserxml->load_html(location => $htmlPage, recover => 1);
 	my $div = $doc->findnodes("//div[\@id='content']")->get_node(1);
-	my $form = $parserxml->parse_string("<form class='databaseManager' action='databaseExecutor.cgi' enctype='multipart/form-data' method='post'>
-				<input type='hidden' name='operation' value='$operation'/>
-				<input type='hidden' name='itemType' value='$itemType'/>
-				<h4></h4>
-				<fieldset>
-					<ul>
-						<li>
-							<p>
-								<label for='image'>Inserisci l'immagine del prodotto:</label>
-								<input type='file' name='image' id='image' accept='image/*'/>
-							</p>
-							<p>
-								<label for='name'>Nome:</label>
-								<input type='text' name='name' id='name'/>
-							</p>
-							<p>
-								<label for='type'>Tipo di $itemType:</label>
-								<input type='text' name='type' id='type'/>
-							</p>
-						</li>
-						<li>
-							<p>
-								<label for='price'>Prezzo: € </label>
-								<input type='text' name='price[]' id='price'/>
-								<label for='format'>Formato:</label>
-								<input type='text' name='format[]' id='format'/>
-							</p>
-						</li>
-						<li>
-							<p>
-								<label for='description'>Descrizione:</label>
-								<textarea rows='4' cols='50' name='description' id='description'></textarea>
-							</p>
-							<p>
-								<label for='dataName'>Dato:</label>
-								<input type='text' name='dataName[]' id='dataName'/>
-								<label for='dataContent'>Contenuto:</label>
-								<input type='text' name='dataContent[]' id='dataContent'/>
-							</p>
-						</li>
-						<li>
-							<p>
-								<input type='submit' name='submitOperation' value=''/>
-							</p>
-						</li>
-					</ul>
-				</fieldset>
-			</form>");
-	$form = $form->removeChild($form->firstChild());
-	$div = $div->appendChild($form);
+	my $form = $div->findnodes("form/input[\@name='operation']")->get_node(1);
+	$form->setAttribute('value', $operation);
+	$form = $div->findnodes("form/input/[\@name='itemType']")->get_node(1);
+	$form->setAttribute('value', $itemType);
+	$form = $div-findnodes("form/fieldset/ul/li/p/label[\@for='type']/text()")->get_node(1);
+	$form->appendTextNode("Tipo di $itemType:");
 	if($itemType eq "pianta") { #aggiungo i nodi di pianta comuni ad update e create
 		$form = $parserxml->parse_string("<p>
 								<label for='scientificName'>Nome scientifico:</label>

@@ -68,15 +68,20 @@ sub log {
 	$xpc->setContextNode($node);
 	$node = $xpc->findnodes("../x:button/text()")->get_node(1);
 	$node->setData("Modifica");
+	my $string = "<a href='logout.cgi' class='logout'>Logout</a>";
+	my $child = $parserxml->parse_string($string);
+	$child = $child->removeChild($child->firstChild());
+	$node = $xpc->findnodes('..')->get_node(1);
+	$node = $node->insertAfter($child, $node->lastChild);
 
 	#inserisco i pulsanti per la gestione del database
 	$xpc->setContextNode($HTML);
 	$node = $xpc->findnodes("//x:div[\@id = 'piante']")->get_node(1);
-	my $string = "<div id='createButtons'>
+	$string = "<div id='createButtons'>
 						<a href='../cgi-bin/databaseManager.cgi?operation=create&amp;tipo=pianta' class='createButton'>Inserisci nuova pianta</a>
 						<a href='../cgi-bin/databaseManager.cgi?operation=create&amp;tipo=attrezzo' class='createButton'>Inserisci nuovo attrezzo</a>
 				  </div>";
-	my $child = $parserxml->parse_string($string);
+	$child = $parserxml->parse_string($string);
 	$child = $child->removeChild($child->firstChild());
 	$node = $node->parentNode()->insertBefore($child, $node);
 	my @nodes = $doc->findnodes("//fieldset[\@class='riquadro_prezzi']");

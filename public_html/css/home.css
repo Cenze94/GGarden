@@ -301,6 +301,7 @@ li a:hover {
 
 #content img{
     border:0;
+    margin: 2em;
 }
 
 #content div #container{
@@ -448,7 +449,8 @@ form small {
 
 
 /* VENDITA */
-#maintitle{
+
+.maintitle{
     text-align: center;
     color: white;
     font-size: 30px;
@@ -462,7 +464,7 @@ form small {
     background: -o-linear-gradient(top,  #00d5c8,  #008c6d);
 }
 
-h3{
+.cnome{
     text-align: center;
     color: #003e30;
 }

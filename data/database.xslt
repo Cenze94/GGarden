@@ -173,8 +173,8 @@
                                     <span class="check"><xsl:variable name="num_prezzo" select="position()"/>
                                         <xsl:if test="$num_prezzo=1"> &#8364; <xsl:value-of select="g:valore"/><xsl:text> </xsl:text><xsl:value-of select="g:formato"/></xsl:if>
                                         <xsl:if test="$num_prezzo&gt;1"> &#8364; <xsl:value-of select="g:valore"/><xsl:text> </xsl:text><xsl:value-of select="g:formato"/></xsl:if>
-                                        </span>
-					<hr>
+                                    </span>
+									<hr/>
                                 </xsl:for-each>
                             </xsl:if>
                         </p>
@@ -218,8 +218,8 @@
                                     <span class="check"><xsl:variable name="num_prezzo" select="position()"/>
                                         <xsl:if test="$num_prezzo=1"> &#8364; <xsl:value-of select="g:valore"/><xsl:text> </xsl:text><xsl:value-of select="g:formato"/></xsl:if>
                                         <xsl:if test="$num_prezzo&gt;1"> &#8364; <xsl:value-of select="g:valore"/><xsl:text> </xsl:text><xsl:value-of select="g:formato"/></xsl:if>
-                                        </span>
-					<hr>
+                                    </span>
+									<hr/>
                                 </xsl:for-each>
                             </xsl:if>
                         </p>

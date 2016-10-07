@@ -100,12 +100,12 @@
     </xsl:template>
 
 	<xsl:template name="esito">
-		<p class="maintitle"><h2>ESITO DELLA RICERCA</h2></p>
+		<p><h2 class="maintitle">ESITO DELLA RICERCA</h2></p>
 		<xsl:for-each select="//g:prodotti/child::*">
 			<xsl:if test="name()='p:pianta'">
 				<div class="prodotto">
 				<form action="" method="post">
-					<h3><xsl:value-of select="g:nome"/></h3>
+					<h3 class="cnome"><xsl:value-of select="g:nome"/></h3>
 					<p class="id"><xsl:value-of select="@id"/></p>
 					<p class="nome_scientifico"><xsl:value-of select="g:nome_scientifico"/></p>
 					<p class="tipo"><xsl:value-of select="g:tipo"/></p>
@@ -142,6 +142,7 @@
 							<xsl:if test="$num_prezzo=1"><input type="radio" name="{$id}" id="{$id}{$num_prezzo}" checked="true">&#8364; <xsl:value-of select="g:valore"/><xsl:text> </xsl:text><xsl:value-of select="g:formato"/></input></xsl:if>
 							<xsl:if test="$num_prezzo&gt;1"><input type="radio" name="{$id}" id="{$id}{$num_prezzo}">&#8364; <xsl:value-of select="g:valore"/><xsl:text> </xsl:text><xsl:value-of select="g:formato"/></input></xsl:if>
 							<label for="{$num_prezzo}">&#8364; <xsl:value-of select="g:valore"/><xsl:text> </xsl:text><xsl:value-of select="g:formato"/></label></span>
+						<hr>
 						</xsl:for-each>
 						</xsl:if>
 					</p>
@@ -152,7 +153,7 @@
 			<xsl:if test="name()='p:attrezzo'">
 				<div class="prodotto">
 				<form action="" method="post">
-					<h3><xsl:value-of select="g:nome"/></h3>	
+					<h3 class="cnome"><xsl:value-of select="g:nome"/></h3>	
 					<p class="id"><xsl:value-of select="@id"/></p>
 					<p class="tipo"><xsl:value-of select="g:tipo"/></p>
 					<xsl:variable name="nome" select="g:nome"/>

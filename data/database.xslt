@@ -16,7 +16,7 @@
                 <meta name="keywords" content="prodotti, piante, fiori, giardinaggio, attrezzi" />
                 <meta name="author" content="Andrea Grendene, Pietro Gabelli, Sebastiano Marchesini, Jacopo Guizzardi" />
                 <meta name="language" content="italian it" />
-                <link rel="stylesheet" href="../css/vendita.css" type="text/css" media="screen" />
+                <link rel="stylesheet" href="../css/home.css" type="text/css" media="screen" />
                 <link rel="stylesheet" href="../css/print.css" type="text/css" media="print" />
                 <link rel="stylesheet" type="text/css" href="../css/small-devices.css" media="screen and (max-width: 650px)" />
             </head>
@@ -87,7 +87,7 @@
                 
                 <div id="footer" class="footer">
                     <div class="footer-left">
-                        <h3><span id="logo_mini">Ggarden</span></h3>
+                        <h3 class="footerlogo"><span id="logo_mini">Ggarden</span></h3>
                         <p class="footer-menu">
                             <a href="../home.html" hreflang="it" xml:lang="en" accesskey="h" tabindex="100">Home</a>
                             
@@ -132,12 +132,12 @@
     
     
     <xsl:template name="piante">
-        <p class="maintitle"><h2>PIANTE</h2></p>
+        <p id="titoloPiante"><h2 class="maintitle">PIANTE</h2></p>
         <xsl:for-each select="g:prodotti/g:pianta">
             <xsl:sort select="g:nome"/>
             <div class="prodotto">
                 <form action="" method="post">
-                    <h3><xsl:value-of select="g:nome"/></h3>
+                    <h3 class="cnome"><xsl:value-of select="g:nome"/></h3>
                     <p class="id"><xsl:value-of select="@id"/></p>
                     <p class="nome_scientifico"><xsl:value-of select="g:nome_scientifico"/></p>
                     <p class="tipo"><xsl:value-of select="g:tipo"/></p>
@@ -174,6 +174,7 @@
                                         <xsl:if test="$num_prezzo=1"> &#8364; <xsl:value-of select="g:valore"/><xsl:text> </xsl:text><xsl:value-of select="g:formato"/></xsl:if>
                                         <xsl:if test="$num_prezzo&gt;1"> &#8364; <xsl:value-of select="g:valore"/><xsl:text> </xsl:text><xsl:value-of select="g:formato"/></xsl:if>
                                         </span>
+					<hr>
                                 </xsl:for-each>
                             </xsl:if>
                         </p>
@@ -183,12 +184,12 @@
         </xsl:for-each>
     </xsl:template>
     <xsl:template name="attrezzi">
-        <p id="titoloAttrezzi" class="maintitle"><h2>ATTREZZI E MACCHINARI</h2></p>
+        <p id="titoloAttrezzi"><h2 class="maintitle">ATTREZZI E MACCHINARI</h2></p>
         <xsl:for-each select="g:prodotti/g:attrezzo">
             <xsl:sort select="g:nome"/>
             <div class="prodotto">
                 <form action="" method="post">
-                    <h3><xsl:value-of select="g:nome"/></h3>	
+                    <h3 class="cnome"><xsl:value-of select="g:nome"/></h3>	
                     <p class="id"><xsl:value-of select="@id"/></p>
                     <p class="tipo"><xsl:value-of select="g:tipo"/></p>
                     <xsl:variable name="nome" select="g:nome"/>
@@ -218,6 +219,7 @@
                                         <xsl:if test="$num_prezzo=1"> &#8364; <xsl:value-of select="g:valore"/><xsl:text> </xsl:text><xsl:value-of select="g:formato"/></xsl:if>
                                         <xsl:if test="$num_prezzo&gt;1"> &#8364; <xsl:value-of select="g:valore"/><xsl:text> </xsl:text><xsl:value-of select="g:formato"/></xsl:if>
                                         </span>
+					<hr>
                                 </xsl:for-each>
                             </xsl:if>
                         </p>

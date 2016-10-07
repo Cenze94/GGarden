@@ -448,7 +448,7 @@ form small {
 
 
 /* VENDITA */
-h2{
+#maintitle{
     text-align: center;
     color: white;
     font-size: 30px;
@@ -578,7 +578,7 @@ h4{
 }
 
 
-.footer h3{
+.footer .footerlogo{
     text-align:center;
     background-image: url(../img/logo_mini.png);
     background-repeat: no-repeat;
@@ -588,7 +588,7 @@ h4{
     height: 50px;
 }
 
-.footer h3 span {
+.footer .footerlogo span {
     display:block;
     height:0;
     overflow:hidden;

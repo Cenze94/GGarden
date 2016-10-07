@@ -115,8 +115,16 @@ h1{
     
 }
 
+legend{
+
+   font-size:1.4em;
+   padding: 1em 0em 1em 0em;	
+}
+
 #logError{      /*Compare dinamicamente a errore di inserimento*/
-    
+   
+   font-size: 1.2em;
+   color: red; 
 }
 
 #contenitore-login{
@@ -126,12 +134,8 @@ h1{
     width:19%;
 }
 
-#contenitore-login label{
-    color: #0808c1;
-    font-size: 0.8em;
-}
 
-#button_admin{
+#button_admin, #accedi{
     float: right;
     margin: 1em;
     color: white;
@@ -154,6 +158,8 @@ h1{
 
 #contenitore-login label{
     color: #0808c1;
+    font-size: 1em;
+    margin-top: 1em;
 }
 
 #inputUsername{
@@ -549,6 +555,13 @@ h4{
     
 }
 
+hr{
+   size=1 ;
+   width=300;
+   color=black; 
+   noshade;
+}
+
 
 /* Footer */
 
@@ -668,39 +681,4 @@ h4{
 
 .testo-footer{
     color: #333333;
-}
-
-@media screen and (max-width:768px){
-    
-    .ricerca{position:static;}
-    
-    #menu{height:2100px;}
-    #chisiamo{margin-left:0em;}
-    #real{margin-left:0em;}
-    #vend{margin-left:0em;}
-    #nol{margin-left:0em;}
-    #serv{margin-left:0em;}
-    #cont{margin-left:0em;}
-    #formricerca{position:static; float:none;}
-    #formadmin{position:static; float:none;}
-    #log{width:15em; height:2em;}
-    #barra{height:5.3em;}
-    
-    
-    .footer{
-        font: bold 14px sans-serif;
-    }
-    
-    .footer .footer-left,
-    .footer .footer-center,
-    .footer .footer-right{
-        display: block;
-        width: 100%;
-        margin-bottom: 40px;
-        text-align: center;
-    }
-    
-    .footer .footer-center i{
-        margin-left: 0;
-    }
 }

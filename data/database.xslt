@@ -21,7 +21,7 @@
                 <link rel="stylesheet" type="text/css" href="../css/small-devices.css" media="screen and (max-width: 650px)" />
             </head>
             
-            <body>
+            <body onload="caricamentoPannelloAdmin();">
                 <div id="header">
                     <h1><span id="logo" xml:lang="en" class="nascosto">GGarden</span></h1>
                     <div id="contenitore-login">
@@ -33,11 +33,11 @@
                                     <div class="modal hide fade in">
                                         <div class="control-group">
                                             <label for="inputUsername">Username:</label>
-                                            <input type="text" name="inputUsername" id="inputUsername" value="Username" tabindex="-1"/>
+                                            <input type="text" name="inputUsername" id="inputUsername" tabindex="-1"/>
                                         </div>
                                         <div class="control-group">
                                             <label for="inputPassword">Password :</label>
-                                            <input type="password" name="inputPassword" id="inputPassword" value="Password" tabindex="-2" />
+                                            <input type="password" name="inputPassword" id="inputPassword" tabindex="-2" />
                                         </div>
                                         <input type="hidden" name="update" value="no"/>
                                         <button type="submit" id="accedi">Accedi</button>
@@ -124,7 +124,7 @@
                     </div>
                 </div>
                 
-                <script type="text/javascript" src="../SCRIPT/script.js"></script>
+                <script type="text/javascript" src="../script/script.js"></script>
                 
             </body>
         </html>

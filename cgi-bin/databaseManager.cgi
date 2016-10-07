@@ -13,7 +13,7 @@ sub deleteItem {
 	my $item = $doc->findnodes("//p:pianta[\@id='$_[0]'] | //p:attrezzo[\@id='$_[0]']")->get_node(1);
 	$item->unbindNode();
 	$doc->toFile($filexml);
-	require checkLog;
+	require "checkLog.cgi";
 }
 
 sub updateOperation {

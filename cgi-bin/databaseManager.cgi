@@ -13,7 +13,7 @@ sub deleteItem {
 	my $item = $doc->findnodes("//p:pianta[\@id='$_[0]'] | //p:attrezzo[\@id='$_[0]']")->get_node(1);
 	$item->unbindNode();
 	$doc->toFile($filexml);
-	&printPage($doc);
+	require checkLog;
 }
 
 sub updateOperation {
@@ -39,7 +39,7 @@ sub updateOperation {
 	my $value = $xml->getAttribute('formato');
 	if($value ne '') {
 		my $imgNode = $node->findnodes("../fieldset/ul/li/p[label/\@for='image']")->get_node(1);
-		$string = $parserxml->parse_string("<img class='productImg' src='../data/img database/$id.$value' alt='Immagine attuale del prodotto' width='200' height='200' />");
+		$string = $parserxml->parse_string("<img class='productImg' src='../img database/$id.$value' alt='Immagine attuale del prodotto' width='200' height='200' />");
 		$string = $string->removeChild($string->firstChild());
 		$imgNode = $imgNode->insertBefore($string, $imgNode->firstChild());
 		$imgNode = $imgNode->findnodes("../label")->get_node(1);

@@ -174,13 +174,12 @@
                                         <xsl:if test="$num_prezzo=1"> &#8364; <xsl:value-of select="g:valore"/><xsl:text> </xsl:text><xsl:value-of select="g:formato"/></xsl:if>
                                         <xsl:if test="$num_prezzo&gt;1"> &#8364; <xsl:value-of select="g:valore"/><xsl:text> </xsl:text><xsl:value-of select="g:formato"/></xsl:if>
                                     </span>
-									<hr/>
                                 </xsl:for-each>
                             </xsl:if>
                         </p>
                     </fieldset>
                 </form>
-            </div>
+            </div><hr/>
         </xsl:for-each>
     </xsl:template>
     <xsl:template name="attrezzi">
@@ -219,13 +218,12 @@
                                         <xsl:if test="$num_prezzo=1"> &#8364; <xsl:value-of select="g:valore"/><xsl:text> </xsl:text><xsl:value-of select="g:formato"/></xsl:if>
                                         <xsl:if test="$num_prezzo&gt;1"> &#8364; <xsl:value-of select="g:valore"/><xsl:text> </xsl:text><xsl:value-of select="g:formato"/></xsl:if>
                                     </span>
-									<hr/>
                                 </xsl:for-each>
                             </xsl:if>
                         </p>
                     </fieldset>
                 </form>
-            </div>
+            </div>	<hr/>
         </xsl:for-each>
     </xsl:template>
 </xsl:stylesheet>

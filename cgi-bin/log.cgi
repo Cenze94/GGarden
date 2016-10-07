@@ -103,7 +103,7 @@ sub log {
 	#modifico il collegamento al CSS per riuscirlo a caricare
 	$xpc->setContextNode($HTML);
 	my $css = $xpc->findnodes('//x:link[@type="text/css"]')->get_node(0);
-	$css->setAttribute("href", '../public_html/CSS/home.css');
+	$css->setAttribute("href", '../public_html/css/home.css');
 	
 	#restituisco la pagina modificata
 	return $doc;
@@ -127,7 +127,7 @@ sub logError {
 	#modifico il collegamento al CSS per riuscirlo a caricare
 	$xpc->setContextNode($doc);
 	my $css = $xpc->findnodes('//x:link[@type="text/css"]')->get_node(0);
-	$css->setAttribute("href", '../public_html/CSS/home.css');
+	$css->setAttribute("href", '../public_html/css/home.css');
 	
 	#restituisco la pagina modificata
 	return $doc;

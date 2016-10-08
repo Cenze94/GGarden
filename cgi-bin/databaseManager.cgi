@@ -44,7 +44,7 @@ sub updateOperation {
 		$imgNode = $imgNode->insertBefore($string, $imgNode->firstChild());
 		$imgNode = $imgNode->findnodes("../label")->get_node(1);
 		$imgNode->removeChildNodes();
-		$imgNode->appendTextNode("Sostituisci l'immagine del prodotto già inserita:");
+		$imgNode->appendTextNode("Sostituisci l'immagine del prodotto già inserita (max 5 MB):");
 	}
 	$value = $xml->findnodes("./p:nome/text()")->get_node(1);
 	$node = $node->findnodes("../fieldset/ul/li/p/input[\@name='name']")->get_node(1);

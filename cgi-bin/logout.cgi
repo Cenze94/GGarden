@@ -23,4 +23,4 @@ print "Content-type: text/html; charset=utf-8\n\n";
 	print "<body>";
 	print $fileToPrint;
 	print "</body>";
-	print "</html>";
+	print "</phtml>";

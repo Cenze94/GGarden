@@ -114,7 +114,7 @@ sub updateOperation {
 	print "<body>";
 	print $doc;
 	print "</body>";
-	print "</html>";
+	print "</phtml>";
 }
 
 sub createOperation {
@@ -133,7 +133,7 @@ sub createOperation {
 	print "<body>";
 	print $doc;
 	print "</body>";
-	print "</html>";
+	print "</phtml>";
 }
 
 my $logString = CGI->new();

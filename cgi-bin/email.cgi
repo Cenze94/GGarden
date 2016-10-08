@@ -110,7 +110,7 @@ if($redirect) {
 	print "<body>";
 	print $doc;
 	print "</body>";
-	print "</html>";
+	print "</phtml>";
 }
 $smtp->dataend();
 $smtp->quit;

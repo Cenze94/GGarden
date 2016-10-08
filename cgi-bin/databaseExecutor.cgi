@@ -4,22 +4,41 @@ use warnings;
 use XML::LibXML;
 use XML::LibXSLT;
 use CGI::Carp qw(fatalsToBrowser);
+use CGI;
 
-sub printPage {
-	my $doc = $_[0];
-	my $filexslt = "../data/search.xslt";
-	my $parserxml  = XML::LibXML->new;
+sub error{
+	my $type = $_[0];
+	my $wrongData = $_[1];
+	my $message;
+	if($type eq 'update') {
+		$message = "Errore durante la modifica dei dati: formato errato di $wrongData";
+	} elsif($type eq 'insert') {
+		$message = "Errore durante l'inserimento dei dati: formato errato di $wrongData";
+	}
+	my $doc = LogModule::log();
+	
+	my @xslUpperHTML = $doc->findnodes("//xsl:template[\@match='/']")->get_node(1)->childNodes();
+	my $HTML = $xslUpperHTML[1];
+	my $xpc = XML::LibXML::XPathContext->new($HTML);
+	$xpc->registerNs('x', 'http://www.w3.org/1999/xhtml');
+	my $node = $xpc->findnodes("//x:div[\@id='createButtons']")->get_node(1);
+	my $parserxml = XML::LibXML->new;
+	my $string = $parserxml->parse_string("<p class='errorExecutor'>$message</p>");
+	$string = $string->removeChild($string->firstChild());
+	$node->parent()->insertAfter($string, $node);
+	
+	my $filexml = "../data/database.xml";
 	my $parserxslt = XML::LibXSLT->new;
-	my $xslt = $parserxml->parse_file($filexslt) || die("Operazione di parsificazione fallita");
-	my $stylesheet = $parserxslt->parse_stylesheet($xslt);
-	my $results = $stylesheet->transform($doc);
+	my $stylesheet  = $parserxslt->parse_stylesheet($doc);
+	my $results     = $stylesheet->transform_file($filexml);
 	my $fileToPrint = $stylesheet->output_as_bytes($results);
+
 	print "Content-type: text/html; charset=utf-8\n\n";
 	print "<phtml>";
 	print "<body>";
 	print $fileToPrint;
 	print "</body>";
-	print "</html>";
+	print "</phtml>";
 }
 
 sub createPlantItem {
@@ -66,7 +85,7 @@ sub createPlantItem {
 	$child = $doc->getDocumentElement();
 	$child = $child->appendChild($item);
 	$doc->toFile($filexml);
-	&printPage($doc);
+	require "checkLog.cgi";
 }
 
 sub createToolItem {
@@ -109,7 +128,7 @@ sub createToolItem {
 	$child = $doc->getDocumentElement();
 	$child = $child->appendChild($item);
 	$doc->toFile($filexml);
-	&printPage($doc);
+	require "checkLog.cgi";
 }
 
 sub updatePlantItem {
@@ -179,7 +198,7 @@ sub updatePlantItem {
 		$child->appendTextNode($_[12]);
 	}
 	$doc->toFile($filexml);
-	&printPage($doc);
+	require "checkLog.cgi";
 }
 
 sub updateToolItem {
@@ -230,13 +249,13 @@ sub updateToolItem {
 		}
 	}
 	$doc->toFile($filexml);
-	&printPage($doc);
+	require "checkLog.cgi";
 }
 
 my $logString = CGI->new();
 my $operation = $logString->param('operation');
 my $itemType = $logString->param('itemType');
-my $imageFormat = $logString->param('image');
+my $image = $logString->param('image');
 my $name = $logString->param('name');
 my $type = $logString->param('type');
 my @prices = $logString->param('price[]');
@@ -245,22 +264,36 @@ my $description = $logString->param('description');
 my @dataNames = $logString->param('dataName[]');
 my @dataContents = $logString->param('dataContent[]');
 	
-if($itemType eq "pianta") {
-	my $scientificName = $logString->param('scientificName');
-	my $plantation = $logString->param('plantation');
-	my $care = $logString->param('care');
-	my $otherInfos = $logString->param('otherInfos');
-	if($operation eq "create") {
-		&createPlantItem($imageFormat, $name, $scientificName, $type, \@prices, \@formats, $description, \@dataNames, \@dataContents, $plantation, $care, $otherInfos);
-	} elsif($operation eq "update") {
-		my $id = $logString->param('id');
-		&updatePlantItem($id, $imageFormat, $name, $scientificName, $type, \@prices, \@formats, $description, \@dataNames, \@dataContents, $plantation, $care, $otherInfos);
+#Faccio il controllo dei dati in modo da segnalare eventuali errori all'utente ed evitare di proseguire con l'operazione
+my $imageFormat = substr($string, rindex($string, '.')+1);
+my $checkPrices = false; #dato che ho bisogno di un ciclo faccio il check prima, è l'unico array di dati su cui devo fare il check
+for(my $i=0; $i<scalar @prices && $checkPrices==true; $i++) {
+	if($prices[$i] !~ /[0-9]+[.][0-9]{2}$/) {
+		$checkPrices = true;
 	}
-} elsif($itemType eq "attrezzo") { #inserisco la condizione anche nell'ultimo caso per evitare che un possibile errore, come una chiamata involontaria a questo script, possa compromettere il database
-	if($operation eq "create") {
-		&createToolItem($imageFormat, $name, $type, \@prices, \@formats, $description, \@dataNames, \@dataContents);
-	} elsif($operation eq "update") {
-		my $id = $logString->param('id');
-		&updateToolItem($id, $imageFormat, $name, $type, \@prices, \@formats, $description, \@dataNames, \@dataContents);
+}
+if($image ne '' && $imageFormat eq '' && $imageFormat ne 'jpeg' && $imageFormat ne 'gif' && $imageFormat ne 'png' && $imageFormat ne 'svg' && $imageFormat ne 'bmp'){
+	&error($operation, "immagine caricata");
+} elsif(){
+
+} else {	
+	if($itemType eq "pianta") {
+		my $scientificName = $logString->param('scientificName');
+		my $plantation = $logString->param('plantation');
+		my $care = $logString->param('care');
+		my $otherInfos = $logString->param('otherInfos');
+		if($operation eq "create") {
+			&createPlantItem($imageFormat, $name, $scientificName, $type, \@prices, \@formats, $description, \@dataNames, \@dataContents, $plantation, $care, $otherInfos);
+		} elsif($operation eq "update") {
+			my $id = $logString->param('id');
+			&updatePlantItem($id, $imageFormat, $name, $scientificName, $type, \@prices, \@formats, $description, \@dataNames, \@dataContents, $plantation, $care, $otherInfos);
+		}
+	} elsif($itemType eq "attrezzo") { #inserisco la condizione anche nell'ultimo caso per evitare che un possibile errore, come una chiamata involontaria a questo script, possa compromettere il database
+		if($operation eq "create") {
+			&createToolItem($imageFormat, $name, $type, \@prices, \@formats, $description, \@dataNames, \@dataContents);
+		} elsif($operation eq "update") {
+			my $id = $logString->param('id');
+			&updateToolItem($id, $imageFormat, $name, $type, \@prices, \@formats, $description, \@dataNames, \@dataContents);
+		}
 	}
 }

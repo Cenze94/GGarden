@@ -48,7 +48,7 @@ table {
 
 
 html, body{
-	padding:0px;
+    padding:0px;
     margin:0px;
     font-family: Verdana, Helevetica, sans-serif;
     color: white;
@@ -73,6 +73,71 @@ html, body{
     
     display: none;
 
+}
+
+/*Login*/
+#login {
+    color: black;
+    font-size: 12px;
+    display: none;
+    
+}
+
+legend{
+    position:absolute;
+    left:0px;
+    top:-500px;
+    width:1px;
+    height:1px;
+    overflow:hidden;
+    
+    display: none;
+}
+
+#logError{      /*Compare dinamicamente a errore di inserimento*/
+   
+   font-size: 1.2em;
+   color: red; 
+}
+
+#contenitore-login{
+    margin: 1em;
+    padding: 5px 10px 10px 0px;
+    clear: both;
+}
+
+
+#button_admin, #accedi{
+    color: white;
+    
+    border: solid 1px #a30025;
+    background: #b40029;
+    
+}
+
+#legend{
+    margin: 1em;
+}
+
+#accedi{
+    margin-top: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+
+}
+
+#contenitore-login label{
+    color: #0808c1;
+    font-size: 1em;
+    margin-top: 1em;
+}
+
+#inputUsername{
+    width:90%;
+}
+
+#inputPassword{
+    width:90%;
 }
 
 
@@ -111,6 +176,10 @@ h1{
 
 
 /* BreadCrumbs Part*/
+fieldset{
+    width: 99%;
+}
+
 #breadcrumbs{
     background-color:#b0fcb0;
     clear: both;
@@ -121,34 +190,26 @@ h1{
     font-style: oblique;
     width: 99%;
     color: black;
-    margin-top: 20px;
-    padding: 20px 5px 20px 5px;
+    margin-left: 25px;
+
     clear: both;
 }
 
-#ricerca{
-    float: left;
-    clear: left;
-    width:69%;
-    height:24px;
-    margin: 18px 3px 18px 2px;
-}
 
 #conferma{
     float: right;
+    margin-right:10%;
     outline: none;
     text-align: center;
-    font: bold 12px Arial, Helvetica, sans-serif;
+    font: bold 1em Arial, Helvetica, sans-serif;
     color: #fff;
-    padding: 8px 18px;
     border: solid 1px #a30025;
     background: #b40029;
-    width: 19%;
-    margin: 18px 3px 18px 2px;
 }
 
 .ricerca{
     position:relative;
+    left:5%;
 }
 
 
@@ -166,8 +227,6 @@ h1{
 .menu{
     font-style: oblique;
     list-style-type: none;
-    border-left:1%;
-    border-right: 1%;
     margin: 0;
     padding: 0;
     width: 99%;
@@ -237,7 +296,7 @@ li a:hover {
 
 .info{
     clear: both;
-    padding-bottom: 3em;
+    padding-bottom: 1em;
 }
 
 /* Realizzazioni */
@@ -251,7 +310,7 @@ li a:hover {
     display: block;
     max-width: 99%;
     height: auto;
-    margin: 0 auto;
+    margin: 0.8em auto;
 }
 
 
@@ -366,7 +425,7 @@ form label {
 form input {
     margin: 0 0 0.5em 0;
     border: 1px solid #ccc;
-    padding: 6px 10px;
+    padding: 0.3em 0.6em;
     color: #555;
     font-size: 1em;
 }
@@ -388,9 +447,8 @@ form small {
 }
 
 .info {
-    font-size: 1em;
-    margin: 0.5em;
-    color: #4f6fad;
+    font-size: 0.9em;
+    color: #31456b;
 }
 
 #frameMappa {
@@ -420,7 +478,163 @@ form small {
 
 
 
+/* VENDITA */
 
+.maintitle{
+    text-align: center;
+    color: white;
+    font-size: 30px;
+    border: solid 1px #00a37e;
+    background: #00b48b;
+    margin-bottom: 1em;
+}
+
+.cnome{
+    text-align: center;
+    color: #003e30;
+    font-size: 1.2em;
+}
+
+.nome_scientifico{
+    font-size: 0.8em;  
+}
+
+.tipo{
+    font-size: 0.8em;
+}
+
+.id{
+    font-size: 0.8em;
+}
+
+h4{
+    text-align: left;
+    color: #003e30;
+    font-size: 0.9em;
+}
+
+.info {
+    float: left;
+    font-style : oblique;
+    width: 100%;
+}
+
+.prodotto .id{
+    float: right;
+}
+
+.prodotto .desc{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 96%;
+    font-size: 0.8em;
+}
+
+
+.dati{
+    color: #3e000e;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.contenuto{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.prodotto .nome_scientifico{
+    font-style: oblique;
+}
+
+.prodotto .tipo{
+    font-weight: bold;
+}
+
+.img{
+    text-align: center;
+    margin: 0 auto;
+}
+
+img {
+    max-width: 600px;
+}
+
+.dati{
+}
+
+.riquadro_prezzi{
+    width: 96%;
+}
+
+.radio{
+    float:right;
+}
+
+.prezzo{
+    color: #232323;
+    font-style: oblique;
+    text-align: right;
+    font-size: 0.8em;
+
+}
+
+.subbutton{
+    padding-right: 10px;
+    color: white;
+    float: right;
+    border: solid 1px #a30025;
+    background: #b40029;
+}
+
+.check{
+    padding-bottom: 1em;
+    display: block;
+}
+
+hr{
+}
+
+
+/* VENDITA - Parte Admin e form */
+
+#createButtons{
+    height: 2em;
+}
+
+.createButton{
+    padding: 0.5em 1em 0.5em 1em;
+    margin: 1em;
+    color: white;
+    border: solid 1px #a30025;
+    background: #b40029;
+
+}
+
+#productButtons{
+    padding: 2em;
+}
+.productButton{
+    padding: 0.5em 1em 0.5em 1em;
+    margin: 1em;
+    color: white;
+    border: solid 1px #a30025;
+    background: #b40029;
+}
+
+#image{
+    width: 99%;
+    font-size: 0.75em;
+}
+
+#conferma_inserimento{
+    margin-right:10%;
+    outline: none;
+    text-align: center;
+    font: bold 1em Arial, Helvetica, sans-serif;
+    color: #fff;
+    border: solid 1px #a30025;
+    background: #b40029;
+}
 
 /* Footer */
 
@@ -444,6 +658,10 @@ form small {
 
 .footer .footer-left{
     width: 99%;
+}
+
+.footer .footer-menu{
+    font-size: 0.8em;
 }
 
 

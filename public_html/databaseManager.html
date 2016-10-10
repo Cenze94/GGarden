@@ -9,14 +9,18 @@
         <meta name="keywords" content="GGarden, piante, fiori, giardinaggio, attrezzi, noleggio, padova" />
         <meta name="author" content="Andrea Grendene, Pietro Gabelli, Sebastiano Marchesini" />
         <meta name="language" content="italian it" />
-        <link rel="stylesheet" href="../css/vendita.css" type="text/css" media="screen and (min-width: 650px)" />
-        <!-- <link rel="stylesheet" type="text/css" href="../css/print.css" media="print" />
-        <link rel="stylesheet" type="text/css" href="../css/small-devices.css" media="screen and (max-width: 650px)" /> -->
-        <link rel="icon" href="public_html/img/logo2.png" type="image/png" />
+        <meta name="viewport" content="width=device-width" />
+        <link rel="stylesheet" href="../css/home.css" type="text/css" media="screen and (min-width: 650px)" />
+        <link rel="stylesheet" type="text/css" href="../css/print.css" media="print" />
+        <link rel="stylesheet" type="text/css" href="../css/small-devices.css" media="screen and (max-width: 650px)" />
+        <link rel="icon" href="../img/logo2.png" type="image/png" />
     </head>
+ 
+ 
     <body onload="caricamentoPianta();">
+ 
         <div id="header">
-            <h1><span id="logo" xml:lang="en" class="nascosto">GGarden</span></h1>
+            <h1><span id="logo" xml:lang="en" class="nascosto">GGarden</span></h1> 
             <div id="breadcrumbs">
                 <form class="headersearch" action="search.cgi" method="get">
                     <fieldset>
@@ -27,6 +31,8 @@
                     </fieldset>
                 </form>
             </div>
+           
+           
             <div id="contenitore-menu">
                 <ul class="menu">
                     <li><a href="../home.html" id="home" class="nav" xml:lang="en">Home </a></li>
@@ -36,8 +42,8 @@
                 </ul>
             </div>
         </div>
-		<div id="content" onload=''>
-			<form class='databaseManager' action='databaseExecutor.cgi' enctype='multipart/form-data' method='post' onsubmit=''>
+		<div id="content">
+			<form class='databaseManager' action='databaseExecutor.cgi' enctype='multipart/form-data' method='post'>
 				<input type='hidden' name='operation' value=''/>
 				<input type='hidden' name='itemType' value=''/>
 				<h4></h4>
@@ -59,13 +65,10 @@
 						</li>
 						<li>
 							<p>
-								<div id='dynamicInputPrice'>
-									<label for='price'>Prezzo: &#8364; </label>
-									<input type='text' name='price[0][price0]' id='price'/>
-									<label for='format'>Formato:</label>
-									<input type='text' name='format[0][format]' id='format'/>
-								</div>
-								<input type='button' value='Add another text input' onClick="addInputPrice('dynamicInputPrice');"/>
+								<label for='price'>Prezzo: &#8364; </label>
+								<input type='text' name='price[]' id='price'/>
+								<label for='format'>Formato:</label>
+								<input type='text' name='format[]' id='format'/>
 							</p>
 						</li>
 						<li>
@@ -74,18 +77,15 @@
 								<textarea rows='4' cols='50' name='description' id='description'></textarea>
 							</p>
 							<p>
-								<div id='dynamicInputData'>
-									<label for='dataName'>Dato:</label>
-									<input type='text' name='dataName[0][name]' id='dataName'/>
-									<label for='dataContent'>Contenuto:</label>
-									<input type='text' name='dataContent[0][format]' id='dataContent'/>
-								</div>
-								<input type='button' value='Add another text input' onClick="addInputdata('dynamicInputData');"/>
+								<label for='dataName'>Dato:</label>
+								<input type='text' name='dataName[]' id='dataName'/>
+								<label for='dataContent'>Contenuto:</label>
+								<input type='text' name='dataContent[]' id='dataContent'/>
 							</p>
 						</li>
 						<li>
 							<p>
-								<input type='submit' name='submitOperation' value=''/>
+								<input type='submit' id="conferma_inserimento" name='submitOperation' value=''/>
 							</p>
 						</li>
 					</ul>
@@ -94,32 +94,31 @@
 		</div>
        
        
-       <div id="footer" class="footer">
-            <div class="footer-left">
-                <h2 class="footerlogo"><span id="logo_mini">Ggarden</span></h2>
-                <p class="footer-menu">
-                    <a href="home.html" hreflang="it" xml:lang="en" accesskey="h" tabindex="100">Home</a> | <a href="realizzazioni.html" hreflang="it" accesskey="r" tabindex="101">Realizzazioni </a> | <a href="cgi-bin/checkLog.cgi" hreflang="it" accesskey="v" tabindex="102">Vendita</a> | <a href="contattaci.html" hreflang="it" accesskey="c" tabindex="103">Contattaci</a>
-                </p>
-                <p class="footer-nome-azienda">Ggarden &copy; 2016</p>
-            </div>
-            <div class="footer-center">
-                <div>
-                    <address class="testo-footer">Via Trieste 63. Padova, Italy</address>
-                </div>
-                <div>
-                    <p class="testo-footer"><a href="tel:+1 555 123456">+1 555 123456</a></p>
-                </div>
-                <div>
-                    <p xml:lang="en">E-Mail <a href="mailto:ggardengroup@gmail.com" accesskey="e" tabindex="104">ggardengroup@gmail.com</a></p>
-                </div>
-            </div>
-            <div class="footer-right">
-                <p class="footer-company-info" title="motto">
-                    <span class="testo-footer">Gg Garden a servizio</span>
-                    <span class="testo-footer">L'erba del tuo vicino &egrave; sempre pi&ugrave; verde. Sii come il tuo vicino, chiama G Garden Group</span>
-                </p>
-            </div>
-        </div>
-        <script type="text/javascript" src="../script/script.js"></script>
+		<div id="footer" class="footer">
+            		<div class="footer-left">
+                		<h2 class="footerlogo"><span id="logo_mini">Ggarden</span></h2>
+                		<p class="footer-menu">
+                    			<a href="home.html" hreflang="it" xml:lang="en" accesskey="h" tabindex="100">Home</a> | 
+					<a href="realizzazioni.html" hreflang="it" accesskey="r" tabindex="101">Realizzazioni </a> | 
+					<a href="cgi-bin/checkLog.cgi" hreflang="it" accesskey="v" tabindex="102">Vendita</a> | 
+					<a href="contattaci.html" hreflang="it" accesskey="c" tabindex="103">Contattaci</a>
+                		</p>
+                		<p class="footer-nome-azienda">Ggarden &copy; 2016</p>
+            		</div>
+            		<div class="footer-center">
+                		<div><address class="testo-footer">Via Trieste 63. Padova, Italy</address></div>
+                		<div><p class="testo-footer"><a href="tel:+1 555 123456">+1 555 123456</a></p></div>
+                		<div><p xml:lang="en">E-Mail <a href="mailto:ggardengroup@gmail.com" accesskey="e" tabindex="104">ggardengroup@gmail.com</a></p></div>
+            		</div>
+            		<div class="footer-right">
+                		<p class="footer-company-info" title="motto">
+                    		<span class="testo-footer">Gg Garden a servizio</span>
+                    		<span class="testo-footer">L'erba del tuo vicino &egrave; sempre pi&ugrave; verde. Sii come il tuo vicino, chiama G Garden Group</span>
+                		</p>
+            		</div>
+        	</div>
+ 
+        <script type="text/javascript" src="../script/script2.js"></script>
+ 
     </body>
 </html>

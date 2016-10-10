@@ -153,6 +153,17 @@ if($operation eq "delete") {
 	$form->setAttribute('value', $itemType);
 	$form = $div->findnodes("form/fieldset/ul/li/p/label[\@for='type']")->get_node(1);
 	$form->appendTextNode("Tipo di $itemType:");
+	if($iteType eq 'pianta') {
+		$form = $doc->findnodes("body")->get_node(1);
+		$form->setAttribute('onload', 'caricamentoPianta();');
+		$form = $div->findnodes("form")->get_node(1);
+		$form->setAttribute('onsubmit', 'return validazioneFormPlant();');
+	} elsif($itemType eq 'attrezzo') {
+		$form = $doc->findnodes("body")->get_node(1);
+		$form->setAttribute('onload', 'caricamentoAttrezzi();');
+		$form = $div->findnodes("form")->get_node(1);
+		$form->setAttribute('onsubmit', 'return validazioneFormTool();');
+	}
 	if($itemType eq "pianta") { #aggiungo i nodi di pianta comuni ad update e create
 		$form = $parserxml->parse_string("<p>
 								<label for='scientificName'>Nome scientifico:</label>

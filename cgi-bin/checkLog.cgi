@@ -90,8 +90,8 @@ my $fileToPrint = $stylesheet->output_as_bytes($results);
 
 print "Content-type: text/html; charset=utf-8\n\n";
 
-	print "<phtml>";
-	print "<body>";
+	# print "<phtml>";
+	# print "<body>";
 	print $fileToPrint;
-	print "</body>";
-	print "</phtml>";
+	# print "</body>";
+	# print "</phtml>";

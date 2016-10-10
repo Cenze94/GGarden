@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.9.19)  4 OCT 2016 11:02
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.9.19)  10 OCT 2016 17:19
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -934,7 +934,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.40 ...spositivi utilizzati}{18}{subsection.12.5}
+l.40 ...spositivi utilizzati}{19}{subsection.12.5}
                                                    [1])
 \tf@toc=\write4
 \openout4 = `relazione.toc'.
@@ -1022,29 +1022,13 @@ File: ./sezioni/img/Schemasito.png Graphic file (type png)
 <use ./sezioni/img/Schemasito.png>
 Package pdftex.def Info: ./sezioni/img/Schemasito.png used on input line 17.
 (pdftex.def)             Requested size: 354.32288pt x 384.4353pt.
-
-
-! LaTeX Error: There's no line here to end.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.22 		V
-        iene applicato un foglio di stile ai browser standard per computer d...
-
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
 File: ./sezioni/img/Logo.png Graphic file (type png)
-<use ./sezioni/img/Logo.png>
-Package pdftex.def Info: ./sezioni/img/Logo.png used on input line 25.
+ <use ./sezioni/img/Logo.png>
+Package pdftex.def Info: ./sezioni/img/Logo.png used on input line 23.
 (pdftex.def)             Requested size: 129.07996pt x 30.3127pt.
  [9 <./sezioni/img/Schemasito.png>])
 File: ./sezioni/img/Logo.png Graphic file (type png)
-
-<use ./sezioni/img/Logo.png>
+ <use ./sezioni/img/Logo.png>
 Package pdftex.def Info: ./sezioni/img/Logo.png used on input line 47.
 (pdftex.def)             Requested size: 129.07996pt x 30.3127pt.
  [10] (./sezioni/Struttura.tex
@@ -1052,8 +1036,7 @@ LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <12> not available
 (Font)              Font shape `T1/cmtt/m/n' tried instead on input line 8.
 )
 File: ./sezioni/img/Logo.png Graphic file (type png)
-
-<use ./sezioni/img/Logo.png>
+ <use ./sezioni/img/Logo.png>
 Package pdftex.def Info: ./sezioni/img/Logo.png used on input line 49.
 (pdftex.def)             Requested size: 129.07996pt x 30.3127pt.
  [11] (./sezioni/Presentazione.tex)
@@ -1169,10 +1152,6 @@ Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 66.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 66.
 Package rerunfilecheck Info: File `relazione.out' has not changed.
 (rerunfilecheck)             Checksum: 605C0DD119795CDE9A450041B5C693C1;2667.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 66.
  ) 
 Here is how much of TeX's memory you used:
@@ -1191,7 +1170,7 @@ our/jknappen/ec/ectt1200.600pk> </home/pietro/.texmf-var/fonts/pk/ljfour/jknapp
 en/ec/ecbx2488.600pk> </home/pietro/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx
 1200.600pk> </home/pietro/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1200.600pk
 ></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on relazione.pdf (20 pages, 3101993 bytes).
+Output written on relazione.pdf (20 pages, 3102681 bytes).
 PDF statistics:
  776 PDF objects out of 1000 (max. 8388607)
  400 compressed objects within 4 object streams

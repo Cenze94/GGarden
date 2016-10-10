@@ -41,8 +41,8 @@
                 </ul>
             </div>
         </div>
-		<div id="content">
-			<form class='databaseManager' action='databaseExecutor.cgi' enctype='multipart/form-data' method='post'>
+		<div id="content" onload=''>
+			<form class='databaseManager' action='databaseExecutor.cgi' enctype='multipart/form-data' method='post' onsubmit=''>
 				<input type='hidden' name='operation' value=''/>
 				<input type='hidden' name='itemType' value=''/>
 				<h4></h4>
@@ -64,10 +64,13 @@
 						</li>
 						<li>
 							<p>
-								<label for='price'>Prezzo: &#8364; </label>
-								<input type='text' name='price[]' id='price'/>
-								<label for='format'>Formato:</label>
-								<input type='text' name='format[]' id='format'/>
+								<div id='dynamicInputPrice'>
+									<label for='price'>Prezzo: &#8364; </label>
+									<input type='text' name='price[0][price0]' id='price'/>
+									<label for='format'>Formato:</label>
+									<input type='text' name='format[0][format]' id='format'/>
+								</div>
+								<input type='button' value='Add another text input' onClick="addInputPrice('dynamicInputPrice');"/>
 							</p>
 						</li>
 						<li>
@@ -76,10 +79,13 @@
 								<textarea rows='4' cols='50' name='description' id='description'></textarea>
 							</p>
 							<p>
-								<label for='dataName'>Dato:</label>
-								<input type='text' name='dataName[]' id='dataName'/>
-								<label for='dataContent'>Contenuto:</label>
-								<input type='text' name='dataContent[]' id='dataContent'/>
+								<div id='dynamicInputData'>
+									<label for='dataName'>Dato:</label>
+									<input type='text' name='dataName[0][name]' id='dataName'/>
+									<label for='dataContent'>Contenuto:</label>
+									<input type='text' name='dataContent[0][format]' id='dataContent'/>
+								</div>
+								<input type='button' value='Add another text input' onClick="addInputdata('dynamicInputData');"/>
 							</p>
 						</li>
 						<li>

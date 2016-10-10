@@ -5,15 +5,17 @@ use XML::LibXML;
 use XML::LibXSLT;
 use CGI::Carp qw(fatalsToBrowser);
 use CGI;
+use File::Basename;
+$CGI::POST_MAX = 1024 * 5000;
 
 sub error{
 	my $type = $_[0];
 	my $wrongData = $_[1];
 	my $message;
 	if($type eq 'update') {
-		$message = "Errore durante la modifica dei dati: formato errato di $wrongData";
-	} elsif($type eq 'insert') {
-		$message = "Errore durante l'inserimento dei dati: formato errato di $wrongData";
+		$message = "Errore durante la modifica dei dati: $wrongData";
+	} elsif($type eq 'create') {
+		$message = "Errore durante l'inserimento dei dati: $wrongData";
 	}
 	my $doc = LogModule::log();
 	
@@ -272,11 +274,23 @@ for(my $i=0; $i<scalar @prices && $checkPrices==true; $i++) {
 		$checkPrices = true;
 	}
 }
-if($image ne '' && $imageFormat eq '' && $imageFormat ne 'jpeg' && $imageFormat ne 'gif' && $imageFormat ne 'png' && $imageFormat ne 'svg' && $imageFormat ne 'bmp'){
-	&error($operation, "immagine caricata");
-} elsif(){
-
-} else {	
+if($image ne '' && index($image, '/')!=-1 && $imageFormat eq '' && $imageFormat ne 'jpeg' && $imageFormat ne 'gif' && $imageFormat ne 'png' && $imageFormat ne 'svg' && $imageFormat ne 'bmp'){
+	&error($operation, "formato errato del nome dell'immagine caricata");
+} elsif(scalar @prices == 0 && scalar @formats == 0) {
+	&error($operation, "nessun prezzo inserito");
+} elsif($checkPrices == false){
+	&error($operation, "formato errato dei prezzi");
+} elsif($name eq '') {
+	&error($operation, "nome del prodotto non inserito");
+} else {
+	my $imgDir = '../img database';
+	open(UPLOADFILE, ">$imgDir/$image") or die "$!";
+	binmode UPLOADFILE;
+	if(-e "$imgDir/$id") {
+		unlink "$imgDir/$id";
+	}
+	rename "$imgDir/$image", "$imgDir/$id";
+	close UPLOADFILE;
 	if($itemType eq "pianta") {
 		my $scientificName = $logString->param('scientificName');
 		my $plantation = $logString->param('plantation');

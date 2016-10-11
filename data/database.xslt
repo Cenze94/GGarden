@@ -19,7 +19,7 @@
 		<meta name="viewport" content="width=device-width" />
                 <link rel="stylesheet" href="../css/home.css" type="text/css" media="screen and (min-width: 650px)" />
                 <link rel="stylesheet" href="../css/print.css" type="text/css" media="print" />
-                <link rel="stylesheet" href="../css/small-devices.css" type="text/css" media="screen and (max-width: 650px)" />
+                <link rel="stylesheet" type="text/css" href="../css/small-devices.css" media="screen and (max-width: 650px)" />
             </head>
             
             <body onload="caricamentoPannelloAdmin();">
@@ -179,6 +179,7 @@
                             </xsl:if>
                         </p>
                     </fieldset>
+	        <div class="nascosto mobile"><a href="#rifnav" title="torna a inizio pagina">Torna direttamente all'inizio della pagina</a></div>	
                 </form>
             </div><hr/>
         </xsl:for-each>
@@ -224,6 +225,7 @@
                         </p>
                     </fieldset>
                 </form>
+	    <div class="nascosto mobile"><a href="#rifnav" title="torna a inizio pagina">Torna direttamente all'inizio della pagina</a></div>	
             </div>	<hr/>
         </xsl:for-each>
     </xsl:template>

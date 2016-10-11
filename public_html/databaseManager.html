@@ -39,9 +39,12 @@
         </div>
 		<div id="content">
 			<form class='databaseManager' action='databaseExecutor.cgi' enctype='multipart/form-data' method='post' onsubmit=''>
+			<!-- Spostare questa parte all'interno del fieldset -->
+				<input type='hidden' name='operation' value=''/>
+				<input type='hidden' name='itemType' value=''/>
+				<h4></h4>
+				<!-- fino a qui -->
 				<fieldset>
-					<input type='hidden' name='operation' value=''/>
-					<input type='hidden' name='itemType' value=''/>
 					<ul>
 						<li>
 							<p>

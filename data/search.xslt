@@ -28,7 +28,7 @@
                 	<div id="breadcrumbs">
                     	<form class="headersearch" action="search.cgi" method="get">
                     	    <fieldset>
-                    	        <span id="rifnav" >Ti trovi in: <a href="../home.html" xml:lang="en" accesskey="h">Home</a> / <b>Prodotti</b></span>
+                    	        <span id="rifnav" >Ti trovi in: <a href="../home.html" xml:lang="en" accesskey="h">Home</a> / <b>Esito Ricerca</b></span>
                     	        <label for="ricerca" class="nascosto">Cerca un prodotto o un servizio</label>
                     	        <input type="text" name="ricerca" id="ricerca" class="ricerca" accesskey="s" tabindex="1" />
                     	        <input type="submit" name="conferma" id="conferma" class="ricerca" value="Cerca" accesskey="c" tabindex="2"/>
@@ -149,6 +149,7 @@
 					</p>
 					</fieldset>
 				</form>
+			        <div class="nascosto"><a href="#rifnav" title="torna a inizio pagina">Torna direttamente all'inizio della pagina</a></div>	
 				</div>
 			</xsl:if>
 			<xsl:if test="name()='p:attrezzo'">
@@ -189,6 +190,7 @@
 					</p>
 					</fieldset>
 				</form>
+			        <div class="nascosto"><a href="#rifnav" title="torna a inizio pagina">Torna direttamente all'inizio della pagina</a></div>	
 				</div>
 			</xsl:if>
 		</xsl:for-each>

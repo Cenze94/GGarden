@@ -179,6 +179,7 @@
                             </xsl:if>
                         </p>
                     </fieldset>
+	        <div class="nascosto"><a href="#rifnav" title="torna a inizio pagina">Torna direttamente all'inizio della pagina</a></div>	
                 </form>
             </div><hr/>
         </xsl:for-each>
@@ -224,6 +225,7 @@
                         </p>
                     </fieldset>
                 </form>
+	    <div class="nascosto"><a href="#rifnav" title="torna a inizio pagina">Torna direttamente all'inizio della pagina</a></div>	
             </div>	<hr/>
         </xsl:for-each>
     </xsl:template>

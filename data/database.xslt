@@ -34,14 +34,14 @@
                                     <div class="modal hide fade in">
                                         <div class="control-group">
                                             <label for="inputUsername">Username:</label>
-                                            <input type="text" name="inputUsername" id="inputUsername" tabindex="-1"/>
+                                            <input type="text" name="inputUsername" id="inputUsername" tabindex="1"/>
                                         </div>
                                         <div class="control-group">
                                             <label for="inputPassword">Password :</label>
-                                            <input type="password" name="inputPassword" id="inputPassword" tabindex="-2" />
+                                            <input type="password" name="inputPassword" id="inputPassword" tabindex="2" />
                                         </div>
                                         <input type="hidden" name="update" value="no"/>
-                                        <button type="submit" id="accedi">Accedi</button>
+                                        <button type="submit" id="accedi" tabindex="3">Accedi</button>
                                     </div>
                                 </fieldset>
                             </form>
@@ -53,8 +53,8 @@
                         <fieldset>
                             <span id="rifnav" >Ti trovi in: <a href="../home.html" xml:lang="en" accesskey="h">Home</a> / <b>Prodotti</b></span>
                             <label for="ricerca" class="nascosto">Cerca un prodotto o un servizio</label>
-                            <input type="text" name="ricerca" id="ricerca" class="ricerca" accesskey="s" tabindex="1" />
-                            <input type="submit" name="conferma" id="conferma" class="ricerca" value="Cerca" accesskey="c" tabindex="2"/>
+                            <input type="text" name="ricerca" id="ricerca" class="ricerca" accesskey="s" tabindex="4" />
+                            <input type="submit" name="conferma" id="conferma" class="ricerca" value="Cerca" accesskey="c" tabindex="5"/>
                         </fieldset>
                     </form>
                 </div>
@@ -179,7 +179,7 @@
                             </xsl:if>
                         </p>
                     </fieldset>
-	        <div class="nascosto"><a href="#rifnav" title="torna a inizio pagina">Torna direttamente all'inizio della pagina</a></div>	
+	        <div class="nascosto mobile"><a href="#rifnav" title="torna a inizio pagina">Torna direttamente all'inizio della pagina</a></div>	
                 </form>
             </div><hr/>
         </xsl:for-each>
@@ -225,7 +225,7 @@
                         </p>
                     </fieldset>
                 </form>
-	    <div class="nascosto"><a href="#rifnav" title="torna a inizio pagina">Torna direttamente all'inizio della pagina</a></div>	
+	    <div class="nascosto mobile"><a href="#rifnav" title="torna a inizio pagina">Torna direttamente all'inizio della pagina</a></div>	
             </div>	<hr/>
         </xsl:for-each>
     </xsl:template>

@@ -149,7 +149,7 @@
 					</p>
 					</fieldset>
 				</form>
-			        <div class="nascosto"><a href="#rifnav" title="torna a inizio pagina">Torna direttamente all'inizio della pagina</a></div>	
+			        <div class="nascosto mobile"><a href="#rifnav" title="torna a inizio pagina">Torna direttamente all'inizio della pagina</a></div>	
 				</div>
 			</xsl:if>
 			<xsl:if test="name()='p:attrezzo'">
@@ -190,7 +190,7 @@
 					</p>
 					</fieldset>
 				</form>
-			        <div class="nascosto"><a href="#rifnav" title="torna a inizio pagina">Torna direttamente all'inizio della pagina</a></div>	
+			        <div class="nascosto mobile"><a href="#rifnav" title="torna a inizio pagina">Torna direttamente all'inizio della pagina</a></div>	
 				</div>
 			</xsl:if>
 		</xsl:for-each>

@@ -70,9 +70,6 @@ html, body{
     width:1px;
     height:1px;
     overflow:hidden;
-    
-    display: none;
-
 }
 
 /*Login*/
@@ -191,7 +188,6 @@ fieldset{
     width: 99%;
     color: black;
     margin-left: 25px;
-
     clear: both;
 }
 
@@ -634,6 +630,16 @@ hr{
     color: #fff;
     border: solid 1px #a30025;
     background: #b40029;
+}
+
+.mobile{
+    position: relative;
+    left: inherit;
+    top: initial;
+    width: auto;
+    height: auto;
+    overflow: hidden;
+    font-size: 0.7em;
 }
 
 /* Footer */

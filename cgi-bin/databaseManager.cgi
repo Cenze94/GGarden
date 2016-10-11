@@ -147,9 +147,9 @@ if($operation eq "delete") {
 	my $parserxml  = XML::LibXML->new;
 	my $doc = $parserxml->load_html(location => $htmlPage, recover => 1);
 	my $div = $doc->findnodes("//div[\@id='content']")->get_node(1);
-	my $form = $div->findnodes("form/input[\@name='operation']")->get_node(1);
+	my $form = $div->findnodes("form/fieldset/input[\@name='operation']")->get_node(1);
 	$form->setAttribute('value', $operation);
-	$form = $div->findnodes("form/input[\@name='itemType']")->get_node(1);
+	$form = $div->findnodes("form/fieldset/input[\@name='itemType']")->get_node(1);
 	$form->setAttribute('value', $itemType);
 	$form = $div->findnodes("form/fieldset/ul/li/p/label[\@for='type']")->get_node(1);
 	$form->appendTextNode("Tipo di $itemType:");

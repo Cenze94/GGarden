@@ -153,7 +153,7 @@ if($operation eq "delete") {
 	$form->setAttribute('value', $itemType);
 	$form = $div->findnodes("form/fieldset/ul/li/p/label[\@for='type']")->get_node(1);
 	$form->appendTextNode("Tipo di $itemType:");
-	if($iteType eq 'pianta') {
+	if($itemType eq 'pianta') {
 		$form = $doc->findnodes("body")->get_node(1);
 		$form->setAttribute('onload', 'caricamentoPianta();');
 		$form = $div->findnodes("form")->get_node(1);

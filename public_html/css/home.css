@@ -122,9 +122,10 @@ legend{
 }
 
 #logError{      /*Compare dinamicamente a errore di inserimento*/
-   
+   float:right;
    font-size: 1.2em;
-   color: red; 
+   color: #8c001f; 
+   margin-right: 1em;
 }
 
 #contenitore-login{

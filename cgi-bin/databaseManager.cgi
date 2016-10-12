@@ -154,12 +154,12 @@ if($operation eq "delete") {
 	$form = $div->findnodes("form/fieldset/ul/li/p/label[\@for='type']")->get_node(1);
 	$form->appendTextNode("Tipo di $itemType:");
 	if($itemType eq 'pianta') {
-		$form = $doc->findnodes("body")->get_node(1);
+		$form = $doc->findnodes("//body")->get_node(1);
 		$form->setAttribute('onload', 'caricamentoPianta();');
 		$form = $div->findnodes("form")->get_node(1);
 		$form->setAttribute('onsubmit', 'return validazioneFormPlant();');
 	} elsif($itemType eq 'attrezzo') {
-		$form = $doc->findnodes("body")->get_node(1);
+		$form = $doc->findnodes("//body")->get_node(1);
 		$form->setAttribute('onload', 'caricamentoAttrezzi();');
 		$form = $div->findnodes("form")->get_node(1);
 		$form->setAttribute('onsubmit', 'return validazioneFormTool();');

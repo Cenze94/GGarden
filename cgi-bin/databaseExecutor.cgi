@@ -5,6 +5,7 @@ use XML::LibXML;
 use XML::LibXSLT;
 use CGI::Carp qw(fatalsToBrowser);
 use CGI;
+use LogModule;
 use File::Basename;
 $CGI::POST_MAX = 1024 * 5000;
 
@@ -23,11 +24,11 @@ sub error{
 	my $HTML = $xslUpperHTML[1];
 	my $xpc = XML::LibXML::XPathContext->new($HTML);
 	$xpc->registerNs('x', 'http://www.w3.org/1999/xhtml');
-	my $node = $xpc->findnodes("//x:div[\@id='createButtons']")->get_node(1);
+	my $node = $xpc->findnodes("//x:div[\@id='content']")->get_node(1);
 	my $parserxml = XML::LibXML->new;
 	my $string = $parserxml->parse_string("<p class='errorExecutor'>$message</p>");
 	$string = $string->removeChild($string->firstChild());
-	$node->parent()->insertAfter($string, $node);
+	$node->insertBefore($string, $node->firstChild());
 	
 	my $filexml = "../data/database.xml";
 	my $parserxslt = XML::LibXSLT->new;
@@ -252,18 +253,18 @@ my $itemType = $logString->param('itemType');
 my $image = $logString->param('image');
 my $name = $logString->param('name');
 my $type = $logString->param('type');
-my @prices = $logString->param('price[]');
-my @formats = $logString->param('format[]');
+my @prices = $logString->param('price[][price0]');
+my @formats = $logString->param('format[][format]');
 my $description = $logString->param('description');
-my @dataNames = $logString->param('dataName[]');
-my @dataContents = $logString->param('dataContent[]');
+my @dataNames = $logString->param('dataName[][name]');
+my @dataContents = $logString->param('dataContent[][format]');
 	
 #Faccio il controllo dei dati in modo da segnalare eventuali errori all'utente ed evitare di proseguire con l'operazione
-my $imageFormat = substr($string, rindex($string, '.')+1);
-my $checkPrices = false; #dato che ho bisogno di un ciclo faccio il check prima, è l'unico array di dati su cui devo fare il check
-for(my $i=0; $i<scalar @prices && $checkPrices==true; $i++) {
+my $imageFormat = substr($image, rindex($image, '.')+1);
+my $checkPrices = 0; #dato che ho bisogno di un ciclo faccio il check prima, è l'unico array di dati su cui devo fare il check
+for(my $i=0; $i<scalar @prices && $checkPrices==1; $i++) {
 	if($prices[$i] !~ /[0-9]+[.][0-9]{2}$/) {
-		$checkPrices = true;
+		$checkPrices = 1;
 	}
 }
 #
@@ -271,7 +272,7 @@ if($image ne '' && index($image, '/')!=-1 && index($image, '..')!=-1 && $imageFo
 	&error($operation, "formato errato del nome dell'immagine caricata");
 } elsif(scalar @prices == 0 && scalar @formats == 0) {
 	&error($operation, "nessun prezzo inserito");
-} elsif($checkPrices == false){
+} elsif($checkPrices == 0){
 	&error($operation, "formato errato dei prezzi");
 } elsif($name eq '') {
 	&error($operation, "nome del prodotto non inserito");
@@ -279,6 +280,7 @@ if($image ne '' && index($image, '/')!=-1 && index($image, '..')!=-1 && $imageFo
 	my $id = "";
 	if($operation eq 'create') {
 		#carico il parser e ricavo l'id da usare
+		my $filexml = '../data/database.xml';
 		my $parser = XML::LibXML->new;
 		my $doc = $parser->parse_file($filexml);
 		$id = $doc->findnodes('(//@id)[last()]')->get_node(1)->textContent();

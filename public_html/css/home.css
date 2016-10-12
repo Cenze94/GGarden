@@ -183,6 +183,7 @@ legend{
 #rifnav {
     font-style: oblique;
     width: 29%;
+    margin-left: 2em;
     float: left;
     color: black;
     margin-top: 20px;
@@ -203,7 +204,7 @@ legend{
 
 .ricerca{
     position:relative;
-    left:10%;
+    left:7%;
 }
 
 

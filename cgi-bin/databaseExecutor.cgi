@@ -46,30 +46,26 @@ sub error{
 sub createPlantItem {
 	my $filexml = '../data/database.xml';
 	my $namespace = "xmlns:p='http://www.ggarden.com'";
-	#carico il parser e ricavo l'id da usare
+	#carico il parser
 	my $parser = XML::LibXML->new;
 	my $doc = $parser->parse_file($filexml);
-	my $id = $doc->findnodes('(//@id)[last()]')->get_node(1)->textContent();
-	$id = $id + 1;
-	for(my $i=length($id); $i<8; $i++) {
-		$id = '0'.$id;
-	}
+	my $id = $_[0];
 	
 	#Creo l'oggetto da inserire nell'XML
-	my @prices = @{$_[4]};
-	my @formats = @{$_[5]};
-	my @dataNames = @{$_[7]};
-	my @dataContents = @{$_[8]};
-	my $item = $parser->parse_string("<p:pianta id='$id' formato='$_[0]' $namespace>
-		<p:nome>$_[1]</p:nome>
-		<p:nome_scientifico>$_[2]</p:nome_scientifico>
-		<p:tipo>$_[3]</p:tipo>
+	my @prices = @{$_[5]};
+	my @formats = @{$_[6]};
+	my @dataNames = @{$_[8]};
+	my @dataContents = @{$_[9]};
+	my $item = $parser->parse_string("<p:pianta id='$id' formato='$_[1]' $namespace>
+		<p:nome>$_[2]</p:nome>
+		<p:nome_scientifico>$_[3]</p:nome_scientifico>
+		<p:tipo>$_[4]</p:tipo>
 		<p:prezzo></p:prezzo>
-		<p:descrizione>$_[6]</p:descrizione>
+		<p:descrizione>$_[7]</p:descrizione>
 		<p:dettagli></p:dettagli>
-		<p:piantagione>$_[9]</p:piantagione>
-		<p:cura>$_[10]</p:cura>
-		<p:altre_info>$_[11]</p:altre_info>
+		<p:piantagione>$_[10]</p:piantagione>
+		<p:cura>$_[11]</p:cura>
+		<p:altre_info>$_[12]</p:altre_info>
 	</p:pianta>"); #il namespace mi serve per poter aggiungere direttamente i prefissi, altrimenti lo script non funziona
 	my $child = $item->findnodes("//p:prezzo")->get_node(1);
 	for (my $i=0; $i<scalar @prices; $i++) {
@@ -93,25 +89,21 @@ sub createPlantItem {
 sub createToolItem {
 	my $filexml = '../data/database.xml';
 	my $namespace = "xmlns:p='http://www.ggarden.com'";
-	#carico il parser e ricavo l'id da usare
+	#carico il parser
 	my $parser = XML::LibXML->new;
 	my $doc = $parser->parse_file($filexml);
-	my $id = $doc->findnodes('(//@id)[last()]')->get_node(1)->textContent();
-	$id = $id + 1;
-	for(my $i=length($id); $i<8; $i++) {
-		$id = '0'.$id;
-	}
+	my $id = $_[0];
 	
 	#Creo l'oggetto da inserire nell'XML
-	my @prices = @{$_[3]};
-	my @formats = @{$_[4]};
-	my @dataNames = @{$_[6]};
-	my @dataContents = @{$_[7]};
-	my $item = $parser->parse_string("<p:attrezzo id='$id' formato='$_[0]' $namespace>
-		<p:nome>$_[1]</p:nome>
-		<p:tipo>$_[2]</p:tipo>
+	my @prices = @{$_[4]};
+	my @formats = @{$_[5]};
+	my @dataNames = @{$_[7]};
+	my @dataContents = @{$_[8]};
+	my $item = $parser->parse_string("<p:attrezzo id='$id' formato='$_[1]' $namespace>
+		<p:nome>$_[2]</p:nome>
+		<p:tipo>$_[3]</p:tipo>
 		<p:prezzo></p:prezzo>
-		<p:descrizione>$_[5]</p:descrizione>
+		<p:descrizione>$_[6]</p:descrizione>
 		<p:dettagli></p:dettagli>
 	</p:attrezzo>"); #il namespace mi serve per poter aggiungere direttamente i prefissi, altrimenti lo script non funziona
 	my $child = $item->findnodes("//p:prezzo")->get_node(1);
@@ -274,7 +266,8 @@ for(my $i=0; $i<scalar @prices && $checkPrices==true; $i++) {
 		$checkPrices = true;
 	}
 }
-if($image ne '' && index($image, '/')!=-1 && $imageFormat eq '' && $imageFormat ne 'jpeg' && $imageFormat ne 'gif' && $imageFormat ne 'png' && $imageFormat ne 'svg' && $imageFormat ne 'bmp'){
+#
+if($image ne '' && index($image, '/')!=-1 && index($image, '..')!=-1 && $imageFormat eq '' && $imageFormat ne 'jpeg' && $imageFormat ne 'gif' && $imageFormat ne 'png' && $imageFormat ne 'svg' && $imageFormat ne 'bmp'){
 	&error($operation, "formato errato del nome dell'immagine caricata");
 } elsif(scalar @prices == 0 && scalar @formats == 0) {
 	&error($operation, "nessun prezzo inserito");
@@ -283,14 +276,33 @@ if($image ne '' && index($image, '/')!=-1 && $imageFormat eq '' && $imageFormat 
 } elsif($name eq '') {
 	&error($operation, "nome del prodotto non inserito");
 } else {
-	my $imgDir = '../img database';
-	open(UPLOADFILE, ">$imgDir/$image") or die "$!";
-	binmode UPLOADFILE;
-	if(-e "$imgDir/$id") {
-		unlink "$imgDir/$id";
+	my $id = "";
+	if($operation eq 'create') {
+		#carico il parser e ricavo l'id da usare
+		my $parser = XML::LibXML->new;
+		my $doc = $parser->parse_file($filexml);
+		$id = $doc->findnodes('(//@id)[last()]')->get_node(1)->textContent();
+		$id = $id + 1;
+		for(my $i=length($id); $i<8; $i++) {
+			$id = '0'.$id;
+		}
+	} elsif($operation eq 'update') {
+		$id = $logString->param('id');
 	}
-	rename "$imgDir/$image", "$imgDir/$id";
+	
+	#Se ho un'immagine caricata corretta allora la sostituisco già a quella esistente o creo quella nuova
+	my $imgDir = '../public_html/img database';
+	my $filehandle = $logString->upload("image");
+	if(-e "$imgDir/$id.$imageFormat") {
+		unlink "$imgDir/$id.$imageFormat";
+	}
+	open(UPLOADFILE, ">$imgDir/$id.$imageFormat") or die "$!";
+	binmode UPLOADFILE;
+	while ( <$filehandle> ){
+		print UPLOADFILE;
+	}
 	close UPLOADFILE;
+	
 	if($itemType eq "pianta") {
 		my $scientificName = $logString->param('scientificName');
 		my $plantation = $logString->param('plantation');
@@ -299,14 +311,12 @@ if($image ne '' && index($image, '/')!=-1 && $imageFormat eq '' && $imageFormat 
 		if($operation eq "create") {
 			&createPlantItem($imageFormat, $name, $scientificName, $type, \@prices, \@formats, $description, \@dataNames, \@dataContents, $plantation, $care, $otherInfos);
 		} elsif($operation eq "update") {
-			my $id = $logString->param('id');
 			&updatePlantItem($id, $imageFormat, $name, $scientificName, $type, \@prices, \@formats, $description, \@dataNames, \@dataContents, $plantation, $care, $otherInfos);
 		}
 	} elsif($itemType eq "attrezzo") { #inserisco la condizione anche nell'ultimo caso per evitare che un possibile errore, come una chiamata involontaria a questo script, possa compromettere il database
 		if($operation eq "create") {
-			&createToolItem($imageFormat, $name, $type, \@prices, \@formats, $description, \@dataNames, \@dataContents);
+			&createToolItem($id, $imageFormat, $name, $type, \@prices, \@formats, $description, \@dataNames, \@dataContents);
 		} elsif($operation eq "update") {
-			my $id = $logString->param('id');
 			&updateToolItem($id, $imageFormat, $name, $type, \@prices, \@formats, $description, \@dataNames, \@dataContents);
 		}
 	}

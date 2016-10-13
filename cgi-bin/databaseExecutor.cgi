@@ -253,11 +253,11 @@ my $itemType = $logString->param('itemType');
 my $image = $logString->param('image');
 my $name = $logString->param('name');
 my $type = $logString->param('type');
-my @prices = $logString->param('price[][price0]');
-my @formats = $logString->param('format[][format]');
+my @prices = $logString->param('price[]');
+my @formats = $logString->param('format[]');
 my $description = $logString->param('description');
-my @dataNames = $logString->param('dataName[][name]');
-my @dataContents = $logString->param('dataContent[][format]');
+my @dataNames = $logString->param('dataName[]');
+my @dataContents = $logString->param('dataContent[]');
 	
 #Faccio il controllo dei dati in modo da segnalare eventuali errori all'utente ed evitare di proseguire con l'operazione
 my $imageFormat = substr($image, rindex($image, '.')+1);

@@ -261,10 +261,10 @@ my @dataContents = $logString->param('dataContent[][format]');
 	
 #Faccio il controllo dei dati in modo da segnalare eventuali errori all'utente ed evitare di proseguire con l'operazione
 my $imageFormat = substr($image, rindex($image, '.')+1);
-my $checkPrices = 0; #dato che ho bisogno di un ciclo faccio il check prima, è l'unico array di dati su cui devo fare il check
-for(my $i=0; $i<scalar @prices && $checkPrices==1; $i++) {
+my $checkPrices = 1; #dato che ho bisogno di un ciclo faccio il check prima, è l'unico array di dati su cui devo fare il check
+for(my $i=0; $i<scalar @prices && $checkPrices==0; $i++) {
 	if($prices[$i] !~ /[0-9]+[.][0-9]{2}$/) {
-		$checkPrices = 1;
+		$checkPrices = 0;
 	}
 }
 #
@@ -311,7 +311,7 @@ if($image ne '' && index($image, '/')!=-1 && index($image, '..')!=-1 && $imageFo
 		my $care = $logString->param('care');
 		my $otherInfos = $logString->param('otherInfos');
 		if($operation eq "create") {
-			&createPlantItem($imageFormat, $name, $scientificName, $type, \@prices, \@formats, $description, \@dataNames, \@dataContents, $plantation, $care, $otherInfos);
+			&createPlantItem($id, $imageFormat, $name, $scientificName, $type, \@prices, \@formats, $description, \@dataNames, \@dataContents, $plantation, $care, $otherInfos);
 		} elsif($operation eq "update") {
 			&updatePlantItem($id, $imageFormat, $name, $scientificName, $type, \@prices, \@formats, $description, \@dataNames, \@dataContents, $plantation, $care, $otherInfos);
 		}

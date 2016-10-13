@@ -34,7 +34,7 @@ var dettagli_form_plant = {
     "name": ["Nome pianta", /^[A-Z][a-z]+/, "Inserisci il nome della pianta"],
     "scientificName": ["Nome scientifico", /.*/, ""],
     "type": ["Tipo", /.*/, ""],
-    "price": ["", /^\d+(.\d{1,2})?$/, "Inserisci il prezzo separato da una virgola"],
+    "price": ["", /^\d+(.\d{1,2})?$/, "Inserisci il prezzo separato da un punto"],
     "format": ["per una confezione di 10 fiori", /.*/, ""],
     "dataName": ["Nome del dato", /.*/, ""],
     "dataContent": ["valore", /.*/, ""]
@@ -43,7 +43,7 @@ var dettagli_form_plant = {
 var dettagli_form_tool = {
     "name": ["Nome pianta", /^[A-Z][a-z]+/, "Inserisci il nome dell'attrezzo'"],
     "type": ["Tipo", /.*/, ""],
-    "price": ["", /^\d+(.\d{1,2})?$/, "Inserisci il prezzo separato da una virgola"],
+    "price": ["", /^\d+(.\d{1,2})?$/, "Inserisci il prezzo separato da un punto"],
     "format": ["al pezzo", /.*/, ""],
     "dataName": ["Nome del dato", /.*/, ""],
     "dataContent": ["valore", /.*/, ""]
@@ -54,12 +54,14 @@ var dettagli_form_admin = {
     "inputPassword": ["Password", /.*/, ""]
 }
 
+var dettagli_dynamic_input = {}
+
 function caricamentoPianta() {
     return caricamento(dettagli_form_plant, true);
 }
 
 function caricamentoAttrezzi() {
-    return caricamento(dettagli_form_toolm, true);
+    return caricamento(dettagli_form_tool, true);
 }
 
 function caricamentoContattaci() {
@@ -240,29 +242,23 @@ function addPrezzo() {
 
 var counter_prezzo = 1;
 var counter_valore = 1;
-var limit_prezzo = 3;
-var limit_valore = 3;
 
 function addInputPrice(divName) { 
-    var toInsert = '<label for="price" class="inputL">Prezzo: &euro; </label><input type="text" name="price\[' + (counter_prezzo + 1) + '\]\[price\]" id="price' + (counter_prezzo + 1) + '" placeholder="3.99" class="inputL"/><label for="format' + (counter_prezzo + 1) + '" class="inputR">Formato:</label><input type="text" name="price\[' + (counter_prezzo + 1) + '\]\[format\]" id="format' + (counter_prezzo + 1) + '" placeholder="al pezzo" class="inputR"/>';
-    counter_prezzo = addInput(divName, counter_prezzo, limit_valore, toInsert);
+    var toInsert = '<label for="price" class="inputL">Prezzo: &euro; </label><input type="text" name="price\[' + (counter_prezzo + 1) + '\]" id="price' + (counter_prezzo + 1) + '" placeholder="3.99" class="inputL"/><label for="format' + (counter_prezzo + 1) + '" class="inputR">Formato:</label><input type="text" name="price\[' + (counter_prezzo + 1) + '\]" id="format' + (counter_prezzo + 1) + '" placeholder="al pezzo" class="inputR"/>';
+    counter_prezzo = addInput(divName, counter_prezzo, toInsert);
 }
 
 function addInputData(divName) {
-    var toInsert = '<label for="dataName" class="inputL">Dato:</label><input type="text" name="dataName" id="dato\[' + (counter_prezzo + 1) + '\]\[dataName\]" placeholder="Lunghezza manico" class="inputR"/><label for="dataContent' + (counter_prezzo + 1) + '" class="inputR">Contenuto:</label><input type="text" name="dato\[' + (counter_prezzo + 1) + '\]\[dataContent\]" id="dataContent' + (counter_prezzo + 1) + '" placeholder="10 cm" class="inputR"/>';
-    counter_valore = addInput(divName, counter_valore, limit_valore, toInsert);
+    var toInsert = '<label for="dataName" class="inputL">Dato:</label><input type="text" name="dataName" id="dato\[' + (counter_prezzo + 1) + '\]" placeholder="Lunghezza manico" class="inputL"/><label for="dataContent' + (counter_prezzo + 1) + '" class="inputR">Contenuto:</label><input type="text" name="dato\[' + (counter_prezzo + 1) + '\]" id="dataContent' + (counter_prezzo + 1) + '" placeholder="10 cm" class="inputR"/>';
+    counter_valore = addInput(divName, counter_valore, toInsert);
 }
 
-function addInput(divName, counter, limit, toInsert) {
-    if (counter >= limit) {
-        alert("You have reached the limit of adding " + counter + " inputs");
-    } else {
-        var newdiv = document.createElement('div');
-        newdiv.innerHTML = toInsert;
-        document.getElementById(divName).appendChild(newdiv);
-        counter++;
-        return counter;
-    }
+function addInput(divName, counter, toInsert) {
+    var newspan = document.createElement('span');
+    newspan.innerHTML = toInsert;
+    document.getElementById(divName).appendChild(newspan);
+    counter++;
+    return counter;
 }
 
 

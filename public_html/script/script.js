@@ -23,6 +23,7 @@ chiave: nome dell'input da controllare
 [2]: hint nel caso in cui l'inpuit fornito sia sbagliato
 */
 
+// Campi dati per le varie form
 var dettagli_form_contattaci = {
     "first_name": ["Mario", /^[A-Z][a-z]+/, "Inserisci il tuo nome"],
     "last_name": ["Rossi", /^[A-Z][a-z]+( ([A-Z][a-z]+))?/, "Inserisci il tuo cognome"],
@@ -69,6 +70,7 @@ function caricamentoPannelloAdmin() {
     return caricamento(dettagli_form_admin, false);
 }
 
+// Funzione che data la matrice dei campi dati, li inserisce all'interno della form e stabilisce i controlli
 function caricamento(matrix, checkImg) //carica i dati nei campi
 {
     if (checkImg == true) {
@@ -122,7 +124,7 @@ function validazioneCampo(matrix, input) {
     return true;
 }
 
-
+// Funzioni per il controllo sul tipo dell'immagine inserita nella form
 function checkPictureType(Extension) {
     return (Extension == "gif" || Extension == "png" || Extension == "bmp" ||
         Extension == "jpeg" || Extension == "jpg");
@@ -160,7 +162,7 @@ function checkImage() {
         }
     }
 }
-
+// fine
 
 function validazioneFormPlant() {
     return validazioneForm(dettagli_form_plant);
@@ -211,6 +213,8 @@ function errImg() {
     p.appendChild(e);
 }
 
+// Funzioni per aumentare dinamicamente il numero di campi dati della form
+
 var n_Prezzo = 1;
 var n_Valore = 1;
 
@@ -239,18 +243,18 @@ var counter_valore = 1;
 var limit_prezzo = 3;
 var limit_valore = 3;
 
-function addInputPrice(divName) {
-    var toInsert = '<label for="price">Prezzo: &euro; </label><input type="text" name="price\[' + (counter_prezzo + 1) + '\]\[price\]" id="price' + (counter_prezzo + 1) + '" placeholder="3.99"/><label for="format' + (counter_prezzo + 1) + '">Formato:</label><input type="text" name="price\[' + (counter_prezzo + 1) + '\]\[format\]" id="format' + (counter_prezzo + 1) + '" placeholder="al pezzo"/>';
+function addInputPrice(divName) { 
+    var toInsert = '<label for="price" class="inputL">Prezzo: &euro; </label><input type="text" name="price\[' + (counter_prezzo + 1) + '\]\[price\]" id="price' + (counter_prezzo + 1) + '" placeholder="3.99" class="inputL"/><label for="format' + (counter_prezzo + 1) + '" class="inputR">Formato:</label><input type="text" name="price\[' + (counter_prezzo + 1) + '\]\[format\]" id="format' + (counter_prezzo + 1) + '" placeholder="al pezzo" class="inputR"/>';
     counter_prezzo = addInput(divName, counter_prezzo, limit_valore, toInsert);
 }
 
-function addInputValue(divName) {
-    var toInsert = '<label for="dataName">Dato:</label><input type="text" name="dataName" id="dato\[' + (counter_prezzo + 1) + '\]\[dataName\]" placeholder="Lunghezza manico"/><label for="dataContent' + (counter_prezzo + 1) + '">Contenuto:</label><input type="text" name="dato\[' + (counter_prezzo + 1) + '\]\[dataContent\]" id="dataContent' + (counter_prezzo + 1) + '" placeholder="10 cm"/>';
+function addInputData(divName) {
+    var toInsert = '<label for="dataName" class="inputL">Dato:</label><input type="text" name="dataName" id="dato\[' + (counter_prezzo + 1) + '\]\[dataName\]" placeholder="Lunghezza manico" class="inputR"/><label for="dataContent' + (counter_prezzo + 1) + '" class="inputR">Contenuto:</label><input type="text" name="dato\[' + (counter_prezzo + 1) + '\]\[dataContent\]" id="dataContent' + (counter_prezzo + 1) + '" placeholder="10 cm" class="inputR"/>';
     counter_valore = addInput(divName, counter_valore, limit_valore, toInsert);
 }
 
 function addInput(divName, counter, limit, toInsert) {
-    if (counter == limit) {
+    if (counter >= limit) {
         alert("You have reached the limit of adding " + counter + " inputs");
     } else {
         var newdiv = document.createElement('div');
@@ -267,6 +271,7 @@ function replaceMap() {
     var map = document.getElementById("visualizzaMappa");
     map.innerHTML = "<iframe id='frameMappa' class='noprint' src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2800.9012391702986!2d11.885443115555669!3d45.41133107910034!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x477eda58b44676df%3A0xfacae5884fca17f5!2sTorre+Archimede%2C+Via+Trieste%2C+63%2C+35121+Padova+PD!5e0!3m2!1sit!2sit!4v1472819512186'></iframe><img id=\"fotoMappa\" class=\"print\" src=\"img/mappa.png\" alt=\"Mappa della sede di GGarden\" />";
 }
+// fine
 
 // Funzioni per la pagina Realizzazioni
 

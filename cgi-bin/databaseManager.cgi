@@ -52,7 +52,7 @@ sub updateOperation {
 	$value = $xml->findnodes("./p:tipo/text()")->get_node(1);
 	$node = $node->findnodes("../../p/input[\@name='type']")->get_node(1);
 	$node->setAttribute('value', $value);
-	$node = $node->findnodes("../../../li/p/label[\@for='price']")->get_node(1);
+	$node = $node->findnodes("../../../li/div/label[\@for='price']")->get_node(1);
 	my @values = $xml->findnodes("./p:prezzo/p:pacchetto");
 	$string = $parserxml->parse_string("<ul></ul>");
 	$string = $string->removeChild($string->firstChild());
@@ -67,12 +67,13 @@ sub updateOperation {
 			<span class='existingPrices'> &#8364; $price $format</span>
 		</li>");
 		$string = $string->removeChild($string->firstChild());
-		$node = $node->parentNode()->insertBefore($string, $node);
+		$node = $node->insertAfter($string, $node->lastChild());
+		$node = $node->findnodes('..')->get_node(1);
 	}
 	$value = $xml->findnodes("./p:descrizione/text()")->get_node(1);
 	$node = $node->findnodes("../../../li/p/textarea[\@name='description']")->get_node(1);
 	$node->appendTextNode($value);
-	$node = $node->findnodes("../../../li/p/label[\@for='dataName']")->get_node(1);
+	$node = $node->findnodes("../../../li/div/label[\@for='dataName']")->get_node(1);
 	@values = $xml->findnodes("./p:dettagli/p:dato");
 	$string = $parserxml->parse_string("<ul></ul>");
 	$string = $string->removeChild($string->firstChild());
@@ -90,7 +91,8 @@ sub updateOperation {
 			<span class='existingData'> $dataName$dataContent</span>
 		</li>");
 		$string = $string->removeChild($string->firstChild());
-		$node = $node->parentNode()->insertBefore($string, $node);
+		$node = $node->insertAfter($string, $node->lastChild());
+		$node = $node->findnodes('..')->get_node(1);
 	}
 	$node = $node->findnodes("../../../li/p/input[\@type='submit']")->get_node(1);
 	$node->setAttribute('value', "Modifica prodotto");

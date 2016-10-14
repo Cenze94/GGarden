@@ -17,7 +17,7 @@
                 <meta name="author" content="Andrea Grendene, Pietro Gabelli, Sebastiano Marchesini, Jacopo Guizzardi" />
                 <meta name="language" content="italian it" />
 		<meta name="viewport" content="width=device-width" />
-                <link rel="stylesheet" href="../css/vendita.css" type="text/css" media="screen and (min-width: 650px)" />
+                <link rel="stylesheet" href="../css/home.css" type="text/css" media="screen and (min-width: 650px)" />
                 <link rel="stylesheet" href="../css/print.css" type="text/css" media="print" />
                 <link rel="stylesheet" type="text/css" href="../css/small-devices.css" media="screen and (max-width: 650px)" />
             </head>
@@ -28,7 +28,7 @@
                 	<div id="breadcrumbs">
                     	<form class="headersearch" action="search.cgi" method="get">
                     	    <fieldset>
-                    	        <span id="rifnav" >Ti trovi in: <a href="../home.html" xml:lang="en" accesskey="h">Home</a> / <b>Esito Ricerca</b></span>
+                    	        <span id="rifnav" >Ti trovi in: <a href="../index.html" xml:lang="en" accesskey="h">Home</a> / <b>Esito Ricerca</b></span>
                     	        <label for="ricerca" class="nascosto">Cerca un prodotto o un servizio</label>
                     	        <input type="text" name="ricerca" id="ricerca" class="ricerca" accesskey="s" tabindex="1" />
                     	        <input type="submit" name="conferma" id="conferma" class="ricerca" value="Cerca" accesskey="c" tabindex="2"/>
@@ -42,7 +42,7 @@
                 	        <a href="#content" title="salta al contenuto principale">salta direttamente alla lista dei prodotti</a>
                 	    </div>
                 	    <ul class="menu">
-                	        <li><a href="../home.html" id="home" class="nav" xml:lang="en" accesskey="h" tabindex="10">Home </a></li>
+                	        <li><a href="../index.html" id="home" class="nav" xml:lang="en" accesskey="h" tabindex="10">Home </a></li>
                 	        <li><a href="../realizzazioni.html" id="real" class="nav" accesskey="r" tabindex="11">Realizzazioni </a></li>
                 	        <li><a href="checkLog.cgi" id="vend" class="vnav" accesskey="v" tabindex="12">Vendita </a></li>
                 	        <li><a href="../contattaci.html" id="cont" class="nav" accesskey="c" tabindex="13">Contattaci</a></li>
@@ -59,7 +59,7 @@
                     <div class="footer-left">
                         <h3><span id="logo_mini">Ggarden</span></h3>
                         <p class="footer-menu">
-                            <a href="../home.html" hreflang="it" xml:lang="en" accesskey="h" tabindex="100">Home</a>
+                            <a href="../index.html" hreflang="it" xml:lang="en" accesskey="h" tabindex="100">Home</a>
                             
                             <a href="../realizzazioni.html" hreflang="it" accesskey="r" tabindex="101">Realizzazioni </a>
                             

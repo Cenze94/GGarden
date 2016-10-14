@@ -36,9 +36,9 @@ $string = $doc->findnodes('//script')->get_node(0);
 $string->setAttribute("src", '../script/script.js');
 
 #Aggiorno i link alle altre pagine
-my @links = $doc->findnodes('//a[@href="home.html"]');
+my @links = $doc->findnodes('//a[@href="index.html"]');
 foreach my $link(@links){
-	$link->setAttribute("href", '../home.html');
+	$link->setAttribute("href", '../index.html');
 }
 @links = $doc->findnodes('//a[@href="realizzazioni.html"]');
 foreach my $link(@links){

@@ -410,7 +410,7 @@ Overfull \hbox (20.0pt too wide) in paragraph at lines 1--7
 <recently read> \url 
                      
 l.8 		\item \url
-                { public_html/home.html} In questa pagina sono state inserit...
+                { public_html/index.html} In questa pagina sono state inserit...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -427,7 +427,7 @@ Missing character: There is no c in font nullfont!
 <inserted text> 
                 $
 l.8 		\item \url{ public_
-                         html/home.html} In questa pagina sono state inserit...
+                         html/index.html} In questa pagina sono state inserit...
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
@@ -436,7 +436,7 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <5> on input line 8.
 ! Extra }, or forgotten $.
-l.8 		\item \url{ public_html/home.html}
+l.8 		\item \url{ public_html/index.html}
                                          In questa pagina sono state inserit...
 I've deleted a group-closing symbol because it seems to be
 spurious, as in `$x}$'. But perhaps the } is legitimate and

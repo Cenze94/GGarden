@@ -51,7 +51,7 @@
                 <div id="breadcrumbs">
                     <form class="headersearch" action="search.cgi" method="get">
                         <fieldset>
-                            <span id="rifnav" >Ti trovi in: <a href="../home.html" xml:lang="en" accesskey="h">Home</a> / <b>Prodotti</b></span>
+                            <span id="rifnav" >Ti trovi in: <a href="../index.html" xml:lang="en" accesskey="h">Home</a> / <b>Prodotti</b></span>
                             <label for="ricerca" class="nascosto">Cerca un prodotto o un servizio</label>
                             <input type="text" name="ricerca" id="ricerca" class="ricerca" accesskey="s" tabindex="4" />
                             <input type="submit" name="conferma" id="conferma" class="ricerca" value="Cerca" accesskey="c" tabindex="5"/>
@@ -65,7 +65,7 @@
                         <a href="#content" title="salta al contenuto principale">salta direttamente alla lista dei prodotti</a>
                     </div>
                     <ul class="menu">
-                        <li><a href="../home.html" id="home" class="nav" xml:lang="en" accesskey="h" tabindex="10">Home </a></li>
+                        <li><a href="../index.html" id="home" class="nav" xml:lang="en" accesskey="h" tabindex="10">Home </a></li>
                         <li><a href="../realizzazioni.html" id="real" class="nav" accesskey="r" tabindex="11">Realizzazioni </a></li>
                         <li><a href="checkLog.cgi" id="vend" class="vnav" accesskey="v" tabindex="12">Vendita </a></li>
                         <li><a href="../contattaci.html" id="cont" class="nav" accesskey="c" tabindex="13">Contattaci</a></li>
@@ -90,7 +90,7 @@
                     <div class="footer-left">
                         <h3 class="footerlogo"><span id="logo_mini">Ggarden</span></h3>
                         <p class="footer-menu">
-                            <a href="../home.html" hreflang="it" xml:lang="en" accesskey="h" tabindex="100">Home</a>
+                            <a href="../index.html" hreflang="it" xml:lang="en" accesskey="h" tabindex="100">Home</a>
                             
                             <a href="../realizzazioni.html" hreflang="it" accesskey="r" tabindex="101">Realizzazioni </a>
                             

@@ -20,6 +20,7 @@
                 <link rel="stylesheet" href="../css/home.css" type="text/css" media="screen and (min-width: 650px)" />
                 <link rel="stylesheet" href="../css/print.css" type="text/css" media="print" />
                 <link rel="stylesheet" type="text/css" href="../css/small-devices.css" media="screen and (max-width: 650px)" />
+                <link rel="icon" href="../img/logo2.png" type="image/png" />
             </head>
             <body onload="caricamentoPannelloAdmin();">
                 <div id="header">

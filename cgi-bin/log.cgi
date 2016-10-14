@@ -12,7 +12,7 @@ sub update {
 	my $password=$_[1];
 	my $expectedUsername=$_[2];
 	my $expectedPassword=$_[3];
-	my $doc = &log();
+	my $doc = &LogModule::log();
 	my $xpc = XML::LibXML::XPathContext->new($doc);
 	$xpc->registerNs('x', 'http://www.w3.org/1999/xhtml');
 	my $form = $xpc->findnodes('//x:div[@id="contenitore-login"]')->get_node(1);
@@ -59,11 +59,6 @@ sub logError {
 	my $child = $parserxml->parse_string($childString); #elimino il tag che identifica la versione dell'xml perché non devo aggiungerlo
 	$child = $child->removeChild($child->firstChild());
 	$form->insertAfter($child, $form->lastChild);
-	
-	#modifico il collegamento al CSS per riuscirlo a caricare
-	$xpc->setContextNode($doc);
-	my $css = $xpc->findnodes('//x:link[@type="text/css"]')->get_node(0);
-	$css->setAttribute("href", '../public_html/css/home.css');
 	
 	#restituisco la pagina modificata
 	return $doc;

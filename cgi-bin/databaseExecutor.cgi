@@ -256,6 +256,7 @@ for(my $i=0; $i<scalar @prices && $checkPrices!=0; $i++) {
 	if($prices[$i] eq '' && $formats[$i] eq '') { #Elimino i prezzi con valore e formato vuoti
 		splice(@prices, $i, 1);
 		splice(@formats, $i, 1);
+		$i = $i-1;
 	} elsif($prices[$i] !~ /[0-9]+[.][0-9]{2}$/ || $formats[$i] eq '') {
 		$checkPrices = 0;
 	}
@@ -269,14 +270,19 @@ if($image ne '' && (index($image, '/')!=-1 || index($image, '..')!=-1 || $imageF
 } elsif($name eq '') {
 	&error($operation, "nome del prodotto non inserito");
 } else {
-	for(my $i=0; $i<scalar @dataNames; $i++) {
+	my $max = 0;
+	if(scalar @dataNames > scalar @dataContents) {
+		$max = scalar @dataNames;
+	} else {
+		$max = scalar @dataContents;
+	}
+	for(my $i=0; $i<$max; $i++) {
 		if($dataNames[$i] eq '' && $dataContents[$i] eq '') { #Elimino i dati con nome e contenuto vuoti
 			splice(@dataNames, $i, 1);
 			splice(@dataContents, $i, 1);
+			$max = $max-1; #Se si elimina un elemento il valore della posizione dell'ultimo elemento diminuisce di uno
+			$i = $i-1; #All'array viene tolto un elemento la cui posizione viene occupata dall'elemento successivo, se non viene diminuito il valore di $i questa cella verrebbe saltata
 		}
-	}
-	if($image eq '') {
-		$imageFormat = 'no_image';
 	}
 	my $id = "";
 	if($operation eq 'create') {
@@ -288,6 +294,10 @@ if($image ne '' && (index($image, '/')!=-1 || index($image, '..')!=-1 || $imageF
 		$id = $id + 1;
 		for(my $i=length($id); $i<8; $i++) {
 			$id = '0'.$id;
+		}
+		#modifico il valore dell'immagine in modo da comunicare all'xslt che non c'è alcuna immagine da caricare
+		if($image eq '') {
+			$imageFormat = 'no_image';
 		}
 	} elsif($operation eq 'update') {
 		$id = $logString->param('id');

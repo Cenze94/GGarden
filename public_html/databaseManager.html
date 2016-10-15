@@ -59,12 +59,14 @@
 							</p>
 						</li>
 						<li>					
-							<div id='dynamicInputPrice'>
-								<label for='price'  class='inputL'>Prezzo: &#8364; </label>
-								<input type='text' name='price[]' id='price' class='inputL'/>
-								<label for='format' class='inputR'>Formato:</label>
-								<input type='text' name='format[]' id='format' class='inputR'/>
-							</div>
+							<ul id='dynamicInputPrice'>
+								<li>
+									<label for='price'  class='inputL'>Prezzo: &#8364; </label>
+									<input type='text' name='price[]' id='price' class='inputL'/>
+									<label for='format' class='inputR'>Formato:</label>
+									<input type='text' name='format[]' id='format' class='inputR'/>
+								</li>
+							</ul>
 							<input type='button' value='Add another text input' onclick="addInputPrice('dynamicInputPrice');"/>
 						</li>
 						<li>
@@ -72,12 +74,15 @@
 								<label for='description'>Descrizione:</label>
 								<textarea rows='4' cols='50' name='description' id='description'></textarea>
 							</p>
-							<div id='dynamicInputData'>
-								<label for='dataName' class='inputL'>Dato:</label>
-								<input type='text' name='dataName[]' id='dataName' class='inputL'/>
-								<label for='dataContent' class='inputR'>Contenuto:</label>
-								<input type='text' name='dataContent[]' id='dataContent' class='inputR'/>
-							</div>
+							<ul id='dynamicInputData'>
+								<li>
+									<label for='dataName' class='inputL'>Dato:</label>
+									<input type='text' name='dataName[]' id='dataName' class='inputL'/>
+									<span class='middle'>: </span>
+									<label for='dataContent' class='inputR'>Contenuto:</label>
+									<input type='text' name='dataContent[]' id='dataContent' class='inputR'/>
+								</li>
+							</ul>
 							<input type='button' value='Add another text input' onclick="addInputData('dynamicInputData');"/>
 						</li>
 						<li>

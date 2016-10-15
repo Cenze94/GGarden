@@ -52,20 +52,19 @@ sub updateOperation {
 	$value = $xml->findnodes("./p:tipo/text()")->get_node(1);
 	$node = $node->findnodes("../../p/input[\@name='type']")->get_node(1);
 	$node->setAttribute('value', $value);
-	$node = $node->findnodes("../../../li/div/label[\@for='price']")->get_node(1);
+	$node = $node->findnodes("../../../li/ul/label[\@for='price']")->get_node(1);
 	my @values = $xml->findnodes("./p:prezzo/p:pacchetto");
-	$string = $parserxml->parse_string("<ul></ul>");
-	$string = $string->removeChild($string->firstChild());
 	$node = $node->parentNode();
-	$node = $node->insertBefore($string, $node->firstChild());
 	for (my $i=0; $i<scalar @values; $i++) {
 		(my $price, my $format) = $values[$i]->childNodes();
 		$price = $price->textContent();
 		$format = $format->textContent();
 		$string = $parserxml->parse_string("<li>
-			<input type='button' id='buttonPrice$i' value='X' size='3'/>
-			<span class='existingPrices'> &#8364; $price $format</span>
-		</li>");
+									<label for='price'  class='inputL'>Prezzo: &#8364; </label>
+									<input type='text' name='price[]' id='price' class='inputL' value='$price'/>
+									<label for='format' class='inputR'>Formato:</label>
+									<input type='text' name='format[]' id='format' class='inputR' value='$format'/>
+								</li>");
 		$string = $string->removeChild($string->firstChild());
 		$node = $node->insertAfter($string, $node->lastChild());
 		$node = $node->findnodes('..')->get_node(1);
@@ -73,23 +72,20 @@ sub updateOperation {
 	$value = $xml->findnodes("./p:descrizione/text()")->get_node(1);
 	$node = $node->findnodes("../../../li/p/textarea[\@name='description']")->get_node(1);
 	$node->appendTextNode($value);
-	$node = $node->findnodes("../../../li/div/label[\@for='dataName']")->get_node(1);
+	$node = $node->findnodes("../../../li/ul/label[\@for='dataName']")->get_node(1);
 	@values = $xml->findnodes("./p:dettagli/p:dato");
-	$string = $parserxml->parse_string("<ul></ul>");
-	$string = $string->removeChild($string->firstChild());
 	$node = $node->parentNode();
-	$node = $node->insertBefore($string, $node->firstChild());
 	for (my $i=0; $i<scalar @values; $i++) {
 		(my $dataName, my $dataContent) = $values[$i]->childNodes();
 		$dataName = $dataName->textContent();
-		if($dataName ne '') {
-			$dataName = $dataName.': ';
-		}
 		$dataContent = $dataContent->textContent();
 		$string = $parserxml->parse_string("<li>
-			<input type='button' id='buttonData$i' value='X' size='3'/>
-			<span class='existingData'> $dataName$dataContent</span>
-		</li>");
+									<label for='dataName' class='inputL'>Dato:</label>
+									<input type='text' name='dataName[]' id='dataName' class='inputL' value='$dataName'/>
+									<span class='middle'>: </span>
+									<label for='dataContent' class='inputR'>Contenuto:</label>
+									<input type='text' name='dataContent[]' id='dataContent' class='inputR' value='$dataContent'/>
+								</li>");
 		$string = $string->removeChild($string->firstChild());
 		$node = $node->insertAfter($string, $node->lastChild());
 		$node = $node->findnodes('..')->get_node(1);

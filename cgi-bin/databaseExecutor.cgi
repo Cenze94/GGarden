@@ -140,32 +140,28 @@ sub updatePlantItem {
 		$child->removeChildNodes();
 		$child->appendTextNode($_[2]);
 	}
-	if($_[3] ne "") { #scientificName
-		my $child = $item->findnodes("./p:nome_scientifico")->get_node(1);
-		$child->removeChildNodes();
-		$child->appendTextNode($_[3]);
+	#scientificName
+	my $child = $item->findnodes("./p:nome_scientifico")->get_node(1);
+	$child->removeChildNodes();
+	$child->appendTextNode($_[3]);
+	#type
+	my $child = $item->findnodes("./p:tipo")->get_node(1);
+	$child->removeChildNodes();
+	$child->appendTextNode($_[4]);
+	#prices e formats, gli array contengono sicuramente almeno un valore perché il controllo viene effettuato prima dell'esecuzione di questa funzione
+	my $pricesNode = $item->findnodes("./p:prezzo")->get_node(1);
+	$pricesNode->removeChildNodes();
+	my @prices = @{$_[5]};
+	my @formats = @{$_[6]};
+	for(my $i=0; $i<scalar @prices; $i++) {
+		my $string = $parser->parse_string("<p:pacchetto $namespace><p:valore>$prices[$i]</p:valore><p:formato>$formats[$i]</p:formato></p:pacchetto>");
+		$string = $string->removeChild($string->firstChild());
+		$pricesNode->appendChild($string);
 	}
-	if($_[4] ne "") { #type
-		my $child = $item->findnodes("./p:tipo")->get_node(1);
-		$child->removeChildNodes();
-		$child->appendTextNode($_[4]);
-	}
-	if($_[5] ne "" && $_[6] ne "") { #prices e formats
-		my $pricesNode = $item->findnodes("./p:prezzo")->get_node(1);
-		$pricesNode->removeChildNodes();
-		my @prices = @{$_[5]};
-		my @formats = @{$_[6]};
-		for(my $i=0; $i<scalar @prices; $i++) {
-			my $string = $parser->parse_string("<p:pacchetto $namespace><p:valore>$prices[$i]</p:valore><p:formato>$formats[$i]</p:formato></p:pacchetto>");
-			$string = $string->removeChild($string->firstChild());
-			$pricesNode->appendChild($string);
-		}
-	}
-	if($_[7] ne "") { #description
-		my $child = $item->findnodes("./p:descrizione")->get_node(1);
-		$child->removeChildNodes();
-		$child->appendTextNode($_[7]);
-	}
+	#description
+	my $child = $item->findnodes("./p:descrizione")->get_node(1);
+	$child->removeChildNodes();
+	$child->appendTextNode($_[7]);
 	if($_[8] ne "" && $_[9] ne "") { #dataNames e dataContents
 		my $detailsNode = $item->findnodes("./p:dettagli")->get_node(1);
 		$detailsNode->removeChildNodes();
@@ -177,21 +173,18 @@ sub updatePlantItem {
 			$detailsNode->appendChild($string);
 		}
 	}
-	if($_[10] ne "") { #plantation
-		my $child = $item->findnodes("./p:piantagione")->get_node(1);
-		$child->removeChildNodes();
-		$child->appendTextNode($_[10]);
-	}
-	if($_[11] ne "") { #care
-		my $child = $item->findnodes("./p:cura")->get_node(1);
-		$child->removeChildNodes();
-		$child->appendTextNode($_[11]);
-	}
-	if($_[12] ne "") { #otherInfos
-		my $child = $item->findnodes("./p:altre_info")->get_node(1);
-		$child->removeChildNodes();
-		$child->appendTextNode($_[12]);
-	}
+	#plantation
+	my $child = $item->findnodes("./p:piantagione")->get_node(1);
+	$child->removeChildNodes();
+	$child->appendTextNode($_[10]);
+	#care
+	my $child = $item->findnodes("./p:cura")->get_node(1);
+	$child->removeChildNodes();
+	$child->appendTextNode($_[11]);
+	#otherInfos
+	my $child = $item->findnodes("./p:altre_info")->get_node(1);
+	$child->removeChildNodes();
+	$child->appendTextNode($_[12]);
 	$doc->toFile($filexml);
 	require "checkLog.cgi";
 }
@@ -210,28 +203,25 @@ sub updateToolItem {
 		$child->removeChildNodes();
 		$child->appendTextNode($_[2]);
 	}
-	if($_[3] ne "") { #type
-		my $child = $item->findnodes("./p:tipo")->get_node(1);
-		$child->removeChildNodes();
-		$child->appendTextNode($_[3]);
+	#type
+	my $child = $item->findnodes("./p:tipo")->get_node(1);
+	$child->removeChildNodes();
+	$child->appendTextNode($_[3]);
+	#prices e formats, gli array contengono sicuramente almeno un valore perché il controllo viene effettuato prima dell'esecuzione di questa funzione
+	my $pricesNode = $item->findnodes("./p:prezzo")->get_node(1);
+	$pricesNode->removeChildNodes();
+	my @prices = @{$_[4]};
+	my @formats = @{$_[5]};
+	for(my $i=0; $i<scalar @prices; $i++) {
+		my $string = $parser->parse_string("<p:pacchetto $namespace><p:valore>$prices[$i]</p:valore><p:formato>$formats[$i]</p:formato></p:pacchetto>");
+		$string = $string->removeChild($string->firstChild());
+		$pricesNode->appendChild($string);
 	}
-	if($_[4] ne "" && $_[5] ne "") { #prices e formats
-		my $pricesNode = $item->findnodes("./p:prezzo")->get_node(1);
-		$pricesNode->removeChildNodes();
-		my @prices = @{$_[4]};
-		my @formats = @{$_[5]};
-		for(my $i=0; $i<scalar @prices; $i++) {
-			my $string = $parser->parse_string("<p:pacchetto $namespace><p:valore>$prices[$i]</p:valore><p:formato>$formats[$i]</p:formato></p:pacchetto>");
-			$string = $string->removeChild($string->firstChild());
-			$pricesNode->appendChild($string);
-		}
-	}
-	if($_[6] ne "") { #description
-		$item->findnodes("./p:descrizione/text()")->get_node(1)->setData($_[6]);
-		my $child = $item->findnodes("./p:descrizione")->get_node(1);
-		$child->removeChildNodes();
-		$child->appendTextNode($_[6]);
-	}
+	#description
+	$item->findnodes("./p:descrizione/text()")->get_node(1)->setData($_[6]);
+	my $child = $item->findnodes("./p:descrizione")->get_node(1);
+	$child->removeChildNodes();
+	$child->appendTextNode($_[6]);
 	if($_[7] ne "" && $_[8] ne "") { #dataNames e dataContents
 		my $detailsNode = $item->findnodes("./p:dettagli")->get_node(1);
 		$detailsNode->removeChildNodes();
@@ -263,11 +253,14 @@ my @dataContents = $logString->param('dataContent[]');
 my $imageFormat = substr($image, rindex($image, '.')+1);
 my $checkPrices = 1; #dato che ho bisogno di un ciclo faccio il check prima, è l'unico array di dati su cui devo fare il check
 for(my $i=0; $i<scalar @prices && $checkPrices!=0; $i++) {
-	if($prices[$i] !~ /[0-9]+[.][0-9]{2}$/ || $formats[$i] eq '') {
+	if($prices[$i] eq '' && $formats[$i] eq '') { #Elimino i prezzi con valore e formato vuoti
+		splice(@prices, $i, 1);
+		splice(@formats, $i, 1);
+	} elsif($prices[$i] !~ /[0-9]+[.][0-9]{2}$/ || $formats[$i] eq '') {
 		$checkPrices = 0;
 	}
 }
-if($image ne '' && (index($image, '/')!=-1 || index($image, '..')!=-1 || $imageFormat eq '' || ($imageFormat ne 'jpeg' && $imageFormat ne 'gif' && $imageFormat ne 'png' && $imageFormat ne 'svg' && $imageFormat ne 'bmp'))){
+if($image ne '' && (index($image, '/')!=-1 || index($image, '..')!=-1 || $imageFormat eq '' || ($imageFormat ne 'jpeg' && $imageFormat ne 'jpg' && $imageFormat ne 'gif' && $imageFormat ne 'png' && $imageFormat ne 'svg' && $imageFormat ne 'bmp'))){
 	&error($operation, "formato errato del nome dell'immagine caricata");
 } elsif(scalar @prices == 0 && scalar @formats == 0) {
 	&error($operation, "nessun prezzo inserito");
@@ -276,6 +269,12 @@ if($image ne '' && (index($image, '/')!=-1 || index($image, '..')!=-1 || $imageF
 } elsif($name eq '') {
 	&error($operation, "nome del prodotto non inserito");
 } else {
+	for(my $i=0; $i<scalar @dataNames; $i++) {
+		if($dataNames[$i] eq '' && $dataContents[$i] eq '') { #Elimino i dati con nome e contenuto vuoti
+			splice(@dataNames, $i, 1);
+			splice(@dataContents, $i, 1);
+		}
+	}
 	my $id = "";
 	if($operation eq 'create') {
 		#carico il parser e ricavo l'id da usare

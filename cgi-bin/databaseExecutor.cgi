@@ -275,6 +275,9 @@ if($image ne '' && (index($image, '/')!=-1 || index($image, '..')!=-1 || $imageF
 			splice(@dataContents, $i, 1);
 		}
 	}
+	if($image eq '') {
+		$imageFormat = 'no_image';
+	}
 	my $id = "";
 	if($operation eq 'create') {
 		#carico il parser e ricavo l'id da usare

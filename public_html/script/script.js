@@ -34,7 +34,7 @@ var dettagli_form_plant = {
     "name": ["Nome pianta", /^[A-Z][a-z]+/, "Inserisci il nome della pianta"],
     "scientificName": ["Nome scientifico", /.*/, ""],
     "type": ["Tipo", /.*/, ""],
-    "price": ["3.99", /^\d+(.\d{1,2})?$/, "Inserisci il prezzo separato da un punto"],
+    "price": ["", /^\d+(.\d{1,2})?$/, "Inserisci il prezzo separato da un punto"],
     "format": ["per una confezione di 10 fiori", /.*/, ""],
     "dataName": ["Nome del dato", /.*/, ""],
     "dataContent": ["valore", /.*/, ""]
@@ -128,7 +128,8 @@ function validazioneCampo(matrix, input) {
 
 // Funzioni per il controllo sul tipo dell'immagine inserita nella form
 function checkPictureType(Extension) {
-    return (Extension == "gif" || Extension == "png" || Extension == "bmp" || Extension == "jpeg" || Extension == "jpg");
+    return (Extension == "gif" || Extension == "png" || Extension == "bmp" ||
+        Extension == "jpeg" || Extension == "jpg");
 }
 
 function checkImage() {
@@ -139,19 +140,24 @@ function checkImage() {
         p.removeChild(errore);
     }
     var FileUploadPath = fuData.value;
-    // console.log(FileUploadPath);
+
     if (FileUploadPath == '') {
         // alert("Please upload an image");
         // errImg(fuData);
         return true;
-    } 
-    else {
-        var Extension = FileUploadPath.substring(FileUploadPath.lastIndexOf('.') + 1).toLowerCase();
-        console.log(Extension);
+    } else {
+        var Extension = FileUploadPath.substring(
+            FileUploadPath.lastIndexOf('.') + 1).toLowerCase();
         if (checkPictureType(Extension)) {
+            if (fuData.files && fuData.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    $('#image').attr('src', e.target.result);
+                }
+                reader.readAsDataURL(fuData.files[0]);
+            }
             return true;
-        } 
-        else {
+        } else {
             // alert("Photo only allows file types of GIF, PNG, JPG, JPEG and BMP. ");
             errImg(fuData);
             return false;
@@ -161,17 +167,11 @@ function checkImage() {
 // fine
 
 function validazioneFormPlant() {
-    var valRes = (checkImage() && validazioneForm(dettagli_form_plant) && validazioneForm(dettagli_dynamic_input));
-    if (valRes == true)
-        dettagli_dynamic_input={};
-    return valRes;
+    return validazioneForm(dettagli_form_plant);
 }
 
 function validazioneFormTool() {
-    var valRes = (checkImage() && validazioneForm(dettagli_form_tool) && validazioneForm(dettagli_dynamic_input));
-    if (valRes == true)
-        dettagli_dynamic_input={};
-    return valRes;
+    return validazioneForm(dettagli_form_tool);
 }
 
 function validazioneForm(matrix) {
@@ -195,15 +195,22 @@ function mostraErrore(matrix, input) {
     var e = document.createElement("strong");
     e.className = "errorSuggestion";
     e.id = input.id + "errore";
+    //
+    //input.id="errore";
+
     e.appendChild(document.createTextNode(matrix[input.id][2]));
     p.appendChild(e);
 }
 
-function errImg(fuData) {
-    var p = fuData.parentNode;
+function errImg() {
+    console.log("image");
+    var p = (document.getElementById("image")).parentNode;
     var e = document.createElement("strong");
     e.className = "errorSuggestion";
     e.id = (document.getElementById("image")).id + "errore";
+    //
+    //input.id="errore";
+
     e.appendChild(document.createTextNode("Inserisci un file immagine"));
     p.appendChild(e);
 }
@@ -237,12 +244,12 @@ var counter_prezzo = 1;
 var counter_valore = 1;
 
 function addInputPrice(divName) { 
-    var toInsert = '<label for="price" class="inputL">Prezzo: &euro; </label><input type="text" name="price\[' + (counter_prezzo + 1) + '\]" id="price' + (counter_prezzo + 1) + '" placeholder="3.99" class="inputL"/><label for="format' + (counter_prezzo + 1) + '" class="inputR">Formato:</label><input type="text" name="price\[' + (counter_prezzo + 1) + '\]" id="format' + (counter_prezzo + 1) + '" placeholder="al pezzo" class="inputR"/>';
+    var toInsert = '<div class="inputsL"><label for="price" class="inputL">Prezzo: &euro; </label><input type="text" name="price\[' + (counter_prezzo + 1) + '\]" id="price' + (counter_prezzo + 1) + '" placeholder="3.99" class="inputL"/></div><div class="inputsR"><label for="format' + (counter_prezzo + 1) + '" class="inputR">Formato:</label><input type="text" name="price\[' + (counter_prezzo + 1) + '\]" id="format' + (counter_prezzo + 1) + '" placeholder="al pezzo" class="inputR"/></div>';
     counter_prezzo = addInput(divName, counter_prezzo, toInsert);
 }
 
 function addInputData(divName) {
-    var toInsert = '<label for="dataName" class="inputL">Dato:</label><input type="text" name="dataName" id="dato\[' + (counter_prezzo + 1) + '\]" placeholder="Lunghezza manico" class="inputL"/><label for="dataContent' + (counter_prezzo + 1) + '" class="inputR">Contenuto:</label><input type="text" name="dato\[' + (counter_prezzo + 1) + '\]" id="dataContent' + (counter_prezzo + 1) + '" placeholder="10 cm" class="inputR"/>';
+    var toInsert = '<div class="inputsL"><label for="dataName" class="inputL">Dato:</label><input type="text" name="dataName" id="dato\[' + (counter_prezzo + 1) + '\]" placeholder="Lunghezza manico" class="inputL"/></div><div class="inputsR"><label for="dataContent' + (counter_prezzo + 1) + '" class="inputR">Contenuto:</label><input type="text" name="dato\[' + (counter_prezzo + 1) + '\]" id="dataContent' + (counter_prezzo + 1) + '" placeholder="10 cm" class="inputR"/></div>';
     counter_valore = addInput(divName, counter_valore, toInsert);
 }
 

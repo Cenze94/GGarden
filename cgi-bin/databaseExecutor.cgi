@@ -38,9 +38,7 @@ sub error{
 
 	print "Content-type: text/html; charset=utf-8\n\n";
 	print "<phtml>";
-	print "<body>";
 	print $fileToPrint;
-	print "</body>";
 	print "</phtml>";
 }
 
@@ -306,8 +304,17 @@ if($image ne '' && (index($image, '/')!=-1 || index($image, '..')!=-1 || $imageF
 	#Se ho un'immagine caricata corretta allora la sostituisco già a quella esistente o creo quella nuova
 	my $imgDir = '../public_html/img database';
 	my $filehandle = $logString->upload("image");
+	#Elimino l'eventuale immagine omonima già presente
 	if(-e "$imgDir/$id.$imageFormat") {
 		unlink "$imgDir/$id.$imageFormat";
+	} else { #L'immagine vecchia potrebbe avere un altro formato, quindi carico il formato vecchio salvato nel database ed eventualmente elimino il file vecchio
+		my $filexml = '../data/database.xml';
+		my $parser = XML::LibXML->new;
+		my $doc = $parser->parse_file($filexml);
+		my $oldFormat = $doc->findnodes("//$itemType[\@id='$id']/@format/text()")->get_node(1);
+		if($oldFormat ne $imageFormat && $oldFormat ne 'no_image' && -e "$imgDir/$id.$oldFormat") {
+			unlink "$imgDir/$id.$oldFormat";
+		}
 	}
 	open(UPLOADFILE, ">$imgDir/$id.$imageFormat") or die "$!";
 	binmode UPLOADFILE;

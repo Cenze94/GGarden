@@ -113,9 +113,7 @@ sub updateOperation {
 	
 	print "Content-type: text/html; charset=utf-8\n\n";
 	print "<phtml>";
-	print "<body>";
 	print $doc;
-	print "</body>";
 	print "</phtml>";
 }
 
@@ -132,9 +130,7 @@ sub createOperation {
 	$node->setAttribute('value', "Aggiungi prodotto");
 	print "Content-type: text/html; charset=utf-8\n\n";
 	print "<phtml>";
-	print "<body>";
 	print $doc;
-	print "</body>";
 	print "</phtml>";
 }
 

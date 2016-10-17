@@ -104,7 +104,5 @@ my $results     = $stylesheet->transform_file($filexml);
 my $fileToPrint = $stylesheet->output_as_bytes($results);
 
 print "<phtml>";
-print "<body>";
 print $fileToPrint;
-print "</body>";
 print "</phtml>";

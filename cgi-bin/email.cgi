@@ -107,9 +107,7 @@ if($redirect) {
 
 	print "Content-type: text/html; charset=utf-8\n\n";
 	print "<phtml>";
-	print "<body>";
 	print $doc;
-	print "</body>";
 	print "</phtml>";
 }
 $smtp->dataend();

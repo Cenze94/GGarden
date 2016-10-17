@@ -34,7 +34,7 @@ var dettagli_form_plant = {
     "name": ["Nome pianta", /^[A-Z][a-z]+/, "Inserisci il nome della pianta"],
     "scientificName": ["Nome scientifico", /.*/, ""],
     "type": ["Tipo", /.*/, ""],
-    "price": ["", /^\d+(.\d{1,2})?$/, "Inserisci il prezzo separato da un punto"],
+    "price": ["0.00", /^\d[\.]?(\d{1,2})?$/, "Inserisci il prezzo separato da un punto"],
     "format": ["per una confezione di 10 fiori", /.*/, ""],
     "dataName": ["Nome del dato", /.*/, ""],
     "dataContent": ["valore", /.*/, ""]
@@ -43,7 +43,7 @@ var dettagli_form_plant = {
 var dettagli_form_tool = {
     "name": ["Nome pianta", /^[A-Z][a-z]+/, "Inserisci il nome dell'attrezzo'"],
     "type": ["Tipo", /.*/, ""],
-    "price": ["", /^\d+(.\d{1,2})?$/, "Inserisci il prezzo separato da un punto"],
+    "price": ["0.00", /^\d[\.]?(\d{1,2})?$/, "Inserisci il prezzo separato da un punto"],
     "format": ["al pezzo", /.*/, ""],
     "dataName": ["Nome del dato", /.*/, ""],
     "dataContent": ["valore", /.*/, ""]
@@ -229,13 +229,19 @@ var counter_prezzo = 1;
 var counter_valore = 1;
 
 function addInputPrice(divName) { 
-    var toInsert = '<div class="inputsL"><label for="price" class="inputL">Prezzo: &euro; </label><input type="text" name="price\[' + (counter_prezzo + 1) + '\]" id="price' + (counter_prezzo + 1) + '" placeholder="3.99" class="inputL"/></div><div class="inputsR"><label for="format' + (counter_prezzo + 1) + '" class="inputR">Formato:</label><input type="text" name="price\[' + (counter_prezzo + 1) + '\]" id="format' + (counter_prezzo + 1) + '" placeholder="al pezzo" class="inputR"/></div>';
+    var toInsert = '<div class="inputsL"><label for="price" class="inputL">Prezzo: &euro; </label><input type="text" name="price\[' + (counter_prezzo + 1) + '\]" id="price' + (counter_prezzo + 1) + '" class="inputL"/></div><div class="inputsR"><label for="format' + (counter_prezzo + 1) + '" class="inputR">Formato:</label><input type="text" name="price\[' + (counter_prezzo + 1) + '\]" id="format' + (counter_prezzo + 1) + '" class="inputR"/></div>';
     counter_prezzo = addInput(divName, counter_prezzo, toInsert);
+    dettagli_dynamic_input['price'+counter_prezzo]=["0.00", /^\d[\.]?(\d{1,2})?$/, "Inserisci il prezzo separato da un punto"];
+    dettagli_dynamic_input['format'+counter_prezzo]=["per una confezione", /.*/, ""];
+    caricamento(dettagli_dynamic_input, false);
 }
 
 function addInputData(divName) {
-    var toInsert = '<div class="inputsL"><label for="dataName" class="inputL">Dato:</label><input type="text" name="dataName" id="dato\[' + (counter_prezzo + 1) + '\]" placeholder="Lunghezza manico" class="inputL"/></div><div class="inputsR"><label for="dataContent' + (counter_prezzo + 1) + '" class="inputR">Contenuto:</label><input type="text" name="dato\[' + (counter_prezzo + 1) + '\]" id="dataContent' + (counter_prezzo + 1) + '" placeholder="10 cm" class="inputR"/></div>';
+    var toInsert = '<div class="inputsL"><label for="dataName" class="inputL">Dato:</label><input type="text" name="dataName\[' + (counter_valore + 1)+ '\]" id="dataName' + (counter_valore + 1)+'" class="inputL"/></div><div class="inputsR"><label for="dataContent' + (counter_valore + 1) + '" class="inputR">Contenuto:</label><input type="text" name="dato\[' + (counter_valore + 1) + '\]" id="dataContent' + (counter_valore + 1) + '" class="inputR"/></div>';
     counter_valore = addInput(divName, counter_valore, toInsert);
+    dettagli_dynamic_input['dataName'+counter_valore]=["Nome del dato", /.*/, ""];
+    dettagli_dynamic_input['dataContent'+counter_valore]=["valore", /.*/, ""];
+    caricamento(dettagli_dynamic_input, false);
 }
 
 function addInput(divName, counter, toInsert) {

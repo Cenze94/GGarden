@@ -447,7 +447,6 @@ form small {
     font-size: 1em;
     font-style: oblique;
     color: #8c001f;
-    width: 50%;
     float: right;
 }
 
@@ -605,7 +604,8 @@ input[type="button"], input[type="submit"]{
 
 .inputsL{
    float: left;
-    width: 24%
+    width: 24%;
+    clear: both;
 }
 
 .inputsR{

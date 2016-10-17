@@ -34,7 +34,7 @@ var dettagli_form_plant = {
     "name": ["Nome pianta", /^[A-Z][a-z]+/, "Inserisci il nome della pianta"],
     "scientificName": ["Nome scientifico", /.*/, ""],
     "type": ["Tipo", /.*/, ""],
-    "price": ["", /^\d+(.\d{1,2})?$/, "Inserisci il prezzo separato da un punto"],
+    "price": ["3.99", /^\d+(.\d{1,2})?$/, "Inserisci il prezzo separato da un punto"],
     "format": ["per una confezione di 10 fiori", /.*/, ""],
     "dataName": ["Nome del dato", /.*/, ""],
     "dataContent": ["valore", /.*/, ""]
@@ -128,8 +128,7 @@ function validazioneCampo(matrix, input) {
 
 // Funzioni per il controllo sul tipo dell'immagine inserita nella form
 function checkPictureType(Extension) {
-    return (Extension == "gif" || Extension == "png" || Extension == "bmp" ||
-        Extension == "jpeg" || Extension == "jpg");
+    return (Extension == "gif" || Extension == "png" || Extension == "bmp" || Extension == "jpeg" || Extension == "jpg");
 }
 
 function checkImage() {
@@ -140,24 +139,19 @@ function checkImage() {
         p.removeChild(errore);
     }
     var FileUploadPath = fuData.value;
-
+    // console.log(FileUploadPath);
     if (FileUploadPath == '') {
         // alert("Please upload an image");
         // errImg(fuData);
         return true;
-    } else {
-        var Extension = FileUploadPath.substring(
-            FileUploadPath.lastIndexOf('.') + 1).toLowerCase();
+    } 
+    else {
+        var Extension = FileUploadPath.substring(FileUploadPath.lastIndexOf('.') + 1).toLowerCase();
+        console.log(Extension);
         if (checkPictureType(Extension)) {
-            if (fuData.files && fuData.files[0]) {
-                var reader = new FileReader();
-                reader.onload = function(e) {
-                    $('#image').attr('src', e.target.result);
-                }
-                reader.readAsDataURL(fuData.files[0]);
-            }
             return true;
-        } else {
+        } 
+        else {
             // alert("Photo only allows file types of GIF, PNG, JPG, JPEG and BMP. ");
             errImg(fuData);
             return false;
@@ -167,11 +161,17 @@ function checkImage() {
 // fine
 
 function validazioneFormPlant() {
-    return validazioneForm(dettagli_form_plant);
+    var valRes = (checkImage() && validazioneForm(dettagli_form_plant) && validazioneForm(dettagli_dynamic_input));
+    if (valRes == true)
+        dettagli_dynamic_input={};
+    return valRes;
 }
 
 function validazioneFormTool() {
-    return validazioneForm(dettagli_form_tool);
+    var valRes = (checkImage() && validazioneForm(dettagli_form_tool) && validazioneForm(dettagli_dynamic_input));
+    if (valRes == true)
+        dettagli_dynamic_input={};
+    return valRes;
 }
 
 function validazioneForm(matrix) {
@@ -195,22 +195,15 @@ function mostraErrore(matrix, input) {
     var e = document.createElement("strong");
     e.className = "errorSuggestion";
     e.id = input.id + "errore";
-    //
-    //input.id="errore";
-
     e.appendChild(document.createTextNode(matrix[input.id][2]));
     p.appendChild(e);
 }
 
-function errImg() {
-    console.log("image");
-    var p = (document.getElementById("image")).parentNode;
+function errImg(fuData) {
+    var p = fuData.parentNode;
     var e = document.createElement("strong");
     e.className = "errorSuggestion";
     e.id = (document.getElementById("image")).id + "errore";
-    //
-    //input.id="errore";
-
     e.appendChild(document.createTextNode("Inserisci un file immagine"));
     p.appendChild(e);
 }

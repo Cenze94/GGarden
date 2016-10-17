@@ -159,11 +159,24 @@ function checkImage() {
 // fine
 
 function validazioneFormPlant() {
-    return validazioneForm(dettagli_form_plant);
+    var rImg = checkImage(); 
+    var rFrm = validazioneForm(dettagli_form_plant); 
+    var vDynFrm = validazioneForm(dettagli_dynamic_input);
+    var valRes= (rImg && rFrm && vDynFrm);
+    if (valRes == true)
+        dettagli_dynamic_input={};
+    //console.log(validazioneForm(dettagli_dynamic_input));
+    return valRes;
 }
 
 function validazioneFormTool() {
-    return validazioneForm(dettagli_form_tool);
+    var rImg = checkImage(); 
+    var rFrm = validazioneForm(dettagli_form_tool); 
+    var vDynFrm = validazioneForm(dettagli_dynamic_input);
+    var valRes= (rImg && rFrm && vDynFrm);
+    if (valRes == true)
+        dettagli_dynamic_input={};
+    return valRes;
 }
 
 function validazioneForm(matrix) {

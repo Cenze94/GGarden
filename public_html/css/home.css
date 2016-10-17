@@ -162,7 +162,7 @@ legend{
     margin: 0.5em;
     float: left;
     text-decoration: none;
-    padding: 0.2em 1.5em 0.2em 1.5em;
+    padding: 0 1.5em 0 1.5em;
     color: white;
     border: solid 1px #a30025;
     background: #b40029;
@@ -602,16 +602,24 @@ input[type="button"], input[type="submit"]{
 }
 
 
-.inputL{
+.inputsL{
    float: left;
+    width: 24%
+}
+
+.inputsR{
+    float: right;
+    width: 74%;
 }
 
 .inputR{
-    float: right;
-    clear: right;
-    width: 35%;
+    width: 50%;
 }
 
+.errorExecutor {
+    padding: 1.5em;
+    color: #b40029;
+}
 
 /* Footer */
 
@@ -643,8 +651,8 @@ input[type="button"], input[type="submit"]{
 }
 
 
-.footer .footerlogo{
-    text-align:center;
+#logo_mini{
+    font-size:0em;
     background-image: url(../img/logo_mini.png);
     background-repeat: no-repeat;
     margin: 0;
@@ -707,11 +715,8 @@ input[type="button"], input[type="submit"]{
 
 
 .footer .footer-right{
-    width: 20%;
-}
-
-.footer .footer-right{
     color: black;
+    width: 20%;
 }
 
 .footer .footer-nome-azienda{

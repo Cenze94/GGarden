@@ -97,7 +97,6 @@ function caricamento(matrix, checkImg) //carica i dati nei campi
 
 function campoDefault(matrix, input) {
     if (input.value == "") {
-        input.className = "";
         input.value = matrix[input.id][0];
     }
 }
@@ -105,7 +104,6 @@ function campoDefault(matrix, input) {
 function campoPerInput(matrix, input) {
     if (input.value == matrix[input.id][0]) {
         input.value = "";
-        input.className = "";
     }
 }
 
@@ -128,8 +126,7 @@ function validazioneCampo(matrix, input) {
 
 // Funzioni per il controllo sul tipo dell'immagine inserita nella form
 function checkPictureType(Extension) {
-    return (Extension == "gif" || Extension == "png" || Extension == "bmp" ||
-        Extension == "jpeg" || Extension == "jpg");
+    return (Extension == "gif" || Extension == "png" || Extension == "bmp" || Extension == "jpeg" || Extension == "jpg");
 }
 
 function checkImage() {
@@ -145,19 +142,14 @@ function checkImage() {
         // alert("Please upload an image");
         // errImg(fuData);
         return true;
-    } else {
+    } 
+    else {
         var Extension = FileUploadPath.substring(
             FileUploadPath.lastIndexOf('.') + 1).toLowerCase();
-        if (checkPictureType(Extension)) {
-            if (fuData.files && fuData.files[0]) {
-                var reader = new FileReader();
-                reader.onload = function(e) {
-                    $('#image').attr('src', e.target.result);
-                }
-                reader.readAsDataURL(fuData.files[0]);
-            }
+        if (checkPictureType(Extension)){
             return true;
-        } else {
+        } 
+        else {
             // alert("Photo only allows file types of GIF, PNG, JPG, JPEG and BMP. ");
             errImg(fuData);
             return false;
@@ -195,22 +187,15 @@ function mostraErrore(matrix, input) {
     var e = document.createElement("strong");
     e.className = "errorSuggestion";
     e.id = input.id + "errore";
-    //
-    //input.id="errore";
-
     e.appendChild(document.createTextNode(matrix[input.id][2]));
     p.appendChild(e);
 }
 
-function errImg() {
-    console.log("image");
-    var p = (document.getElementById("image")).parentNode;
+function errImg(fuData) {
+    var p = fuData.parentNode;
     var e = document.createElement("strong");
     e.className = "errorSuggestion";
     e.id = (document.getElementById("image")).id + "errore";
-    //
-    //input.id="errore";
-
     e.appendChild(document.createTextNode("Inserisci un file immagine"));
     p.appendChild(e);
 }

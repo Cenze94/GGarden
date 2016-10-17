@@ -159,11 +159,17 @@ function checkImage() {
 // fine
 
 function validazioneFormPlant() {
-    return validazioneForm(dettagli_form_plant);
+    var valRes = (checkImage() && validazioneForm(dettagli_form_plant) && validazioneForm(dettagli_dynamic_input));
+    if (valRes == true)
+        dettagli_dynamic_input={};
+    return valRes;
 }
 
 function validazioneFormTool() {
-    return validazioneForm(dettagli_form_tool);
+    var valRes = (checkImage() && validazioneForm(dettagli_form_tool) && validazioneForm(dettagli_dynamic_input));
+    if (valRes == true)
+        dettagli_dynamic_input={};
+    return valRes;
 }
 
 function validazioneForm(matrix) {

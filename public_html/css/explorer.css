@@ -592,7 +592,7 @@ hr{
 }
 
 #format{
-    width: 35%;
+    width: 30%;
 }
 
 input[type="button"], input[type="submit"]{
@@ -619,7 +619,7 @@ input[type="button"], input[type="submit"]{
 }
 
 .inputR{
-    width: 50%;
+    width: 30%;
 }
 
 .errorExecutor {

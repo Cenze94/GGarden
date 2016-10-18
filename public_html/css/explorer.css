@@ -410,7 +410,7 @@ form label {
     font-size: 0.8em;
 }
 form input {
-    margin: 1em 0.5em 1em 0.5em;
+    margin: 1em 2em 1em 0.5em;
     border: 1px solid #ccc;
     padding: 0.3em 0.6em;
     color: #555;
@@ -444,9 +444,13 @@ form small {
 }
 
 .errorSuggestion{
-    font-size: 1em;
+    font-size: 0.8em;
     font-style: oblique;
     color: #8c001f;
+    float:left;
+}
+
+#dato_contenuto, #prezzo_formato{
     float: right;
 }
 
@@ -609,8 +613,9 @@ input[type="button"], input[type="submit"]{
 }
 
 .inputsR{
-    float: right;
+    float: left;
     width: 74%;
+    margin-bottom: 1em;
 }
 
 .inputR{
@@ -622,6 +627,9 @@ input[type="button"], input[type="submit"]{
     color: #b40029;
 }
 
+#name, #scientificName {
+    width: 25%;
+}
 
 
 /* Footer */

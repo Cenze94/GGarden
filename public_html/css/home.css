@@ -440,11 +440,9 @@ form small {
 }
 
 .errorSuggestion{
-    font-size: 1em;
+    font-size: 0.8em;
     font-style: oblique;
     color: #8c001f;
-    width: 50%;
-    float: right;
 }
 
 
@@ -609,8 +607,9 @@ input[type="button"], input[type="submit"]{
 }
 
 .inputsR{
-    float: right;
+    float: left;
     width: 74%;
+    margin-bottom: 1em;
 }
 
 .inputR{

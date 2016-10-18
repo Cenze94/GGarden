@@ -311,7 +311,7 @@ if($image ne '' && (index($image, '/')!=-1 || index($image, '..')!=-1 || $imageF
 		my $filexml = '../data/database.xml';
 		my $parser = XML::LibXML->new;
 		my $doc = $parser->parse_file($filexml);
-		my $oldFormat = $doc->findnodes("//$itemType[\@id='$id']/@format/text()")->get_node(1);
+		my $oldFormat = $doc->findnodes("//p:$itemType\[\@id='$id'\]")->get_node(1)->getAttribute('formato');
 		if($oldFormat ne $imageFormat && $oldFormat ne 'no_image' && -e "$imgDir/$id.$oldFormat") {
 			unlink "$imgDir/$id.$oldFormat";
 		}

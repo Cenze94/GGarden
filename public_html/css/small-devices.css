@@ -373,6 +373,14 @@ li a:hover {
 
 /*Parte per la form di contattaci*/
 
+.titolo_contattaci h2{
+    font-size: 1.2em;
+}
+
+.titolo_contattaci{
+    text-align: center;
+}
+
 .body_contattaci{
     padding-top : 20px;
     border-color : #333333;
@@ -414,7 +422,7 @@ form ul li .req {
 }
 form label {
     display: block;
-    margin: 0 0 0.5em 0;
+    margin: 0.5em 0 0.5em 0;
     color: #4f6fad;
     font-size: 0.8em;
 }
@@ -469,7 +477,6 @@ form small {
     font-style: oblique;
     color: #8c001f;
     width: 50%;
-    float: right;
 }
 
 
@@ -594,31 +601,55 @@ hr{
 /* VENDITA - Parte Admin e form */
 
 #createButtons{
-    height: 2em;
+    height: 7em;
+    font-size: 0.8em;
 }
 
 .createButton{
+    text-decoration: none; 
+    font-weight: bold;
     padding: 0.5em 1em 0.5em 1em;
-    margin: 1em;
+    margin: 0.4em;
     color: white;
     border: solid 1px #a30025;
     background: #b40029;
+    float: left;
+    text-align: center;
+    width: 85%;
 
 }
 
 #productButtons{
-    padding: 2em;
+    height: 7em;
+    font-size: 0.8em;
 }
+
 .productButton{
+    text-decoration: none; 
+    font-weight: bold;
     padding: 0.5em 1em 0.5em 1em;
-    margin: 1em;
+    margin: 0.4em;
     color: white;
     border: solid 1px #a30025;
     background: #b40029;
+    float: left;
+    text-align: center;
+    width: 85%;
+}
+
+input[type="button"], input[type="submit"]{
+    outline: none;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    color: #fff;
+    border: solid 1px #a30025;
+    background: #b40029;
+    font-size: 0.75em;
 }
 
 #image{
-    width: 99%;
+    width: 92%;
     font-size: 0.75em;
 }
 
@@ -630,6 +661,16 @@ hr{
     color: #fff;
     border: solid 1px #a30025;
     background: #b40029;
+}
+
+.inputsL strong {
+    float: left;
+    width: 100%;
+    margin-bottom: 0.5em;
+}
+
+span.inputR {
+    display: none;
 }
 
 .mobile{
@@ -678,6 +719,17 @@ hr{
     background-position: center top;
     margin: 0;
     
+    width: 99%;
+    height: 5em;
+}
+
+#logo_mini{
+    text-align:center;
+    background-image: url(../img/logo_mini.png);
+    background-repeat: no-repeat;
+    background-position: center top;
+    margin: 0;
+      
     width: 99%;
     height: 5em;
 }

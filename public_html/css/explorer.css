@@ -619,6 +619,7 @@ input[type="button"], input[type="submit"]{
 }
 
 
+
 .inputsL{
    float: left;
     width: 24%;
@@ -629,6 +630,10 @@ input[type="button"], input[type="submit"]{
     float: left;
     width: 74%;
     margin-bottom: 1em;
+}
+
+.inputsR SPAN{
+    display:none;
 }
 
 .inputR{

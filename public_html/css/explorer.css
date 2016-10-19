@@ -593,6 +593,11 @@ hr{
 
 #format{
     width: 30%;
+    margin-top: 2.2em;
+}
+
+#dataContent {
+    margin-top: 2.2em;
 }
 
 input[type="button"], input[type="submit"]{
@@ -603,6 +608,14 @@ input[type="button"], input[type="submit"]{
     color: #fff;
     border: solid 1px #a30025;
     background: #b40029;
+}
+
+#dynamicInputPrice li{
+    padding-bottom: 1em; 
+}
+
+#dynamicInputPrice span{
+    clear: both; 
 }
 
 

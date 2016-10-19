@@ -599,6 +599,23 @@ input[type="button"], input[type="submit"]{
     background: #b40029;
 }
 
+#dynamicInputPrice li{
+    padding-bottom: 1em; 
+}
+
+#dynamicInputPrice span{
+    clear: both; 
+}
+
+#dataContent{
+    margin-top: 1.75em;
+}
+
+#format{
+    width: 30%;
+    margin-top: 1.75em;
+}
+
 
 .inputsL{
    float: left;

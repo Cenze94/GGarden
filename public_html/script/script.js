@@ -179,11 +179,12 @@ function validazioneFormTool() {
     return valRes;
 }
 
+function validazioneFormContattaci(){
+    return validazioneForm(dettagli_form_contattaci);
+}
+
 function validazioneForm(matrix) {
     var corretto = true;
-    var resImg = checkImage();
-    console.log("image", resImg);
-    corretto = corretto && resImg;
     for (var key in matrix) {
         var input = document.getElementById(key);
         var risultato = validazioneCampo(matrix, input);

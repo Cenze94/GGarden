@@ -22,7 +22,7 @@ sub updateOperation {
 	my $itemType = $_[2];
 	my $filexml = "../data/database.xml";
 	my $parserxml  = XML::LibXML->new;
-	my $node = $doc->findnodes("//div[\@id='content']/form/h4")->get_node(1);
+	my $node = $doc->findnodes("//div[\@id='content']/form/fieldset/legend")->get_node(1);
 	if($itemType eq 'pianta') {
 		$node->appendTextNode('Inserisci i dati da modificare della pianta selezionata:');
 	} elsif($itemType eq 'attrezzo') {
@@ -38,7 +38,7 @@ sub updateOperation {
 	$xml = $xml->findnodes("//p:pianta[\@id='$id'] | //p:attrezzo[\@id='$id']")->get_node(1); #dato che mi serve solo il prodotto con l'id ricevuto posso riutilizzare la variabile
 	my $value = $xml->getAttribute('formato');
 	if($value ne '') {
-		my $imgNode = $node->findnodes("../fieldset/ul/li/p[label/\@for='image']")->get_node(1);
+		my $imgNode = $node->findnodes("../ul/li/p[label/\@for='image']")->get_node(1);
 		$string = $parserxml->parse_string("<img class='productImg' src='../img database/$id.$value' alt='Immagine attuale del prodotto' width='200' height='200' />");
 		$string = $string->removeChild($string->firstChild());
 		$imgNode = $imgNode->insertBefore($string, $imgNode->firstChild());
@@ -47,7 +47,7 @@ sub updateOperation {
 		$imgNode->appendTextNode("Sostituisci l'immagine del prodotto già inserita (max 5 MB):");
 	}
 	$value = $xml->findnodes("./p:nome/text()")->get_node(1);
-	$node = $node->findnodes("../fieldset/ul/li/p/input[\@name='name']")->get_node(1);
+	$node = $node->findnodes("../ul/li/p/input[\@name='name']")->get_node(1);
 	$node->setAttribute('value', $value);
 	$value = $xml->findnodes("./p:tipo/text()")->get_node(1);
 	$node = $node->findnodes("../../p/input[\@name='type']")->get_node(1);
@@ -120,13 +120,13 @@ sub updateOperation {
 sub createOperation {
 	my $doc = $_[0];
 	my $itemType = $_[1];
-	my $node = $doc->findnodes("//div[\@id='content']/form/h4")->get_node(1);
+	my $node = $doc->findnodes("//div[\@id='content']/form/fieldset/legend")->get_node(1);
 	if($itemType eq 'pianta') {
 		$node->appendTextNode('Inserisci i dati della nuova pianta:');
 	} elsif($itemType eq 'attrezzo') {
 		$node->appendTextNode('Inserisci i dati del nuovo attrezzo:');
 	}
-	$node = $node->findnodes("../fieldset/ul/li/p/input[\@type='submit']")->get_node(1);
+	$node = $node->findnodes("../ul/li/p/input[\@type='submit']")->get_node(1);
 	$node->setAttribute('value', "Aggiungi prodotto");
 	print "Content-type: text/html; charset=utf-8\n\n";
 	print "<phtml>";

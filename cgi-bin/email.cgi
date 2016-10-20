@@ -30,7 +30,7 @@ $string = $doc->findnodes('//comment()')->get_node(1);
 $string->setData('[if lte IE 8]><link rel="stylesheet" type="text/css" href="../css/explorer.css"/><![endif]');
 
 #Aggiorno il link dell'immagine di Google Mpas
-$string = $doc->findnodes('//img[@id="fotoMappa"]')->get_node(0);
+$string = $doc->findnodes('//a/img[@id="fotoMappa"]')->get_node(0);
 $string->setAttribute("src", '../img/mappa.png');
 
 #Aggiorno il link dello script JavaScript
@@ -108,9 +108,9 @@ if($redirect) {
 #stampa contattaci.html
 
 	print "Content-type: text/html; charset=utf-8\n\n";
-	print "<phtml>";
+	# print "<phtml>";
 	print $doc;
-	print "</phtml>";
+	# print "</phtml>";
 }
 $smtp->dataend();
 $smtp->quit;

@@ -31,7 +31,7 @@ sub log {
 	$xpc->setContextNode($node);
 	$node = $xpc->findnodes("../x:button/text()")->get_node(1);
 	$node->setData("Modifica");
-	my $string = "<button type='submit' href='logout.cgi' class='logout' tabindex='3'>Logout</button>";
+	my $string = "<a href='logout.cgi' class='logout' tabindex='3'>Logout</a>";
 	my $child = $parserxml->parse_string($string);
 	$child = $child->removeChild($child->firstChild());
 	$node = $xpc->findnodes('..')->get_node(1);

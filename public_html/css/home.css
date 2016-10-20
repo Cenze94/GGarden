@@ -87,15 +87,6 @@ h1{
     height: 200px;
 }
 
-#inputUsername{
-    width:90%;
-}
-
-#inputPassword{
-    width:90%;
-}
-
-
 /*Login*/
 #login {
     color: black;
@@ -150,11 +141,7 @@ legend{
     margin-top: 0.5em;
 }
 
-#inputUsername{
-    width:90%;
-}
-
-#inputPassword{
+#inputUsername, #inputPassword{
     width:90%;
 }
 
@@ -169,8 +156,12 @@ legend{
 
 }
 
-
-
+#updateOk{
+   float:right;
+   font-size: 1em;
+   color: #8c001f; 
+   margin-right: 1em;  
+}
 
 /* BreadCrumbs Part*/
 #breadcrumbs{

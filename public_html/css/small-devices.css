@@ -129,12 +129,14 @@ legend{
     margin-top: 1em;
 }
 
-#inputUsername{
+#inputUsername, #inputPassword{
     width:90%;
 }
 
-#inputPassword{
-    width:90%;
+#updateOk{
+   font-size: 1em;
+   color: #8c001f; 
+   margin-right: 1em;  
 }
 
 

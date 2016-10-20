@@ -108,9 +108,9 @@ if($redirect) {
 #stampa contattaci.html
 
 	print "Content-type: text/html; charset=utf-8\n\n";
-	print "<phtml>";
+	#print "<phtml>";
 	print $doc;
-	print "</phtml>";
+	#print "</phtml>";
 }
 $smtp->dataend();
 $smtp->quit;

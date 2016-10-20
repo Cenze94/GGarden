@@ -37,7 +37,7 @@ blockquote, q {
 blockquote:before, blockquote:after,
 q:before, q:after {
     content: '';
-    content: none;
+content: none;
 }
 table {
     border-collapse: collapse;
@@ -84,36 +84,15 @@ h1{
     background-image:url(../img/logo.png);
     background-repeat: no-repeat;
     background-position: 0px 0px;
-    width: 79%;
+    width: 74%;
     height: 200px;
 }
-
-
-
-#accedi{
-    margin-top: 10px;
-    padding-left: 20px;
-    padding-right: 20px;
-    margin-left: 30%;
-}
-
-
-
-#inputUsername{
-    width:90%;
-}
-
-#inputPassword{
-    width:90%;
-}
-
 
 /*Login*/
 #login {
     color: black;
-    font-size: 12px;
-    display: none;
-    
+    font-size: 0.8em;
+    display: none;       
 }
 
 legend{
@@ -133,15 +112,13 @@ legend{
     margin: 0;
     padding: 5px 10px 10px 0px;
     float: right;
-    width:19%;
+    width:24%;
 }
 
 
 #button_admin, #accedi{
-    float: right;
-    margin: 1em;
+    margin: 0.5em;
     color: white;
-    
     border: solid 1px #a30025;
     background: #b40029;
     
@@ -152,10 +129,10 @@ legend{
 }
 
 #accedi{
-    margin-top: 10px;
+    vertical-align: text-bottom;  
     padding-left: 20px;
     padding-right: 20px;
-    margin-left: 30%;
+    float: left;
 }
 
 #contenitore-login label{
@@ -164,17 +141,28 @@ legend{
     margin-top: 0.5em;
 }
 
-#inputUsername{
-    width:90%;
+#inputUsername, #inputPassword{
+    width:80%;
+    padding: 0.5em;
 }
 
-#inputPassword{
-    width:90%;
+.logout{
+    vertical-align: text-bottom;  
+    margin: 0.5em;
+    float: right;
+    padding: 0 1.5em 0 1.5em;
+    color: white;
+    border: solid 1px #a30025;
+    background: #b40029;
+
 }
 
-
-
-
+#updateOk{
+   float:right;
+   font-size: 1em;
+   color: #8c001f; 
+   margin-right: 1em;  
+}
 
 /* BreadCrumbs Part*/
 #breadcrumbs{
@@ -428,6 +416,10 @@ form small {
     margin: 0 0 0 0.5em;
 }
 
+#email{
+    width: 40%;
+}
+
 .info {
     display: block;
     margin: 0 0 0.5em 0;
@@ -447,7 +439,7 @@ form small {
     font-size: 0.8em;
     font-style: oblique;
     color: #8c001f;
-    float:left;
+    vertical-align: text-top;
 }
 
 #dato_contenuto, #prezzo_formato{
@@ -466,8 +458,10 @@ form small {
 }
 
 .cnome{
-    text-align: center;
+    text-align: center;			
     color: #003e30;
+    font-size: 1.4em;
+    margin-top: 0.5em;
 }
 
 .nome_scientifico{
@@ -568,22 +562,26 @@ hr{
 /* VENDITA - Parte Admin e form */
 
 #createButtons{
-    height: 2em;
+    padding: 2em;
 }
 
 .createButton{
+    text-decoration: none; 
+    font-weight: bold;
     padding: 0.5em 1em 0.5em 1em;
     margin: 1em;
     color: white;
     border: solid 1px #a30025;
     background: #b40029;
-
 }
 
 #productButtons{
     padding: 2em;
 }
+
 .productButton{
+    text-decoration: none; 
+    font-weight: bold;
     padding: 0.5em 1em 0.5em 1em;
     margin: 1em;
     color: white;

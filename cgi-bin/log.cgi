@@ -103,6 +103,4 @@ my $stylesheet  = $parserxslt->parse_stylesheet($finalDoc);
 my $results     = $stylesheet->transform_file($filexml);
 my $fileToPrint = $stylesheet->output_as_bytes($results);
 
-print "<phtml>";
 print $fileToPrint;
-print "</phtml>";

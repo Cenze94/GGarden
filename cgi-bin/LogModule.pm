@@ -40,7 +40,7 @@ sub log {
 	#inserisco i pulsanti per la gestione del database
 	$xpc->setContextNode($HTML);
 	$node = $xpc->findnodes("//x:div[\@id = 'piante']")->get_node(1);
-	$string = "<div id='createButtons'>
+	$string = "<div class='createButtons'>
 						<a href='../cgi-bin/databaseManager.cgi?operation=create&amp;tipo=pianta' class='createButton'>Inserisci nuova pianta</a>
 						<a href='../cgi-bin/databaseManager.cgi?operation=create&amp;tipo=attrezzo' class='createButton'>Inserisci nuovo attrezzo</a>
 				  </div>";
@@ -48,14 +48,14 @@ sub log {
 	$child = $child->removeChild($child->firstChild());
 	$node = $node->parentNode()->insertBefore($child, $node);
 	my @nodes = $doc->findnodes("//fieldset[\@class='riquadro_prezzi']");
-	$string = '<div id=\'productButtons\'>
+	$string = '<div class=\'productButtons\'>
 					<a href=\'../cgi-bin/databaseManager.cgi?operation=update&amp;tipo=pianta&amp;id={$id}\' class=\'productButton\'>Modifica prodotto</a>
 					<a href=\'../cgi-bin/databaseManager.cgi?operation=delete&amp;id={$id}\' class=\'productButton\'>Elimina prodotto</a>
 			   </div>';
 	$child = $parserxml->parse_string($string);
 	$child = $child->removeChild($child->firstChild());
 	$node = $nodes[0]->insertAfter($child, $nodes[0]->lastChild());
-	$string = '<div id=\'productButtons\'>
+	$string = '<div class=\'productButtons\'>
 					<a href=\'../cgi-bin/databaseManager.cgi?operation=update&amp;tipo=attrezzo&amp;id={$id}\' class=\'productButton\'>Modifica prodotto</a>
 					<a href=\'../cgi-bin/databaseManager.cgi?operation=delete&amp;id={$id}\' class=\'productButton\'>Elimina prodotto</a>
 			   </div>';

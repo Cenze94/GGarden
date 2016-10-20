@@ -115,9 +115,7 @@
         </html>
     </xsl:template>
     <xsl:template name="piante">
-        <p id="titoloPiante">
         <h2 class="maintitle">PIANTE</h2>
-        </p>
         <xsl:for-each select="g:prodotti/g:pianta">
             <xsl:sort select="g:nome"/>
             <div class="prodotto">
@@ -146,7 +144,7 @@
                     </p>
                     <xsl:if test="g:dettagli/g:dato">
                         <h4>DATI</h4>
-                        <p class="dati">
+                        <div class="dati">
                         <ul>
                             <xsl:for-each select="g:dettagli/g:dato">
                                 <li class="info">
@@ -160,7 +158,7 @@
                                 </li>
                             </xsl:for-each>
                         </ul>
-                        </p>
+                        </div>
                     </xsl:if>
                     <h4>PIANTAGIONE</h4>
                     <p class="desc">
@@ -212,9 +210,7 @@
         </xsl:for-each>
     </xsl:template>
     <xsl:template name="attrezzi">
-        <p id="titoloAttrezzi">
         <h2 class="maintitle">ATTREZZI E MACCHINARI</h2>
-        </p>
         <xsl:for-each select="g:prodotti/g:attrezzo">
             <xsl:sort select="g:nome"/>
             <div class="prodotto">
@@ -240,7 +236,7 @@
                     </p>
                     <xsl:if test="g:dettagli/g:dato">
                         <h4>DATI</h4>
-                        <p class="dati">
+                        <div class="dati">
                         <ul>
                             <xsl:for-each select="g:dettagli/g:dato">
                                 <li class="info">
@@ -254,7 +250,7 @@
                                 </li>
                             </xsl:for-each>
                         </ul>
-                        </p>
+                        </div>
                     </xsl:if>
                     <fieldset class="riquadro_prezzi">
                         <p class="prezzo">

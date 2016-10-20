@@ -105,7 +105,7 @@
     </xsl:template>
 
 	<xsl:template name="esito">
-		<p><h2 class="maintitle">ESITO DELLA RICERCA</h2></p>
+		<h2 class="maintitle">ESITO DELLA RICERCA</h2>
 		<xsl:for-each select="//g:prodotti/child::*">
 			<xsl:if test="name()='p:pianta'">
 				<div class="prodotto">
@@ -124,11 +124,11 @@
 					<p class="desc"><xsl:value-of select="g:descrizione"/></p>
 					<xsl:if test="g:dettagli/g:dato">
 					<h4>DATI</h4>
-					<p class="dati"><ul>
+					<div class="dati"><ul>
 						<xsl:for-each select="g:dettagli/g:dato">
 						<li><span class="formato"><xsl:value-of select="g:nome"/><xsl:if test="g:nome!=''">: </xsl:if></span><span class="contenuto"><xsl:value-of select="g:contenuto"/></span></li>
 						</xsl:for-each>
-					</ul></p>
+					</ul></div>
 					</xsl:if>
 					<h4>PIANTAGIONE</h4>
 					<p class="desc"><xsl:value-of select="g:piantagione"/></p>
@@ -172,11 +172,11 @@
 					<p class="desc"><xsl:value-of select="g:descrizione"/></p>
 					<xsl:if test="g:dettagli/g:dato">
 					<h4>DATI</h4>
-					<p class="dati"><ul>
+					<div class="dati"><ul>
 						<xsl:for-each select="g:dettagli/g:dato">
 							<li><span class="formato"><xsl:value-of select="g:nome"/><xsl:if test="g:nome!=''">: </xsl:if></span><span class="contenuto"><xsl:value-of select="g:contenuto"/></span></li>
 						</xsl:for-each>
-					</ul></p>
+					</ul></div>
 					</xsl:if>
 					<fieldset class="riquadro_prezzi">
 					<p class="prezzo">

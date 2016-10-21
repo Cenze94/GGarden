@@ -47,7 +47,7 @@ sub log {
 	$child = $parserxml->parse_string($string);
 	$child = $child->removeChild($child->firstChild());
 	$node = $node->parentNode()->insertBefore($child, $node);
-	my @nodes = $doc->findnodes("//fieldset[\@class='riquadro_prezzi']");
+	my @nodes = $xpc->findnodes("//x:fieldset[\@class='riquadro_prezzi']");
 	$string = '<div id=\'productButtons\'>
 					<a href=\'../cgi-bin/databaseManager.cgi?operation=update&amp;tipo=pianta&amp;id={$id}\' class=\'productButton\'>Modifica prodotto</a>
 					<a href=\'../cgi-bin/databaseManager.cgi?operation=delete&amp;id={$id}\' class=\'productButton\'>Elimina prodotto</a>

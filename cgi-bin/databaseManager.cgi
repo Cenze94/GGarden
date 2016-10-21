@@ -112,7 +112,7 @@ sub updateOperation {
 	}
 	
 	print "Content-type: text/html; charset=utf-8\n\n";
-	print $doc;
+	print $doc->toStringHTML;
 }
 
 sub createOperation {
@@ -159,7 +159,7 @@ if($operation eq "delete") {
 		$form->setAttribute('onsubmit', 'return validazioneFormTool();');
 	}
 	if($itemType eq "pianta") { #aggiungo i nodi di pianta comuni ad update e create
-		$form = $parserxml->parse_string("<p xmlns=\'http://www.w3.org/1999/xhtml\'>
+		$form = $parserxml->parse_string("<p>
 								<label for='scientificName'>Nome scientifico:</label>
 								<input type='text' name='scientificName' id='scientificName'/>
 							</p>");
@@ -168,7 +168,7 @@ if($operation eq "delete") {
 		$child->insertAfter($form, $child->findnodes("./p[label/\@for='name']")->get_node(1));
 		$child = $div->findnodes("form/fieldset/ul")->get_node(1);
 		my $succChild = $child->findnodes("./li[p/input/\@name='submitOperation']")->get_node(1);
-		$form = $parserxml->parse_string("<li xmlns=\'http://www.w3.org/1999/xhtml\'>
+		$form = $parserxml->parse_string("<li>
 							<p>
 								<label for='plantation'>Piantagione:</label>
 								<textarea rows='4' cols='50' name='plantation' id='plantation'></textarea>
@@ -176,7 +176,7 @@ if($operation eq "delete") {
 						</li>");
 		$form = $form->removeChild($form->firstChild());
 		$child->insertBefore($form, $succChild);
-		$form = $parserxml->parse_string("<li xmlns=\'http://www.w3.org/1999/xhtml\'>
+		$form = $parserxml->parse_string("<li>
 							<p>
 								<label for='care'>Cura:</label>
 								<textarea rows='4' cols='50' name='care' id='care'></textarea>
@@ -184,7 +184,7 @@ if($operation eq "delete") {
 						</li>");
 		$form = $form->removeChild($form->firstChild());
 		$child->insertBefore($form, $succChild);
-		$form = $parserxml->parse_string("<li xmlns=\'http://www.w3.org/1999/xhtml\'>
+		$form = $parserxml->parse_string("<li>
 							<p>
 								<label for='otherInfos'>Altre informazioni:</label>
 								<textarea rows='4' cols='50' name='otherInfos' id='otherInfos'></textarea>

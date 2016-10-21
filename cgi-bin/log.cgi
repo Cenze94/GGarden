@@ -37,7 +37,7 @@ sub update {
 		$xnode->appendTextNode($password);
 		$xml->toFile($filexml);
 	} else {
-		$childString = "<span id='updateError'>Dati inseriti errati</span>";
+		$childString = "<span id='updateError' xmlns=\'http://www.w3.org/1999/xhtml\'>Dati inseriti errati</span>";
 	}
 	my $child = $parserxml->parse_string($childString);
 	$child = $child->removeChild($child->firstChild());
@@ -55,7 +55,7 @@ sub logError {
 	
 	#aggiungo il messaggio di errore
 	my $form = $xpc->findnodes('//x:div[@id="contenitore-login"]')->get_node(1);
-	my $childString = '<span id="logError">Dati inseriti errati</span>';
+	my $childString = '<span id="logError" xmlns=\'http://www.w3.org/1999/xhtml\'>Dati inseriti errati</span>';
 	my $child = $parserxml->parse_string($childString); #elimino il tag che identifica la versione dell'xml perché non devo aggiungerlo
 	$child = $child->removeChild($child->firstChild());
 	$form->insertAfter($child, $form->lastChild);

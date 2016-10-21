@@ -300,26 +300,28 @@ if($image ne '' && (index($image, '/')!=-1 || index($image, '..')!=-1 || $imageF
 	}
 	
 	#Se ho un'immagine caricata corretta allora la sostituisco già a quella esistente o creo quella nuova
-	my $imgDir = '../public_html/img database';
-	my $filehandle = $logString->upload("image");
-	#Elimino l'eventuale immagine omonima già presente
-	if(-e "$imgDir/$id.$imageFormat") {
-		unlink "$imgDir/$id.$imageFormat";
-	} else { #L'immagine vecchia potrebbe avere un altro formato, quindi carico il formato vecchio salvato nel database ed eventualmente elimino il file vecchio
-		my $filexml = '../data/database.xml';
-		my $parser = XML::LibXML->new;
-		my $doc = $parser->parse_file($filexml);
-		my $oldFormat = $doc->findnodes("//p:$itemType\[\@id='$id'\]")->get_node(1)->getAttribute('formato');
-		if($oldFormat ne $imageFormat && $oldFormat ne 'no_image' && -e "$imgDir/$id.$oldFormat") {
-			unlink "$imgDir/$id.$oldFormat";
+	if($image ne '') {
+		my $imgDir = '../public_html/img database';
+		my $filehandle = $logString->upload("image");
+		#Elimino l'eventuale immagine omonima già presente
+		if(-e "$imgDir/$id.$imageFormat") {
+			unlink "$imgDir/$id.$imageFormat";
+		} elsif($operation eq 'update') { #L'immagine vecchia potrebbe avere un altro formato, quindi carico il formato vecchio salvato nel database ed eventualmente elimino il file vecchio
+			my $filexml = '../data/database.xml';
+			my $parser = XML::LibXML->new;
+			my $doc = $parser->parse_file($filexml);
+			my $oldFormat = $doc->findnodes("//p:$itemType\[\@id='$id'\]")->get_node(1)->getAttribute('formato');
+			if($oldFormat ne $imageFormat && $oldFormat ne 'no_image' && -e "$imgDir/$id.$oldFormat") {
+				unlink "$imgDir/$id.$oldFormat";
+			}
 		}
+		open(UPLOADFILE, ">$imgDir/$id.$imageFormat") or die "$!";
+		binmode UPLOADFILE;
+		while ( <$filehandle> ){
+			print UPLOADFILE;
+		}
+		close UPLOADFILE;
 	}
-	open(UPLOADFILE, ">$imgDir/$id.$imageFormat") or die "$!";
-	binmode UPLOADFILE;
-	while ( <$filehandle> ){
-		print UPLOADFILE;
-	}
-	close UPLOADFILE;
 	
 	if($itemType eq "pianta") {
 		my $scientificName = $logString->param('scientificName');

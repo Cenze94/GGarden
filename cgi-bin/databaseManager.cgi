@@ -112,7 +112,7 @@ sub updateOperation {
 	}
 	
 	print "Content-type: text/html; charset=utf-8\n\n";
-	print $doc;
+	print $doc->toStringHTML;
 }
 
 sub createOperation {
@@ -127,7 +127,7 @@ sub createOperation {
 	$node = $node->findnodes("../ul/li/p/input[\@type='submit']")->get_node(1);
 	$node->setAttribute('value', "Aggiungi prodotto");
 	print "Content-type: text/html; charset=utf-8\n\n";
-	print $doc;
+	print $doc->toStringHTML;
 }
 
 my $logString = CGI->new();

@@ -11,7 +11,7 @@
         <html xml:lang="it" lang="it">
             <head>
                 <title>Esito ricerca - GGarden</title>
-                <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+                <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
                 <meta name="title" content="GGarden" />
                 <meta name="description" content="Azienda specializzata nella vendita di piante e fiori e nel noleggio e vendita di attrezzi e macchine da giardinaggio" />
                 <meta name="keywords" content="prodotti, piante, fiori, giardinaggio, attrezzi" />
@@ -31,7 +31,7 @@
                 <div id="header">
                     <h1><span id="logo" xml:lang="en" class="nascosto">GGarden</span></h1>
                 	<div id="breadcrumbs">
-                    	<form class="headersearch" action="search.cgi" method="get">
+                    	<form class="headersearch" action="search.cgi" method="post">
                     	    <fieldset>
                     	        <span id="rifnav" >Ti trovi in: <a href="../index.html" xml:lang="en" accesskey="h">Home</a> / <b>Esito Ricerca</b></span>
                     	        <label for="ricerca" class="nascosto">Cerca un prodotto o un servizio</label>
@@ -144,10 +144,7 @@
 						</xsl:if>
 						<xsl:if test="count(g:prezzo/g:pacchetto)&gt;1">
 						<xsl:for-each select="g:prezzo/g:pacchetto">
-							<span class="check"><xsl:variable name="num_prezzo" select="position()"/>
-							<xsl:if test="$num_prezzo=1"><input type="radio" name="{$id}" id="{$id}{$num_prezzo}" checked="true">&#8364; <xsl:value-of select="g:valore"/><xsl:text> </xsl:text><xsl:value-of select="g:formato"/></input></xsl:if>
-							<xsl:if test="$num_prezzo&gt;1"><input type="radio" name="{$id}" id="{$id}{$num_prezzo}">&#8364; <xsl:value-of select="g:valore"/><xsl:text> </xsl:text><xsl:value-of select="g:formato"/></input></xsl:if>
-							<label for="{$num_prezzo}">&#8364; <xsl:value-of select="g:valore"/><xsl:text> </xsl:text><xsl:value-of select="g:formato"/></label></span>
+							&#8364; <xsl:value-of select="g:valore"/><xsl:text> </xsl:text><xsl:value-of select="g:formato"/>
 							<hr/>
 						</xsl:for-each>
 						</xsl:if>
@@ -186,10 +183,7 @@
 						</xsl:if>
 						<xsl:if test="count(g:prezzo/g:pacchetto)&gt;1">
 						<xsl:for-each select="g:prezzo/g:pacchetto">
-							<span class="check"><xsl:variable name="num_prezzo" select="position()"/>
-							<xsl:if test="$num_prezzo=1"><input type="radio" name="{$id}" id="{$id}{$num_prezzo}" checked="true">&#8364; <xsl:value-of select="g:valore"/><xsl:text> </xsl:text><xsl:value-of select="g:formato"/></input></xsl:if>
-							<xsl:if test="$num_prezzo&gt;1"><input type="radio" name="{$id}" id="{$id}{$num_prezzo}">&#8364; <xsl:value-of select="g:valore"/><xsl:text> </xsl:text><xsl:value-of select="g:formato"/></input></xsl:if>
-							<label for="{$num_prezzo}">&#8364; <xsl:value-of select="g:valore"/><xsl:text> </xsl:text><xsl:value-of select="g:formato"/></label></span>
+							<input type="radio" name="{$id}" id="{$id}{$num_prezzo}">&#8364; <xsl:value-of select="g:valore"/><xsl:text> </xsl:text><xsl:value-of select="g:formato"/></input>
 						</xsl:for-each>
 						</xsl:if>
 					</p>

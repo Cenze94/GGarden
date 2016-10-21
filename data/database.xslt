@@ -53,7 +53,7 @@
                     </div>
                 </div>
                 <div id="breadcrumbs">
-                    <form class="headersearch" action="search.cgi" method="get">
+                    <form class="headersearch" action="search.cgi" method="post">
                         <fieldset>
                             <span id="rifnav" >Ti trovi in: <a href="../index.html" xml:lang="en" accesskey="h">Home</a> / <b>Prodotti</b></span>
                             <label for="ricerca" class="nascosto">Cerca un prodotto o un servizio</label>

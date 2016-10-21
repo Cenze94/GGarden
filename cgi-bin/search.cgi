@@ -3,25 +3,16 @@ use XML::LibXSLT;
 use XML::LibXML;
 use strict;
 use warnings;
+use CGI;
+use CGI::Carp qw(fatalsToBrowser);
 
 #Carico tutti i dati che mi servono, come i percorsi dei file xml
 my $filexml = "../data/database.xml";
 my $filexslt = "../data/search.xslt";
 
 #estraggo le parole della ricerca
-my $word = "";
-my $searchString=$ENV{'QUERY_STRING'};
-my @pairs = split(/&/, $searchString);
-foreach my $pair(@pairs) {
-	(my $name, my $value) = split(/=/, $pair);
-	$value =~ tr/+/ /;        
-	$value =~ s/%([a-fA-F0-9][a-fA-F0-9])/pack("C", hex($1))/g;   
-	$name =~ tr/+/ /;        
-	$name =~ s/%([a-fA-F0-9][a-fA-F0-9])/pack("C",hex($1))/g;         
-	if($name eq "ricerca") {
-		$word = $value;
-	}
-}
+my $logString = CGI->new();
+my $word = $logString->param('ricerca');
 
 #creo i parser che mi servono ed effettuo tutte le operazioni necessarie ad ottenere il file html
 my $parserxml  = XML::LibXML->new;

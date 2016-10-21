@@ -1,71 +1,65 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.ggarden.com" targetNamespace="http://www.ggarden.com" elementFormDefault="qualified">
-	<xsd:element name="prodotti">
-	<xsd:complexType><xsd:sequence>
-		<xsd:element name="pianta" minOccurs="1" maxOccurs="unbounded">
-		<xsd:complexType><xsd:sequence>
-			<xsd:element name="nome" type="xsd:string"/>
-			<xsd:element name="nome_scientifico" type="xsd:string"/>
-			<xsd:element name="tipo" type="xsd:string"/>
-			<xsd:element name="prezzo">
-			<xsd:complexType><xsd:sequence>
-				<xsd:element name="pacchetto" maxOccurs="unbounded">
-				<xsd:complexType><xsd:sequence>
-					<xsd:element name="valore" type="xsd:string"/>
-					<xsd:element name="formato" type="xsd:string"/>
-				</xsd:sequence></xsd:complexType>
-				</xsd:element>
-			</xsd:sequence></xsd:complexType>
-			</xsd:element>
-			<xsd:element name="descrizione" type="xsd:string"/>
-			<xsd:element name="dettagli">
-			<xsd:complexType><xsd:sequence>
-				<xsd:element name="dato" maxOccurs="unbounded" minOccurs="0">
-				<xsd:complexType><xsd:sequence>
-					<xsd:element name="nome" type="xsd:string" />
-					<xsd:element name="contenuto" type="xsd:string" />
-				</xsd:sequence></xsd:complexType>
-				</xsd:element>
-			</xsd:sequence></xsd:complexType>
-			</xsd:element>
-			<xsd:element name="piantagione" type="xsd:string"/>
-			<xsd:element name="cura" type="xsd:string"/>
-			<xsd:element name="altre_info" type="xsd:string"/>
-		</xsd:sequence>
-		<xsd:attribute name="id" type="xsd:integer" use="required"/>
-		<xsd:attribute name="formato" type="xsd:string" default="no_image"/>
-		</xsd:complexType>
-		</xsd:element>
-		<xsd:element name="attrezzo" minOccurs="1" maxOccurs="unbounded">
-		<xsd:complexType><xsd:sequence>
-			<xsd:element name="nome" type="xsd:string"/>
-			<xsd:element name="tipo" type="xsd:string"/>
-			<xsd:element name="prezzo">
-			<xsd:complexType><xsd:sequence>
-				<xsd:element name="pacchetto" maxOccurs="unbounded">
-				<xsd:complexType><xsd:sequence>
-					<xsd:element name="valore" type="xsd:string"/>
-					<xsd:element name="formato" type="xsd:string"/>
-				</xsd:sequence></xsd:complexType>
-				</xsd:element>
-			</xsd:sequence></xsd:complexType>
-			</xsd:element>
-			<xsd:element name="descrizione" type="xsd:string" />
-			<xsd:element name="dettagli">
-			<xsd:complexType><xsd:sequence>
-				<xsd:element name="dato" maxOccurs="unbounded">
-				<xsd:complexType><xsd:sequence>
-					<xsd:element name="nome" type="xsd:string" />
-					<xsd:element name="contenuto" type="xsd:string" />
-				</xsd:sequence></xsd:complexType>
-				</xsd:element>
-			</xsd:sequence></xsd:complexType>
-			</xsd:element>
-		</xsd:sequence>
-		<xsd:attribute name="id" type="xsd:integer" use="required"/>
-		<xsd:attribute name="formato" type="xsd:string" default="no_image"/>
-		</xsd:complexType>
-		</xsd:element>
-	</xsd:sequence></xsd:complexType>
-	</xsd:element>
+	<xsd:element name="prodotti" type="Tprodotti"/>
+	
+	<xsd:complexType name="Tprodotti">
+	<xsd:sequence>
+		<xsd:element name="pianta" type="Tpianta" minOccurs="1" maxOccurs="unbounded"/>
+		<xsd:element name="attrezzo" type="Tattrezzo" minOccurs="1" maxOccurs="unbounded"/>
+	</xsd:sequence>
+	</xsd:complexType>
+	
+	<xsd:complexType name="Tpianta">
+	<xsd:sequence>
+		<xsd:element name="nome" type="xsd:string"/>
+		<xsd:element name="nome_scientifico" type="xsd:string"/>
+		<xsd:element name="tipo" type="xsd:string"/>
+		<xsd:element name="prezzo" type="Tprezzo"/>
+		<xsd:element name="descrizione" type="xsd:string"/>
+		<xsd:element name="dettagli" type="Tdettagli"/>
+		<xsd:element name="piantagione" type="xsd:string"/>
+		<xsd:element name="cura" type="xsd:string"/>
+		<xsd:element name="altre_info" type="xsd:string"/>
+	</xsd:sequence>
+	<xsd:attribute name="id" type="xsd:integer" use="required"/>
+	<xsd:attribute name="formato" type="xsd:string" default="no_image"/>
+	</xsd:complexType>	
+	
+	<xsd:complexType name="Tattrezzo">
+	<xsd:sequence>
+		<xsd:element name="nome" type="xsd:string"/>
+		<xsd:element name="tipo" type="xsd:string"/>
+		<xsd:element name="prezzo" type="Tprezzo"/>
+		<xsd:element name="descrizione" type="xsd:string"/>
+		<xsd:element name="dettagli" type="Tdettagli"/>
+	</xsd:sequence>
+	<xsd:attribute name="id" type="xsd:integer" use="required"/>
+	<xsd:attribute name="formato" type="xsd:string" default="no_image"/>
+	</xsd:complexType>
+	
+	<xsd:complexType name="Tprezzo">
+	<xsd:sequence>
+		<xsd:element name="pacchetto" type="Tpacchetto" maxOccurs="unbounded"/>
+	</xsd:sequence>
+	</xsd:complexType>
+	
+	<xsd:complexType name="Tdettagli">
+	<xsd:sequence>
+		<xsd:element name="dato" type="Tdato" maxOccurs="unbounded"/>
+	</xsd:sequence>
+	</xsd:complexType>
+	
+	<xsd:complexType name="Tpacchetto">
+	<xsd:sequence>
+		<xsd:element name="valore" type="xsd:string"/>
+		<xsd:element name="formato" type="xsd:string"/>
+	</xsd:sequence>
+	</xsd:complexType>
+	
+	<xsd:complexType name="Tdato">
+	<xsd:sequence>
+		<xsd:element name="nome" type="xsd:string" />
+		<xsd:element name="contenuto" type="xsd:string" />
+	</xsd:sequence>
+	</xsd:complexType>
 </xsd:schema>

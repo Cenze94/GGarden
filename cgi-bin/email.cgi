@@ -62,7 +62,7 @@ $string->setAttribute("action", 'email.cgi');
 #Faccio il check del formato dei dati, se viene rilevato un errore allora viene aggiunta alla pgina da stampare una riga in cui si segnala l'errore
 if($name eq '' || $surname eq '' || $userEmail eq '' || (index($userEmail, '.')==-1 || index($userEmail, '@')>rindex($userEmail, '.') || $userEmail=~tr/@// != 1) || $text eq '') {
 	$string = $doc->findnodes('//div[@class="body_contattaci"]/form/ul')->get_node(0);
-	my $fragment = $parserxml->parse_string("<li>
+	my $fragment = $parserxml->parse_string("<li xmlns=\'http://www.w3.org/1999/xhtml\'>
 		<p class='errore'>Errore: dato mancante o errato.</p>
 	</li>");
 	$fragment = $fragment->removeChild($fragment->firstChild());
@@ -86,7 +86,7 @@ if($redirect) {
 	my @check = $doc->findnodes('//p[@class=\'errore\']');
 	if(scalar @check==0){
 		$string = $doc->findnodes('//div[@class="body_contattaci"]/form/ul')->get_node(0);
-		my $fragment = $parserxml->parse_string("<li>
+		my $fragment = $parserxml->parse_string("<li xmlns=\'http://www.w3.org/1999/xhtml\'>
 			<p class='errore'>Errore di redirect durante l'invio dell'email.</p>
 		</li>");
 		$fragment = $fragment->removeChild($fragment->firstChild());
@@ -98,7 +98,7 @@ if($redirect) {
 	my @check = $doc->findnodes('//p[@class=\'errore\']');
 	if(scalar @check==0){
 		$string = $doc->findnodes('//div[@class="body_contattaci"]/form/ul')->get_node(0);
-		my $fragment = $parserxml->parse_string("<li>
+		my $fragment = $parserxml->parse_string("<li xmlns=\'http://www.w3.org/1999/xhtml\'>
 			<p class='errore'>Email inviata con successo.</p>
 		</li>");
 		$fragment = $fragment->removeChild($fragment->firstChild());

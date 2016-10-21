@@ -26,7 +26,7 @@ sub error{
 	$xpc->registerNs('x', 'http://www.w3.org/1999/xhtml');
 	my $node = $xpc->findnodes("//x:div[\@id='content']")->get_node(1);
 	my $parserxml = XML::LibXML->new;
-	my $string = $parserxml->parse_string("<p class='errorExecutor'>$message</p>");
+	my $string = $parserxml->parse_string("<p class='errorExecutor' xmlns=\'http://www.w3.org/1999/xhtml\'>$message</p>");
 	$string = $string->removeChild($string->firstChild());
 	$node->insertBefore($string, $node->firstChild());
 	

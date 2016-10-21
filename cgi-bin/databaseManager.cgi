@@ -29,7 +29,7 @@ sub updateOperation {
 		$node->appendTextNode('Inserisci i dati da modificare dell\'attrezzo selezionato:');
 	}
 	$node = $node->findnodes("..")->get_node(1);
-	my $string = $parserxml->parse_string("<input type='hidden' name='id' value='$id'/>");
+	my $string = $parserxml->parse_string("<input xmlns=\'http://www.w3.org/1999/xhtml\' type='hidden' name='id' value='$id'/>");
 	$string = $string->removeChild($string->firstChild());
 	$node = $node->insertBefore($string, $node->firstChild());
 	
@@ -39,7 +39,7 @@ sub updateOperation {
 	my $value = $xml->getAttribute('formato');
 	if($value ne '') {
 		my $imgNode = $node->findnodes("../ul/li/p[label/\@for='image']")->get_node(1);
-		$string = $parserxml->parse_string("<img class='productImg' src='../img database/$id.$value' alt='Immagine attuale del prodotto' width='200' height='200' />");
+		$string = $parserxml->parse_string("<img xmlns=\'http://www.w3.org/1999/xhtml\' class='productImg' src='../img database/$id.$value' alt='Immagine attuale del prodotto' width='200' height='200' />");
 		$string = $string->removeChild($string->firstChild());
 		$imgNode = $imgNode->insertBefore($string, $imgNode->firstChild());
 		$imgNode = $imgNode->findnodes("../label")->get_node(1);
@@ -58,7 +58,7 @@ sub updateOperation {
 		(my $price, my $format) = $values[$i]->childNodes();
 		$price = $price->textContent();
 		$format = $format->textContent();
-		$string = $parserxml->parse_string("<li>
+		$string = $parserxml->parse_string("<li xmlns=\'http://www.w3.org/1999/xhtml\'>
 									<label for='price'  class='inputL'>Prezzo: &#8364; </label>
 									<input type='text' name='price[]' id='price' class='inputL' value='$price'/>
 									<label for='format' class='inputR'>Formato:</label>
@@ -80,7 +80,7 @@ sub updateOperation {
 		(my $dataName, my $dataContent) = $values[$i]->childNodes();
 		$dataName = $dataName->textContent();
 		$dataContent = $dataContent->textContent();
-		$string = $parserxml->parse_string("<li>
+		$string = $parserxml->parse_string("<li xmlns=\'http://www.w3.org/1999/xhtml\'>
 									<label for='dataName' class='inputL'>Dato:</label>
 									<input type='text' name='dataName[]' id='dataName' class='inputL' value=\"$dataName\"/>
 									<span class='middle'>: </span>
@@ -159,7 +159,7 @@ if($operation eq "delete") {
 		$form->setAttribute('onsubmit', 'return validazioneFormTool();');
 	}
 	if($itemType eq "pianta") { #aggiungo i nodi di pianta comuni ad update e create
-		$form = $parserxml->parse_string("<p>
+		$form = $parserxml->parse_string("<p xmlns=\'http://www.w3.org/1999/xhtml\'>
 								<label for='scientificName'>Nome scientifico:</label>
 								<input type='text' name='scientificName' id='scientificName'/>
 							</p>");
@@ -168,7 +168,7 @@ if($operation eq "delete") {
 		$child->insertAfter($form, $child->findnodes("./p[label/\@for='name']")->get_node(1));
 		$child = $div->findnodes("form/fieldset/ul")->get_node(1);
 		my $succChild = $child->findnodes("./li[p/input/\@name='submitOperation']")->get_node(1);
-		$form = $parserxml->parse_string("<li>
+		$form = $parserxml->parse_string("<li xmlns=\'http://www.w3.org/1999/xhtml\'>
 							<p>
 								<label for='plantation'>Piantagione:</label>
 								<textarea rows='4' cols='50' name='plantation' id='plantation'></textarea>
@@ -176,7 +176,7 @@ if($operation eq "delete") {
 						</li>");
 		$form = $form->removeChild($form->firstChild());
 		$child->insertBefore($form, $succChild);
-		$form = $parserxml->parse_string("<li>
+		$form = $parserxml->parse_string("<li xmlns=\'http://www.w3.org/1999/xhtml\'>
 							<p>
 								<label for='care'>Cura:</label>
 								<textarea rows='4' cols='50' name='care' id='care'></textarea>
@@ -184,7 +184,7 @@ if($operation eq "delete") {
 						</li>");
 		$form = $form->removeChild($form->firstChild());
 		$child->insertBefore($form, $succChild);
-		$form = $parserxml->parse_string("<li>
+		$form = $parserxml->parse_string("<li xmlns=\'http://www.w3.org/1999/xhtml\'>
 							<p>
 								<label for='otherInfos'>Altre informazioni:</label>
 								<textarea rows='4' cols='50' name='otherInfos' id='otherInfos'></textarea>

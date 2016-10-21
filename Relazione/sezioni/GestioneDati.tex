@@ -1,7 +1,19 @@
 \section{Gestione Dati}{
 	\subsection{Introduzione}
+	Come richiesto dalle specifiche del progetto, la base di dati è formata da file di tipo XML. Questi hanno lo scopo di immagazzinare i dati raccolti in modo ben ordinato e ben formattato. Per essere così accessibili a modifiche, inserimenti e cancellazioni.
 	\subsection{XML}
+	Nel progetto abbiamo utilizzato due basi di dati: la prima per la raccolta delle promozioni e la seconda per il salvataggio degli utenti amministratori.\\
+Abbiamo deciso di dividere le due basi di dati in quanto risulta molto più rapido la manipolazione dei dati
+ed è inoltre più corretto ai fini della validazione e della divisione dei contenuti.
 	\subsection{XML Schema}
+	Per ogni base di dati è stato sviluppato lo schema associato. Questo permette la validazione dei dati inseriti.\\
+%	Per quanto riguarda il file “plans.xml” ha associato lo schema “plans.xsd”. Lo schema è stato sviluppato rispettando il modello “Tende alla Veneziana”, in quanto permette un ottimo riuso dei componenti e uno
+%sviluppo futuro in caso si volessero aggiungere ulteriori informazioni da acquisire. All’interno vengono
+%raccolti tutti i dati per poter presentare le offerte promozionali. \\
+%Mentre per il file “admins.xml” è stato associato lo schema “admin.xsd”. Lo schema è stato sviluppato
+%rispettando il modello “Bambole Russe”, in quanto non abbiamo ritenuto necessario lo sviluppo più
+%complesso di altri modelli. All’interno del fine vengono raccolti solamente id, username e password degli
+%amministratori.
 	\subsection{XSLT}
 	\subsection{DTD}
 }

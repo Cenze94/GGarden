@@ -99,6 +99,10 @@ h1{
     width: 100%;
 }
 
+#titolo{
+    font-size: 0.8cm;
+}
+
 #content img{
     border:0;
 }
@@ -131,8 +135,8 @@ h1{
 }
 
 #content div #zoom img{
-    width:300px;
-    height:300px;
+    width:auto;
+    height:13cm;
 }
 
 #content div #minipics{
@@ -148,20 +152,31 @@ h1{
 
 #content div #minipics li{
     height: auto;
+    display: inline;
+    float: left;
+    list-style: none;
+    margin: 1em 2em 1em 2em;
 }
 
 /* Vendita */
 
+.maintitle{
+    display:none;
+}
+
+.cnome{
+    font-size:2em;     	
+}
+
 #piante{
-    font-size: 80%;
+    font-size: 1em;
 }
 
 #attrezzi{
-    font-size: 80%;
+    font-size: 1em;
 }
 
 .prodotto{
-    page-break-before: auto;
     page-break-inside: avoid;
     page-break-after: always;
 }
@@ -186,6 +201,8 @@ h1{
 .info {
     display: block;
     margin: 0 0 0.5em 0;
+    font-size: 1em;
+    text-align: center;
 }
 
 #divMappa {

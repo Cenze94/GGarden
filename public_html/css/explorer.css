@@ -117,7 +117,7 @@ legend{
 
 
 #button_admin, #accedi{
-    margin: 0.5em;
+    margin: 5px;
     color: white;
     border: solid 1px #a30025;
     background: #b40029;
@@ -157,7 +157,7 @@ legend{
 
 }
 
-#updateOk{
+#updateOk, #updateError{
    float:right;
    font-size: 1em;
    color: #8c001f; 
@@ -561,7 +561,7 @@ hr{
 
 /* VENDITA - Parte Admin e form */
 
-#createButtons{
+.createButtons{
     padding: 2em;
 }
 
@@ -575,7 +575,7 @@ hr{
     background: #b40029;
 }
 
-#productButtons{
+.productButtons{
     padding: 2em;
 }
 

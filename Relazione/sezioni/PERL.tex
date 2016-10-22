@@ -1,12 +1,45 @@
 \section{PERL}{
 	\subsection{Introduzione}{
-			Illustriamo di seguito il funzionamento del file .perl utilizzato all'interno del sito per visualizzare e gestire le informazioni dinamiche. Gli script CGI %sono stati utilizzati per creare le pagine di... / si possono dividere in due sezioni:
+			Illustriamo di seguito il funzionamento dei file Perl utilizzati all'interno del sito per visualizzare e gestire le informazioni dinamiche. Essi sono stati usati per implementare quattro funzioni:
+			\begin{itemize}
+				\item inviare un'email automatica tramite un'apposita form;
+				\item effettuare la ricerca dei prodotti, attraverso un algoritmo basato su delle parole inserite dall'utente;
+				\item gestire il login e il logout dell'utente;
+				\item permettere l'inserimento, la cancellazione e la modifica dei dati del database da parte dell'amministratore.
+			\end{itemize}
 	}
-	\subsection{Descrizione moduli}{
-		\subsubsection{Pagine visibili agli utenti}
-		\subsubsection{Pagine visibili agli admin}
-		\subsubsection{Moduli di supporto}
-		\subsubsection{Controlli e sicurezza}
-		\subsubsection{Gestione delle sessioni}
+	\subsection{Descrizione dell'implementazione delle funzioni}{
+		\subsubsection{Email automatica}
+			Il file adibito alla gestione della creazione e dell'invio dell'email è ‘‘email.cgi’’. Quando l'utente conferma i dati inseriti lo script controlla innanzitutto che essi siano validi: viene già fatto una verifica tramite Javascript, ma esso può essere disabilitato, quindi è necessario eseguire dei controlli anche a livello server, in modo da evitare che accada un errore a causa di un dato mancante. Se tutti i dati previsti non sono vuoti viene creata un'email e inviata tramite il server di Tecnologie Web.
+			In base all'esito dei controlli sui dati vengono proposte due versioni della pagina ‘‘contattaci.html’’; l'unica differenza rispetto all'originale è l'aggiunta di una scritta sopra alla form di inserimento dei dati, che varia a seconda della versione: se l'email viene inviata allora viene comunicato il successo dell'operazione, se invece ci sono problemi, come un dato mancante o un errore durante l'invio, viene segnalato il tipo di problema riscontrato. Per poter stampare la pagina HTML con il file CGI è necessario cambiare tutti i link della pagina, a causa della struttura del server di Tecnologie Web: dato che questa operazione è necessaria, indipendentemente dal successo o meno dell'invio dell'email, essa viene eseguita all'inizio del file.
+		\subsubsection{Ricerca dei prodotti}
+			Il CGI richiesto per poter effettuare la ricerca dei prodotti è contenuto nel file ‘‘search.cgi’’, e ha il compito di trovare e ordinare i prodotti in base alle parole digitate dall'utente e alla posizione dove esse vengono trovate. La stampa dei prodotti viene invece delegata al file ‘‘search.xslt’’.
+			L'utente può effettuare la ricerca dei prodotti digitando le parole in una form apposita, presente in tutte le pagine del sito. Dopo che esse vengono confermate lo script comincia a cercare, prima verificando se l'intera espressione è presente da qualche parte e poi effettuando la ricerca parola per parola, dalla prima all'ultima. Se l'espressione o le parole sono contenute in più prodotti l'ordinamento viene effettuato seguendo delle priorità, basate sulla sezione dove esse vengono trovate. La priorità maggiore va al nome del prodotto, poi c'è il tipo e infine ci sono tutti gli altri dati.
+			Riassumendo se ho, ad esempio, un'espressione di tre parole, la ricerca avviene secondo le seguenti priorità:
+			\begin{enumerate}
+				\item l'espressione è contenuta nel nome del prodotto;
+				\item l'espressione è contenuta nel tipo del prodotto;
+				\item l'espressione è contenuta in un'altra sezione del prodotto;
+				\item la prima parola è contenuta nel nome del prodotto;
+				\item la prima parola è contenuta nel tipo di prodotto;
+				\item la prima parola è contenuta in un'altra sezione del prodotto;
+				\item la seconda parola è contenuta nel nome del prodotto;
+				\item la seconda parola è contenuta nel tipo di prodotto;
+				\item la seconda parola è contenuta in un'altra sezione del prodotto;
+				\item la terza parola è contenuta nel nome del prodotto;
+				\item la terza parola è contenuta nel tipo di prodotto;
+				\item la terza parola è contenuta in un'altra sezione del prodotto;
+			\end{enumerate}
+			Per stampare i prodotti trovati e ordinati viene costruito un file xml partendo da ‘‘database.xml’’, svuotandolo dei prodotti già presenti e aggiungendo quelli trovati. Applicando il contenuto di ‘‘search.xslt’’ si ottiene infine la pagina HTML da stampare.
+		\subsubsection{Login e logout dell'utente}
+			Ci sono in tutto quattro file usati per soddisfare questo requisito, uno per il logout, uno per il login, uno di supporto e uno per verificare se il login è stato fatto o no. La form di login è presente solo nella pagina delle vendite, dato che è l'unica dove l'accesso come amministratore sblocca nuove opzioni.
+			Il file ‘‘LogModule.pm’’ è un modulo di supporto e contiene il metodo ‘‘log’’, che permette di modificare la pagina delle vendite quando è richiesta la versione con l'accesso effettuato. Questo metodo è inserito in un modulo a sé perché viene usato da più file, in questo modo non serve ripetere il codice ogni volta che occorre, bensì basta includere nel file il modulo usato e invocare la funziona ‘‘log’’. La pagina delle vendite mostrata dopo che l'utente ha effettuato l'accesso ha di diverso, rispetto alla pagina normale, i pulsanti per poter gestire il database e la form per modificare i dati al posto di quello dell'accesso.
+			Il file ‘‘checkLog.cgi’’ viene chiamato quando l'utente desidera accedere alla pagina delle vendite. Controlla se esiste una sessione attiva e, in caso affermativo, carica la pagina delle vendite con l'accesso già effettuato, altrimenti stampa la pagina normale.
+			Il file ‘‘log.cgi’’ viene eseguito quando l'utente inserisce e conferma i dati per effettuare l'accesso come amministratore o per modificare le credenziali. Se l'utente vuole fare il login viene controllato se i dati inseriti corrispondono a quelli salvati nel file ‘‘profili.xml’’, in caso affermativo viene creata una nuova sessione e viene caricata la nuova versione della pagina delle vendite, altrimenti viene stampata la pagina delle vendite normali aggiungendo un messaggio d'errore. La sessione viene creata con la libreria ‘‘CGI::Session’’ ed è impostata in modo che si cancelli dopo un'ora dalla creazione, in modo che l'utente debba effettuare l'accesso ogni volta che visita il sito.
+			Il file ‘‘logout.cgi’’ effettua il logout dell'utente eliminando la sessione esistente e caricando la pagina delle vendite normale.
+		\subsubsection{Gestione del database}
+			Ci sono due file adibiti alla gestione del database, uno stampa la form richiesta quando si desidera inserire o modificare una pianta o un attrezzo, e inoltre contiene la funzione che elimina il prodotto quando viene richiesto dall'utente, mentre l'altro esegue l'inserimento o la modifica delle piante o degli attrezzi con i dati inseriti dall'utente.
+			Il file ‘‘databaseManager.cgi’’ è quello adibito alla stampa della form richiesta e alla cancellazione del prodotto. Viene eseguito tramite i pulsanti della pagina delle vendite, visibili dopo che l'utente ha effettuato l'accesso come amministratore. I bottoni per l'inserimento di un nuovo prodotto sono a inizio pagina, invece quelli per la modifica e la cancellazione delle piante e degli attrezzi sono visibili sotto ad ogni prodotto. La form viene generata a partire dal file ‘‘databaseManager.html’’, e contiene un input per ogni campo previsto; per i prezzi e i dati c'è un apposito pulsante che aggiunge, tramite Javascript, dei campi identici a quelli già presenti, in modo da poter inserire una qualsiasi quantità di dati e prezzi. La struttura delle form è identica sia per la modifica sia per la creazione del prodotto, varia invece se l'oggetto in questione è una pianta o un attrezzo perché la prima ha alcuni campi in più rispetto al secondo. Le uniche differenze tra l'inserimento e la modifica del prodotto sono l'aggiunta dei valori dei campi già presenti nel caso della modifica della pianta o dell'attrezzo e i controlli sui dati inseriti differenti. In particolare le restrizioni riguardano il nome del prodotto, che non deve essere vuoto, il nome del file, che deve essere un'immagine e non un qualsiasi altro file, e il formato dei prezzi, che deve avere un punto e non una virgola, due cifre dopo il punto e almeno una prima; la modifica dei dati non segnala errore se il nome risulta vuoto perché semplicemente non viene aggiornato. L'eliminazione del prodotto invece avviene quando viene cliccato il pulsante apposito, e consiste nella cancellazione dei dati dal file ‘‘database.xml’’; infine viene eseguito il codice del file ‘‘checkLog.cgi’’, ricaricando quindi la pagina delle vendite, da cui l'utente può constatare che il prodotto è stato effettivamente eliminato.
+			Il file ‘‘databaseExecutor.cgi’’ è responsabile dell'inserimento o della modifica dei dati nel database in base alle informazioni che l'utente ha digitato, inoltre effettua tutti i controlli sui dati segnalati nel paragrafo precedente. Se la verifica ha esito negativo viene caricata la pagina delle vendite segnalando all'utente che i dati inviati sono errati. Se invece ha successo viene inserito o modificato nel file ‘‘database.xml’’ la pianta o l'attrezzo e poi viene caricata normalmente la pagina delle vendite, da cui l'utente può constatare che le modifiche sono state attuate o che l'inserimento è andato a buon fine.
 	}
 }

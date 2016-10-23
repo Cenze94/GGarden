@@ -59,7 +59,7 @@ $string->setAttribute("action", 'search.cgi');
 $string = $doc->findnodes('//form[@action="cgi-bin/email.cgi"]')->get_node(0);
 $string->setAttribute("action", 'email.cgi');
 
-#Faccio il check del formato dei dati, se viene rilevato un errore allora viene aggiunta alla pgina da stampare una riga in cui si segnala l'errore
+#Faccio il check del formato dei dati, se viene rilevato un errore allora viene aggiunta alla pagina da stampare una riga in cui si segnala l'errore
 if($name eq '' || $surname eq '' || $userEmail eq '' || (index($userEmail, '.')==-1 || index($userEmail, '@')>rindex($userEmail, '.') || $userEmail=~tr/@// != 1) || $text eq '') {
 	$string = $doc->findnodes('//div[@class="body_contattaci"]/form/ul')->get_node(0);
 	my $fragment = $parserxml->parse_string("<li xmlns=\'http://www.w3.org/1999/xhtml\'>
@@ -108,7 +108,7 @@ if($redirect) {
 #stampa contattaci.html
 
 	print "Content-type: text/html; charset=utf-8\n\n";
-	print $doc;
+	print $doc->toStringHTML;
 }
 $smtp->dataend();
 $smtp->quit;

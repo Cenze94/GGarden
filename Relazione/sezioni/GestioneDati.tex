@@ -7,16 +7,8 @@ Abbiamo deciso di dividere le due basi di dati in quanto risulta molto più rapi
 ed è inoltre più corretto ai fini della validazione e della divisione dei contenuti.
 La base di dati dei profili ne contiene solo uno, ovvero l'amministratore, ma è stata pensata per poter aggiungere facilmente i profili degli utenti, qualora in futuro si rivelasse necessario implementare delle funzionalità che li richiedono. 
 	\subsection{XML Schema}
-	Per ogni base di dati è stato sviluppato lo schema associato. Questo permette la validazione dei dati inseriti. Il modello seguito per entrambi gli schemi è quello ‘‘Tende alla veneziana’’: esso è stato scelto perché è abbastanza semplice da leggere, è facile da modificare e soprattutto permette il riuso delle componenti. L'ultimo punto è particolarmente importante nel nostro caso perché nello schema dei prodotti ci sono dei tipi di dato utilizzati sia per le piante sia per gli attrezzi, mentre nel secondo schema può risultare utile se si aggiungono i profili degli utenti.
-	Ai file ‘‘database.xml’’ e ‘‘profili.xml’’ sono stati associati rispettivamente gli schemi ‘‘database.xsd’’ e ‘‘profili.xsd’’.
-	
-%	Per quanto riguarda il file “plans.xml” ha associato lo schema “plans.xsd”. Lo schema è stato sviluppato rispettando il modello “Tende alla Veneziana”, in quanto permette un ottimo riuso dei componenti e uno
-%sviluppo futuro in caso si volessero aggiungere ulteriori informazioni da acquisire. All’interno vengono
-%raccolti tutti i dati per poter presentare le offerte promozionali. \\
-%Mentre per il file “admins.xml” è stato associato lo schema “admin.xsd”. Lo schema è stato sviluppato
-%rispettando il modello “Bambole Russe”, in quanto non abbiamo ritenuto necessario lo sviluppo più
-%complesso di altri modelli. All’interno del fine vengono raccolti solamente id, username e password degli
-%amministratori.
+	Per ogni base di dati è stato sviluppato lo schema associato. Questo permette la validazione dei dati inseriti. Il modello seguito per entrambi gli schemi è quello \textbf{Tende alla veneziana}: esso è stato scelto perché è abbastanza semplice da leggere, è facile da modificare e soprattutto permette il riuso delle componenti. L'ultimo punto è particolarmente importante nel nostro caso perché nello schema dei prodotti ci sono dei tipi di dato utilizzati sia per le piante sia per gli attrezzi, mentre nel secondo schema può risultare utile se si aggiungono i profili degli utenti.
+	Ai file \textbf{database.xml} e \textbf{profili.xml} sono stati associati rispettivamente gli schemi \textbf{database.xsd} e \textbf{profili.xsd}.
 	\subsection{XSLT}
-	Per visualizzare i prodotti nel sito sono stati creati due file xslt, ‘‘database.xslt’’ e ‘‘search.xslt’’, rispettivamente per visualizzare l'intero elenco dei prodotti salvati nella base di dati e per mostrare i prodotti trovati con la ricerca. Entrambi usano i dati di ‘‘database.xml’’, mentre ‘‘search.xml’’ non viene usato da alcun file xslt in quanto non è necessario visualizzarlo nel sito.
+	Per visualizzare i prodotti nel sito sono stati creati due file xslt, "\textbf{database.xslt}" e "\textbf{search.xslt}", rispettivamente per visualizzare l'intero elenco dei prodotti salvati nella base di dati e per mostrare i prodotti trovati con la ricerca. Entrambi usano i dati di "\textbf{database.xml}, mentre \textbf{search.xml} non viene usato da alcun file xslt in quanto non è necessario visualizzarlo nel sito.
 }

@@ -23,20 +23,18 @@
 \BOOKMARK [2][-]{subsection.10.2}{XML}{section.10}% 23
 \BOOKMARK [2][-]{subsection.10.3}{XML Schema}{section.10}% 24
 \BOOKMARK [2][-]{subsection.10.4}{XSLT}{section.10}% 25
-\BOOKMARK [2][-]{subsection.10.5}{DTD}{section.10}% 26
-\BOOKMARK [1][-]{section.11}{PERL}{}% 27
-\BOOKMARK [2][-]{subsection.11.1}{Introduzione}{section.11}% 28
-\BOOKMARK [2][-]{subsection.11.2}{Descrizione moduli}{section.11}% 29
-\BOOKMARK [3][-]{subsubsection.11.2.1}{Pagine visibili agli utenti}{subsection.11.2}% 30
-\BOOKMARK [3][-]{subsubsection.11.2.2}{Pagine visibili agli admin}{subsection.11.2}% 31
-\BOOKMARK [3][-]{subsubsection.11.2.3}{Moduli di supporto}{subsection.11.2}% 32
-\BOOKMARK [3][-]{subsubsection.11.2.4}{Controlli e sicurezza}{subsection.11.2}% 33
-\BOOKMARK [3][-]{subsubsection.11.2.5}{Gestione delle sessioni}{subsection.11.2}% 34
-\BOOKMARK [1][-]{section.12}{Verifica e Test}{}% 35
-\BOOKMARK [2][-]{subsection.12.1}{Validazione}{section.12}% 36
-\BOOKMARK [2][-]{subsection.12.2}{Test}{section.12}% 37
-\BOOKMARK [2][-]{subsection.12.3}{Ambiente di lavoro}{section.12}% 38
-\BOOKMARK [2][-]{subsection.12.4}{Test interazione utenti}{section.12}% 39
-\BOOKMARK [2][-]{subsection.12.5}{Dispositivi utilizzati}{section.12}% 40
-\BOOKMARK [2][-]{subsection.12.6}{Verifica del codice prodotto}{section.12}% 41
-\BOOKMARK [2][-]{subsection.12.7}{Conclusioni}{section.12}% 42
+\BOOKMARK [1][-]{section.11}{PERL}{}% 26
+\BOOKMARK [2][-]{subsection.11.1}{Introduzione}{section.11}% 27
+\BOOKMARK [2][-]{subsection.11.2}{Descrizione dell'implementazione delle funzioni}{section.11}% 28
+\BOOKMARK [3][-]{subsubsection.11.2.1}{Email automatica}{subsection.11.2}% 29
+\BOOKMARK [3][-]{subsubsection.11.2.2}{Ricerca dei prodotti}{subsection.11.2}% 30
+\BOOKMARK [3][-]{subsubsection.11.2.3}{Login e logout dell'utente}{subsection.11.2}% 31
+\BOOKMARK [3][-]{subsubsection.11.2.4}{Gestione del database}{subsection.11.2}% 32
+\BOOKMARK [1][-]{section.12}{Verifica e Test}{}% 33
+\BOOKMARK [2][-]{subsection.12.1}{Validazione}{section.12}% 34
+\BOOKMARK [2][-]{subsection.12.2}{Test}{section.12}% 35
+\BOOKMARK [2][-]{subsection.12.3}{Ambiente di lavoro}{section.12}% 36
+\BOOKMARK [2][-]{subsection.12.4}{Test interazione utenti}{section.12}% 37
+\BOOKMARK [2][-]{subsection.12.5}{Dispositivi utilizzati}{section.12}% 38
+\BOOKMARK [2][-]{subsection.12.6}{Verifica del codice prodotto}{section.12}% 39
+\BOOKMARK [2][-]{subsection.12.7}{Conclusioni}{section.12}% 40

@@ -59,10 +59,13 @@ sub updateOperation {
 		$price = $price->textContent();
 		$format = $format->textContent();
 		$string = $parserxml->parse_string("<li>
-									<label for='price'  class='inputL'>Prezzo: &#8364; </label>
-									<input type='text' name='price[]' id='price' class='inputL' value='$price'/>
-									<label for='format' class='inputR'>Formato:</label>
-									<input type='text' name='format[]' id='format' class='inputR' value='$format'/>
+			<div class='inputsL'>
+				<label for='price'  class='inputL'>Prezzo: &#8364; </label>
+				<input type='text' name='price[]' id='price' class='inputL' value='$price'/>
+			</div><div class='inputsR'>
+				<label for='format' class='inputR'>Formato:</label>
+				<input type='text' name='format[]' id='format' class='inputR' value='$format'/>
+			</div>
 								</li>");
 		$string = $string->removeChild($string->firstChild());
 		if($i==0){ #L'unico figlio già presente è quello del primo dato nuovo da inserire, che voglio per ultimo
@@ -81,11 +84,15 @@ sub updateOperation {
 		$dataName = $dataName->textContent();
 		$dataContent = $dataContent->textContent();
 		$string = $parserxml->parse_string("<li>
-									<label for='dataName' class='inputL'>Dato:</label>
-									<input type='text' name='dataName[]' id='dataName' class='inputL' value=\"$dataName\"/>
-									<span class='middle'>: </span>
-									<label for='dataContent' class='inputR'>Contenuto:</label>
-									<input type='text' name='dataContent[]' id='dataContent' class='inputR' value=\"$dataContent\"/>
+			<div class='inputsL'>
+				<label for='dataName' class='inputL'>Dato:</label>
+				<input type='text' name='dataName[]' id='dataName' class='inputL' value=\"$dataName\"/>
+			</div>
+			<div class='inputsR'>	
+				<span class='middle'>: </span>
+				<label for='dataContent' class='inputR'>Contenuto:</label>
+				<input type='text' name='dataContent[]' id='dataContent' class='inputR' value=\"$dataContent\"/>
+			</div>
 								</li>");
 		$string = $string->removeChild($string->firstChild());
 		if($i==0){ #L'unico figlio già presente è quello del primo dato nuovo da inserire, che voglio per ultimo

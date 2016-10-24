@@ -62,8 +62,8 @@ $string->setAttribute("action", 'email.cgi');
 #Faccio il check del formato dei dati, se viene rilevato un errore allora viene aggiunta alla pagina da stampare una riga in cui si segnala l'errore
 if($name eq '' || $surname eq '' || $userEmail eq '' || (index($userEmail, '.')==-1 || index($userEmail, '@')>rindex($userEmail, '.') || $userEmail=~tr/@// != 1) || $text eq '') {
 	$string = $doc->findnodes('//div[@class="body_contattaci"]/form/ul')->get_node(0);
-	my $fragment = $parserxml->parse_string("<li xmlns=\'http://www.w3.org/1999/xhtml\'>
-		<p class='errore'>Errore: dato mancante o errato.</p>
+	my $fragment = $parserxml->parse_string("<li>
+		<p class='messaggio'>Errore: dato mancante o errato.</p>
 	</li>");
 	$fragment = $fragment->removeChild($fragment->firstChild());
 	$string = $string->insertBefore($fragment, $string->firstChild());
@@ -83,11 +83,11 @@ $smtp->datasend($name." ".$surname." ha posto la seguente domanda:\n".$text);
 
 my $redirect=0;
 if($redirect) {
-	my @check = $doc->findnodes('//p[@class=\'errore\']');
+	my @check = $doc->findnodes('//p[@class=\'messaggio\']');
 	if(scalar @check==0){
 		$string = $doc->findnodes('//div[@class="body_contattaci"]/form/ul')->get_node(0);
-		my $fragment = $parserxml->parse_string("<li xmlns=\'http://www.w3.org/1999/xhtml\'>
-			<p class='errore'>Errore di redirect durante l'invio dell'email.</p>
+		my $fragment = $parserxml->parse_string("<li>
+			<p class='messaggio'>Errore di redirect durante l'invio dell'email.</p>
 		</li>");
 		$fragment = $fragment->removeChild($fragment->firstChild());
 		$string = $string->insertBefore($fragment, $string->firstChild());
@@ -95,11 +95,11 @@ if($redirect) {
 } else {
 
 #Controlla se è già stata aggiunta una segnalazione d'errore nella pagina, in caso negativo allora segnala che l'operazione è avvenuta con successo.
-	my @check = $doc->findnodes('//p[@class=\'errore\']');
+	my @check = $doc->findnodes('//p[@class=\'messaggio\']');
 	if(scalar @check==0){
 		$string = $doc->findnodes('//div[@class="body_contattaci"]/form/ul')->get_node(0);
-		my $fragment = $parserxml->parse_string("<li xmlns=\'http://www.w3.org/1999/xhtml\'>
-			<p class='errore'>Email inviata con successo.</p>
+		my $fragment = $parserxml->parse_string("<li>
+			<p class='messaggio'>Email inviata con successo.</p>
 		</li>");
 		$fragment = $fragment->removeChild($fragment->firstChild());
 		$string = $string->insertBefore($fragment, $string->firstChild());

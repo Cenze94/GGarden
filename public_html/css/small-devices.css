@@ -213,7 +213,7 @@ fieldset{
 
 /*Menu*/
 #contenitore-menu {
-    width: 99%;
+    width: 310px;
     margin: 0 auto;
 }
 
@@ -481,6 +481,13 @@ form small {
     width: 50%;
 }
 
+.messaggio{
+   font-size: 1em;
+   font-style: oblique;
+   color: #8c001f;
+   margin-bottom: 2em;
+}
+
 
 
 /* VENDITA */
@@ -489,8 +496,8 @@ form small {
     text-align: center;
     color: white;
     font-size: 30px;
-    border: solid 1px #00a37e;
-    background: #00b48b;
+    border: solid 1px #005541;
+    background: #005541;
     margin-bottom: 1em;
 }
 
@@ -713,27 +720,16 @@ span.inputR {
     font-size: 0.8em;
 }
 
-
-.footer h3{
-    text-align:center;
-    background-image: url(../img/logo_mini.png);
-    background-repeat: no-repeat;
-    background-position: center top;
-    margin: 0;
-    
-    width: 99%;
-    height: 5em;
-}
-
 #logo_mini{
     text-align:center;
     background-image: url(../img/logo_mini.png);
     background-repeat: no-repeat;
     background-position: center top;
     margin: 0;
-      
+    color:black;  
     width: 99%;
     height: 5em;
+    font-size: 0em;
 }
 
 .footer h3 span {

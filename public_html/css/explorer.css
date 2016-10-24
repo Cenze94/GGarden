@@ -271,12 +271,14 @@ li a:hover {
 .titolo_contattaci{
     color: #fff3f6;
     padding: 20px;
-    
+    font-size:1.4em;
+    text-align: center;
     border-radius: 0px 0px 20px 20px;
-    
     background: #b40029;
-    
-        
+}
+
+.titolo_contattaci h2{
+    font-size:1.4em;
 }
 
 .info{
@@ -446,6 +448,13 @@ form small {
     float: right;
 }
 
+.messaggio{
+   font-size: 1.2em;
+   font-style: oblique;
+   color: #8c001f;
+   margin-bottom: 2em;
+}
+
 
 /* VENDITA */
 
@@ -453,7 +462,7 @@ form small {
     text-align: center;
     color: white;
     font-size: 30px;
-    border: solid 1px #00a37e;
+    border: solid 1px #005541;
     background: #005541;
 }
 
@@ -473,6 +482,7 @@ form small {
 }
 
 h4{
+    clear:left;
     text-align: left;
     color: #003e30;
 }
@@ -519,7 +529,7 @@ h4{
 }
 
 img {
-    max-width: 600px;
+    max-width: 93%;
 }
 
 .dati{
@@ -683,7 +693,7 @@ input[type="button"], input[type="submit"]{
     background-image: url(../img/logo_mini.png);
     background-repeat: no-repeat;
     margin: 0;
-    
+    color:black;  
     width: 200px;
     height: 50px;
 }

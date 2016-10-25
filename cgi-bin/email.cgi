@@ -117,7 +117,7 @@ if($redirect) {
 #stampa contattaci.html
 
 	print "Content-type: text/html; charset=utf-8\n\n";
-	print $doc->toStringHTML;
+	print $doc->serialize_html();
 }
 
 sub clean

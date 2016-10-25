@@ -17,7 +17,8 @@
                 <meta name="keywords" content="prodotti, piante, fiori, giardinaggio, attrezzi" />
                 <meta name="author" content="Andrea Grendene, Pietro Gabelli, Sebastiano Marchesini, Jacopo Guizzardi" />
                 <meta name="language" content="italian it" />
-		<meta name="viewport" content="width=device-width" />
+				<meta name="viewport" content="width=device-width" />
+       			<meta http-equiv="Content-Script-Type" content="application/javascript" />
                 <link rel="stylesheet" href="../css/home.css" type="text/css" media="screen and (min-width: 650px)" />
                 <link rel="stylesheet" href="../css/print.css" type="text/css" media="print" />
                 <link rel="stylesheet" type="text/css" href="../css/small-devices.css" media="screen and (max-width: 650px)" />

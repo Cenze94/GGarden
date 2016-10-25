@@ -12,7 +12,7 @@ my $name = &veryclean($logString->param('first_name'));
 my $surname = &veryclean($logString->param('last_name'));
 my $userEmail = &veryclean($logString->param('email'));
 my $email = 'ggardengroup@gmail.com';
-my $text = $clean($logString->param('comments'));
+my $text = &clean($logString->param('comments'));
 
 #Carico contattaci.html in modo da modificarla per comunicare all'utente se l'operazione ha avuto successo o no
 my $htmlPage = "../public_html/contattaci.html";
@@ -78,8 +78,15 @@ else{
 
 	$smtp->mail($userEmail);
 	$smtp->to($email);
-	$smtp->data();
+	$smtp->data();	
 	$smtp->datasend($name." ".$surname." ha posto la seguente domanda:\n".$text);
+
+	# $smtp->datasend("From: " . $userEmail);
+	# $smtp->datasend("To: ". $email);
+	# $smtp->datasend("Subject: This is a test");
+	# $smtp->datasend("\n");
+	# $smtp->datasend($name." ".$surname." ha posto la seguente domanda:\n".$text);
+
 	$smtp->dataend();
 	$smtp->quit;
 }

@@ -58,7 +58,7 @@
                             <span id="rifnav" >Ti trovi in: <a href="../index.html" xml:lang="en" accesskey="h">Home</a> / <b>Prodotti</b></span>
                             <label for="ricerca" class="nascosto">Cerca un prodotto o un servizio</label>
                             <input type="text" name="ricerca" id="ricerca" class="ricerca" accesskey="s" tabindex="4" />
-                            <input type="submit" name="conferma" id="conferma" class="ricerca" value="Cerca" accesskey="c" tabindex="5"/>
+                            <input type="submit" name="conferma" id="conferma" class="ricerca" value="Cerca" accesskey="d" tabindex="5"/>
                         </fieldset>
                     </form>
                 </div>

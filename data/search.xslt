@@ -149,23 +149,15 @@
 						<xsl:value-of select="g:altre_info"/>
 					</p>
 					<p class="prezzo">
-						<xsl:if test="count(g:prezzo/g:pacchetto)&lt;=1">
-							<span class="prezzo_singolo">
-								&#8364; 
-								<xsl:value-of select="g:prezzo/g:pacchetto/g:valore"/>
-								<xsl:text> </xsl:text>
-								<xsl:value-of select="g:prezzo/g:pacchetto/g:formato"/>
-							</span>
-						</xsl:if>
-						<xsl:if test="count(g:prezzo/g:pacchetto)&gt;1">
-							<xsl:for-each select="g:prezzo/g:pacchetto">
+						<xsl:for-each select="g:prezzo/g:pacchetto">
+							<span class="check">
 								&#8364; 
 								<xsl:value-of select="g:valore"/>
 								<xsl:text> </xsl:text>
 								<xsl:value-of select="g:formato"/>
-							</xsl:for-each>
-							<hr/>
-						</xsl:if>
+							</span>
+						</xsl:for-each>
+						<hr/>
 					</p>
 					<div class="nascosto mobile"><a href="#rifnav" title="torna a inizio pagina">Torna direttamente all'inizio della pagina</a></div>
 				</div>

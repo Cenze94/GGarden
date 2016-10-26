@@ -32,9 +32,11 @@
                 <div id="header">
                     <h1><span id="logo" xml:lang="en" class="nascosto">GGarden</span></h1>
                 	<div id="breadcrumbs">
+                		<span id="rifnav" >Ti trovi in: <a href="../index.html" xml:lang="en">Home</a> / <b>Esito Ricerca</b></span>
                     	<form class="headersearch" action="search.cgi" method="post">
                     	    <fieldset>
-                    	        <span id="rifnav" >Ti trovi in: <a href="../index.html" xml:lang="en">Home</a> / <b>Esito Ricerca</b></span>
+                    	        <legend class="nascosto">Cerca un prodotto o un servizio</legend>
+                            	<label for="ricerca" class="nascosto">Inserisci i termini da cercare</label>
                     	        <label for="ricerca" class="nascosto">Cerca un prodotto o un servizio</label>
                     	        <input type="text" name="ricerca" id="ricerca" class="ricerca" accesskey="s" tabindex="1" />
                     	        <input type="submit" name="conferma" id="conferma" class="ricerca" value="Cerca" accesskey="d" tabindex="2"/>
@@ -138,7 +140,6 @@
 					<p class="desc"><xsl:value-of select="g:cura"/></p>
 					<h4>ALTRE INFORMAZIONI</h4>
 					<p class="desc"><xsl:value-of select="g:altre_info"/></p>
-					<fieldset class="riquadro_prezzi">
 					<p class="prezzo">
 						<xsl:if test="count(g:prezzo/g:pacchetto)&lt;=1">
 							<span class="prezzo_singolo">&#8364; <xsl:value-of select="g:prezzo/g:pacchetto/g:valore"/><xsl:text> </xsl:text><xsl:value-of select="g:prezzo/g:pacchetto/g:formato"/></span>
@@ -150,7 +151,6 @@
 						</xsl:for-each>
 						</xsl:if>
 					</p>
-					</fieldset>
 				</form>
 			        <div class="nascosto mobile"><a href="#rifnav" title="torna a inizio pagina">Torna direttamente all'inizio della pagina</a></div>	
 				</div>
@@ -176,11 +176,9 @@
 					</xsl:for-each>
 				</ul></div>
 				</xsl:if>
-				<fieldset class="riquadro_prezzi">
 				<p class="prezzo">
 					<span class="check">&#8364; <xsl:value-of select="g:prezzo/g:pacchetto/g:valore"/><xsl:text> </xsl:text><xsl:value-of select="g:prezzo/g:pacchetto/g:formato"/></span>
 				</p>
-				</fieldset>
 			    <div class="nascosto mobile"><a href="#rifnav" title="torna a inizio pagina">Torna direttamente all'inizio della pagina</a></div>	
 				</div>
 			</xsl:if>

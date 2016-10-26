@@ -55,9 +55,10 @@
                 </div>
                 <div id="breadcrumbs">
                     <form class="headersearch" action="search.cgi" method="post">
+                        <span id="rifnav" >Ti trovi in: <strong> ZONA RISERVATA / Menu Amministratore</strong></span>
                         <fieldset>
-                            <span id="rifnav" >Ti trovi in: <a href="../index.html" xml:lang="en">Home</a> / <strong>Prodotti</strong></span>
-                            <label for="ricerca" class="nascosto">Cerca un prodotto o un servizio</label>
+                            <legend class="nascosto">Cerca un prodotto o un servizio</legend>
+                            <label for="ricerca" class="nascosto">Inserisci i termini da cercare</label>
                             <input type="text" name="ricerca" id="ricerca" class="ricerca" accesskey="s" tabindex="4" />
                             <input type="submit" name="conferma" id="conferma" class="ricerca" value="Cerca" accesskey="d" tabindex="5"/>
                         </fieldset>

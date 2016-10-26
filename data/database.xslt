@@ -56,7 +56,7 @@
                 <div id="breadcrumbs">
                     <form class="headersearch" action="search.cgi" method="post">
                         <fieldset>
-                            <span id="rifnav" >Ti trovi in: <a href="../index.html" xml:lang="en" accesskey="h">Home</a> / <strong>Prodotti</strong></span>
+                            <span id="rifnav" >Ti trovi in: <a href="../index.html" xml:lang="en">Home</a> / <strong>Prodotti</strong></span>
                             <label for="ricerca" class="nascosto">Cerca un prodotto o un servizio</label>
                             <input type="text" name="ricerca" id="ricerca" class="ricerca" accesskey="s" tabindex="4" />
                             <input type="submit" name="conferma" id="conferma" class="ricerca" value="Cerca" accesskey="d" tabindex="5"/>
@@ -86,24 +86,32 @@
                     <div class="footer-left">
                         <h3 class="footerlogo"><span id="logo_mini">Ggarden</span></h3>
                         <p class="footer-menu">
-                            <a href="../index.html" hreflang="it" xml:lang="en" accesskey="h" tabindex="100">Home</a>
-                            <a href="../realizzazioni.html" hreflang="it" accesskey="r" tabindex="101">Realizzazioni </a>
-                            <a href="checkLog.cgi" hreflang="it" accesskey="v" tabindex="102">Vendita</a>
-                            <a href="../contattaci.html" hreflang="it" accesskey="c" tabindex="103">Contattaci</a>
+                            <a href="index.html" hreflang="it" xml:lang="en" tabindex="100">Home</a>
+                            
+                            <a href="realizzazioni.html" hreflang="it" tabindex="101">Realizzazioni </a>
+
+                            <a href="cgi-bin/checkLog.cgi" hreflang="it" tabindex="102">Vendita</a>
+                            
+                            <a href="contattaci.html" hreflang="it" tabindex="103">Contattaci</a>
                         </p>
+         
                         <p class="footer-nome-azienda">Ggarden &#169; 2016</p>
                     </div>
+         
                     <div class="footer-center">
                         <div>
                             <address class="testo-footer">Via Trieste 63. Padova, Italy</address>
                         </div>
+         
                         <div>
                             <p class="testo-footer"><a href="tel:+1 555 123456">+1 555 123456</a></p>
                         </div>
+         
                         <div>
                             <p xml:lang="en">E-Mail <a href="mailto:ggardengroup@gmail.com" accesskey="e" tabindex="104">ggardengroup@gmail.com</a></p>
                         </div>
                     </div>
+         
                     <div class="footer-right">
                         <p class="footer-company-info" title="motto">
                             <span class="testo-footer">Gg Garden a servizio</span>

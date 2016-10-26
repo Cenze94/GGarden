@@ -60,10 +60,9 @@ sub updateOperation {
 		$format = $format->textContent();
 		$string = $parserxml->parse_string("<li>
 			<div class='inputsL'>
-				<label for='price'  class='inputL'>Prezzo: &#8364; </label>
+				<label for='price'  class='inputL'>Prezzo (es. &#8364; 7.50 a pezzo): &#8364; </label>
 				<input type='text' name='price[]' id='price' class='inputL' value='$price'/>
 			</div><div class='inputsR'>
-				<label for='format' class='inputR'>Formato:</label>
 				<input type='text' name='format[]' id='format' class='inputR' value='$format'/>
 			</div>
 								</li>");

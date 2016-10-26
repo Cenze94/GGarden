@@ -157,33 +157,31 @@
 			</xsl:if>
 			<xsl:if test="name()='p:attrezzo'">
 				<div class="prodotto">
-				<form action="" method="post">
-					<h3 class="cnome"><xsl:value-of select="g:nome"/></h3>	
-					<p class="id"><xsl:value-of select="@id"/></p>
-					<p class="tipo"><xsl:value-of select="g:tipo"/></p>
-					<xsl:variable name="nome" select="g:nome"/>
-					<xsl:variable name="id" select="@id"/>
-					<xsl:variable name="formato" select="@formato"/>
-					<xsl:if test="$formato!='no_image'">
-						<p class="img"><img src="../img database/{$id}.{$formato}" alt="Foto con {$nome}"/></p>
-					</xsl:if>
-					<h4>DESCRIZIONE</h4>
-					<p class="desc"><xsl:value-of select="g:descrizione"/></p>
-					<xsl:if test="g:dettagli/g:dato">
-					<h4>DATI</h4>
-					<div class="dati"><ul>
-						<xsl:for-each select="g:dettagli/g:dato">
-							<li><span class="formato"><xsl:value-of select="g:nome"/><xsl:if test="g:nome!=''">: </xsl:if></span><span class="contenuto"><xsl:value-of select="g:contenuto"/></span></li>
-						</xsl:for-each>
-					</ul></div>
-					</xsl:if>
-					<fieldset class="riquadro_prezzi">
-					<p class="prezzo">
-						<span class="check">&#8364; <xsl:value-of select="g:prezzo/g:pacchetto/g:valore"/><xsl:text> </xsl:text><xsl:value-of select="g:prezzo/g:pacchetto/g:formato"/></span>
-					</p>
-					</fieldset>
-				</form>
-			        <div class="nascosto mobile"><a href="#rifnav" title="torna a inizio pagina">Torna direttamente all'inizio della pagina</a></div>	
+				<h3 class="cnome"><xsl:value-of select="g:nome"/></h3>	
+				<p class="id"><xsl:value-of select="@id"/></p>
+				<p class="tipo"><xsl:value-of select="g:tipo"/></p>
+				<xsl:variable name="nome" select="g:nome"/>
+				<xsl:variable name="id" select="@id"/>
+				<xsl:variable name="formato" select="@formato"/>
+				<xsl:if test="$formato!='no_image'">
+					<p class="img"><img src="../img database/{$id}.{$formato}" alt="Foto con {$nome}"/></p>
+				</xsl:if>
+				<h4>DESCRIZIONE</h4>
+				<p class="desc"><xsl:value-of select="g:descrizione"/></p>
+				<xsl:if test="g:dettagli/g:dato">
+				<h4>DATI</h4>
+				<div class="dati"><ul>
+					<xsl:for-each select="g:dettagli/g:dato">
+						<li><span class="formato"><xsl:value-of select="g:nome"/><xsl:if test="g:nome!=''">: </xsl:if></span><span class="contenuto"><xsl:value-of select="g:contenuto"/></span></li>
+					</xsl:for-each>
+				</ul></div>
+				</xsl:if>
+				<fieldset class="riquadro_prezzi">
+				<p class="prezzo">
+					<span class="check">&#8364; <xsl:value-of select="g:prezzo/g:pacchetto/g:valore"/><xsl:text> </xsl:text><xsl:value-of select="g:prezzo/g:pacchetto/g:formato"/></span>
+				</p>
+				</fieldset>
+			    <div class="nascosto mobile"><a href="#rifnav" title="torna a inizio pagina">Torna direttamente all'inizio della pagina</a></div>	
 				</div>
 			</xsl:if>
 		</xsl:for-each>

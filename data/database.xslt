@@ -55,9 +55,10 @@
                 </div>
                 <div id="breadcrumbs">
                     <form class="headersearch" action="search.cgi" method="post">
+                        <span id="rifnav" >Ti trovi in: <strong> ZONA RISERVATA / Menu Amministratore</strong></span>
                         <fieldset>
-                            <span id="rifnav" >Ti trovi in: <a href="../index.html" xml:lang="en" accesskey="h">Home</a> / <strong>Prodotti</strong></span>
-                            <label for="ricerca" class="nascosto">Cerca un prodotto o un servizio</label>
+                            <legend class="nascosto">Cerca un prodotto o un servizio</legend>
+                            <label for="ricerca" class="nascosto">Inserisci i termini da cercare</label>
                             <input type="text" name="ricerca" id="ricerca" class="ricerca" accesskey="s" tabindex="4" />
                             <input type="submit" name="conferma" id="conferma" class="ricerca" value="Cerca" accesskey="d" tabindex="5"/>
                         </fieldset>
@@ -86,24 +87,32 @@
                     <div class="footer-left">
                         <h3 class="footerlogo"><span id="logo_mini">Ggarden</span></h3>
                         <p class="footer-menu">
-                            <a href="../index.html" hreflang="it" xml:lang="en" accesskey="h" tabindex="100">Home</a>
-                            <a href="../realizzazioni.html" hreflang="it" accesskey="r" tabindex="101">Realizzazioni </a>
-                            <a href="checkLog.cgi" hreflang="it" accesskey="v" tabindex="102">Vendita</a>
-                            <a href="../contattaci.html" hreflang="it" accesskey="c" tabindex="103">Contattaci</a>
+                            <a href="index.html" hreflang="it" xml:lang="en" tabindex="100">Home</a>
+                            
+                            <a href="realizzazioni.html" hreflang="it" tabindex="101">Realizzazioni </a>
+
+                            <a href="cgi-bin/checkLog.cgi" hreflang="it" tabindex="102">Vendita</a>
+                            
+                            <a href="contattaci.html" hreflang="it" tabindex="103">Contattaci</a>
                         </p>
+         
                         <p class="footer-nome-azienda">Ggarden &#169; 2016</p>
                     </div>
+         
                     <div class="footer-center">
                         <div>
                             <address class="testo-footer">Via Trieste 63. Padova, Italy</address>
                         </div>
+         
                         <div>
                             <p class="testo-footer"><a href="tel:+1 555 123456">+1 555 123456</a></p>
                         </div>
+         
                         <div>
                             <p xml:lang="en">E-Mail <a href="mailto:ggardengroup@gmail.com" accesskey="e" tabindex="104">ggardengroup@gmail.com</a></p>
                         </div>
                     </div>
+         
                     <div class="footer-right">
                         <p class="footer-company-info" title="motto">
                             <span class="testo-footer">Gg Garden a servizio</span>
@@ -173,18 +182,16 @@
                 <p class="desc">
                     <xsl:value-of select="g:altre_info"/>
                 </p>
-                <fieldset class="riquadro_prezzi">
-                    <p class="prezzo">
-                        <xsl:for-each select="g:prezzo/g:pacchetto">
-                            <span class="check">
-                                &#8364; 
-                                <xsl:value-of select="g:valore"/>
-                                <xsl:text> </xsl:text>
-                                <xsl:value-of select="g:formato"/>
-                            </span>
-                        </xsl:for-each>
-                    </p>
-                </fieldset>
+                <p class="prezzo">
+                    <xsl:for-each select="g:prezzo/g:pacchetto">
+                        <span class="check">
+                            &#8364; 
+                            <xsl:value-of select="g:valore"/>
+                            <xsl:text> </xsl:text>
+                            <xsl:value-of select="g:formato"/>
+                        </span>
+                    </xsl:for-each>
+                </p>
                 <div class="nascosto mobile"><a href="#rifnav" title="torna a inizio pagina">Torna direttamente all'inizio della pagina</a></div>
             </div>
             <hr/>
@@ -232,18 +239,16 @@
                     </ul>
                     </div>
                 </xsl:if>
-                <fieldset class="riquadro_prezzi">
-                    <p class="prezzo">
-                        <xsl:for-each select="g:prezzo/g:pacchetto">
-                            <span class="check">
-                                &#8364; 
-                                <xsl:value-of select="g:valore"/>
-                                <xsl:text> </xsl:text>
-                                <xsl:value-of select="g:formato"/>
-                            </span>
-                        </xsl:for-each>
-                    </p>
-                </fieldset>
+                <p class="prezzo">
+                    <xsl:for-each select="g:prezzo/g:pacchetto">
+                        <span class="check">
+                            &#8364; 
+                            <xsl:value-of select="g:valore"/>
+                            <xsl:text> </xsl:text>
+                            <xsl:value-of select="g:formato"/>
+                        </span>
+                    </xsl:for-each>
+                </p>
                 <div class="nascosto mobile"><a href="#rifnav" title="torna a inizio pagina">Torna direttamente all'inizio della pagina</a></div>
             </div>
             <hr/>

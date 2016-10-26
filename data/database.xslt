@@ -181,18 +181,16 @@
                 <p class="desc">
                     <xsl:value-of select="g:altre_info"/>
                 </p>
-                <fieldset class="riquadro_prezzi">
-                    <p class="prezzo">
-                        <xsl:for-each select="g:prezzo/g:pacchetto">
-                            <span class="check">
-                                &#8364; 
-                                <xsl:value-of select="g:valore"/>
-                                <xsl:text> </xsl:text>
-                                <xsl:value-of select="g:formato"/>
-                            </span>
-                        </xsl:for-each>
-                    </p>
-                </fieldset>
+                <p class="prezzo">
+                    <xsl:for-each select="g:prezzo/g:pacchetto">
+                        <span class="check">
+                            &#8364; 
+                            <xsl:value-of select="g:valore"/>
+                            <xsl:text> </xsl:text>
+                            <xsl:value-of select="g:formato"/>
+                        </span>
+                    </xsl:for-each>
+                </p>
                 <div class="nascosto mobile"><a href="#rifnav" title="torna a inizio pagina">Torna direttamente all'inizio della pagina</a></div>
             </div>
             <hr/>
@@ -240,18 +238,16 @@
                     </ul>
                     </div>
                 </xsl:if>
-                <fieldset class="riquadro_prezzi">
-                    <p class="prezzo">
-                        <xsl:for-each select="g:prezzo/g:pacchetto">
-                            <span class="check">
-                                &#8364; 
-                                <xsl:value-of select="g:valore"/>
-                                <xsl:text> </xsl:text>
-                                <xsl:value-of select="g:formato"/>
-                            </span>
-                        </xsl:for-each>
-                    </p>
-                </fieldset>
+                <p class="prezzo">
+                    <xsl:for-each select="g:prezzo/g:pacchetto">
+                        <span class="check">
+                            &#8364; 
+                            <xsl:value-of select="g:valore"/>
+                            <xsl:text> </xsl:text>
+                            <xsl:value-of select="g:formato"/>
+                        </span>
+                    </xsl:for-each>
+                </p>
                 <div class="nascosto mobile"><a href="#rifnav" title="torna a inizio pagina">Torna direttamente all'inizio della pagina</a></div>
             </div>
             <hr/>

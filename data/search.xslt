@@ -202,12 +202,15 @@
 						</div>
 					</xsl:if>
 					<p class="prezzo">
-						<span class="check">
-							&#8364; 
-							<xsl:value-of select="g:prezzo/g:pacchetto/g:valore"/>
-							<xsl:text> </xsl:text>
-							<xsl:value-of select="g:prezzo/g:pacchetto/g:formato"/>
-						</span>
+						<xsl:for-each select="g:prezzo/g:pacchetto">
+							<span class="check">
+								&#8364; 
+								<xsl:value-of select="g:prezzo/g:pacchetto/g:valore"/>
+								<xsl:text> </xsl:text>
+								<xsl:value-of select="g:prezzo/g:pacchetto/g:formato"/>
+							</span>
+						</xsl:for-each>
+						<hr/>
 					</p>
 					<div class="nascosto mobile"><a href="#rifnav" title="torna a inizio pagina">Torna direttamente all'inizio della pagina</a></div>
 				</div>

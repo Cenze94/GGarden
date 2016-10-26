@@ -179,14 +179,7 @@
 					</xsl:if>
 					<fieldset class="riquadro_prezzi">
 					<p class="prezzo">
-						<xsl:if test="count(g:prezzo/g:pacchetto)&lt;=1">
-							<span class="prezzo_singolo">&#8364; <xsl:value-of select="g:prezzo/g:pacchetto/g:valore"/><xsl:text> </xsl:text><xsl:value-of select="g:prezzo/g:pacchetto/g:formato"/></span>
-						</xsl:if>
-						<xsl:if test="count(g:prezzo/g:pacchetto)&gt;1">
-						<xsl:for-each select="g:prezzo/g:pacchetto">
-							<input type="radio" name="{$id}" id="{$id}{$num_prezzo}">&#8364; <xsl:value-of select="g:valore"/><xsl:text> </xsl:text><xsl:value-of select="g:formato"/></input>
-						</xsl:for-each>
-						</xsl:if>
+						<span class="check">&#8364; <xsl:value-of select="g:prezzo/g:pacchetto/g:valore"/><xsl:text> </xsl:text><xsl:value-of select="g:prezzo/g:pacchetto/g:formato"/></span>
 					</p>
 					</fieldset>
 				</form>

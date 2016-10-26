@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version="1.0"
-	xmlns="http://www.w3.org/1999/xhtml"
+    xmlns="http://www.w3.org/1999/xhtml"
     xmlns:g="http://www.ggarden.com"
     xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     exclude-result-prefixes="g">
@@ -22,10 +22,10 @@
                 <link rel="stylesheet" href="../css/home.css" type="text/css" media="screen and (min-width: 650px)" />
                 <link rel="stylesheet" href="../css/print.css" type="text/css" media="print" />
                 <link rel="stylesheet" type="text/css" href="../css/small-devices.css" media="screen and (max-width: 650px)" />
-				<xsl:comment>
-					<![CDATA[[if lte IE 8]><link rel="stylesheet" type="text/css" href="../css/explorer.css"/><![endif]]]>
-				</xsl:comment>
-				<link rel="icon" href="../img/logo2.png" type="image/png" />
+                <xsl:comment>
+                    <![CDATA[[if lte IE 8]><link rel="stylesheet" type="text/css" href="../css/explorer.css"/><![endif]]]>
+                </xsl:comment>
+                <link rel="icon" href="../img/logo2.png" type="image/png" />
             </head>
             <body onload="caricamentoPannelloAdmin();">
                 <div id="header">
@@ -54,8 +54,8 @@
                     </div>
                 </div>
                 <div id="breadcrumbs">
+                    <span id="rifnav" >Ti trovi in: <strong> ZONA RISERVATA / Menu Amministratore</strong></span>
                     <form class="headersearch" action="search.cgi" method="post">
-                        <span id="rifnav" >Ti trovi in: <strong> ZONA RISERVATA / Menu Amministratore</strong></span>
                         <fieldset>
                             <legend class="nascosto">Cerca un prodotto o un servizio</legend>
                             <label for="ricerca" class="nascosto">Inserisci i termini da cercare</label>
@@ -88,31 +88,23 @@
                         <h3 class="footerlogo"><span id="logo_mini">Ggarden</span></h3>
                         <p class="footer-menu">
                             <a href="index.html" hreflang="it" xml:lang="en" tabindex="100">Home</a>
-                            
                             <a href="realizzazioni.html" hreflang="it" tabindex="101">Realizzazioni </a>
-
                             <a href="cgi-bin/checkLog.cgi" hreflang="it" tabindex="102">Vendita</a>
-                            
                             <a href="contattaci.html" hreflang="it" tabindex="103">Contattaci</a>
                         </p>
-         
                         <p class="footer-nome-azienda">Ggarden &#169; 2016</p>
                     </div>
-         
                     <div class="footer-center">
                         <div>
                             <address class="testo-footer">Via Trieste 63. Padova, Italy</address>
                         </div>
-         
                         <div>
                             <p class="testo-footer"><a href="tel:+1 555 123456">+1 555 123456</a></p>
                         </div>
-         
                         <div>
                             <p xml:lang="en">E-Mail <a href="mailto:ggardengroup@gmail.com" accesskey="e" tabindex="104">ggardengroup@gmail.com</a></p>
                         </div>
                     </div>
-         
                     <div class="footer-right">
                         <p class="footer-company-info" title="motto">
                             <span class="testo-footer">Gg Garden a servizio</span>
@@ -155,19 +147,19 @@
                 <xsl:if test="g:dettagli/g:dato">
                     <h4>DATI</h4>
                     <div class="dati">
-                    <ul>
-                        <xsl:for-each select="g:dettagli/g:dato">
-                            <li class="info">
-                                <span class="formato">
-                                    <xsl:value-of select="g:nome"/>
-                                    <xsl:if test="g:nome!=''">: </xsl:if>
-                                </span>
-                                <span class="contenuto">
-                                    <xsl:value-of select="g:contenuto"/>
-                                </span>
-                            </li>
-                        </xsl:for-each>
-                    </ul>
+                        <ul>
+                            <xsl:for-each select="g:dettagli/g:dato">
+                                <li class="info">
+                                    <span class="formato">
+                                        <xsl:value-of select="g:nome"/>
+                                        <xsl:if test="g:nome!=''">: </xsl:if>
+                                    </span>
+                                    <span class="contenuto">
+                                        <xsl:value-of select="g:contenuto"/>
+                                    </span>
+                                </li>
+                            </xsl:for-each>
+                        </ul>
                     </div>
                 </xsl:if>
                 <h4>PIANTAGIONE</h4>
@@ -224,19 +216,19 @@
                 <xsl:if test="g:dettagli/g:dato">
                     <h4>DATI</h4>
                     <div class="dati">
-                    <ul>
-                        <xsl:for-each select="g:dettagli/g:dato">
-                            <li class="info">
-                                <span class="formato">
-                                    <xsl:value-of select="g:nome"/>
-                                    <xsl:if test="g:nome!=''">: </xsl:if>
-                                </span>
-                                <span class="contenuto">
-                                    <xsl:value-of select="g:contenuto"/>
-                                </span>
-                            </li>
-                        </xsl:for-each>
-                    </ul>
+                        <ul>
+                            <xsl:for-each select="g:dettagli/g:dato">
+                                <li class="info">
+                                    <span class="formato">
+                                        <xsl:value-of select="g:nome"/>
+                                        <xsl:if test="g:nome!=''">: </xsl:if>
+                                    </span>
+                                    <span class="contenuto">
+                                        <xsl:value-of select="g:contenuto"/>
+                                    </span>
+                                </li>
+                            </xsl:for-each>
+                        </ul>
                     </div>
                 </xsl:if>
                 <p class="prezzo">

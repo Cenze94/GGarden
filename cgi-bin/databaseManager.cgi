@@ -87,9 +87,8 @@ sub updateOperation {
 				<label for='dataName' class='inputL'>Dato:</label>
 				<input type='text' name='dataName[]' id='dataName' class='inputL' value=\"$dataName\"/>
 			</div>
-			<div class='inputsR'>	
-				<span class='middle'>: </span>
-				<label for='dataContent' class='inputR'>Contenuto:</label>
+			<div class='inputsR'>
+				<label for='dataContent' class='inputR'>: </label>
 				<input type='text' name='dataContent[]' id='dataContent' class='inputR' value=\"$dataContent\"/>
 			</div>
 								</li>");

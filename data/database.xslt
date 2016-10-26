@@ -56,7 +56,7 @@
                 <div id="breadcrumbs">
                     <form class="headersearch" action="search.cgi" method="post">
                         <fieldset>
-                            <span id="rifnav" >Ti trovi in: <a href="../index.html" xml:lang="en" accesskey="h">Home</a> / <b>Prodotti</b></span>
+                            <span id="rifnav" >Ti trovi in: <a href="../index.html" xml:lang="en" accesskey="h">Home</a> / <strong>Prodotti</strong></span>
                             <label for="ricerca" class="nascosto">Cerca un prodotto o un servizio</label>
                             <input type="text" name="ricerca" id="ricerca" class="ricerca" accesskey="s" tabindex="4" />
                             <input type="submit" name="conferma" id="conferma" class="ricerca" value="Cerca" accesskey="d" tabindex="5"/>

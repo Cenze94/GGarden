@@ -7,6 +7,7 @@ use CGI::Carp qw(fatalsToBrowser);
 use CGI;
 use LogModule;
 use File::Basename;
+use HTML::Entities;
 $CGI::POST_MAX = 1024 * 5000;
 
 sub error{
@@ -66,9 +67,10 @@ sub createPlantItem {
 	</p:pianta>"); #il namespace mi serve per poter aggiungere direttamente i prefissi, altrimenti lo script non funziona
 	my $child = $item->findnodes("//p:prezzo")->get_node(1);
 	for (my $i=0; $i<scalar @prices; $i++) {
-		$formats[$i] = encode_entities($formats[$i], '<>&"');
+		$formats[$i] = decode_entities($formats[$i]);
+		$formats[$i] = encode_entities($formats[$i]);
 		my $string = $parser->parse_string("<p:pacchetto $namespace><p:valore>$prices[$i]</p:valore><p:formato>$formats[$i]</p:formato></p:pacchetto>");
-		$string = $string->removeChild($string->firstChild());;
+		$string = $string->removeChild($string->firstChild());
 		$child->appendChild($string);
 	}
 	$child = $item->findnodes("//p:dettagli")->get_node(1);
@@ -79,8 +81,10 @@ sub createPlantItem {
 		$max = scalar @dataContents;
 	}
 	for (my $i=0; $i<$max; $i++) {
-		$dataNames[$i] = encode_entities($dataNames[$i], '<>&"');
-		$dataContents[$i] = encode_entities($dataContents[$i], '<>&"');
+		$dataNames[$i] = decode_entities($dataNames[$i]);
+		$dataNames[$i] = encode_entities($dataNames[$i]);
+		$dataContents[$i] = decode_entities($dataContents[$i]);
+		$dataContents[$i] = encode_entities($dataContents[$i]);
 		my $string = $parser->parse_string("<p:dato $namespace><p:nome>$dataNames[$i]</p:nome><p:contenuto>$dataContents[$i]</p:contenuto></p:dato>");
 		$string = $string->removeChild($string->firstChild());
 		$child->appendChild($string);
@@ -114,7 +118,8 @@ sub createToolItem {
 	</p:attrezzo>"); #il namespace mi serve per poter aggiungere direttamente i prefissi, altrimenti lo script non funziona
 	my $child = $item->findnodes("//p:prezzo")->get_node(1);
 	for (my $i=0; $i<scalar @prices; $i++) {
-		$formats[$i] = encode_entities($formats[$i], '<>&"');
+		$formats[$i] = decode_entities($formats[$i]);
+		$formats[$i] = encode_entities($formats[$i]);
 		my $string = $parser->parse_string("<p:pacchetto $namespace><p:valore>$prices[$i]</p:valore><p:formato>$formats[$i]</p:formato></p:pacchetto>");
 		$string = $string->removeChild($string->firstChild());
 		$child->appendChild($string);
@@ -127,8 +132,10 @@ sub createToolItem {
 		$max = scalar @dataContents;
 	}
 	for (my $i=0; $i<$max; $i++) {
-		$dataNames[$i] = encode_entities($dataNames[$i], '<>&"');
-		$dataContents[$i] = encode_entities($dataContents[$i], '<>&"');
+		$dataNames[$i] = decode_entities($dataNames[$i]);
+		$dataNames[$i] = encode_entities($dataNames[$i]);
+		$dataContents[$i] = decode_entities($dataContents[$i]);
+		$dataContents[$i] = encode_entities($dataContents[$i]);
 		my $string = $parser->parse_string("<p:dato $namespace><p:nome>$dataNames[$i]</p:nome><p:contenuto>$dataContents[$i]</p:contenuto></p:dato>");
 		$string = $string->removeChild($string->firstChild());
 		$child->appendChild($string);
@@ -168,7 +175,8 @@ sub updatePlantItem {
 	my @prices = @{$_[5]};
 	my @formats = @{$_[6]};
 	for(my $i=0; $i<scalar @prices; $i++) {
-		$formats[$i] = encode_entities($formats[$i], '<>&"');
+		$formats[$i] = decode_entities($formats[$i]);
+		$formats[$i] = encode_entities($formats[$i]);
 		my $string = $parser->parse_string("<p:pacchetto $namespace><p:valore>$prices[$i]</p:valore><p:formato>$formats[$i]</p:formato></p:pacchetto>");
 		$string = $string->removeChild($string->firstChild());
 		$pricesNode->appendChild($string);
@@ -189,8 +197,10 @@ sub updatePlantItem {
 			$max = scalar @dataContents;
 		}
 		for (my $i=0; $i<$max; $i++) {
-			$dataNames[$i] = encode_entities($dataNames[$i], '<>&"');
-			$dataContents[$i] = encode_entities($dataContents[$i], '<>&"');
+			$dataNames[$i] = decode_entities($dataNames[$i]);
+			$dataNames[$i] = encode_entities($dataNames[$i]);
+			$dataContents[$i] = decode_entities($dataContents[$i]);
+			$dataContents[$i] = encode_entities($dataContents[$i]);
 			my $string = $parser->parse_string("<p:dato $namespace><p:nome>$dataNames[$i]</p:nome><p:contenuto>$dataContents[$i]</p:contenuto></p:dato>");
 			$string = $string->removeChild($string->firstChild());
 			$detailsNode->appendChild($string);
@@ -236,7 +246,8 @@ sub updateToolItem {
 	my @prices = @{$_[4]};
 	my @formats = @{$_[5]};
 	for(my $i=0; $i<scalar @prices; $i++) {
-		$formats[$i] = encode_entities($formats[$i], '<>&"');
+		$formats[$i] = decode_entities($formats[$i]);
+		$formats[$i] = encode_entities($formats[$i]);
 		my $string = $parser->parse_string("<p:pacchetto $namespace><p:valore>$prices[$i]</p:valore><p:formato>$formats[$i]</p:formato></p:pacchetto>");
 		$string = $string->removeChild($string->firstChild());
 		$pricesNode->appendChild($string);
@@ -258,8 +269,10 @@ sub updateToolItem {
 			$max = scalar @dataContents;
 		}
 		for (my $i=0; $i<$max; $i++) {
-			$dataNames[$i] = encode_entities($dataNames[$i], '<>&"');
-			$dataContents[$i] = encode_entities($dataContents[$i], '<>&"');
+			$dataNames[$i] = decode_entities($dataNames[$i]);
+			$dataNames[$i] = encode_entities($dataNames[$i]);
+			$dataContents[$i] = decode_entities($dataContents[$i]);
+			$dataContents[$i] = encode_entities($dataContents[$i]);
 			my $string = $parser->parse_string("<p:dato $namespace><p:nome>$dataNames[$i]</p:nome><p:contenuto>$dataContents[$i]</p:contenuto></p:dato>");
 			$string = $string->removeChild($string->firstChild());
 			$detailsNode->appendChild($string);
@@ -274,13 +287,16 @@ my $operation = $logString->param('operation');
 my $itemType = $logString->param('itemType');
 my $image = $logString->param('image');
 my $name = $logString->param('name');
-$name = encode_entities($name, '<>&"');
+$name = decode_entities($name);
+$name = encode_entities($name);
 my $type = $logString->param('type');
-$type = encode_entities($type, '<>&"');
+$type = decode_entities($type);
+$type = encode_entities($type);
 my @prices = $logString->param('price[]');
 my @formats = $logString->param('format[]');
 my $description = $logString->param('description');
-$description = encode_entities($description, '<>&"');
+$description = decode_entities($description);
+$description = encode_entities($description);
 my @dataNames = $logString->param('dataName[]');
 my @dataContents = $logString->param('dataContent[]');
 	
@@ -364,13 +380,17 @@ if($image ne '' && (index($image, '/')!=-1 || index($image, '..')!=-1 || $imageF
 	
 	if($itemType eq "pianta") {
 		my $scientificName = $logString->param('scientificName');
-		$scientificName = encode_entities($scientificName, '<>&"');
+		$scientificName = decode_entities($scientificName);
+		$scientificName = encode_entities($scientificName);
 		my $plantation = $logString->param('plantation');
-		$plantation = encode_entities($plantation, '<>&"');
+		$plantation = decode_entities($plantation);
+		$plantation = encode_entities($plantation);
 		my $care = $logString->param('care');
-		$care = encode_entities($care, '<>&"');
+		$care = decode_entities($care);
+		$care = encode_entities($care);
 		my $otherInfos = $logString->param('otherInfos');
-		$otherInfos = encode_entities($otherInfos, '<>&"');
+		$otherInfos = decode_entities($otherInfos);
+		$otherInfos = encode_entities($otherInfos);
 		if($operation eq "create") {
 			&createPlantItem($id, $imageFormat, $name, $scientificName, $type, \@prices, \@formats, $description, \@dataNames, \@dataContents, $plantation, $care, $otherInfos);
 		} elsif($operation eq "update") {

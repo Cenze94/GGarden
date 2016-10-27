@@ -48,11 +48,11 @@ sub updateOperation {
 		$imgNode->appendTextNode("Sostituisci l'immagine del prodotto già inserita (max 5 MB):");
 	}
 	$value = $xml->findnodes("./p:nome/text()")->get_node(1);
-	$value = encode_entities($value, '<>&"');
+	$value = decode_entities($value);
 	$node = $node->findnodes("../ul/li/p/input[\@name='name']")->get_node(1);
 	$node->setAttribute('value', $value);
 	$value = $xml->findnodes("./p:tipo/text()")->get_node(1);
-	$value = encode_entities($value, '<>&"');
+	$value = decode_entities($value);
 	$node = $node->findnodes("../../p/input[\@name='type']")->get_node(1);
 	$node->setAttribute('value', $value);
 	$node = $node->findnodes("../../../li/ul[\@id='dynamicInputPrice']/li")->get_node(1);
@@ -61,16 +61,15 @@ sub updateOperation {
 		(my $price, my $format) = $values[$i]->childNodes();
 		$price = $price->textContent();
 		$format = $format->textContent();
-		$format = encode_entities($format, '<>&"');
+		$format = encode_entities($format);
 		$string = $parserxml->parse_string("<li>
 			<div class='inputsL'>
-			<label for='price'  class='inputL'>Prezzo: &#8364; </label>
-			<input type='text' name='price[]' id='price' class='inputL' value='$price'/>
+				<label for='price'  class='inputL'>Prezzo (es. &#8364; 7.50 a pezzo): &#8364; </label>
+				<input type='text' name='price[]' id='price' class='inputL' value='$price'/>
 			</div><div class='inputsR'>
-				<label for='format' class='inputR'>Formato:</label>
 				<input type='text' name='format[]' id='format' class='inputR' value='$format'/>
 			</div>
-		</li>");
+								</li>");
 		$string = $string->removeChild($string->firstChild());
 		if($i==0){ #L'unico figlio già presente è quello del primo dato nuovo da inserire, che voglio per ultimo
 			$node = $node->parentNode()->insertBefore($string, $node);
@@ -79,7 +78,7 @@ sub updateOperation {
 		}
 	}
 	$value = $xml->findnodes("./p:descrizione/text()")->get_node(1);
-	$value = encode_entities($value, '<>&"');
+	$value = decode_entities($value);
 	$node = $node->findnodes("../../../li/p/textarea[\@name='description']")->get_node(1);
 	$node->appendTextNode($value);
 	$node = $node->findnodes("../../../li/ul[\@id='dynamicInputData']/li")->get_node(1);
@@ -87,16 +86,16 @@ sub updateOperation {
 	for (my $i=0; $i<scalar @values; $i++) {
 		(my $dataName, my $dataContent) = $values[$i]->childNodes();
 		$dataName = $dataName->textContent();
-		$dataName = encode_entities($dataName, '<>&"');
+		$dataName = encode_entities($dataName);
 		$dataContent = $dataContent->textContent();
-		$dataContent = encode_entities($dataContent, '<>&"');
+		$dataContent = encode_entities($dataContent);
 		$string = $parserxml->parse_string("<li>
 			<div class='inputsL'>
 				<label for='dataName' class='inputL'>Dato (es. Altezza: 10cm):</label>
 				<input type='text' name='dataName[]' id='dataName' class='inputL' value=\"".$dataName."\"/>
 			</div>
 			<div class='inputsR'>
-				<label for='dataContent' class='inputR'>Contenuto: </label>
+				<label for='dataContent' class='inputR'>: </label>
 				<input type='text' name='dataContent[]' id='dataContent' class='inputR' value=\"".$dataContent."\"/>
 			</div>
 								</li>");
@@ -111,19 +110,19 @@ sub updateOperation {
 	$node->setAttribute('value', "Modifica prodotto");
 	if($itemType eq 'pianta') {
 		$value = $xml->findnodes("./p:nome_scientifico/text()")->get_node(1);
-		$value = encode_entities($value, '<>&"');
+		$value = decode_entities($value);
 		$node = $node->findnodes("../../../li/p/input[\@name='scientificName']")->get_node(1);
 		$node->setAttribute('value', $value);
 		$value = $xml->findnodes("./p:piantagione/text()")->get_node(1);
-		$value = encode_entities($value, '<>&"');
+		$value = decode_entities($value);
 		$node = $node->findnodes("../../../li/p/textarea[\@name='plantation']")->get_node(1);
 		$node->appendTextNode($value);
 		$value = $xml->findnodes("./p:cura/text()")->get_node(1);
-		$value = encode_entities($value, '<>&"');
+		$value = decode_entities($value);
 		$node = $node->findnodes("../../../li/p/textarea[\@name='care']")->get_node(1);
 		$node->appendTextNode($value);
 		$value = $xml->findnodes("./p:altre_info/text()")->get_node(1);
-		$value = encode_entities($value, '<>&"');
+		$value = decode_entities($value);
 		$node = $node->findnodes("../../../li/p/textarea[\@name='otherInfos']")->get_node(1);
 		$node->appendTextNode($value);
 	}

@@ -64,12 +64,13 @@ sub updateOperation {
 		$format = encode_entities($format, '<>&"');
 		$string = $parserxml->parse_string("<li>
 			<div class='inputsL'>
-				<label for='price'  class='inputL'>Prezzo (es. &#8364; 7.50 a pezzo): &#8364; </label>
-				<input type='text' name='price[]' id='price' class='inputL' value='$price'/>
+			<label for='price'  class='inputL'>Prezzo: &#8364; </label>
+			<input type='text' name='price[]' id='price' class='inputL' value='$price'/>
 			</div><div class='inputsR'>
+				<label for='format' class='inputR'>Formato:</label>
 				<input type='text' name='format[]' id='format' class='inputR' value='$format'/>
 			</div>
-								</li>");
+		</li>");
 		$string = $string->removeChild($string->firstChild());
 		if($i==0){ #L'unico figlio già presente è quello del primo dato nuovo da inserire, che voglio per ultimo
 			$node = $node->parentNode()->insertBefore($string, $node);
@@ -95,10 +96,10 @@ sub updateOperation {
 				<input type='text' name='dataName[]' id='dataName' class='inputL' value=\"".$dataName."\"/>
 			</div>
 			<div class='inputsR'>
-				<label for='dataContent' class='inputR'>: </label>
+				<label for='dataContent' + (counter_valore + 1) + '' class='inputR'>Contenuto:</label>
 				<input type='text' name='dataContent[]' id='dataContent' class='inputR' value=\"".$dataContent."\"/>
 			</div>
-								</li>");
+				</li>");
 		$string = $string->removeChild($string->firstChild());
 		if($i==0){ #L'unico figlio già presente è quello del primo dato nuovo da inserire, che voglio per ultimo
 			$node = $node->parentNode()->insertBefore($string, $node);

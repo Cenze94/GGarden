@@ -78,7 +78,7 @@ sub updateOperation {
 		}
 	}
 	$value = $xml->findnodes("./p:descrizione/text()")->get_node(1);
-	$value = encode_entities($value);
+	$value = decode_entities($value);
 	$node = $node->findnodes("../../../li/p/textarea[\@name='description']")->get_node(1);
 	$node->appendTextNode($value);
 	$node = $node->findnodes("../../../li/ul[\@id='dynamicInputData']/li")->get_node(1);
@@ -88,7 +88,7 @@ sub updateOperation {
 		$dataName = $dataName->textContent();
 		$dataName = encode_entities($dataName);
 		$dataContent = $dataContent->textContent();
-		$dataContent = decode_entities($dataContent);
+		$dataContent = encode_entities($dataContent);
 		$string = $parserxml->parse_string("<li>
 			<div class='inputsL'>
 				<label for='dataName' class='inputL'>Dato (es. Altezza: 10cm):</label>

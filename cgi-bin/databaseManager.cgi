@@ -57,7 +57,18 @@ sub updateOperation {
 	$node->setAttribute('value', $value);
 	$node = $node->findnodes("../../../li/ul[\@id='dynamicInputPrice']/li")->get_node(1);
 	my @values = $xml->findnodes("./p:prezzo/p:pacchetto");
-	for (my $i=0; $i<scalar @values; $i++) {
+	
+	(my $price, my $format) = $values[0]->childNodes();
+	$price = $price->textContent();
+	$format = $format->textContent();
+	$format = encode_entities($format, '<>&"');
+	$node = $node->findnodes("./div[\@class='inputsL']/input[\@id='price']")->get_node(1);
+	
+	$node->setAttribute('value', $price);
+	$node = $node->findnodes("../../div[\@class='inputsR']/input[\@id='format']")->get_node(1);
+	$node->setAttribute('value', $format);
+	$node=$node->parentNode();
+	for (my $i=1; $i<scalar @values; $i++) {
 		(my $price, my $format) = $values[$i]->childNodes();
 		$price = $price->textContent();
 		$format = $format->textContent();
@@ -65,25 +76,38 @@ sub updateOperation {
 		$string = $parserxml->parse_string("<li>
 			<div class='inputsL'>
 				<label for='price'  class='inputL'>Prezzo (es. &#8364; 7.50 a pezzo): &#8364; </label>
-				<input type='text' name='price[]' id='price' class='inputL' value='$price'/>
+				<input type='text' name='price[".$i."]' id='price' class='inputL' value='$price'/>
 			</div><div class='inputsR'>
-				<input type='text' name='format[]' id='format' class='inputR' value='$format'/>
+				<label for='format".$i."' class='inputR'>Formato:</label>
+				<input type='text' name='format[".$i."]' id='format".$i."' class='inputR' value=\"".$format."\"/>
 			</div>
-								</li>");
+		</li>");
 		$string = $string->removeChild($string->firstChild());
-		if($i==0){ #L'unico figlio già presente è quello del primo dato nuovo da inserire, che voglio per ultimo
-			$node = $node->parentNode()->insertBefore($string, $node);
-		} else {
+		# if($i==0){ #L'unico figlio già presente è quello del primo dato nuovo da inserire, che voglio per ultimo
 			$node = $node->parentNode()->insertAfter($string, $node);
-		}
+		# } else {
+		# 	$node = $node->parentNode()->insertAfter($string, $node);
+		# }
 	}
+
 	$value = $xml->findnodes("./p:descrizione/text()")->get_node(1);
 	$value = decode_entities($value);
-	$node = $node->findnodes("../../../li/p/textarea[\@name='description']")->get_node(1);
+	$node = $node->findnodes("../../../../li/p/textarea[\@name='description']")->get_node(1);
 	$node->appendTextNode($value);
 	$node = $node->findnodes("../../../li/ul[\@id='dynamicInputData']/li")->get_node(1);
 	@values = $xml->findnodes("./p:dettagli/p:dato");
-	for (my $i=0; $i<scalar @values; $i++) {
+
+	(my $dataName, my $dataContent) = $values[0]->childNodes();
+	$dataName = $dataName->textContent();
+	$dataName = encode_entities($dataName);
+	$dataContent = $dataContent->textContent();
+	$dataContent = encode_entities($dataContent);
+	$node = $node->findnodes("./div[\@class='inputsL']/input[\@id='dataName']")->get_node(1);
+	$node->setAttribute('value', $dataName);
+	$node = $node->findnodes("../../div[\@class='inputsR']/input[\@id='dataContent']")->get_node(1);
+	$node->setAttribute('value', $dataContent);
+	$node=$node->parentNode();
+	for (my $i=1; $i<scalar @values; $i++) {
 		(my $dataName, my $dataContent) = $values[$i]->childNodes();
 		$dataName = $dataName->textContent();
 		$dataName = encode_entities($dataName);
@@ -91,22 +115,24 @@ sub updateOperation {
 		$dataContent = encode_entities($dataContent);
 		$string = $parserxml->parse_string("<li>
 			<div class='inputsL'>
-				<label for='dataName' class='inputL'>Dato (es. Altezza: 10cm):</label>
-				<input type='text' name='dataName[]' id='dataName' class='inputL' value=\"".$dataName."\"/>
+				<label for='dataName".$i."' class='inputL'>Dato (es. Altezza: 10cm):</label>
+				<input type='text' name='dataName[".$i."]' id='dataName".$i."' class='inputL' value=\"".$dataName."\"/>
 			</div>
 			<div class='inputsR'>
-				<label for='dataContent' class='inputR'>: </label>
-				<input type='text' name='dataContent[]' id='dataContent' class='inputR' value=\"".$dataContent."\"/>
+				<label for='dataContent' class='inputL'>Contenuto:</label>
+				<input type='text' name='dataContent[".$i."]' id='dataContent".$i."' class='inputR' value=\"".$dataContent."\"/>
 			</div>
-								</li>");
+			</li>");
 		$string = $string->removeChild($string->firstChild());
-		if($i==0){ #L'unico figlio già presente è quello del primo dato nuovo da inserire, che voglio per ultimo
-			$node = $node->parentNode()->insertBefore($string, $node);
-		} else {
+		#if($i==0){ #L'unico figlio già presente è quello del primo dato nuovo da inserire, che voglio per ultimo
+		#	$node = $node->parentNode()->parentNode()->insertBefore($string, $node);
+		# } 
+		# else {
 			$node = $node->parentNode()->insertAfter($string, $node);
-		}
+		#}
 	}
-	$node = $node->findnodes("../../../li/p/input[\@type='submit']")->get_node(1);
+
+	$node = $node->findnodes("../../../../li/p/input[\@type='submit']")->get_node(1);
 	$node->setAttribute('value', "Modifica prodotto");
 	if($itemType eq 'pianta') {
 		$value = $xml->findnodes("./p:nome_scientifico/text()")->get_node(1);

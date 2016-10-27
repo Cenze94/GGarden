@@ -67,7 +67,6 @@ sub createPlantItem {
 	</p:pianta>"); #il namespace mi serve per poter aggiungere direttamente i prefissi, altrimenti lo script non funziona
 	my $child = $item->findnodes("//p:prezzo")->get_node(1);
 	for (my $i=0; $i<scalar @prices; $i++) {
-		$formats[$i] = decode_entities($formats[$i]);
 		$formats[$i] = encode_entities($formats[$i]);
 		my $string = $parser->parse_string("<p:pacchetto $namespace><p:valore>$prices[$i]</p:valore><p:formato>$formats[$i]</p:formato></p:pacchetto>");
 		$string = $string->removeChild($string->firstChild());
@@ -81,9 +80,7 @@ sub createPlantItem {
 		$max = scalar @dataContents;
 	}
 	for (my $i=0; $i<$max; $i++) {
-		$dataNames[$i] = decode_entities($dataNames[$i]);
 		$dataNames[$i] = encode_entities($dataNames[$i]);
-		$dataContents[$i] = decode_entities($dataContents[$i]);
 		$dataContents[$i] = encode_entities($dataContents[$i]);
 		my $string = $parser->parse_string("<p:dato $namespace><p:nome>$dataNames[$i]</p:nome><p:contenuto>$dataContents[$i]</p:contenuto></p:dato>");
 		$string = $string->removeChild($string->firstChild());
@@ -118,7 +115,6 @@ sub createToolItem {
 	</p:attrezzo>"); #il namespace mi serve per poter aggiungere direttamente i prefissi, altrimenti lo script non funziona
 	my $child = $item->findnodes("//p:prezzo")->get_node(1);
 	for (my $i=0; $i<scalar @prices; $i++) {
-		$formats[$i] = decode_entities($formats[$i]);
 		$formats[$i] = encode_entities($formats[$i]);
 		my $string = $parser->parse_string("<p:pacchetto $namespace><p:valore>$prices[$i]</p:valore><p:formato>$formats[$i]</p:formato></p:pacchetto>");
 		$string = $string->removeChild($string->firstChild());
@@ -132,9 +128,7 @@ sub createToolItem {
 		$max = scalar @dataContents;
 	}
 	for (my $i=0; $i<$max; $i++) {
-		$dataNames[$i] = decode_entities($dataNames[$i]);
 		$dataNames[$i] = encode_entities($dataNames[$i]);
-		$dataContents[$i] = decode_entities($dataContents[$i]);
 		$dataContents[$i] = encode_entities($dataContents[$i]);
 		my $string = $parser->parse_string("<p:dato $namespace><p:nome>$dataNames[$i]</p:nome><p:contenuto>$dataContents[$i]</p:contenuto></p:dato>");
 		$string = $string->removeChild($string->firstChild());
@@ -175,7 +169,6 @@ sub updatePlantItem {
 	my @prices = @{$_[5]};
 	my @formats = @{$_[6]};
 	for(my $i=0; $i<scalar @prices; $i++) {
-		$formats[$i] = decode_entities($formats[$i]);
 		$formats[$i] = encode_entities($formats[$i]);
 		my $string = $parser->parse_string("<p:pacchetto $namespace><p:valore>$prices[$i]</p:valore><p:formato>$formats[$i]</p:formato></p:pacchetto>");
 		$string = $string->removeChild($string->firstChild());
@@ -197,9 +190,7 @@ sub updatePlantItem {
 			$max = scalar @dataContents;
 		}
 		for (my $i=0; $i<$max; $i++) {
-			$dataNames[$i] = decode_entities($dataNames[$i]);
 			$dataNames[$i] = encode_entities($dataNames[$i]);
-			$dataContents[$i] = decode_entities($dataContents[$i]);
 			$dataContents[$i] = encode_entities($dataContents[$i]);
 			my $string = $parser->parse_string("<p:dato $namespace><p:nome>$dataNames[$i]</p:nome><p:contenuto>$dataContents[$i]</p:contenuto></p:dato>");
 			$string = $string->removeChild($string->firstChild());
@@ -246,7 +237,6 @@ sub updateToolItem {
 	my @prices = @{$_[4]};
 	my @formats = @{$_[5]};
 	for(my $i=0; $i<scalar @prices; $i++) {
-		$formats[$i] = decode_entities($formats[$i]);
 		$formats[$i] = encode_entities($formats[$i]);
 		my $string = $parser->parse_string("<p:pacchetto $namespace><p:valore>$prices[$i]</p:valore><p:formato>$formats[$i]</p:formato></p:pacchetto>");
 		$string = $string->removeChild($string->firstChild());
@@ -269,9 +259,7 @@ sub updateToolItem {
 			$max = scalar @dataContents;
 		}
 		for (my $i=0; $i<$max; $i++) {
-			$dataNames[$i] = decode_entities($dataNames[$i]);
 			$dataNames[$i] = encode_entities($dataNames[$i]);
-			$dataContents[$i] = decode_entities($dataContents[$i]);
 			$dataContents[$i] = encode_entities($dataContents[$i]);
 			my $string = $parser->parse_string("<p:dato $namespace><p:nome>$dataNames[$i]</p:nome><p:contenuto>$dataContents[$i]</p:contenuto></p:dato>");
 			$string = $string->removeChild($string->firstChild());
@@ -287,15 +275,12 @@ my $operation = $logString->param('operation');
 my $itemType = $logString->param('itemType');
 my $image = $logString->param('image');
 my $name = $logString->param('name');
-$name = decode_entities($name);
 $name = encode_entities($name);
 my $type = $logString->param('type');
-$type = decode_entities($type);
 $type = encode_entities($type);
 my @prices = $logString->param('price[]');
 my @formats = $logString->param('format[]');
 my $description = $logString->param('description');
-$description = decode_entities($description);
 $description = encode_entities($description);
 my @dataNames = $logString->param('dataName[]');
 my @dataContents = $logString->param('dataContent[]');
@@ -380,26 +365,32 @@ if($image ne '' && (index($image, '/')!=-1 || index($image, '..')!=-1 || $imageF
 	
 	if($itemType eq "pianta") {
 		my $scientificName = $logString->param('scientificName');
-		$scientificName = decode_entities($scientificName);
 		$scientificName = encode_entities($scientificName);
 		my $plantation = $logString->param('plantation');
-		$plantation = decode_entities($plantation);
 		$plantation = encode_entities($plantation);
 		my $care = $logString->param('care');
-		$care = decode_entities($care);
 		$care = encode_entities($care);
 		my $otherInfos = $logString->param('otherInfos');
-		$otherInfos = decode_entities($otherInfos);
 		$otherInfos = encode_entities($otherInfos);
 		if($operation eq "create") {
 			&createPlantItem($id, $imageFormat, $name, $scientificName, $type, \@prices, \@formats, $description, \@dataNames, \@dataContents, $plantation, $care, $otherInfos);
-		} elsif($operation eq "update") {
+		} elsif($operation eq "update") { #in update uso un sistema diverso per aggiungere l'input dell'utente rispetto a create, che necessita di effettuare una decodifica per funzionare correttamente.
+			$name = decode_entities($name);
+			$scientificName = decode_entities($scientificName);
+			$type = decode_entities($type);
+			$description = decode_entities($description);
+			$plantation = decode_entities($plantation);
+			$care = decode_entities($care);
+			$otherInfos = decode_entities($otherInfos);
 			&updatePlantItem($id, $imageFormat, $name, $scientificName, $type, \@prices, \@formats, $description, \@dataNames, \@dataContents, $plantation, $care, $otherInfos);
 		}
 	} elsif($itemType eq "attrezzo") { #inserisco la condizione anche nell'ultimo caso per evitare che un possibile errore, come una chiamata involontaria a questo script, possa compromettere il database
 		if($operation eq "create") {
 			&createToolItem($id, $imageFormat, $name, $type, \@prices, \@formats, $description, \@dataNames, \@dataContents);
 		} elsif($operation eq "update") {
+			$name = decode_entities($name);
+			$type = decode_entities($type);
+			$description = decode_entities($description);
 			&updateToolItem($id, $imageFormat, $name, $type, \@prices, \@formats, $description, \@dataNames, \@dataContents);
 		}
 	}

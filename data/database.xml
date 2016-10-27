@@ -49,7 +49,7 @@ Il nome Edera, è un'antichissima denominazione latina, che deriva probabilmente
 		<p:piantagione>I semi di origano non necessitano di essere pretrattati. Semina l'origano da aprile a luglio in un posto di ombra parziale, in pieno sole le foglie potrebbero appassire o ingiallire. I semi germinano in 8-15 giorni. Non permettere che le piantine si asciughino.</p:piantagione>
 		<p:cura>Mantieni il terreno sempre pulito, eliminando costantemente le erbe infestanti e annaffia abbondantemente soprattutto nel caso si verifichino periodi di siccità prolungata. Ciò favorirà una crescita vigorosa delle piante.
 L'origano può essere raccolto 6-8 settimane dopo la semina, solitamente nei mesi di aprile-maggio.</p:cura>
-		<p:altre_info></p:altre_info>
+		<p:altre_info/>
 	</p:pianta>
 	<p:pianta id="00000004" formato="jpg">
 		<p:nome>Rose Porcellana - cespuglio</p:nome>

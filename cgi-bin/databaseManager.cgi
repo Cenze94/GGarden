@@ -96,10 +96,10 @@ sub updateOperation {
 				<input type='text' name='dataName[]' id='dataName' class='inputL' value=\"".$dataName."\"/>
 			</div>
 			<div class='inputsR'>
-				<label for='dataContent' + (counter_valore + 1) + '' class='inputR'>Contenuto:</label>
+				<label for='dataContent' class='inputR'>Contenuto: </label>
 				<input type='text' name='dataContent[]' id='dataContent' class='inputR' value=\"".$dataContent."\"/>
 			</div>
-				</li>");
+								</li>");
 		$string = $string->removeChild($string->firstChild());
 		if($i==0){ #L'unico figlio già presente è quello del primo dato nuovo da inserire, che voglio per ultimo
 			$node = $node->parentNode()->insertBefore($string, $node);

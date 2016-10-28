@@ -297,7 +297,7 @@ for(my $i=0; $i<scalar @prices && $checkPrices!=0; $i++) {
 		$checkPrices = 0;
 	}
 }
-if($image ne '' && (index($image, '/')!=-1 || index($image, '..')!=-1 || $imageFormat eq '' || ($imageFormat ne 'jpeg' && $imageFormat ne 'jpg' && $imageFormat ne 'gif' && $imageFormat ne 'png' && $imageFormat ne 'svg' && $imageFormat ne 'bmp'))){
+if($image ne '' && ($imageFormat eq '' || ($imageFormat ne 'jpeg' && $imageFormat ne 'jpg' && $imageFormat ne 'gif' && $imageFormat ne 'png' && $imageFormat ne 'svg' && $imageFormat ne 'bmp'))){
 	&error($operation, "formato errato del nome dell'immagine caricata");
 } elsif(scalar @prices == 0 && scalar @formats == 0) {
 	&error($operation, "nessun prezzo inserito");

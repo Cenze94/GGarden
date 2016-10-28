@@ -11,14 +11,13 @@
 		<html xml:lang="it" lang="it">
 			<head>
 				<title>Esito ricerca - GGarden</title>
-				<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+				<meta http-equiv="content-type" content="text/html;charset=utf-8" />
 				<meta name="title" content="GGarden" />
 				<meta name="description" content="Azienda specializzata nella vendita di piante e fiori e nel noleggio e vendita di attrezzi e macchine da giardinaggio" />
 				<meta name="keywords" content="prodotti, piante, fiori, giardinaggio, attrezzi" />
 				<meta name="author" content="Andrea Grendene, Pietro Gabelli, Sebastiano Marchesini, Jacopo Guizzardi" />
 				<meta name="language" content="italian it" />
 				<meta name="viewport" content="width=device-width" />
-				<meta http-equiv="Content-Script-Type" content="application/javascript" />
 				<link rel="stylesheet" href="../css/home.css" type="text/css" media="screen and (min-width: 650px)" />
 				<link rel="stylesheet" href="../css/print.css" type="text/css" media="print" />
 				<link rel="stylesheet" type="text/css" href="../css/small-devices.css" media="screen and (max-width: 650px)" />
@@ -157,8 +156,8 @@
 								<xsl:value-of select="g:formato"/>
 							</span>
 						</xsl:for-each>
-						<hr/>
 					</p>
+					<hr/>
 					<div class="nascosto mobile"><a href="#rifnav" title="torna a inizio pagina">Torna direttamente all'inizio della pagina</a></div>
 				</div>
 			</xsl:if>
@@ -210,8 +209,8 @@
 								<xsl:value-of select="g:prezzo/g:pacchetto/g:formato"/>
 							</span>
 						</xsl:for-each>
-						<hr/>
 					</p>
+					<hr/>
 					<div class="nascosto mobile"><a href="#rifnav" title="torna a inizio pagina">Torna direttamente all'inizio della pagina</a></div>
 				</div>
 			</xsl:if>

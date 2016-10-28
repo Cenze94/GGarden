@@ -19,6 +19,11 @@ my $htmlPage = "../public_html/contattaci.html";
 my $parserxml  = XML::LibXML->new;
 my $doc = $parserxml->load_html(location => $htmlPage, recover => 1);
 
+#Aggiorno il tag HTML
+my $var=$doc->findnodes('/html')->get_node(0);
+$var->removeAttribute("xmlns");
+$var->removeAttribute("lang");
+
 #Aggiorno il link ai CSS
 my $string = $doc->findnodes('//link[@href="css/home.css"]')->get_node(0);
 $string->setAttribute("href", '../css/home.css');

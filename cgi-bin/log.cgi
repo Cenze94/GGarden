@@ -8,15 +8,15 @@ use XML::LibXSLT;
 use LogModule;
 
 sub update {
-	my $username=$_[0];
-	my $password=$_[1];
-	my $expectedUsername=$_[2];
-	my $expectedPassword=$_[3];
+	my $username = $_[0];
+	my $password = $_[1];
+	my $expectedUsername = $_[2];
+	my $expectedPassword = $_[3];
 	my $doc = &LogModule::log();
 	my $xpc = XML::LibXML::XPathContext->new($doc);
 	$xpc->registerNs('x', 'http://www.w3.org/1999/xhtml');
 	my $form = $xpc->findnodes('//x:div[@id="contenitore-login"]')->get_node(1);
-	my $parserxml  = XML::LibXML->new;
+	my $parserxml = XML::LibXML->new;
 	my $childString;
 	if(($username ne $expectedUsername || $password ne $expectedPassword) && !($username eq '' && $password eq '')) {
 		#Se ho lo username vuoto o la password vuota mantengo il dato vecchio
@@ -48,7 +48,7 @@ sub update {
 sub logError {
 	#carico l'html
 	my $htmlPage = "../data/database.xslt";
-	my $parserxml  = XML::LibXML->new;
+	my $parserxml = XML::LibXML->new;
 	my $doc = $parserxml->parse_file($htmlPage);
 	my $xpc = XML::LibXML::XPathContext->new($doc);
 	$xpc->registerNs('x', 'http://www.w3.org/1999/xhtml');
@@ -73,7 +73,7 @@ my $finalDoc;
 
 #estraggo i dati dall'XML
 my $filexml = "../data/profili.xml";
-my $parserxml  = XML::LibXML->new;
+my $parserxml = XML::LibXML->new;
 my $doc = $parserxml->parse_file($filexml);
 my $expectedUsername = $doc->findnodes('//p:profilo[@tipo = "amministratore"]/p:username');
 my $expectedPassword = $doc->findnodes('//p:profilo[@tipo = "amministratore"]/p:password');
@@ -99,8 +99,8 @@ if($update eq "yes") {
 #applico il foglio di stile al file modificato
 $filexml = "../data/database.xml";
 my $parserxslt = XML::LibXSLT->new;
-my $stylesheet  = $parserxslt->parse_stylesheet($finalDoc);
-my $results     = $stylesheet->transform_file($filexml);
+my $stylesheet = $parserxslt->parse_stylesheet($finalDoc);
+my $results = $stylesheet->transform_file($filexml);
 my $fileToPrint = $stylesheet->output_as_bytes($results);
 
 print $fileToPrint;

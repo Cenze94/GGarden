@@ -14,7 +14,7 @@ my $doc = $parserxml->load_xml(location => $xmlPage);
 my $filexml = "../data/database.xml";
 my $parserxslt = XML::LibXSLT->new;
 my $stylesheet  = $parserxslt->parse_stylesheet($doc);
-my $results     = $stylesheet->transform_file($filexml);
+my $results = $stylesheet->transform_file($filexml);
 my $fileToPrint = $stylesheet->output_as_bytes($results);
 
 print "Content-type: text/html; charset=utf-8\n\n";

@@ -154,7 +154,9 @@ sub updateOperation {
 	}
 	
 	print "Content-type: text/html; charset=utf-8\n\n";
-	print $doc->toStringHTML;
+	#cambiata 
+	# print $doc->toStringHTML;
+	print $doc;
 }
 
 sub createOperation {
@@ -169,7 +171,9 @@ sub createOperation {
 	$node = $node->findnodes("../ul/li/p/input[\@type='submit']")->get_node(1);
 	$node->setAttribute('value', "Aggiungi prodotto");
 	print "Content-type: text/html; charset=utf-8\n\n";
-	print $doc->toStringHTML;
+	#cambiata 
+	# print $doc->toStringHTML;
+	print $doc;
 }
 
 my $logString = CGI->new();
@@ -182,6 +186,10 @@ if($operation eq "delete") {
 	my $itemType = $logString->param('tipo');
 	my $parserxml  = XML::LibXML->new;
 	my $doc = $parserxml->load_html(location => $htmlPage, recover => 1);
+	#Aggiorno il tag HTML
+	my $var=$doc->findnodes('/html')->get_node(0);
+	$var->removeAttribute("xmlns");
+	$var->removeAttribute("lang");
 	my $div = $doc->findnodes("//div[\@id='content']")->get_node(1);
 	my $form = $div->findnodes("form/fieldset/input[\@name='operation']")->get_node(1);
 	$form->setAttribute('value', $operation);

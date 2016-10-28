@@ -605,23 +605,23 @@ input[type="button"], input[type="submit"]{
 
 .inputsL{
    float: left;
-    width: 19%;
+    width: 25%;
     clear: both;
 }
 
 .inputsR{
     float: left;
-    width: 79%;
+    width: 74%;
     margin-bottom: 1em;
 }
 
 .inputsL input {
     text-align: right;
-    width: 50%;
+    width: 70%;
 }
 
 .inputR{
-    width: 40%;
+    width: 49%;
 }
 
 .errorExecutor {

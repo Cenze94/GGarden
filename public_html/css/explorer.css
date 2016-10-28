@@ -599,15 +599,6 @@ hr{
     background: #b40029;
 }
 
-#format{
-    width: 30%;
-    margin-top: 2.2em;
-}
-
-#dataContent {
-    margin-top: 2.2em;
-}
-
 input[type="button"], input[type="submit"]{
     outline: none;
     cursor: pointer;
@@ -630,7 +621,7 @@ input[type="button"], input[type="submit"]{
 
 .inputsL{
    float: left;
-    width: 24%;
+    width: 25%;
     clear: both;
 }
 
@@ -644,8 +635,13 @@ input[type="button"], input[type="submit"]{
     display:none;
 }
 
+.inputsL input {
+    text-align: right;
+    width: 70%;
+}
+
 .inputR{
-    width: 30%;
+    width: 49%;
 }
 
 .errorExecutor {

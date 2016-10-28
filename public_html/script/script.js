@@ -31,7 +31,7 @@ var dettagli_form_contattaci = {
 }
 
 var dettagli_form_plant = {
-    "name": ["Nome pianta", /^[A-Z][a-z]+/, "Inserisci il nome della pianta"],
+    "name": ["Nome pianta", /^[a-zA-Z ]*$/, "Inserisci il nome della pianta"],
     "scientificName": ["Nome scientifico", /.*/, ""],
     "type": ["Tipo", /.*/, ""],
     "price": ["0.00", /^\d+[\.]?(\d{1,2})?$/, "Inserisci il prezzo separato da un punto"],
@@ -41,7 +41,7 @@ var dettagli_form_plant = {
 }
 
 var dettagli_form_tool = {
-    "name": ["Nome pianta", /^[A-Z][a-z]+/, "Inserisci il nome dell'attrezzo'"],
+    "name": ["Nome attrezzo", /^[a-zA-Z ]*$/, "Inserisci il nome dell'attrezzo'"],
     "type": ["Tipo", /.*/, ""],
     "price": ["0.00", /^\d+[\.]?(\d{1,2})?$/, "Inserisci il prezzo separato da un punto"],
     "format": ["al pezzo", /.*/, ""],
@@ -116,7 +116,7 @@ function validazioneCampo(matrix, input) {
 
     var regex = matrix[input.id][1];
     var text = input.value;
-    if ((text == matrix[input.id][0]) || text.search(regex) != 0) //occhio! controllo che l'input sia diverso dal placeholder (con il primo check)
+    if (((matrix[input.id][0])!="" && (text == matrix[input.id][0])) || text.search(regex) != 0) //occhio! controllo che l'input sia diverso dal placeholder (con il primo check)
     {
         mostraErrore(matrix, input);
         return false;

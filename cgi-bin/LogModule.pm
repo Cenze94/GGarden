@@ -55,6 +55,7 @@ sub log {
 	$child = $parserxml->parse_string($string);
 	$child = $child->removeChild($child->firstChild());
 	$node = $nodes[0]->parentNode()->insertAfter($child, $nodes[0]->lastChild()->parentNode());
+	# $node = $nodes[0]->insertAfter($child, $nodes[0]->lastChild());
 	$string = '<div class=\'productButtons\' xmlns=\'http://www.w3.org/1999/xhtml\'>
 					<a href=\'../cgi-bin/databaseManager.cgi?operation=update&amp;tipo=attrezzo&amp;id={$id}\' class=\'productButton\'>Modifica prodotto</a>
 					<a href=\'../cgi-bin/databaseManager.cgi?operation=delete&amp;id={$id}\' class=\'productButton\'>Elimina prodotto</a>
@@ -62,7 +63,7 @@ sub log {
 	$child = $parserxml->parse_string($string);
 	$child = $child->removeChild($child->firstChild());
 	$node = $nodes[1]->parentNode()->insertAfter($child, $nodes[1]->lastChild()->parentNode());
-	
+	#$node = $nodes[1]->insertAfter($child, $nodes[1]->lastChild());
 	#restituisco la pagina modificata
 	return $doc;
 }

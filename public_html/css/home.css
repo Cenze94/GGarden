@@ -537,6 +537,7 @@ img {
     font-style: oblique;
     text-align: right;
     margin: 10px;
+    clear: both;
 }
 
 .subbutton{
@@ -573,6 +574,8 @@ img {
 
 .productButtons{
     padding: 2em;
+    width: 96%;
+    clear: both;
 }
 
 .productButton{

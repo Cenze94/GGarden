@@ -537,7 +537,6 @@ img {
     font-style: oblique;
     text-align: right;
     margin: 10px;
-    clear: both;
 }
 
 .subbutton{
@@ -604,30 +603,25 @@ input[type="button"], input[type="submit"]{
     clear: both; 
 }
 
-#dataContent{
-    margin-top: 1.75em;
-}
-
-#format{
-    width: 30%;
-    margin-top: 1.75em;
-}
-
-
 .inputsL{
    float: left;
-    width: 24%;
+    width: 19%;
     clear: both;
 }
 
 .inputsR{
     float: left;
-    width: 74%;
+    width: 79%;
     margin-bottom: 1em;
 }
 
+.inputsL input {
+    text-align: right;
+    width: 50%;
+}
+
 .inputR{
-    width: 30%;
+    width: 40%;
 }
 
 .errorExecutor {

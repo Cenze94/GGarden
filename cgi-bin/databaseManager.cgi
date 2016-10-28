@@ -75,10 +75,10 @@ sub updateOperation {
 		$format = encode_entities($format);
 		$string = $parserxml->parse_string("<li>
 			<div class='inputsL'>
-				<label for='price'  class='inputL'>Prezzo (es. &#8364; 7.50 a pezzo): &#8364; </label>
+				<label for='price'  class='inputL'>Prezzo (es. 7.50): &#8364; </label>
 				<input type='text' name='price[".$i."]' id='price' class='inputL' value='$price'/>
 			</div><div class='inputsR'>
-				<label for='format".$i."' class='inputR'>Formato:</label>
+				<label for='format".$i."' class='inputR'>Formato (es. al pezzo):</label>
 				<input type='text' name='format[".$i."]' id='format".$i."' class='inputR' value=\"".$format."\"/>
 			</div>
 		</li>");
@@ -115,11 +115,11 @@ sub updateOperation {
 		$dataContent = encode_entities($dataContent);
 		$string = $parserxml->parse_string("<li>
 			<div class='inputsL'>
-				<label for='dataName".$i."' class='inputL'>Dato (es. Altezza: 10cm):</label>
+				<label for='dataName".$i."' class='inputL'>Dato (es. Altezza):</label>
 				<input type='text' name='dataName[".$i."]' id='dataName".$i."' class='inputL' value=\"".$dataName."\"/>
 			</div>
 			<div class='inputsR'>
-				<label for='dataContent' class='inputL'>Contenuto:</label>
+				<label for='dataContent' class='inputL'>Formato (es. 10cm):</label>
 				<input type='text' name='dataContent[".$i."]' id='dataContent".$i."' class='inputR' value=\"".$dataContent."\"/>
 			</div>
 			</li>");

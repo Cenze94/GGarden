@@ -537,6 +537,7 @@ img {
     font-style: oblique;
     text-align: right;
     margin: 10px;
+    clear: both;
 }
 
 .subbutton{

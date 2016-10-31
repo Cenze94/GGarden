@@ -243,17 +243,24 @@ var counter_prezzo = 1;
 var counter_valore = 1;
 
 function addNInputData(divname, number) {
-    for(i=0; i<number; ++i)
-        addInputData(divName);
+    for(i=0; i<number; ++i){
+        dettagli_dynamic_input['dataName'+counter_valore]=["Nome del dato", /.*/, ""];
+        dettagli_dynamic_input['dataContent'+counter_valore]=["valore", /.*/, ""];
+        counter_valore++;
+    }
+    caricamento(dettagli_dynamic_input, false);
 }
 
 function addNInputPrice(divName, number) {
-    for(i=0; i<number; ++i)
-        addInputPrice(divName);
+    for(i=0; i<number; ++i){
+        dettagli_dynamic_input['price'+counter_prezzo]=["", /^\d+[\.]?(\d{1,2})?$/, "Inserisci il prezzo separato da un punto"];
+        counter_prezzo++;
+    }
+    caricamento(dettagli_dynamic_input, false);
 }
 
 function addInputPrice(divName) { 
-    var toInsert = '<div class="inputsL"><label for="price" class="inputL">Prezzo (es. 7.50): &euro; </label><input type="text" name="price\[\]" id="price' + (counter_prezzo + 1) + '" class="inputL"/></div><div class="inputsR"><label for="format' + (counter_prezzo + 1) + '" class="inputR">Formato (es. al pezzo):</label><input type="text" name="price\[\]" id="format' + (counter_prezzo + 1) + '" class="inputR"/></div>';
+    var toInsert = '<div class="inputsL"><label for="price" class="inputL">Prezzo (es. 7.50): &euro; </label><input type="text" name="price\[\]" id="price' + (counter_prezzo + 1) + '" class="inputL"/></div><div class="inputsR"><label for="format' + (counter_prezzo + 1) + '" class="inputR">Formato (es. al pezzo):</label><input type="text" name="format\[\]" id="format' + (counter_prezzo + 1) + '" class="inputR"/></div>';
     counter_prezzo = addInput(divName, counter_prezzo, toInsert);
     dettagli_dynamic_input['price'+counter_prezzo]=["", /^\d+[\.]?(\d{1,2})?$/, "Inserisci il prezzo separato da un punto"];
     // dettagli_dynamic_input['format'+counter_prezzo]=["", /.*/, ""];

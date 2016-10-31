@@ -57,7 +57,7 @@ sub updateOperation {
 	$node->setAttribute('value', $value);
 	$node = $node->findnodes("../../../li/ul[\@id='dynamicInputPrice']/li")->get_node(1);
 	my @values = $xml->findnodes("./p:prezzo/p:pacchetto");
-	
+	my $nodeAncestor = $node->parentNode();
 	(my $price, my $format) = $values[0]->childNodes();
 	$price = $price->textContent();
 	$format = $format->textContent();
@@ -68,28 +68,30 @@ sub updateOperation {
 	$node = $node->findnodes("../../div[\@class='inputsR']/input[\@id='format']")->get_node(1);
 	$node->setAttribute('value', $format);
 	$node=$node->parentNode();
-	for (my $i=1; $i<scalar @values; $i++) {
-		(my $price, my $format) = $values[$i]->childNodes();
-		$price = $price->textContent();
-		$format = $format->textContent();
-		$format = encode_entities($format);
-		$string = $parserxml->parse_string("<li>
-			<div class='inputsL'>
-				<label for='price'  class='inputL'>Prezzo (es. 7.50): &#8364; </label>
-				<input type='text' name='price[".$i."]' id='price' class='inputL' value='$price'/>
-			</div><div class='inputsR'>
-				<label for='format".$i."' class='inputR'>Formato (es. al pezzo):</label>
-				<input type='text' name='format[".$i."]' id='format".$i."' class='inputR' value=\"".$format."\"/>
-			</div>
-		</li>");
-		$string = $string->removeChild($string->firstChild());
-		# if($i==0){ #L'unico figlio già presente è quello del primo dato nuovo da inserire, che voglio per ultimo
-			$node = $node->parentNode()->insertAfter($string, $node);
-		# } else {
-		# 	$node = $node->parentNode()->insertAfter($string, $node);
-		# }
+	if(scalar @values > 0){
+		for (my $i=1; $i<scalar @values; $i++) {
+			(my $price, my $format) = $values[$i]->childNodes();
+			$price = $price->textContent();
+			$format = $format->textContent();
+			$format = encode_entities($format);
+			$string = $parserxml->parse_string("<li>
+				<div class='inputsL'>
+					<label for='price'  class='inputL'>Prezzo (es. 7.50): &#8364; </label>
+					<input type='text' name='price' id='price[".$i."]' class='inputL' value='$price'/>
+				</div><div class='inputsR'>
+					<label for='format".$i."' class='inputR'>Formato (es. al pezzo):</label>
+					<input type='text' name='format[]' id='format".$i."' class='inputR' value=\"".$format."\"/>
+				</div>
+			</li>");
+			$string = $string->removeChild($string->firstChild());
+			# if($i==0){ #L'unico figlio già presente è quello del primo dato nuovo da inserire, che voglio per ultimo
+				$node = $node->parentNode()->insertAfter($string, $node);
+			# } else {
+			# 	$node = $node->parentNode()->insertAfter($string, $node);
+			# }
+		}
+		$nodeAncestor -> setAttribute('onload', "addNInputPrice('dynamicInputPrice',".scalar @values.")");
 	}
-
 	$value = $xml->findnodes("./p:descrizione/text()")->get_node(1);
 	$value = decode_entities($value);
 	$node = $node->findnodes("../../../../li/p/textarea[\@name='description']")->get_node(1);
@@ -189,7 +191,7 @@ if($operation eq "delete") {
 	#Aggiorno il tag HTML
 	my $var=$doc->findnodes('/html')->get_node(0);
 	$var->removeAttribute("xmlns");
-	$var->removeAttribute("lang");
+	$var->removeAttribute("lang"); 
 	my $div = $doc->findnodes("//div[\@id='content']")->get_node(1);
 	my $form = $div->findnodes("form/fieldset/input[\@name='operation']")->get_node(1);
 	$form->setAttribute('value', $operation);

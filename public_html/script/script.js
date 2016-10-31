@@ -34,8 +34,8 @@ var dettagli_form_plant = {
     "name": ["Nome pianta", /^[a-zA-Z ]*$/, "Inserisci il nome della pianta"],
     "scientificName": ["Nome scientifico", /.*/, ""],
     "type": ["Tipo", /.*/, ""],
-    "price": ["0.00", /^\d+[\.]?(\d{1,2})?$/, "Inserisci il prezzo separato da un punto"],
-    "format": ["per una confezione di 10 fiori", /.*/, ""],
+    "price": ["", /^\d+[\.]?(\d{1,2})?$/, "Inserisci il prezzo separato da un punto"],
+    //"format": ["", /.*/, ""],
     "dataName": ["Nome del dato", /.*/, ""],
     "dataContent": ["valore", /.*/, ""]
 }
@@ -43,8 +43,8 @@ var dettagli_form_plant = {
 var dettagli_form_tool = {
     "name": ["Nome attrezzo", /^[a-zA-Z ]*$/, "Inserisci il nome dell'attrezzo'"],
     "type": ["Tipo", /.*/, ""],
-    "price": ["0.00", /^\d+[\.]?(\d{1,2})?$/, "Inserisci il prezzo separato da un punto"],
-    "format": ["al pezzo", /.*/, ""],
+    "price": ["", /^\d+[\.]?(\d{1,2})?$/, "Inserisci il prezzo separato da un punto"],
+    // "format": ["al pezzo", /.*/, ""],
     "dataName": ["Nome del dato", /.*/, ""],
     "dataContent": ["valore", /.*/, ""]
 }
@@ -126,7 +126,7 @@ function validazioneCampo(matrix, input) {
 
 // Funzioni per il controllo sul tipo dell'immagine inserita nella form
 function checkPictureType(Extension) {
-    return (Extension == "gif" || Extension == "png" || Extension == "bmp" || Extension == "jpeg" || Extension == "jpg");
+    return (Extension == "gif" || Extension == "png" || Extension == "svg" || Extension == "bmp" || Extension == "jpeg" || Extension == "jpg");
 }
 
 function checkImage() {
@@ -242,16 +242,26 @@ function addPrezzo() {
 var counter_prezzo = 1;
 var counter_valore = 1;
 
+function addNInputData(divname, number) {
+    for(i=0; i<number; ++i)
+        addInputData(divName);
+}
+
+function addNInputPrice(divName, number) {
+    for(i=0; i<number; ++i)
+        addInputPrice(divName);
+}
+
 function addInputPrice(divName) { 
-    var toInsert = '<div class="inputsL"><label for="price" class="inputL">Prezzo (es. 7.50): &euro; </label><input type="text" name="price\[' + (counter_prezzo + 1) + '\]" id="price' + (counter_prezzo + 1) + '" class="inputL"/></div><div class="inputsR"><label for="format' + (counter_prezzo + 1) + '" class="inputR">Formato (es. al pezzo):</label><input type="text" name="price\[' + (counter_prezzo + 1) + '\]" id="format' + (counter_prezzo + 1) + '" class="inputR"/></div>';
+    var toInsert = '<div class="inputsL"><label for="price" class="inputL">Prezzo (es. 7.50): &euro; </label><input type="text" name="price\[\]" id="price' + (counter_prezzo + 1) + '" class="inputL"/></div><div class="inputsR"><label for="format' + (counter_prezzo + 1) + '" class="inputR">Formato (es. al pezzo):</label><input type="text" name="price\[\]" id="format' + (counter_prezzo + 1) + '" class="inputR"/></div>';
     counter_prezzo = addInput(divName, counter_prezzo, toInsert);
-    dettagli_dynamic_input['price'+counter_prezzo]=["0.00", /^\d+[\.]?(\d{1,2})?$/, "Inserisci il prezzo separato da un punto"];
-    dettagli_dynamic_input['format'+counter_prezzo]=["per una confezione", /.*/, ""];
+    dettagli_dynamic_input['price'+counter_prezzo]=["", /^\d+[\.]?(\d{1,2})?$/, "Inserisci il prezzo separato da un punto"];
+    // dettagli_dynamic_input['format'+counter_prezzo]=["", /.*/, ""];
     caricamento(dettagli_dynamic_input, false);
 }
 
 function addInputData(divName) {
-    var toInsert = '<div class="inputsL"><label for="dataName" class="inputL">Dato(es. Altezza):</label><input type="text" name="dataName\[' + (counter_valore + 1)+ '\]" id="dataName' + (counter_valore + 1)+'" class="inputL"/></div><div class="inputsR"><label for="dataContent' + (counter_valore + 1) + '" class="inputR">Formato (es. 10cm):</label><input type="text" name="dato\[' + (counter_valore + 1) + '\]" id="dataContent' + (counter_valore + 1) + '" class="inputR"/></div>';
+    var toInsert = '<div class="inputsL"><label for="dataName" class="inputL">Dato (es. Altezza):</label><input type="text" name="dataName\[\]" id="dataName' + (counter_valore + 1)+'" class="inputL"/></div><div class="inputsR"><label for="dataContent' + (counter_valore + 1) + '" class="inputR">Formato (es. 10cm):</label><input type="text" name="dato\[\]" id="dataContent' + (counter_valore + 1) + '" class="inputR"/></div>';
     counter_valore = addInput(divName, counter_valore, toInsert);
     dettagli_dynamic_input['dataName'+counter_valore]=["Nome del dato", /.*/, ""];
     dettagli_dynamic_input['dataContent'+counter_valore]=["valore", /.*/, ""];

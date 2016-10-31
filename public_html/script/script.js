@@ -25,14 +25,14 @@ chiave: nome dell'input da controllare
 
 // Campi dati per le varie form
 var dettagli_form_contattaci = {
-    "first_name": ["Mario", /^[A-Z][a-z]+/, "Inserisci il tuo nome"],
+    "first_name": ["Mario", /^[A-Za-z]+/, "Inserisci il tuo nome"],
     "last_name": ["Rossi", /^[A-Z][a-z]+( ([A-Z][a-z]+))?/, "Inserisci il tuo cognome"],
     "email": ["Inserire e-mail", /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/, "Inserisci un indirizzo email valido"]
 }
 
 var dettagli_form_plant = {
-    "name": ["Nome pianta", /^[a-zA-Z ]*$/, "Inserisci il nome della pianta"],
-    "scientificName": ["Nome scientifico", /.*/, ""],
+    "name": ["Nome pianta", /^[A-Za-z- ]*$/, "Inserisci il nome della pianta"],
+    "scientificName": ["Nome scientifico", /[A-Za-z- ]*/, ""],
     "type": ["Tipo", /.*/, ""],
     "price": ["", /^\d+[\.]?(\d{1,2})?$/, "Inserisci il prezzo separato da un punto"],
     //"format": ["", /.*/, ""],
@@ -116,7 +116,7 @@ function validazioneCampo(matrix, input) {
 
     var regex = matrix[input.id][1];
     var text = input.value;
-    if (((matrix[input.id][0])!="" && (text == matrix[input.id][0])) || text.search(regex) != 0) //occhio! controllo che l'input sia diverso dal placeholder (con il primo check)
+    if (((text == matrix[input.id][0])) || text.search(regex) != 0) //occhio! controllo che l'input sia diverso dal placeholder (con il primo check)
     {
         mostraErrore(matrix, input);
         return false;

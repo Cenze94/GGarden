@@ -59,10 +59,10 @@
 				<div id="footer" class="footer">
 					<div class="footer-left">
 						<h3 class="footerlogo"><span id="logo_mini">Ggarden</span></h3>
-						<p class="footer-menu">
-							<a href="index.html" hreflang="it" xml:lang="en" tabindex="100">Home</a>
-							<a href="realizzazioni.html" hreflang="it" tabindex="101">Realizzazioni </a>
-							<a href="cgi-bin/checkLog.cgi" hreflang="it" tabindex="102">Vendita</a>
+						<p class="footer-menu, testo-footer">
+							<a href="index.html" hreflang="it" xml:lang="en" tabindex="100">Home</a> | 
+							<a href="realizzazioni.html" hreflang="it" tabindex="101">Realizzazioni </a> | 
+							<a href="cgi-bin/checkLog.cgi" hreflang="it" tabindex="102">Vendita</a> | 
 							<a href="contattaci.html" hreflang="it" tabindex="103">Contattaci</a>
 						</p>
 						<p class="footer-nome-azienda">Ggarden &#169; 2016</p>
@@ -119,21 +119,21 @@
 					</p>
 					<xsl:if test="g:dettagli/g:dato">
 						<h4>DATI</h4>
-						<div class="dati">
-							<ul>
-								<xsl:for-each select="g:dettagli/g:dato">
-									<li>
-										<span class="formato">
-											<xsl:value-of select="g:nome"/>
-											<xsl:if test="g:nome!=''">: </xsl:if>
-										</span>
-										<span class="contenuto">
-											<xsl:value-of select="g:contenuto"/>
-										</span>
-									</li>
-								</xsl:for-each>
-							</ul>
-						</div>
+							<div class="dati">
+	                        <ul>
+	                            <xsl:for-each select="g:dettagli/g:dato">
+	                                <li class="info">
+	                                    <span class="formato">
+	                                        <xsl:value-of select="g:nome"/>
+	                                        <xsl:if test="g:nome!=''">: </xsl:if>
+	                                    </span>
+	                                    <span class="contenuto">
+	                                        <xsl:value-of select="g:contenuto"/>
+	                                    </span>
+	                                </li>
+	                            </xsl:for-each>
+	                        </ul>
+	                    </div>
 					</xsl:if>
 					<h4>PIANTAGIONE</h4>
 					<p class="desc">
@@ -185,20 +185,20 @@
 					<xsl:if test="g:dettagli/g:dato">
 						<h4>DATI</h4>
 						<div class="dati">
-							<ul>
-								<xsl:for-each select="g:dettagli/g:dato">
-									<li>
-										<span class="formato">
-											<xsl:value-of select="g:nome"/>
-											<xsl:if test="g:nome!=''">: </xsl:if>
-										</span>
-										<span class="contenuto">
-											<xsl:value-of select="g:contenuto"/>
-										</span>
-									</li>
-								</xsl:for-each>
-							</ul>
-						</div>
+                        <ul>
+                            <xsl:for-each select="g:dettagli/g:dato">
+                                <li class="info">
+                                    <span class="formato">
+                                        <xsl:value-of select="g:nome"/>
+                                        <xsl:if test="g:nome!=''">: </xsl:if>
+                                    </span>
+                                    <span class="contenuto">
+                                        <xsl:value-of select="g:contenuto"/>
+                                    </span>
+                                </li>
+                            </xsl:for-each>
+                        </ul>
+                    </div>
 					</xsl:if>
 					<p class="prezzo">
 						<xsl:for-each select="g:prezzo/g:pacchetto">

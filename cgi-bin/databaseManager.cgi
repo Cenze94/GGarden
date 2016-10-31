@@ -67,7 +67,7 @@ sub updateOperation {
 	$node->setAttribute('value', $price);
 	$node = $node->findnodes("../../div[\@class='inputsR']/input[\@id='format']")->get_node(1);
 	$node->setAttribute('value', $format);
-	$node=$node->parentNode();
+	$node=$node->parentNode()->parentNode();
 	if(scalar @values > 0){
 		for (my $i=1; $i<scalar @values; $i++) {
 			(my $price, my $format) = $values[$i]->childNodes();
@@ -76,7 +76,7 @@ sub updateOperation {
 			$format = encode_entities($format);
 			$string = $parserxml->parse_string("<li>
 				<div class='inputsL'>
-					<label for='price' class='inputL'>Prezzo (es. 7.50): &#8364; </label>
+					<label for='price".$i."' class='inputL'>Prezzo (es. 7.50): &#8364; </label>
 					<input type='text' name='price[]' id='price".$i."' class='inputL' value='$price'/>
 				</div><div class='inputsR'>
 					<label for='format".$i."' class='inputR'>Formato (es. al pezzo):</label>
@@ -95,7 +95,7 @@ sub updateOperation {
 	}
 	$value = $xml->findnodes("./p:descrizione/text()")->get_node(1);
 	$value = decode_entities($value);
-	$node = $node->findnodes("../../../../li/p/textarea[\@name='description']")->get_node(1);
+	$node = $node->findnodes("../../../li/p/textarea[\@name='description']")->get_node(1);
 	$node->appendTextNode($value);
 	$node = $node->findnodes("../../../li/ul[\@id='dynamicInputData']/li")->get_node(1);
 	@values = $xml->findnodes("./p:dettagli/p:dato");
@@ -109,7 +109,7 @@ sub updateOperation {
 	$node->setAttribute('value', $dataName);
 	$node = $node->findnodes("../../div[\@class='inputsR']/input[\@id='dataContent']")->get_node(1);
 	$node->setAttribute('value', $dataContent);
-	$node=$node->parentNode();
+	$node=$node->parentNode()->parentNode();
 	for (my $i=1; $i<scalar @values; $i++) {
 		(my $dataName, my $dataContent) = $values[$i]->childNodes();
 		$dataName = $dataName->textContent();
@@ -122,7 +122,7 @@ sub updateOperation {
 				<input type='text' name='dataName[]' id='dataName".$i."' class='inputL' value=\"".$dataName."\"/>
 			</div>
 			<div class='inputsR'>
-				<label for='dataContent' class='inputL'>Formato (es. 10cm):</label>
+				<label for='dataContent".$i."' class='inputL'>Formato (es. 10cm):</label>
 				<input type='text' name='dataContent[]' id='dataContent".$i."' class='inputR' value=\"".$dataContent."\"/>
 			</div>
 			</li>");
@@ -135,7 +135,7 @@ sub updateOperation {
 		#}
 	}
 
-	$node = $node->findnodes("../../../../li/p/input[\@type='submit']")->get_node(1);
+	$node = $node->findnodes("../../../li/p/input[\@type='submit']")->get_node(1);
 	$node->setAttribute('value', "Modifica prodotto");
 	if($itemType eq 'pianta') {
 		$value = $xml->findnodes("./p:nome_scientifico/text()")->get_node(1);

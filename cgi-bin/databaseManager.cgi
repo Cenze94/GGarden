@@ -90,7 +90,8 @@ sub updateOperation {
 			# 	$node = $node->parentNode()->insertAfter($string, $node);
 			# }
 		}
-		$nodeAncestor -> setAttribute('onload', "addNInputPrice('dynamicInputPrice',".scalar @values.")");
+		my $n_entry = (scalar @values)-1;
+		$nodeAncestor -> setAttribute('onload', "addNInputPrice('dynamicInputPrice',".$n_entry.");");
 	}
 	$value = $xml->findnodes("./p:descrizione/text()")->get_node(1);
 	$value = decode_entities($value);

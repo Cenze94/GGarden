@@ -216,29 +216,6 @@ function errImg(fuData) {
 
 // Funzioni per aumentare dinamicamente il numero di campi dati della form
 
-var n_Prezzo = 1;
-var n_Valore = 1;
-
-function addPrezzo() {
-    var container = document.getElementsByClassName('create');
-    // container.appendChild(document.createTextNode("Member " + (i+1)));
-    // Create an <input> element, set its type and name attributes
-    var ln = document.createElement("li");
-    var par = document.createElement("p");
-    var input = document.createElement("input");
-    input.type = "text";
-    input.name = "price" + n_Prezzo;
-    var lbl = document.createElement("label");
-    lbl.setAttribute("for", "price" + (n_Prezzo + 1));
-    var t = document.createTextNode("Prezzo: &euro; ");
-    lbl.appendChild(t);
-    par.appendChild(lbl);
-    par.appendChild(input);
-    ln.appendChild(par)
-    container.appendChild(ln);
-    n_Prezzo = n_Prezzo + 1;
-}
-
 var counter_prezzo = 1;
 var counter_valore = 1;
 

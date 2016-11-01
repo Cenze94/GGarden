@@ -57,7 +57,6 @@ sub updateOperation {
 	$node->setAttribute('value', $value);
 	$node = $node->findnodes("../../../li/ul[\@id='dynamicInputPrice']/li")->get_node(1);
 	my @values = $xml->findnodes("./p:prezzo/p:pacchetto");
-	my $nodeAncestor = $node->parentNode();
 	(my $price, my $format) = $values[0]->childNodes();
 	$price = $price->textContent();
 	$format = $format->textContent();
@@ -90,8 +89,6 @@ sub updateOperation {
 			# 	$node = $node->parentNode()->insertAfter($string, $node);
 			# }
 		}
-		my $n_entry = (scalar @values)-1;
-		$nodeAncestor -> setAttribute('onload', "addNInputPrice('dynamicInputPrice',".$n_entry.");");
 	}
 	$value = $xml->findnodes("./p:descrizione/text()")->get_node(1);
 	$value = decode_entities($value);

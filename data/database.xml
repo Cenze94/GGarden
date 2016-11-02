@@ -108,7 +108,7 @@ Altezza alla fornitura 70-80 cm.</p:descrizione>
 	<p:attrezzo id="00000007" formato="png">
 		<p:nome>Decespugliatore Sterwins 36 BC LI-2</p:nome>
 		<p:tipo>Decespugliatori</p:tipo>
-		<p:prezzo><p:pacchetto><p:valore>149.00</p:valore><p:formato/></p:pacchetto></p:prezzo>
+		<p:prezzo><p:pacchetto><p:valore>149.00</p:valore><p:formato>batteria esclusa</p:formato></p:pacchetto></p:prezzo>
 		<p:descrizione>Decespugliatore ideale per taglio erba e sterpaglie. Silenzioso e di facile manutenzione grazie al motore senza spazzole.</p:descrizione>
 		<p:dettagli>
 			<p:dato><p:nome>Motore</p:nome><p:contenuto>a batteria</p:contenuto></p:dato>
@@ -124,7 +124,7 @@ Altezza alla fornitura 70-80 cm.</p:descrizione>
 	<p:attrezzo id="00000008" formato="png">
 		<p:nome>Trattorino Alpina AT1 66 B</p:nome>
 		<p:tipo>Trattorini</p:tipo>
-		<p:prezzo><p:pacchetto><p:valore>1199.00</p:valore><p:formato/></p:pacchetto></p:prezzo>
+		<p:prezzo><p:pacchetto><p:valore>1199.00</p:valore><p:formato>cadauno</p:formato></p:pacchetto></p:prezzo>
 		<p:descrizione>Trattorino comodo e di dimensioni ridotte, adatto per gli usi domestici e per piccoli appezzamenti.</p:descrizione>
 		<p:dettagli>
 			<p:dato><p:nome>Marca</p:nome><p:contenuto>Alpina</p:contenuto></p:dato>
@@ -148,7 +148,7 @@ Altezza alla fornitura 70-80 cm.</p:descrizione>
 	<p:attrezzo id="00000009" formato="png">
 		<p:nome>Arieggiatore a scoppio Alko 38 VLB</p:nome>
 		<p:tipo>Arieggiatori</p:tipo>
-		<p:prezzo><p:pacchetto><p:valore>369.00</p:valore><p:formato/></p:pacchetto></p:prezzo>
+		<p:prezzo><p:pacchetto><p:valore>369.00</p:valore><p:formato>cadauno</p:formato></p:pacchetto></p:prezzo>
 		<p:descrizione>Attrezzo indicato per ripulire il proprio giardino da erbacce e vegetali indesiderati, Alko vi lascierà stupiti dalla sua semplicità e maneggevolezza.</p:descrizione>
 		<p:dettagli>
 			<p:dato><p:nome>Cilindrata</p:nome><p:contenuto>53,2 cc</p:contenuto></p:dato>
@@ -165,7 +165,7 @@ Altezza alla fornitura 70-80 cm.</p:descrizione>
 	<p:attrezzo id="00000010" formato="png">
 		<p:nome>Zappetta a cuore</p:nome>
 		<p:tipo>Attrezzi da giardinaggio</p:tipo>
-		<p:prezzo><p:pacchetto><p:valore>7,50</p:valore><p:formato/></p:pacchetto></p:prezzo>
+		<p:prezzo><p:pacchetto><p:valore>7.50</p:valore><p:formato>al pezzo</p:formato></p:pacchetto></p:prezzo>
 		<p:descrizione>Strumento adatto per piantare, rimarrai soddisfatto dalla resistenza dell'acciaio e dalla comodità del manico in puro faggio.</p:descrizione>
 		<p:dettagli>
 			<p:dato><p:nome>Materiale</p:nome><p:contenuto>acciaio</p:contenuto></p:dato>

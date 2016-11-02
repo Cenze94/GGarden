@@ -137,7 +137,7 @@ Altezza alla fornitura 70-80 cm.</p:descrizione>
 			<p:dato><p:nome>Altezza taglio minima</p:nome><p:contenuto>30 mm</p:contenuto></p:dato>
 			<p:dato><p:nome>Altezza taglio massima</p:nome><p:contenuto>80 mm</p:contenuto></p:dato>
 			<p:dato><p:nome>Larghezza taglio</p:nome><p:contenuto>66 cm</p:contenuto></p:dato>
-			<p:dato><p:nome>Superificie</p:nome><p:contenuto>3000 m²</p:contenuto></p:dato>
+			<p:dato><p:nome>Superficie</p:nome><p:contenuto>3000 m²</p:contenuto></p:dato>
 			<p:dato><p:nome>Scarico dell'erba</p:nome><p:contenuto>posteriore nel cesto</p:contenuto></p:dato>
 			<p:dato><p:nome>Capacità</p:nome><p:contenuto>cesto 150 L</p:contenuto></p:dato>
 			<p:dato><p:nome>Numero di lame</p:nome><p:contenuto>2</p:contenuto></p:dato>

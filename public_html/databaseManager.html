@@ -15,8 +15,13 @@
 		<link rel="stylesheet" type="text/css" href="../css/small-devices.css" media="screen and (max-width: 650px)" />
 		<!--[if lte IE 8]><link rel="stylesheet" type="text/css" href="../css/explorer.css"/><![endif]-->
 		<link rel="icon" href="../img/logo2.png" type="image/png" />
+        <meta http-equiv="Content-Script-Type" content="application/javascript" />
+		<script type="text/javascript" src="../script/script.js"></script>
 	</head>
 	<body onload=''>
+        <p class="nascosto">
+            <a title="salta header" href="#contenitore-menu" tabindex="1" accesskey="a">Salta l&apos;intestazione</a>
+        </p>
 		<div id="header">
 			<h1><span id="logo" xml:lang="en" class="nascosto">GGarden</span></h1>
 			<div id="breadcrumbs">
@@ -25,12 +30,15 @@
 					<fieldset>
 						<legend class="nascosto">Cerca un prodotto o un servizio</legend>
                         <label for="ricerca" class="nascosto">Inserisci i termini da cercare</label>
-						<input type="text" name="ricerca" id="ricerca" class="ricerca" accesskey="s" tabindex="1" />
-						<input type="submit" name="conferma" id="conferma" class="ricerca" value="Cerca" accesskey="d" tabindex="2"/>
+						<input type="text" name="ricerca" id="ricerca" class="ricerca" accesskey="s" tabindex="2" />
+						<input type="submit" name="conferma" id="conferma" class="ricerca" value="Cerca" accesskey="d" tabindex="3"/>
 					</fieldset>
 				</form>
 			</div>
 			<div id="contenitore-menu">
+                <p class="nascosto">
+                    <a href="#content" title="salta al contenuto principale">Salta menu navigazione</a>
+                </p>
 				<ul class="menu">
 					<li><a href="../index.html" id="home" class="nav" xml:lang="en">Home </a></li>
 					<li><a href="../realizzazioni.html" id="real" class="nav">Realizzazioni </a></li>
@@ -40,6 +48,9 @@
 			</div>
 		</div>
 		<div id="content">
+            <p class="nascosto">
+                <a title="saltare-contenuto-testuale" href="#footer" tabindex="30" accesskey="b">Salta il contenuto testuale</a>
+            </p>
 			<form class='databaseManager' action='databaseExecutor.cgi' enctype='multipart/form-data' method='post' onsubmit=''>
 				<fieldset>
 					<legend></legend>
@@ -63,6 +74,7 @@
 						<li>					
 							<ul id='dynamicInputPrice'>
 								<li>
+									<noscript><p>Per rimuovere una coppia prezzo-formato, svuotarne i campi</p></noscript>
 									<div class="inputsL">
 										<label for='price'  class='inputL'>Prezzo (es. 7.50): &#8364; </label>
 										<input type='text' name='price[]' id='price' class='inputL'/>
@@ -81,6 +93,7 @@
 							</p>
 							<ul id='dynamicInputData'>
 								<li>
+									<noscript><p>Per rimuovere una coppia dato-formato, svuotarne i campi</p></noscript>
 									<div class="inputsL">
 										<label for='dataName' class='inputL'>Dato (es. Altezza):</label>
 										<input type='text' name='dataName[]' id='dataName' class='inputL'/>
@@ -102,6 +115,10 @@
 			</form>
 		</div>
 		<div id="footer" class="footer">
+            <ul class="nascosto">
+                <li><a href="#header" title="vai-a-inizio-pagina" tabindex="100" accesskey="i">Torna all&apos;inizio pagina</a></li>
+                <li><a href="#finePagina" title="vai-a-fine-pagina" tabindex="110" accesskey="f">Vai a fine pagina</a></li>
+            </ul>
 			<div class="footer-left">
 				<h2 class="footerlogo"><span id="logo_mini">Ggarden</span></h2>
 				<p class="footer-menu, testo-footer">
@@ -130,6 +147,6 @@
 				</p>
 			</div>
 		</div>
-		<script type="text/javascript" src="../script/script.js"></script>
+        <p id="finePagina"></p>
 	</body>
 </html>

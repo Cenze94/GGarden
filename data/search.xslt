@@ -25,26 +25,29 @@
 					<![CDATA[[if lte IE 8]><link rel="stylesheet" type="text/css" href="../css/explorer.css"/><![endif]]]>
 				</xsl:comment>
 				<link rel="icon" href="../img/logo2.png" type="image/png" />
+				<script type="text/javascript" src="../script/script.js"></script>
 			</head>
 			<body>
+		        <p class="nascosto">
+		            <a title="salta header" href="#contenitore-menu" tabindex="1" accesskey="a">Salta l&apos;intestazione</a>
+		        </p>
 				<div id="header">
 					<h1><span id="logo" xml:lang="en" class="nascosto">GGarden</span></h1>
 					<div id="breadcrumbs">
 						<span id="rifnav" >Ti trovi in: <a href="../index.html" xml:lang="en">Home</a> / <strong>Esito Ricerca</strong></span>
 						<form class="headersearch" action="search.cgi" method="post">
 							<fieldset>
-								<legend class="nascosto">Cerca un prodotto o un servizio</legend>
-								<label for="ricerca" class="nascosto">Inserisci i termini da cercare</label>
-								<label for="ricerca" class="nascosto">Cerca un prodotto o un servizio</label>
-								<input type="text" name="ricerca" id="ricerca" class="ricerca" accesskey="s" tabindex="1" />
-								<input type="submit" name="conferma" id="conferma" class="ricerca" value="Cerca" accesskey="d" tabindex="2"/>
+		                        <legend class="nascosto">Cerca un prodotto o un servizio</legend>
+		                        <label for="ricerca" class="nascosto">Inserisci i termini da cercare</label>
+								<input type="text" name="ricerca" id="ricerca" class="ricerca" accesskey="s" tabindex="2" />
+                        		<input type="submit" name="conferma" id="conferma" class="ricerca" value="Cerca" accesskey="d" tabindex="3"/>
 							</fieldset>
 						</form>
 					</div>
 					<div id="contenitore-menu">
-						<div class="nascosto">
-							<a href="#content" title="salta al contenuto principale">salta direttamente alla lista dei prodotti</a>
-						</div>
+		                <p class="nascosto">
+		                    <a href="#content" title="salta al contenuto principale">Salta menu navigazione</a>
+		                </p>
 						<ul class="menu">
 							<li><a href="../index.html" id="home" class="nav" xml:lang="en" accesskey="h" tabindex="10">Home </a></li>
 							<li><a href="../realizzazioni.html" id="real" class="nav" accesskey="r" tabindex="11">Realizzazioni </a></li>
@@ -54,9 +57,16 @@
 					</div>
 				</div>
 				<div id="content">
+		            <p class="nascosto">
+		                <a title="saltare-contenuto-testuale" href="#footer" tabindex="30" accesskey="b">Salta il contenuto testuale</a>
+		            </p>
 					<xsl:call-template name="esito"/>
 				</div>
 				<div id="footer" class="footer">
+		            <ul class="nascosto">
+		                <li><a href="#header" title="vai-a-inizio-pagina" tabindex="100" accesskey="i">Torna all&apos;inizio pagina</a></li>
+		                <li><a href="#finePagina" title="vai-a-fine-pagina" tabindex="110" accesskey="f">Vai a fine pagina</a></li>
+		            </ul>
 					<div class="footer-left">
 						<h3 class="footerlogo"><span id="logo_mini">Ggarden</span></h3>
 						<p class="footer-menu, testo-footer">
@@ -86,7 +96,7 @@
 						</p>
 					</div>
 				</div>
-				<script type="text/javascript" src="../script/script.js"></script>
+        		<p id="finePagina"></p>
 			</body>
 		</html>
 	</xsl:template>

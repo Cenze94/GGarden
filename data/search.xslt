@@ -214,9 +214,9 @@
 						<xsl:for-each select="g:prezzo/g:pacchetto">
 							<span class="check">
 								&#8364; 
-								<xsl:value-of select="g:prezzo/g:pacchetto/g:valore"/>
+								<xsl:value-of select="g:valore"/>
 								<xsl:text> </xsl:text>
-								<xsl:value-of select="g:prezzo/g:pacchetto/g:formato"/>
+								<xsl:value-of select="g:formato"/>
 							</span>
 						</xsl:for-each>
 					</p>

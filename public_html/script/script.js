@@ -34,8 +34,6 @@ var dettagli_form_plant = {
     "name": ["Nome pianta", /^[a-zA-ZÀ-ÿ0-9 -]*$/, "Inserisci il nome della pianta"],
     "scientificName": ["Nome scientifico", /[A-Za-z- ]*/, ""],
     "type": ["Tipo", /.*/, ""],
-    "price": ["", /^\d+[\.]?(\d{1,2})?$/, "Inserisci il prezzo separato da un punto"],
-    //"format": ["", /.*/, ""],
     "dataName": ["Nome del dato", /.*/, ""],
     "dataContent": ["valore", /.*/, ""]
 }
@@ -43,8 +41,6 @@ var dettagli_form_plant = {
 var dettagli_form_tool = {
     "name": ["Nome attrezzo", /^[a-zA-ZÀ-ÿ0-9 -v]*$/, "Inserisci il nome dell'attrezzo"],
     "type": ["Tipo", /.*/, ""],
-    "price": ["", /^\d+[\.]?(\d{1,2})?$/, "Inserisci il prezzo separato da un punto"],
-    // "format": ["al pezzo", /.*/, ""],
     "dataName": ["Nome del dato", /.*/, ""],
     "dataContent": ["valore", /.*/, ""]
 }
@@ -54,7 +50,9 @@ var dettagli_form_admin = {
     "inputPassword": ["Password", /.*/, ""]
 }
 
-var dettagli_dynamic_input = {}
+var dettagli_dynamic_input = {
+    "price": ["", /^\d+[\.]?(\d{1,2})?$/, "Inserisci il prezzo separato da un punto", "format"]
+}
 
 function caricamentoPianta() {
     return caricamento(dettagli_form_plant, true);
@@ -126,6 +124,24 @@ function validazioneCampo(matrix, input) {
     return true;
 }
 
+function validazioneCampoDinamico(matrix, input) {
+    var p = input.parentNode; //prende lo span
+    var errore = document.getElementById(input.id + "errore");
+    if (errore) {
+        p.removeChild(errore)
+    }
+
+    var regex1 = matrix[input.id][1];
+    var regex2 = matrix[input.id][4];
+    var text = input.value;
+    if (((text == matrix[input.id][0])) || text.search(regex) != 0) //occhio! controllo che l'input sia diverso dal placeholder (con il primo check)
+    {
+        mostraErrore(matrix, input);
+        return false;
+    }
+    return true;
+}
+
 // Funzioni per il controllo sul tipo dell'immagine inserita nella form
 function checkPictureType(Extension) {
     return (Extension == "gif" || Extension == "png" || Extension == "svg" || Extension == "bmp" || Extension == "jpeg" || Extension == "jpg");
@@ -162,8 +178,8 @@ function checkImage() {
 
 function validazioneFormPlant() {
     var rImg = checkImage(); 
-    var rFrm = validazioneForm(dettagli_form_plant); 
-    var vDynFrm = validazioneForm(dettagli_dynamic_input);
+    var rFrm = validazioneForm(dettagli_form_plant, true); 
+    var vDynFrm = validazioneForm(dettagli_dynamic_input, false);
     var valRes= (rImg && rFrm && vDynFrm);
     if (valRes == true)
         dettagli_dynamic_input={};
@@ -173,8 +189,8 @@ function validazioneFormPlant() {
 
 function validazioneFormTool() {
     var rImg = checkImage(); 
-    var rFrm = validazioneForm(dettagli_form_tool); 
-    var vDynFrm = validazioneForm(dettagli_dynamic_input);
+    var rFrm = validazioneForm(dettagli_form_plant, true); 
+    var vDynFrm = validazioneForm(dettagli_dynamic_input, false);
     var valRes= (rImg && rFrm && vDynFrm);
     if (valRes == true)
         dettagli_dynamic_input={};
@@ -182,20 +198,22 @@ function validazioneFormTool() {
 }
 
 function validazioneFormContattaci(){
-    return validazioneForm(dettagli_form_contattaci);
+    return validazioneForm(dettagli_form_contattaci, true);
 }
 
-function validazioneForm(matrix) {
+function validazioneForm(matrix, Mstatica) {
     var corretto = true;
     for (var key in matrix) {
         var input = document.getElementById(key);
-        var risultato = validazioneCampo(matrix, input);
+        if(Mstatica==true)
+            var risultato = validazioneCampo(matrix, input);
+        else
+            var risultato = validazioneCampoDinamico(matrix, input);
         console.log(key, risultato);
         corretto = corretto && risultato;
     }
     return corretto;
 }
-
 
 function mostraErrore(matrix, input) {
     console.log(input);
@@ -239,17 +257,17 @@ function addNInputPrice(divName, number) {
 }
 
 function addInputPrice(divName) { 
-    var toInsert = '<div class="inputsL"><label for="price" class="inputL">Prezzo (es. 7.50): &euro; </label><input type="text" name="price\[\]" id="price' + (counter_prezzo + 1) + '" class="inputL"/></div><div class="inputsR"><label for="format' + (counter_prezzo + 1) + '" class="inputR">Formato (es. al pezzo):</label><input type="text" name="format\[\]" id="format' + (counter_prezzo + 1) + '" class="inputR"/></div>';
+    var toInsert = '<li><div class="inputsL"><label for="price" class="inputL">Prezzo (es. 7.50): &euro; </label><input type="text" name="price\[\]" id="price' + (counter_prezzo + 1) + '" class="inputL"/></div><div class="inputsR"><label for="format' + (counter_prezzo + 1) + '" class="inputR">Formato (es. al pezzo):</label><input type="text" name="format\[\]" id="format' + (counter_prezzo + 1) + '" class="inputR"/></div></li>';
     counter_prezzo = addInput(divName, counter_prezzo, toInsert);
-    dettagli_dynamic_input['price'+counter_prezzo]=["", /^\d+[\.]?(\d{1,2})?$/, "Inserisci il prezzo separato da un punto"];
+    dettagli_dynamic_input['price'+counter_prezzo]=["", /^\d+[\.]?(\d{1,2})?$/, "Inserisci il prezzo separato da un punto", "format"+counter_prezzo, "", /.*/, ""];
     // dettagli_dynamic_input['format'+counter_prezzo]=["", /.*/, ""];
     caricamento(dettagli_dynamic_input, false);
 }
 
 function addInputData(divName) {
-    var toInsert = '<div class="inputsL"><label for="dataName" class="inputL">Dato (es. Altezza):</label><input type="text" name="dataName\[\]" id="dataName' + (counter_valore + 1)+'" class="inputL"/></div><div class="inputsR"><label for="dataContent' + (counter_valore + 1) + '" class="inputR">Formato (es. 10cm):</label><input type="text" name="dato\[\]" id="dataContent' + (counter_valore + 1) + '" class="inputR"/></div>';
+    var toInsert = '<li><div class="inputsL"><label for="dataName" class="inputL">Dato (es. Altezza):</label><input type="text" name="dataName\[\]" id="dataName' + (counter_valore + 1)+'" class="inputL"/></div><div class="inputsR"><label for="dataContent' + (counter_valore + 1) + '" class="inputR">Formato (es. 10cm):</label><input type="text" name="dato\[\]" id="dataContent' + (counter_valore + 1) + '" class="inputR"/></div></li>';
     counter_valore = addInput(divName, counter_valore, toInsert);
-    dettagli_dynamic_input['dataName'+counter_valore]=["Nome del dato", /.*/, ""];
+    dettagli_dynamic_input['dataName'+counter_valore]=["Nome del dato", /.*/, "","dataContent"+counter_valore,/.*/, ""];
     dettagli_dynamic_input['dataContent'+counter_valore]=["valore", /.*/, ""];
     caricamento(dettagli_dynamic_input, false);
 }

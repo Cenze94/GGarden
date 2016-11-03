@@ -82,9 +82,15 @@
                     <p class="nascosto">
                         <a title="saltare-contenuto-testuale" href="#footer" tabindex="30" accesskey="b">Salta il contenuto testuale</a>
                     </p>
+		    <div class='goFast'>
+						<a href='#attrezzi' class='createButton'>Vai ad Attrezzi</a>
+		    </div>
                     <div id="piante">
                         <xsl:call-template name="piante"/>
                     </div>
+ 		    <div class='goFast'>
+						<a href='#piante' class='createButton'>Vai a Piante</a>
+		    </div>
                     <div id="attrezzi">
                         <xsl:call-template name="attrezzi"/>
                     </div>
@@ -194,7 +200,7 @@
                         </span>
                     </xsl:for-each>
                 </p>
-                <div class="nascosto mobile"><a href="#rifnav" title="torna a inizio pagina">Torna all'inizio della pagina</a></div>
+                <div class="nascosto mobile"><a href="#rifnav" title="torna a inizio pagina">Torna direttamente all'inizio della pagina</a></div>
             </div>
             <hr/>
         </xsl:for-each>
@@ -251,7 +257,7 @@
                         </span>
                     </xsl:for-each>
                 </p>
-                <div class="nascosto mobile"><a href="#rifnav" title="torna a inizio pagina">Torna all'inizio della pagina</a></div>
+                <div class="nascosto mobile"><a href="#rifnav" title="torna a inizio pagina">Torna direttamente all'inizio della pagina</a></div>
             </div>
             <hr/>
         </xsl:for-each>

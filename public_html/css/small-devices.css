@@ -555,6 +555,13 @@ h4{
     margin-bottom: 20px;
 }
 
+.goFast {
+    text-align: center;
+    display: flex;
+    font-style: oblique;
+}
+
+
 .prodotto .nome_scientifico{
     font-style: oblique;
 }

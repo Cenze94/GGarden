@@ -191,6 +191,7 @@ fieldset{
     color: black;
     margin-left: 25px;
     clear: both;
+    line-height: 30px;
 }
 
 
@@ -227,7 +228,7 @@ fieldset{
     list-style-type: none;
     margin: 0;
     padding: 0;
-    width: 99%;
+    width: 101%;
     overflow: hidden;
     background-color: #c9fdc9;
 }
@@ -609,9 +610,10 @@ hr{
 
 /* VENDITA - Parte Admin e form */
 
-#createButtons{
-    height: 7em;
-    font-size: 0.8em;
+.createButtons {
+    width: 91%;
+    font-size: 1.1em;
+    display: inline-block;
 }
 
 .createButton{
@@ -683,13 +685,14 @@ span.inputR {
 }
 
 .mobile{
-    position: relative;
+    position: static;
     left: inherit;
     top: initial;
-    width: auto;
-    height: auto;
-    overflow: hidden;
+    width: 100%;
+    clear: both;
+    height: inherit;
     font-size: 0.7em;
+    text-align: center;
 }
 
 /* Footer */

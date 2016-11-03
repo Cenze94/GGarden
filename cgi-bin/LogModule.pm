@@ -42,6 +42,7 @@ sub log {
 	$node = $xpc->findnodes("//x:div[\@id = 'piante']")->get_node(1);
 	$string = "<div class='createButtons' xmlns=\'http://www.w3.org/1999/xhtml\'>
 						<a href='../cgi-bin/databaseManager.cgi?operation=create&amp;tipo=pianta' class='createButton'>Inserisci nuova pianta</a>
+						<span class='nascosto'> | </span>
 						<a href='../cgi-bin/databaseManager.cgi?operation=create&amp;tipo=attrezzo' class='createButton'>Inserisci nuovo attrezzo</a>
 				  </div>";
 	$child = $parserxml->parse_string($string);
@@ -50,6 +51,7 @@ sub log {
 	my @nodes = $xpc->findnodes("//x:p[\@class='prezzo']");
 	$string = '<div class=\'productButtons\' xmlns=\'http://www.w3.org/1999/xhtml\'>
 					<a href=\'../cgi-bin/databaseManager.cgi?operation=update&amp;tipo=pianta&amp;id={$id}\' class=\'productButton\'>Modifica prodotto</a>
+					<span class=\'nascosto\'> | </span>
 					<a href=\'../cgi-bin/databaseManager.cgi?operation=delete&amp;id={$id}\' class=\'productButton\'>Elimina prodotto</a>
 			   </div>';
 	$child = $parserxml->parse_string($string);
@@ -58,6 +60,7 @@ sub log {
 	# $node = $nodes[0]->insertAfter($child, $nodes[0]->lastChild());
 	$string = '<div class=\'productButtons\' xmlns=\'http://www.w3.org/1999/xhtml\'>
 					<a href=\'../cgi-bin/databaseManager.cgi?operation=update&amp;tipo=attrezzo&amp;id={$id}\' class=\'productButton\'>Modifica prodotto</a>
+					<span class=\'nascosto\'> | </span>
 					<a href=\'../cgi-bin/databaseManager.cgi?operation=delete&amp;id={$id}\' class=\'productButton\'>Elimina prodotto</a>
 			   </div>';
 	$child = $parserxml->parse_string($string);

@@ -34,7 +34,7 @@
                 <div id="header">
                     <h1><span id="logo" xml:lang="en" class="nascosto">GGarden</span></h1>
                     <div id="contenitore-login">
-                        <input id="button_admin" type="button" onclick="nascondi();" value="Accedi come amministratore"/>
+                        <input id="button_admin" type="button" onkeypress="nascondi();" onclick="nascondi();" value="Accedi come amministratore"/>
                         <div id="login">
                             <form action="log.cgi" method="get">
                                 <fieldset>
@@ -82,9 +82,15 @@
                     <p class="nascosto">
                         <a title="saltare-contenuto-testuale" href="#footer" tabindex="30" accesskey="b">Salta il contenuto testuale</a>
                     </p>
+		    <div class='goFast'>
+						<a href='#attrezzi' class='createButton'>Vai ad Attrezzi</a>
+		    </div>
                     <div id="piante">
                         <xsl:call-template name="piante"/>
                     </div>
+ 		    <div class='goFast'>
+						<a href='#piante' class='createButton'>Vai a Piante</a>
+		    </div>
                     <div id="attrezzi">
                         <xsl:call-template name="attrezzi"/>
                     </div>

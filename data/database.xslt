@@ -35,7 +35,7 @@
                 <div id="header">
                     <h1><span id="logo" xml:lang="en" class="nascosto">GGarden</span></h1>
                     <div id="contenitore-login">
-                        <input id="button_admin" type="button" onkeypress="nascondi();" onclick="nascondi();" value="Accedi come amministratore" tabindex="2"/>
+                        <input id="button_admin" type="button" tabindex="2" onkeypress="nascondi();" onclick="nascondi();" value="Accedi come amministratore" />
                         <div id="login">
                             <form action="log.cgi" method="get">
                                 <fieldset>
@@ -84,13 +84,13 @@
                         <a title="saltare-contenuto-testuale" href="#footer" tabindex="30" accesskey="b">Salta il contenuto testuale</a>
                     </p>
 		    <div class='goFast'>
-						<a href='#attrezzi' class='createButton'>Vai ad Attrezzi</a>
+						<a href='#attrezzi' class='createButton' tabindex="40">Vai ad Attrezzi</a>
 		    </div>
                     <div id="piante">
                         <xsl:call-template name="piante"/>
                     </div>
  		    <div class='goFast'>
-						<a href='#piante' class='createButton'>Vai a Piante</a>
+						<a href='#piante' class='createButton' tabindex="50">Vai a Piante</a>
 		    </div>
                     <div id="attrezzi">
                         <xsl:call-template name="attrezzi"/>
@@ -98,16 +98,16 @@
                 </div>
                 <div id="footer" class="footer">
                     <ul class="nascosto">
-                        <li><a href="#header" title="vai-a-inizio-pagina" tabindex="100" accesskey="i">Torna all&apos;inizio pagina</a></li>
-                        <li><a href="#finePagina" title="vai-a-fine-pagina" tabindex="110" accesskey="f">Vai a fine pagina</a></li>
+                        <li><a href="#header" title="vai-a-inizio-pagina" tabindex="80" accesskey="i">Torna all&apos;inizio pagina</a></li>
+                        <li><a href="#finePagina" title="vai-a-fine-pagina" tabindex="90" accesskey="f">Vai a fine pagina</a></li>
                     </ul>
                     <div class="footer-left">
                         <h3 class="footerlogo"><span id="logo_mini">Ggarden</span></h3>
                         <p class="footer-menu, testo-footer">
-                            <a href="index.html" hreflang="it" xml:lang="en" tabindex="100">Home</a> | 
-                            <a href="realizzazioni.html" hreflang="it" tabindex="101">Realizzazioni </a> | 
-                            <a href="cgi-bin/checkLog.cgi" hreflang="it" tabindex="102">Vendita</a> | 
-                            <a href="contattaci.html" hreflang="it" tabindex="103">Contattaci</a>
+                            <a href="../index.html" hreflang="it" xml:lang="en" tabindex="100">Home</a> | 
+                            <a href="../realizzazioni.html" hreflang="it" tabindex="101">Realizzazioni </a> | 
+                            <a href="checkLog.cgi" hreflang="it" tabindex="102">Vendita</a> | 
+                            <a href="../contattaci.html" hreflang="it" tabindex="103">Contattaci</a>
                         </p>
                         <p class="footer-nome-azienda">Ggarden &#169; 2016</p>
                     </div>

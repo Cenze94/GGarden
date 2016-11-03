@@ -6,7 +6,6 @@ use XML::LibXSLT;
 use CGI::Carp qw(fatalsToBrowser);
 use CGI;
 use LogModule;
-use File::Basename;
 use HTML::Entities;
 $CGI::POST_MAX = 1024 * 5000;
 

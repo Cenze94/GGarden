@@ -93,7 +93,7 @@ h1{
     color: black;
     font-size: 12px;
     display: block;
-    
+    clear: both;
 }
 
 legend{
@@ -121,7 +121,6 @@ legend{
     float: right;
     margin: 5px;
     color: white;
-    
     border: solid 1px #a30025;
     background: #b40029;
     

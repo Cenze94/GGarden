@@ -34,7 +34,7 @@
                 <div id="header">
                     <h1><span id="logo" xml:lang="en" class="nascosto">GGarden</span></h1>
                     <div id="contenitore-login">
-                        <input id="button_admin" type="button" onclick="nascondi();" value="Accedi come amministratore"/>
+                        <input id="button_admin" type="button" onkeypress="nascondi();" onclick="nascondi();" value="Accedi come amministratore"/>
                         <div id="login">
                             <form action="log.cgi" method="get">
                                 <fieldset>

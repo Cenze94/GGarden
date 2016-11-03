@@ -31,7 +31,7 @@ var dettagli_form_contattaci = {
 }
 
 var dettagli_form_plant = {
-    "name": ["Nome pianta", /^[a-zA-Z0-9 -]*$/, "Inserisci il nome della pianta"],
+    "name": ["Nome pianta", /^[a-zA-ZÀ-ÿ0-9 -]*$/, "Inserisci il nome della pianta"],
     "scientificName": ["Nome scientifico", /[A-Za-z- ]*/, ""],
     "type": ["Tipo", /.*/, ""],
     "price": ["", /^\d+[\.]?(\d{1,2})?$/, "Inserisci il prezzo separato da un punto"],
@@ -41,7 +41,7 @@ var dettagli_form_plant = {
 }
 
 var dettagli_form_tool = {
-    "name": ["Nome attrezzo", /^[a-zA-Z0-9 -]*$/, "Inserisci il nome dell'attrezzo"],
+    "name": ["Nome attrezzo", /^[a-zA-ZÀ-ÿ0-9 -v]*$/, "Inserisci il nome dell'attrezzo"],
     "type": ["Tipo", /.*/, ""],
     "price": ["", /^\d+[\.]?(\d{1,2})?$/, "Inserisci il prezzo separato da un punto"],
     // "format": ["al pezzo", /.*/, ""],

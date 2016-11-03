@@ -194,7 +194,7 @@
                         </span>
                     </xsl:for-each>
                 </p>
-                <div class="nascosto mobile"><a href="#rifnav" title="torna a inizio pagina">Torna direttamente all'inizio della pagina</a></div>
+                <div class="nascosto mobile"><a href="#rifnav" title="torna a inizio pagina">Torna all'inizio della pagina</a></div>
             </div>
             <hr/>
         </xsl:for-each>
@@ -251,7 +251,7 @@
                         </span>
                     </xsl:for-each>
                 </p>
-                <div class="nascosto mobile"><a href="#rifnav" title="torna a inizio pagina">Torna direttamente all'inizio della pagina</a></div>
+                <div class="nascosto mobile"><a href="#rifnav" title="torna a inizio pagina">Torna all'inizio della pagina</a></div>
             </div>
             <hr/>
         </xsl:for-each>

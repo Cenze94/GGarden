@@ -92,7 +92,7 @@ h1{
 #login {
     color: black;
     font-size: 12px;
-    display: none;
+    display: block;
     
 }
 

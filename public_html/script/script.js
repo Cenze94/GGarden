@@ -41,7 +41,7 @@ var dettagli_form_plant = {
 }
 
 var dettagli_form_tool = {
-    "name": ["Nome attrezzo", /^[a-zA-Z0-9 -]*$/, "Inserisci il nome dell'attrezzo'"],
+    "name": ["Nome attrezzo", /^[a-zA-Z0-9 -]*$/, "Inserisci il nome dell'attrezzo"],
     "type": ["Tipo", /.*/, ""],
     "price": ["", /^\d+[\.]?(\d{1,2})?$/, "Inserisci il prezzo separato da un punto"],
     // "format": ["al pezzo", /.*/, ""],
@@ -69,6 +69,8 @@ function caricamentoContattaci() {
 }
 
 function caricamentoPannelloAdmin() {
+    var e = document.getElementById('login');
+    e.style.display = 'none';
     return caricamento(dettagli_form_admin, false);
 }
 

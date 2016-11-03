@@ -84,6 +84,8 @@ else{
 	$smtp->mail($userEmail);
 	$smtp->to($email);
 	$smtp->data();	
+	$smtp->datasend("To: ".$email."\n");
+	$smtp->datasend("Subject: Domanda per GGardenGroup\n");
 	$smtp->datasend($name." ".$surname." ha posto la seguente domanda:\n".$text);
 
 	# $smtp->datasend("From: " . $userEmail);

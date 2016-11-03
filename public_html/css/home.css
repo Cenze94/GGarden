@@ -92,8 +92,8 @@ h1{
 #login {
     color: black;
     font-size: 12px;
-    display: block;
-    clear: both;
+    display: none;
+    
 }
 
 legend{
@@ -121,6 +121,7 @@ legend{
     float: right;
     margin: 5px;
     color: white;
+    
     border: solid 1px #a30025;
     background: #b40029;
     
@@ -452,6 +453,7 @@ form small {
     font-size: 30px;
     border: solid 1px #005541;
     background: #005541;
+    clear:both;
 }
 
 .cnome{
@@ -501,6 +503,13 @@ h4{
 .contenuto{
     margin-top: 20px;
     margin-bottom: 20px;
+}
+
+.goFast {
+    float: right;
+    text-align: right;
+    display: flex;
+    font-style: oblique;
 }
 
 .prodotto .nome_scientifico{
@@ -557,7 +566,7 @@ img {
 /* VENDITA - Parte Admin e form */
 
 .createButtons{
-    height: 2em;
+    display: flex;
 }
 
 .createButton{

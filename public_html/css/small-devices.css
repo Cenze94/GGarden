@@ -684,13 +684,14 @@ span.inputR {
 }
 
 .mobile{
-    position: relative;
+    position: static;
     left: inherit;
     top: initial;
-    width: auto;
-    height: auto;
-    overflow: hidden;
+    width: 100%;
+    clear: both;
+    height: inherit;
     font-size: 0.7em;
+    text-align: center;
 }
 
 /* Footer */

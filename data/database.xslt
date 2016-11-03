@@ -25,6 +25,7 @@
                     <![CDATA[[if lte IE 8]><link rel="stylesheet" type="text/css" href="../css/explorer.css"/><![endif]]]>
                 </xsl:comment>
                 <link rel="icon" href="../img/logo2.png" type="image/png" />
+                <meta http-equiv="Content-Script-Type" content="application/javascript" />
                 <script type="text/javascript" src="../script/script.js"></script>
             </head>
             <body onload="caricamentoPannelloAdmin();">
@@ -34,7 +35,7 @@
                 <div id="header">
                     <h1><span id="logo" xml:lang="en" class="nascosto">GGarden</span></h1>
                     <div id="contenitore-login">
-                        <input id="button_admin" type="button" onkeypress="nascondi();" onclick="nascondi();" value="Accedi come amministratore"/>
+                        <input id="button_admin" type="button" onkeypress="nascondi();" onclick="nascondi();" value="Accedi come amministratore" tabindex="2"/>
                         <div id="login">
                             <form action="log.cgi" method="get">
                                 <fieldset>
@@ -42,14 +43,14 @@
                                     <div class="modal hide fade in">
                                         <div class="control-group">
                                             <label for="inputUsername">Username:</label>
-                                            <input type="text" name="inputUsername" id="inputUsername" tabindex="2"/>
+                                            <input type="text" name="inputUsername" id="inputUsername" tabindex="3"/>
                                         </div>
                                         <div class="control-group">
                                             <label for="inputPassword">Password :</label>
-                                            <input type="password" name="inputPassword" id="inputPassword" tabindex="3" />
+                                            <input type="password" name="inputPassword" id="inputPassword" tabindex="4" />
                                         </div>
                                         <input type="hidden" name="update" value="no"/>
-                                        <button type="submit" id="accedi" tabindex="3">Accedi</button>
+                                        <button type="submit" id="accedi" tabindex="5">Accedi</button>
                                     </div>
                                 </fieldset>
                             </form>
@@ -62,8 +63,8 @@
                         <fieldset>
                             <legend class="nascosto">Cerca un prodotto o un servizio</legend>
                             <label for="ricerca" class="nascosto">Inserisci i termini da cercare</label>
-                            <input type="text" name="ricerca" id="ricerca" class="ricerca" accesskey="s" tabindex="4" />
-                            <input type="submit" name="conferma" id="conferma" class="ricerca" value="Cerca" accesskey="d" tabindex="5"/>
+                            <input type="text" name="ricerca" id="ricerca" class="ricerca" accesskey="s" tabindex="6" />
+                            <input type="submit" name="conferma" id="conferma" class="ricerca" value="Cerca" accesskey="d" tabindex="7"/>
                         </fieldset>
                     </form>
                 </div>

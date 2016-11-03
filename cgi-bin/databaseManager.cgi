@@ -19,6 +19,7 @@ sub deleteItem {
 
 sub updateOperation {
 	my $doc = $_[0];
+	$doc->setStandalone(0);
 	my $id = $_[1];
 	my $itemType = $_[2];
 	my $filexml = "../data/database.xml";
@@ -158,6 +159,7 @@ sub updateOperation {
 
 sub createOperation {
 	my $doc = $_[0];
+	$doc->setStandalone(0);
 	my $itemType = $_[1];
 	my $node = $doc->findnodes("//div[\@id='content']/form/fieldset/legend")->get_node(1);
 	if($itemType eq 'pianta') {

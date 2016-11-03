@@ -184,6 +184,7 @@ function validazioneFormPlant() {
     if (valRes == true)
         dettagli_dynamic_input={};
     //console.log(validazioneForm(dettagli_dynamic_input));
+    else console.log("<p>Sono presenti errori, potresti ricontrollare?</p>");
     return valRes;
 }
 

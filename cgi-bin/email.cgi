@@ -19,6 +19,8 @@ my $htmlPage = "../public_html/contattaci.html";
 my $parserxml  = XML::LibXML->new;
 my $doc = $parserxml->load_html(location => $htmlPage, recover => 1);
 
+$doc->setStandalone(0);
+
 #Aggiorno il tag HTML
 my $var=$doc->findnodes('/html')->get_node(0);
 $var->removeAttribute("xmlns");
@@ -35,7 +37,7 @@ $string = $doc->findnodes('//comment()')->get_node(1);
 $string->setData('[if lte IE 8]><link rel="stylesheet" type="text/css" href="../css/explorer.css"/><![endif]');
 
 #Aggiorno il link dell'immagine di Google Mpas
-$string = $doc->findnodes('//a/img[@id="fotoMappa"]')->get_node(0);
+$string = $doc->findnodes('////img[@id="fotoMappa"]')->get_node(0);
 $string->setAttribute("src", '../img/mappa.png');
 
 #Aggiorno il link dello script JavaScript
@@ -118,9 +120,7 @@ if($redirect) {
 		$fragment = $fragment->removeChild($fragment->firstChild());
 		$string = $string->insertBefore($fragment, $string->firstChild());
 	}
-
 #stampa contattaci.html
-
 	print "Content-type: text/html; charset=utf-8\n\n";
 	print $doc;
 }

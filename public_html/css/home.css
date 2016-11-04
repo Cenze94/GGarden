@@ -274,7 +274,7 @@ li a:hover {
     font-size:1.2em;
     text-align: center;
     border-radius: 0px 0px 20px 20px;
-    background: #b40029;     
+    background: #005541;     
 }
 
 .titolo_contattaci h2{
@@ -285,7 +285,6 @@ li a:hover {
 
 #gallery{
     width: 100%;
-    height: 500px;
 }
 
 #content img{
@@ -308,10 +307,9 @@ li a:hover {
 }
 
 #content div #zoom{
-    float:right;
-    margin:0 0 5px 0;
-    padding: 5px;
-    border:1px solid #ccc;
+   padding: 1em;
+   margin:0 5px 5px 5px;
+   border:1px solid #ccc;
 }
 
 #content div #zoom h3{
@@ -323,13 +321,14 @@ li a:hover {
 
 #content div #zoom img{
     display:block;
-    margin: 30px;
-    width:400px;
+    margin-left: auto;
+    margin-right: auto;
+    width:auto;
     height:400px;
 }
 
-#content div #minipics{
-    margin-right:415px      /*per Opera*/
+#content div #minipics {
+    margin-bottom: 22em;
 }
 
 #content div #minipics ul{
@@ -344,7 +343,6 @@ li a:hover {
     border:1px solid #ccc;
     padding: 3px
 }
-
 
 /*Parte per la form di contattaci*/
 
@@ -664,7 +662,7 @@ input[type="button"], input[type="submit"]{
     width: 100%;
     text-align: left;
     font: bold 16px sans-serif;
-    
+    clear:both;
     padding: 25px 20px;
     margin-top: 20px;
 }

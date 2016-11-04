@@ -7,32 +7,31 @@
 	\end{itemize} 
 	
 	\subsection{Progettazione layout}{
-		Si è deciso di utilizzare un layout di tipo adattativo, specificando 
+		Si è deciso di utilizzare un layout di tipo responsive, facendolo adattare alle dimensioni dello schermo, impostando un limite sulla larghezza dello schermo per passare al layout per dispositivi mobili.
 	}
 	\subsection{Sviluppo layout}{
 		Nell'immagine che segue viene mostrata la struttura data ai vari blocchi \textit{div} che compongono il sito, in cui sono contenute le informazioni divise per area tematica le informazioni.
 	\\
-	Il layout si adatta in base alla larghezza dello schermo, senza però porre condizioni sull'altezza, con l'obiettivo di far evolvere in altezza il sito.
+	Il layout si adatta in base alla larghezza dello schermo, con l'obiettivo di far sviluppare verso il basso il sito.
 		\begin{figure}[H]
 			\includegraphics{\docsImg Schemasito.png}
 			\caption{Schema del sito}
 			\label{Schema del sito}
 		\end{figure}
 		
-		Viene applicato un foglio di stile ai browser standard per computer desktop e portatili e fino a che la larghezza dello schermo rimane maggiore di 650 px: al di sotto si passa ad usare il CSS destinato al mobile.
-		Nella risoluzione tra 650 ed 800 px alcuni elementi all'interno della form d'inserimento prodotti possono risultare sovrapposti.
-		
+		Il foglio di stile standard viene utilizzato sui browser per computer desktop e portatili, fino a che la larghezza dello schermo rimane maggiore di 650 px: al di sotto si passa automaticamante ad usare il CSS destinato al mobile.
+		\\
 		Analizzando il sito spostandosi dall'alto verso il basso, segue che:
-		\begin{itemize}
+		\begin{itemize}\itemsep1pt
 			\item Il div \textbf{header} che informa l'utente su ciò che sta visitando; comprende:
-			\begin{itemize}
+			\begin{itemize}\itemsep1pt
 				\item Titolo e logo; nella pagina relativa alle vendite è presente inoltre il pulsante d'accesso amministratore che mostra un menù a scomparsa da cui poter effettuare il login;
 				\item Il div \textbf{breadcrumbs} che aiuta l'utente ad identificare la posizione in cui si trova all'interno del sito, rispetto alla homepage; al suo interno è presente anche la barra di ricerca con cui trovare prodotti o servizi all'interno del sito;
-				\item Il menù utente, identificato con il div \textbf{menu}, presenta 4 scelte: "Home", "Realizzazioni", "Contattaci". Viene evidenziata la posizione corrente, rappresenta l'asse informativo di dove si può andare. 
+				\item Il menù utente, identificato con il div \textbf{menu}, presenta 4 scelte: \textit{Home}, \textit{Realizzazioni}, \textit{Vendita} e \textit{Contattaci}. Viene evidenziata la posizione corrente. 
 			\end{itemize}
 			\item Segue il contenuto vero e proprio della pagina, inserito nel div \textbf{content}, ha il compito di esporre le informazioni che si stanno trattando;
 			\item Alla fine della pagina, il \textbf{footer}, al cui interno è presente:
-			\begin{itemize}
+			\begin{itemize}\itemsep1pt
 				\item un piccolo logo dell'azienda;
 				\item collegamenti alle pagine del sito;
 				\item i principali riferimenti all'azienda;

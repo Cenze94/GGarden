@@ -459,6 +459,7 @@ form small {
 /* VENDITA */
 
 .maintitle{
+    clear: both;
     text-align: center;
     color: white;
     font-size: 30px;
@@ -513,6 +514,15 @@ h4{
 .contenuto{
     margin-top: 20px;
     margin-bottom: 20px;
+}
+
+.goFast {
+    padding: 2em;
+    text-align: right;
+    margin-bottom: 1em;
+    font-style: oblique;
+    display: inline-block;
+    float:right;
 }
 
 .prodotto .nome_scientifico{
@@ -572,6 +582,7 @@ hr{
 /* VENDITA - Parte Admin e form */
 
 .createButtons{
+    float:left;
     padding: 2em;
 }
 

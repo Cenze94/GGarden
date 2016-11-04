@@ -1,10 +1,15 @@
 \section{Comportamento}{
 	Le funzioni offerte tramite javascript riguardano: 
-	\begin{itemize}
-		\item Il controllo lato client dei dati inseriti nella form della pagina "Contattaci", tramite l'uso d'espressioni regolari;
+	\begin{itemize}\itemsep1pt
+		\item Il controllo lato client dei dati inseriti nella form della pagina "Contattaci", tramite l'uso d'espressioni regolari; in particolare si desidera che nome e cognome siano composti da soli caratteri e che l'indirizzo e-mail sia valido. Non sono previsti controlli sul messaggio da inviare.
 		\item La sostituzione dell'immagine della mappa con l'iFrame della mappa di Google Maps;
-		\item Nella pagina relativa alle vendite, una funzione s'occupa di nascondere la form d'accesso amministratore e la rende visibile alla pressione del pulsante "Accedi come amministratore".
-		\item La generazione di nuovi campi della form d'inserimento prodotti, che inserisce un numero di campi sufficiente ad inserire più articoli con la stessa form; un altra funzione s'occupa di fare il controllo sugli stessi prima di procedere all'inserimento, in maniera analoga alla funzione nella pagina "Contattaci";
-	\end{itemize}%%
-	Sapendo che javascript più essere disabilitato dall'utente o può non essere disponibile, abbiamo inserito all'interno di tag \textit{<noscript>} degli aiuti alla compilazione della form della pagina contattaci, come pure all'interno della pagina d'inserimento/modifica prodotto per segnalare l'assenza delle funzioni per che aggiungono nuovi campi dati. Riteniamo così di aver raggiunto l'obiettivo di garantire un degrado elegante della pagina.
+		\item Nella pagina relativa alle vendite, una funzione s'occupa di nascondere la form d'accesso amministratore e renderla visibile alla pressione del pulsante "Accedi come amministratore".
+		\item La generazione di nuove coppie prezzo-formato, dato-formato all'interno della form d'inserimento prodotti, un'altra funzione s'occupa di fare il controllo sugli stessi prima di procedere all'inserimento, in maniera analoga alla funzione nella pagina "Contattaci", usando espressioni regolari per verificare la correttezza del dato inserito e fornire un suggerimento all'utente;
+	\end{itemize}
+	Sapendo che javascript più essere disabilitato dall'utente o può non essere disponibile, abbiamo:
+	\begin{itemize}\itemsep1pt
+		\item inserito all'interno di tag \textit{<noscript>} degli aiuti alla compilazione della form della pagina contattaci, come pure all'interno della pagina d'inserimento/modifica prodotto per segnalare l'assenza delle funzioni per che aggiungono nuovi campi dati
+		\item fornito dei messaggi d'errore con PERL per notificare l'avvenuto o mancato successo dell'operazione, sia per quanto riguarda la modifica dei dati d'un prodotto che per l'invio dell'e-mail;
+	\end{itemize}
+	Riteniamo così di aver raggiunto l'obiettivo di garantire un degrado elegante della pagina in assenza del supporto a Javascript da parte del browser in uso.
 }

@@ -284,13 +284,9 @@ li a:hover {
 
 .titolo_contattaci{
     color: #fff3f6;
-    padding: 20px;
-    
-    border-radius: 0px 0px 20px 20px;
-    
-    background: #b40029;
-    
-        
+    padding: 20px;    
+    border-radius: 0px 0px 20px 20px;    
+    background: #005541;          
 }
 
 .info{

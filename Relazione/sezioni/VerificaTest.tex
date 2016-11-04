@@ -10,31 +10,33 @@
 	\subsection{Test}{
 		
 	}
-	\subsection{Ambiente di lavoro}
-	\subsection{Test interazione utenti}
-	\subsection{Dispositivi utilizzati}
+	%inizio sezione giusta
+	\subsection{Ambiente di lavoro}{
+		Abbiamo utilizzato il servizio di hosting GitHub per ospitare il nostro progetto e lavorare in contemporanea, potendo eventualmente far regredire il prodotto in caso di modifiche errate.
+	}
+	\subsection{Test interazione utenti}{
+			
+	}
+	\subsection{Dispositivi utilizzati}{
+		Oltre a testare il sito sui computer del laboratorio, ci siamo affidati a 
+	}
 	\subsection{Verifica del codice prodotto}{
 		Per la verifica del codice HTML e CSS prodotto ci siamo affidati ai validatori messi a disposizione dal W3C.\\
 		\\
-		Il codice HTML è stato validato correttamente alla versione XHTML 1.0 Strict, senza errori nè waring.\\
+		Tutto codice XHTML prodotto è stato validato correttamente alla versione XHTML 1.0 Strict, senza errori nè waring.\\
 		\\
-		Il codice CSS è stato validato in versione 2, 2.1 e 3.\\
-		CSS 3 ha validato correttamente i fogli di stile prodotti, senza errori, nè warning; CSS 2 e CSS 2.1 riportavano errori determinati da alcune istruzioni non pienamente compatibili, che però non ostacolano visualizzazione nè accessibilità del sito. \\
+		Abbiamo utilizzato anche \href{https://validator.w3.org/mobile-alpha/}{W3C Mobile checker} e \href{https://www.google.com/webmasters/tools/mobile-friendly/}{Google Mobile-Friendly Test} per verificare se il sito era mobile-friendly: l'esito è stato positivo.
+		Il codice CSS è stato validato in versione 2, 2.1 e 3; CSS 3 ha validato correttamente i fogli di stile prodotti, senza errori, nè warning; CSS 2 e CSS 2.1 riportavano errori determinati da alcune istruzioni non pienamente compatibili, che però non ostacolano visualizzazione nè accessibilità del sito. Abbiamo fatto in modo di avere un sito fruibile ed utilizzabile anche in assenza di fogli di stile.\\
 		\\
 		Per essere certi d'aver prodotto un sito web accessibile a tutte le tipologie d'utente, sono stati usati i seguenti validatori, che effettuano un controllo run-time del sito:
 		\begin{itemize}\itemsep1pt
-			\item Total Validator;
-			\item \url{http://achecker.ca/checker/index.php};
-			\item \url{http://wave.webaim.org/};
+			\item \href{https://www.totalvalidator.com/}{Total Validator};
+			\item \href{http://achecker.ca/checker/index.php}{Achecker};
+			\item \href{http://wave.webaim.org/}{wave.webaim.org};
 		\end{itemize}
-		Tutte le pagine del sito sono state validate.\\
-		Siamo riusciti ad ottenere la certificazione WCAG 2.0 AAA, la più alta possibile. Al momento della validazione sono stati prodotti dei warnings, ma solo nella parte riguardante il contenuto.\\
-		I file XML e XSD sono stati validati con:
-		\begin{itemize}\itemsep1pt
-		\item \url{http://www.freeformatter.com/xml-validator-xsd.html}
-		\item \url{http://www.utilities-online.info/xsdvalidation/}
-		\end{itemize}
-		Entrambi permettono di validare singoli XML e XSD, permettono anhce la validazione incrociata per trovare eventuali errori di contenuto o di forma.
+		Tutte le pagine del sito sono risultate valide.\\
+		Siamo riusciti ad ottenere la certificazione WCAG 2.0 AAA, la più alta possibile. Al momento della validazione sono stati prodotti dei warnings, ma solo nella parte riguardante il contenuto. Abbiamo fatto validare le pagine anche per la Sezione 508 e la Legge Stanca, con esito positivo.
+		I file XML e XSD sono stati validati con \textit{xmllint}, un programma per Ubuntu che da riga di comando valida un file XML contro un XSD e fornisce tutte le differenze trovate. L'esito della validazione non ha segnalato errori.
 	}
 	\subsection{Conclusioni}
 		Il sito, in seguito alle validazioni, si è dimostrato accessibile e compatibile con un ampio numero di browser e dispositivi.

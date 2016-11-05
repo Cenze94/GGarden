@@ -7,8 +7,8 @@
 	\\
 	La gestione dei dati è stata affidata ad XML, validato correttamente rispetto ad appositi XML-Schema. Questi ultimi definiscono i vari tag che possono comparire nei vari file .xml ed i vincoli d'unicità necessari. \\
 	I file XML usati sono \textbf{database.xml}, il cui schema è \textbf{database.xsd}, e \textbf{profili.xml}, il cui schema è \textbf{profili.xsd}.\\
-	I file \textbf{database.xslt} e \textbf{search.xslt} sono stati usati per generare delle pagine XHTML in base ai dati contenuti nei file XML; definiscono rispettivamente la struttura delle pagina della vendita e quella destinata a mostrare i risultati della ricerca. Non è stato usato un unico file per entrambi i casi perché ci sono delle notevoli differenze di rappresentazione, ad esempio nella vendita le piante e gli attrezzi sono divisi in due sezioni a sé, invece nella ricerca c'è un'unica sezione dove sono presenti entrambi secondo criteri diversi dalla pagina precedente.
-	Vengono gestiti da PERL sia perché è necessario svolgere alcune operazioni a livello server prima di generare le pagine XHTML, sia per il fatto che il server di Tecnologie Web permette di accedere alla cartella dove sono contenuti tali file solo tramite PERL.\\
+	I file \textbf{database.xslt} e \textbf{search.xslt} sono stati usati per generare delle pagine HTML in base ai dati contenuti nei file XML; definiscono rispettivamente la struttura delle pagina della vendita e quella destinata a mostrare i risultati della ricerca. Non è stato usato un unico file per entrambi i casi perché ci sono delle notevoli differenze di rappresentazione, ad esempio nella vendita le piante e gli attrezzi sono divisi in due sezioni a sé, invece nella ricerca c'è un'unica sezione dove sono presenti entrambi secondo criteri diversi dalla pagina precedente.
+	Vengono gestiti da PERL sia perché è necessario svolgere alcune operazioni a livello server prima di generare le pagine HTML, sia per il fatto che il server di Tecnologie Web permette di accedere alla cartella dove sono contenuti tali file solo tramite PERL.\\
 	\\
 	Per il comportamento, oltre a JS è stato utilizzato il linguaggio PERL, che permette di generare facilmente pagine dinamiche in XHTML.\\ 
 	Le librerie incluse per tale linguaggio sono:
@@ -19,7 +19,7 @@
 		\item XML::LibXML per la gestione dei file XML;
 		\item XML::LibXSLT per la gestione dei file XSLT;
 		\item HTML::Entities per individuare e trasformare i caratteri speciali di HTML dalla rappresentazione ASCII normale, ad esempio "\&", nella versione codificata, ad esempio "\&amp;", e viceversa;
-		\item CGI per recuperare i dati invitati al server tramite le chiamate GET e POST contenuti nelle form e nei link delle pagine HTML;
+		\item CGI per recuperare i dati inviati al server tramite le chiamate GET e POST contenuti nelle form e nei link delle pagine HTML;
 		\item CGI::Session per la creazione, l'eliminazione e la verifica dell'esistenza delle sessioni;
 		\item Net::SMTP per inviare una email automatica tramite il server di Tecnologie Web.
 	 \end{itemize}

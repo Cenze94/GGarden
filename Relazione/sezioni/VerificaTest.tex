@@ -5,6 +5,8 @@
 		\begin{itemize}\itemsep1pt
 			\item per validare le pagine HTML, anche quelle generate tramite PERL e XSLT: \url{http://validator.w3.org/};
 			\item per validare i fogli di stile CSS: \url{https://jigsaw.w3.org/css-validator/};
+			\item per validare il javascript: \href{http://esprima.org/demo/validate.html}{http://esprima.org};
+			\item per controllare le espressioni regolari: \url{https://regex101.com/}.
 		\end{itemize}
 	}
 	\subsection{Test}{
@@ -15,7 +17,14 @@
 		Abbiamo utilizzato il servizio di hosting GitHub per ospitare il nostro progetto e lavorare in contemporanea, potendo eventualmente far regredire il prodotto in caso di modifiche errate. Questo ci ha permesso di poter lavorare anche da remoto avendo sempre la versione più aggiornata a disposizione.
 	}
 	\subsection{Dispositivi utilizzati}{
-		Oltre a testare il sito sui computer del laboratorio, per verificarne la compatibilità su un gran numero di dispositivi ci siamo affidati ai servizi offerti da \href{https://www.browserstack.com/screenshots}{BrowserStack}, correggendo di volta in volta gli errori trovati.  Di seguito l'elenco 
+		Oltre a testare il sito sui computer del laboratorio, per verificarne la compatibilità su un gran numero di dispositivi ci siamo affidati ai servizi offerti da \href{https://www.browserstack.com/screenshots}{BrowserStack} e per i dispositivi mobili \url{http://mobiletest.me/}, correggendo di volta in volta gli errori trovati.  Di seguito l'elenco dei browser e dispositivi testati:
+		\begin{itemize}\itemsep1pt
+			\item Ubuntu 12.04.5 LTS: Chrome 53.0.2785.116, Opera 39.0.2556.71, Firefox 4.90;
+			\item Windows 10: Edge 13, IE 11, Firefox 32 e 45, Chrome 37, 38 e 50;
+			\item Windows 8.1: IE11, FIrefox 16, 45, Chrome 22, 50, Opera 12, 12.16;
+			\item Windows 8: IE10, FIrefox 16, 45, Chrome 22, 50, Opera 12.16;
+			\item Dispositivi mobili: Apple Iphone 5, Nokia Lumia 920, Samsung Galaxy Y, Google Nexus 7, Apple Ipad Mini;
+		\end{itemize}
 	}
 	\subsection{Verifica del codice prodotto}{
 		Per la verifica del codice HTML e CSS prodotto ci siamo affidati ai validatori messi a disposizione dal W3C.\\

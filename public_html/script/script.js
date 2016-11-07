@@ -8,11 +8,11 @@ function logform() {
 function nascondi() {
     //salvo sulla variabile nasc, lo style dell'elemento passato
 
-    var e = document.getElementById('login');
-    if (e.style.display != 'block')
-        e.style.display = 'block';
+    var e = document.getElementById("login");
+    if (e.style.display != "block")
+        e.style.display = "block";
     else
-        e.style.display = 'none';
+        e.style.display = "none";
 }
 
 // Funzioni per la form delle pagine
@@ -20,7 +20,7 @@ function nascondi() {
 chiave: nome dell'input da controllare
 [0]: prima indicazione per la compilazione dell'input
 [1]: l'espressione regolare da controllare
-[2]: hint nel caso in cui l'inpuit fornito sia sbagliato
+[2]: hint nel caso in cui l'input fornito sia sbagliato
 */
 
 // Campi dati per le varie form

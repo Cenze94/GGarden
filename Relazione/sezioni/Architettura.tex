@@ -1,18 +1,18 @@
 \section{Architettura}{
 	Il layout è stato strutturato allo scopo di rendere il sito fruibile indipendentemente dal dispositivo, definendo:
 	\begin{itemize}\itemsep1pt
-		\item layout per dispositivi desktop
+		\item layout per dispositivi desktop (suddiviso a seconda del browser)
 		\item layout per dispositivi mobili
 		\item layout di stampa
 	\end{itemize} 
 	
 	\subsection{Progettazione layout}{
-		Si è deciso di utilizzare un layout di tipo responsive, facendolo adattare alle dimensioni dello schermo, impostando un limite sulla larghezza dello schermo per passare al layout per dispositivi mobili.
+		Si è deciso di utilizzare un layout di tipo responsive a singola colonna principale, facendolo adattare alle dimensioni dello schermo, impostando un limite sulla larghezza dello schermo per passare al layout per dispositivi mobili.
 	}
 	\subsection{Sviluppo layout}{
 		Nell'immagine che segue viene mostrata la struttura data ai vari blocchi \textit{div} che compongono il sito, in cui sono contenute le informazioni divise per area tematica le informazioni.
 	\\
-	Il layout si adatta in base alla larghezza dello schermo, con l'obiettivo di far sviluppare verso il basso il sito.
+	Il layout fluido orizzontalmente si adatta in base alla larghezza dello schermo, con l'obiettivo di far sviluppare verso il basso il sito.
 		\begin{figure}[H]
 			\includegraphics{\docsImg Schemasito.png}
 			\caption{Schema del sito}
@@ -27,10 +27,10 @@
 			\begin{itemize}\itemsep1pt
 				\item Titolo e logo; nella pagina relativa alle vendite è presente inoltre il pulsante d'accesso amministratore che mostra un menù a scomparsa da cui poter effettuare il login;
 				\item Il div \textbf{breadcrumbs} che aiuta l'utente ad identificare la posizione in cui si trova all'interno del sito, rispetto alla homepage; al suo interno è presente anche la barra di ricerca con cui trovare i prodotti all'interno del sito;
-				\item Il menù utente, identificato con il div \textbf{menu}, presenta 4 scelte: \textit{Home}, \textit{Realizzazioni}, \textit{Vendita} e \textit{Contattaci}. Viene evidenziata la posizione corrente. 
+				\item Il menù utente, identificato con il div \textbf{menu}, presenta 4 scelte: \textit{Home}, \textit{Realizzazioni}, \textit{Vendita} e \textit{Contattaci}. Viene evidenziata la posizione corrente. Situato centralmente alla pagine e si estende orizzontalmente.
 			\end{itemize}
 			\item Segue il contenuto vero e proprio della pagina, inserito nel div \textbf{content}: ha il compito di esporre le informazioni che si stanno trattando;
-			\item Alla fine della pagina, il \textbf{footer}, al cui interno è presente:
+			\item Alla fine della pagina, il \textbf{footer} esposto con un layout a 3 colonne. Al cui interno è presente:
 			\begin{itemize}\itemsep1pt
 				\item un piccolo logo dell'azienda;
 				\item collegamenti alle pagine del sito;

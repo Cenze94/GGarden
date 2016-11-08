@@ -50,7 +50,7 @@
 		                </p>
 						<ul class="menu">
 							<li><a href="../index.html" id="home" class="nav" xml:lang="en" accesskey="h" tabindex="10">Home </a></li>
-							<li><a href="../realizzazioni.html" id="real" class="nav" accesskey="r" tabindex="11">Realizzazioni </a></li>
+							<li><a href="../realizzazioni.html" id="real" class="nav" accesskey="r" tabindex="11">Realizzazioni</a></li>
 							<li><a href="checkLog.cgi" id="vend" class="vnav" accesskey="v" tabindex="12">Vendita </a></li>
 							<li><a href="../contattaci.html" id="cont" class="nav" accesskey="c" tabindex="13">Contattaci</a></li>
 						</ul>
@@ -71,7 +71,7 @@
 						<h3 class="footerlogo"><span id="logo_mini">Ggarden</span></h3>
 						<p class="footer-menu, testo-footer">
 							<a href="../index.html" hreflang="it" xml:lang="en" tabindex="100">Home</a> | 
-							<a href="../realizzazioni.html" hreflang="it" tabindex="101">Realizzazioni </a> | 
+							<a href="../realizzazioni.html" hreflang="it" tabindex="101">Realizzazioni</a> | 
 							<a href="checkLog.cgi" hreflang="it" tabindex="102">Vendita</a> | 
 							<a href="../contattaci.html" hreflang="it" tabindex="103">Contattaci</a>
 						</p>

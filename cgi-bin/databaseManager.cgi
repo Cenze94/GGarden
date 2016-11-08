@@ -24,6 +24,17 @@ sub updateOperation {
 	my $itemType = $_[2];
 	my $filexml = "../data/database.xml";
 	my $parserxml  = XML::LibXML->new;
+
+	# cambio titolo, descrizione e keyword della pagina
+		my $title = $doc->findnodes("//head/meta[\@name='title']")->get_node(1);
+		$title->setAttribute('content', "Modifica prodotto - Ggarden");
+		my $head = $doc->findnodes("//head")->get_node(1);
+		my $titletext = $doc->findnodes("//head/title")->get_node(1);
+		$titletext -> parentNode -> removeChild($titletext);
+		$head -> appendTextChild('title', "Modifica prodotto - Ggarden");
+		my $desc = $doc->findnodes("//head/meta[\@name='description']")->get_node(1);
+		$desc->setAttribute('content', "Tramite questa pagina si può procedere alla modifica di un prodotto presente all'interno del catalogo di GGarden");
+
 	my $form = $doc->findnodes("//body")->get_node(1);
 	my $setOnLoadBody=$form->getAttribute('onload');
 

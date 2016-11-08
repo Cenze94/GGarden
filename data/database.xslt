@@ -10,11 +10,11 @@
     <xsl:template match="/">
         <html xml:lang="it" lang="it">
             <head>
-                <title>Lista Prodotti - GGarden</title>
+                <title>Catalogo - GGarden</title>
                 <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
-                <meta name="title" content="GGarden" />
-                <meta name="description" content="Azienda specializzata nella vendita di piante e fiori e nel noleggio e vendita di attrezzi e macchine da giardinaggio" />
-                <meta name="keywords" content="prodotti, piante, fiori, giardinaggio, attrezzi" />
+                <meta name="title" content="Catalogo - GGarden" />
+                <meta name="description" content="Catalogo di Ggarden, azienda specializzata nella vendita di piante e fiori e nel noleggio e vendita di attrezzi e macchine da giardinaggio" />
+                <meta name="keywords" content="Catalogo, prodotti, piante, fiori, giardinaggio, attrezzi, prezzi, Padova, elenco prodotti" />
                 <meta name="author" content="Andrea Grendene, Pietro Gabelli, Sebastiano Marchesini" />
                 <meta name="language" content="italian it" />
                 <meta name="viewport" content="width=device-width" />

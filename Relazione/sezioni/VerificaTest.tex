@@ -1,7 +1,8 @@
 \section{Verifica e Test}{
 	Al fine di riuscire a garantire una corretta visualizzazione del sito ed una sua fruizione da parte di un numero di browser quanto più ampio possibile, è stata verificata la validità di tutte le pagine, indipendentemente dal tipo statico o dinamico; si è infine visualizzato il sito su browser meno recenti.
 	\subsection{Ambiente di lavoro}{
-		Dall'inizio dello sviluppo abbiamo utilizzato il servizio di hosting GitHub per ospitare il nostro progetto e lavorare in contemporanea, potendo eventualmente far regredire il prodotto in caso di modifiche errate. Questo ci ha permesso di poter lavorare anche da remoto avendo sempre la versione più aggiornata a disposizione.
+		Dall'inizio dello sviluppo abbiamo utilizzato il servizio di hosting GitHub per ospitare il nostro progetto e lavorare in contemporanea, potendo eventualmente far regredire il prodotto in caso di modifiche errate. Questo ci ha permesso di poter lavorare anche da remoto avendo sempre la versione più aggiornata a disposizione.\\
+		Il repository può essere trovato al seguente link: \url{https://github.com/Cenze94/GGarden}.
 	}
 	\subsection{Dispositivi utilizzati}{
 		Oltre a testare il sito sui computer del laboratorio, per verificarne la compatibilità su un gran numero di dispositivi ci siamo affidati ai servizi offerti da \href{https://www.browserstack.com/screenshots}{BrowserStack}, \href{https://developer.microsoft.com/en-us/microsoft-edge/tools/screenshots/}{Microsoft Browser screenshots} e per i dispositivi mobili \url{http://mobiletest.me/}, correggendo di volta in volta gli errori trovati.  Di seguito l'elenco dei browser e dispositivi testati:
@@ -37,6 +38,8 @@
 		Siamo riusciti ad ottenere la certificazione WCAG 2.0 AAA, la più alta possibile. Al momento della validazione sono stati prodotti dei warnings, ma solo nella parte riguardante il contenuto. Abbiamo fatto validare le pagine anche per la Sezione 508 e la Legge Stanca, con esito positivo.
 		I file XML e XSD sono stati validati con \textit{xmllint}, un programma per Ubuntu che da riga di comando valida un file XML rispetto ad uno schema XSD e fornisce tutti i problemi trovati. L'esito della validazione non ha segnalato errori.
 	}
+	\input{\docs ElencoModifiche.tex}
+	
 	\subsection{Conclusioni}
-		Il sito, in seguito alle validazioni, si è dimostrato accessibile e compatibile con un ampio numero di browser e dispositivi.
+		Il sito, in seguito alle validazioni, si è dimostrato accessibile e compatibile con un ampio numero di browser e dispositivi; malgrado le email generate dal sito siano tutt'ora segnate come span, ci riteniamo suddisfatti del lavoro svolto, vista la difficoltà a costruire un messaggio e-mail valido.
 }

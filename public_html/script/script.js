@@ -28,31 +28,33 @@ var dettagli_form_contattaci = {
     "first_name": ["Mario", /^[A-Za-z]+/, "Inserisci il tuo nome"],
     "last_name": ["Rossi", /^[A-Z][a-z]+( ([A-Z][a-z]+))?/, "Inserisci il tuo cognome"],
     "email": ["Inserire e-mail", /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/, "Inserisci un indirizzo email valido"]
-}
+};
 
 var dettagli_form_plant = {
-    "name": ["Nome pianta", /^[a-zA-ZÀ-ÿ0-9 -]*$/, "Inserisci il nome della pianta"],
-    "scientificName": ["Nome scientifico", /[A-Za-z- ]*/, ""],
+    "name": ["Nome pianta", /^[a-zA-ZÀ-ÿ0-9 -]+$/, "Inserisci il nome della pianta"],
+    "scientificName": ["Nome scientifico", /[A-Za-z- ]+/, ""],
     "type": ["Tipo", /.*/, ""],
     "dataName": ["Nome del dato", /.*/, ""],
     "dataContent": ["valore", /.*/, ""]
-}
+};
 
 var dettagli_form_tool = {
     "name": ["Nome attrezzo", /^[a-zA-ZÀ-ÿ0-9 -v]*$/, "Inserisci il nome dell'attrezzo"],
     "type": ["Tipo", /.*/, ""],
     "dataName": ["Nome del dato", /.*/, ""],
     "dataContent": ["valore", /.*/, ""]
-}
+};
 
 var dettagli_form_admin = {
     "inputUsername": ["Username", /.*/, ""],
     "inputPassword": ["Password", /.*/, ""]
-}
+};
 
-var dettagli_dynamic_input = {
+var dettagli_dynamic_data = {};
+
+var dettagli_dynamic_price = {
     "price": ["", /^\d+[\.]?(\d{1,2})?$/, "Inserisci il prezzo separato da un punto", "format"]
-}
+};
 
 function caricamentoPianta() {
     return caricamento(dettagli_form_plant, true);
@@ -75,7 +77,7 @@ function caricamentoPannelloAdmin() {
 // Funzione che data la matrice dei campi dati, li inserisce all'interno della form e stabilisce i controlli
 function caricamento(matrix, checkImg) //carica i dati nei campi
 {
-    if (checkImg == true) {
+    if (checkImg === true) {
         var img = document.getElementById("image");
         img.onchange = function() {
             checkImage(this);
@@ -96,7 +98,7 @@ function caricamento(matrix, checkImg) //carica i dati nei campi
 }
 
 function campoDefault(matrix, input) {
-    if (input.value == "") {
+    if (input.value === "") {
         input.value = matrix[input.id][0];
     }
 }
@@ -111,12 +113,13 @@ function validazioneCampo(matrix, input) {
     var p = input.parentNode; //prende lo span
     var errore = document.getElementById(input.id + "errore");
     if (errore) {
-        p.removeChild(errore)
+        p.removeChild(errore);
     }
 
     var regex = matrix[input.id][1];
     var text = input.value;
-    if (((text == matrix[input.id][0])) || text.search(regex) != 0) //occhio! controllo che l'input sia diverso dal placeholder (con il primo check)
+    // if (((text == matrix[input.id][0])) || text.search(regex) != 0) //occhio! controllo che l'input sia diverso dal placeholder (con il primo check)
+    if (text=== "" || text.search(regex) !== 0)
     {
         mostraErrore(matrix, input);
         return false;
@@ -128,18 +131,37 @@ function validazioneCampoDinamico(matrix, input) {
     var p = input.parentNode; //prende lo span
     var errore = document.getElementById(input.id + "errore");
     if (errore) {
-        p.removeChild(errore)
+        p.removeChild(errore);
     }
-
     var regex1 = matrix[input.id][1];
-    var regex2 = matrix[input.id][4];
     var text = input.value;
-    if (((text == matrix[input.id][0])) || text.search(regex) != 0) //occhio! controllo che l'input sia diverso dal placeholder (con il primo check)
+    var companion=document.getElementById(matrix[input.id][3]);
+    console.log(matrix[input.id][3]);
+    var c_p=companion.parentNode;
+    var c_errore=document.getElementById(matrix[input.id][3] + "errore");
+    var ris=true;
+    if (c_errore) {
+        c_p.removeChild(c_errore);
+    }
+    var text2 = companion.value; //prendo il valore del secondo valore
+    console.log(text2);
+    if (((text == matrix[input.id][0])) || text.search(regex1) !== 0) //occhio! controllo che l'input sia diverso dal placeholder (con il primo check)
     {
         mostraErrore(matrix, input);
-        return false;
+        ris = false;
     }
-    return true;
+    if (text2 === "")
+    {
+        var e = document.createElement("strong");
+        e.className = "errorSuggestion";
+        e.id = matrix[input.id][3] + "errore";
+        e.appendChild(document.createTextNode("Inserisci un formato"));
+        c_p.appendChild(e);
+        ris = false;
+    }
+    if(text === "" && text2 ==="")
+        ris = true;
+    return ris;
 }
 
 // Funzioni per il controllo sul tipo dell'immagine inserita nella form
@@ -156,7 +178,7 @@ function checkImage() {
     }
     var FileUploadPath = fuData.value;
 
-    if (FileUploadPath == '') {
+    if (FileUploadPath === '') {
         // alert("Please upload an image");
         // errImg(fuData);
         return true;
@@ -168,48 +190,52 @@ function checkImage() {
             return true;
         } 
         else {
-            // alert("Photo only allows file types of GIF, PNG, JPG, JPEG and BMP. ");
             errImg(fuData);
             return false;
         }
     }
 }
-// fine
 
 function validazioneFormPlant() {
     var rImg = checkImage(); 
     var rFrm = validazioneForm(dettagli_form_plant, true); 
-    var vDynFrm = validazioneForm(dettagli_dynamic_input, false);
-    var valRes= (rImg && rFrm && vDynFrm);
-    if (valRes == true)
-        dettagli_dynamic_input={};
-    //console.log(validazioneForm(dettagli_dynamic_input));
-    else console.log("<p>Sono presenti errori, potresti ricontrollare?</p>");
+    var vDynPrc = validazioneForm(dettagli_dynamic_price, false);
+    var vDynDt = validazioneForm(dettagli_dynamic_data, true);
+    var valRes= (rImg && rFrm && vDynPrc && vDynDt);
+    if (valRes === true)
+        dettagli_dynamic_price={};
+    else document.getElementById('errors').innerHTML="Sono presenti errori, potresti ricontrollare?";
     return valRes;
 }
 
 function validazioneFormTool() {
     var rImg = checkImage(); 
-    var rFrm = validazioneForm(dettagli_form_plant, true); 
-    var vDynFrm = validazioneForm(dettagli_dynamic_input, false);
-    var valRes= (rImg && rFrm && vDynFrm);
-    if (valRes == true)
-        dettagli_dynamic_input={};
+    var rFrm = validazioneForm(dettagli_form_tool, true); 
+    var vDynPrc = validazioneForm(dettagli_dynamic_price, false);
+    var vDynDt = validazioneForm(dettagli_dynamic_data, true);
+    var valRes= (rImg && rFrm && vDynPrc && vDynDt);
+    if (valRes === true)
+        dettagli_dynamic_price={};
+    else document.getElementById('errors').innerHTML="Sono presenti errori, potresti ricontrollare?";
     return valRes;
 }
 
 function validazioneFormContattaci(){
-    return validazioneForm(dettagli_form_contattaci, true);
+    var ris= validazioneForm(dettagli_form_contattaci, true);
+    if(ris===false)
+        document.getElementById('errors').innerHTML="Sono presenti errori, potresti ricontrollare?";
+    return ris;
 }
 
 function validazioneForm(matrix, Mstatica) {
     var corretto = true;
+    var risultato=false;
     for (var key in matrix) {
         var input = document.getElementById(key);
-        if(Mstatica==true)
-            var risultato = validazioneCampo(matrix, input);
+        if(Mstatica===true)
+            risultato = validazioneCampo(matrix, input);
         else
-            var risultato = validazioneCampoDinamico(matrix, input);
+            risultato = validazioneCampoDinamico(matrix, input);
         console.log(key, risultato);
         corretto = corretto && risultato;
     }
@@ -237,40 +263,46 @@ function errImg(fuData) {
 
 // Funzioni per aumentare dinamicamente il numero di campi dati della form
 
-var counter_prezzo = 1;
-var counter_valore = 1;
+var counter_prezzo = 0;
+var counter_valore = 0;
 
 function addNInputData(divname, number) {
-    for(i=0; i<number; ++i){
-        dettagli_dynamic_input['dataName'+counter_valore]=["Nome del dato", /.*/, ""];
-        dettagli_dynamic_input['dataContent'+counter_valore]=["valore", /.*/, ""];
+    for(var i=1; i<number; ++i){
+        dettagli_dynamic_data['dataName'+i] = ["Nome del dato", /.*/, "","dataContent"+i,/.*/, ""];
+        dettagli_dynamic_data['dataContent'+i] = ["valore", /.*/, ""];
         counter_valore++;
     }
-    caricamento(dettagli_dynamic_input, false);
+    caricamento(dettagli_dynamic_data, false);
 }
 
 function addNInputPrice(divName, number) {
-    for(i=0; i<number; ++i){
-        dettagli_dynamic_input['price'+counter_prezzo]=["", /^\d+[\.]?(\d{1,2})?$/, "Inserisci il prezzo separato da un punto"];
+    var to_set={};
+    for(var i=1; i<number; ++i){
+        to_set['price' + i] = ["", /^\d+[\.]?(\d{1,2})?$/, "Inserisci il prezzo separato da un punto"];
+        to_set['format' + i] = ["", /.*/, ""];
+        dettagli_dynamic_price['price'+i]=["", /^\d+[\.]?(\d{1,2})?$/, "Inserisci il prezzo separato da un punto", "format"+i, "", /.*/, ""];
         counter_prezzo++;
     }
-    caricamento(dettagli_dynamic_input, false);
+    caricamento(to_set, false);
 }
 
 function addInputPrice(divName) { 
     var toInsert = '<li><div class="inputsL"><label for="price" class="inputL">Prezzo (es. 7.50): &euro; </label><input type="text" name="price\[\]" id="price' + (counter_prezzo + 1) + '" class="inputL"/></div><div class="inputsR"><label for="format' + (counter_prezzo + 1) + '" class="inputR">Formato (es. al pezzo):</label><input type="text" name="format\[\]" id="format' + (counter_prezzo + 1) + '" class="inputR"/></div></li>';
     counter_prezzo = addInput(divName, counter_prezzo, toInsert);
-    dettagli_dynamic_input['price'+counter_prezzo]=["", /^\d+[\.]?(\d{1,2})?$/, "Inserisci il prezzo separato da un punto", "format"+counter_prezzo, "", /.*/, ""];
-    // dettagli_dynamic_input['format'+counter_prezzo]=["", /.*/, ""];
-    caricamento(dettagli_dynamic_input, false);
+    var to_set={};
+    to_set['price' + counter_prezzo] = ["", /^\d+[\.]?(\d{1,2})?$/, "Inserisci il prezzo separato da un punto"];
+    to_set['format' + counter_prezzo] = ["", /.*/, ""];
+    dettagli_dynamic_price['price'+counter_prezzo]=["", /^\d+[\.]?(\d{1,2})?$/, "Inserisci il prezzo separato da un punto", "format"+counter_prezzo, "", /.*/, ""];
+    // dettagli_dynamic_price['format'+counter_prezzo]=["", /.*/, ""];
+    caricamento(to_set, false);
 }
 
 function addInputData(divName) {
     var toInsert = '<li><div class="inputsL"><label for="dataName" class="inputL">Dato (es. Altezza):</label><input type="text" name="dataName\[\]" id="dataName' + (counter_valore + 1)+'" class="inputL"/></div><div class="inputsR"><label for="dataContent' + (counter_valore + 1) + '" class="inputR">Formato (es. 10cm):</label><input type="text" name="dato\[\]" id="dataContent' + (counter_valore + 1) + '" class="inputR"/></div></li>';
     counter_valore = addInput(divName, counter_valore, toInsert);
-    dettagli_dynamic_input['dataName'+counter_valore]=["Nome del dato", /.*/, "","dataContent"+counter_valore,/.*/, ""];
-    dettagli_dynamic_input['dataContent'+counter_valore]=["valore", /.*/, ""];
-    caricamento(dettagli_dynamic_input, false);
+    dettagli_dynamic_data['dataName'+counter_valore] = ["Nome del dato", /.*/, "","dataContent"+counter_valore,/.*/, ""];
+    dettagli_dynamic_data['dataContent'+counter_valore] = ["valore", /.*/, ""];
+    caricamento(dettagli_dynamic_data, false);
 }
 
 function addInput(divName, counter, toInsert) {
@@ -290,22 +322,21 @@ function replaceMap() {
 // fine
 
 // Funzioni per la pagina Realizzazioni
-
 function loadPics() {
     if (!document.getElementById || !document.getElementsByTagName) return;
-    links = document.getElementById("minipics").getElementsByTagName("a");
-    for (i = 0; i < links.length; i++)
+    var links = document.getElementById("minipics").getElementsByTagName("a");
+    for (var i = 0; i < links.length; i++)
         links[i].onclick = function() {
             Show(this);
-            return (false)
-        }
+            return (false);
+        };
 }
 
 function Show(obj) {
-    bigimg = document.getElementById("bigimage");
+    var bigimg = document.getElementById("bigimage");
     bigimg.src = obj.getAttribute("href");
-    smallimg = obj.getElementsByTagName("img")[0];
-    t = document.getElementById("titolo");
+    var smallimg = obj.getElementsByTagName("img")[0];
+    var t = document.getElementById("titolo");
     t.removeChild(t.lastChild);
     t.appendChild(document.createTextNode(smallimg.title));
 }

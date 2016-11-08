@@ -24,6 +24,9 @@ sub updateOperation {
 	my $itemType = $_[2];
 	my $filexml = "../data/database.xml";
 	my $parserxml  = XML::LibXML->new;
+	my $form = $doc->findnodes("//body")->get_node(1);
+	my $setOnLoadBody=$form->getAttribute('onload');
+
 	my $node = $doc->findnodes("//div[\@id='content']/form/fieldset/legend")->get_node(1);
 	if($itemType eq 'pianta') {
 		$node->appendTextNode('Inserisci i dati da modificare della pianta selezionata:');
@@ -89,6 +92,9 @@ sub updateOperation {
 			# 	$node = $node->parentNode()->insertAfter($string, $node);
 			# }
 		}
+		# $form->setAttribute('onload', $form.getAttribute('onload').", addNInputPrice('dynamicInputPrice', ".(scalar @values - 1).")");
+		my $num=scalar @values;
+		$setOnLoadBody=$setOnLoadBody.", addNInputPrice('dynamicInputPrice', ".($num).")";
 	}
 	$value = $xml->findnodes("./p:descrizione/text()")->get_node(1);
 	$value = decode_entities($value, '<>&"');
@@ -129,6 +135,9 @@ sub updateOperation {
 			$node = $node->parentNode()->insertAfter($string, $node);
 		#}
 	}
+	my $num=scalar @values;
+	$setOnLoadBody=$setOnLoadBody.", addNInputData('dynamicInputData', ".($num).")";
+	$form->setAttribute('onload', $setOnLoadBody);
 
 	$node = $node->findnodes("../../../li/p/input[\@type='submit']")->get_node(1);
 	$node->setAttribute('value', "Modifica prodotto");
@@ -196,12 +205,12 @@ if($operation eq "delete") {
 	$form->appendTextNode("Tipo di $itemType:");
 	if($itemType eq 'pianta') {
 		$form = $doc->findnodes("//body")->get_node(1);
-		$form->setAttribute('onload', 'caricamentoPianta();');
+		$form->setAttribute('onload', 'caricamentoPianta()');
 		$form = $div->findnodes("form")->get_node(1);
 		$form->setAttribute('onsubmit', 'return validazioneFormPlant();');
 	} elsif($itemType eq 'attrezzo') {
 		$form = $doc->findnodes("//body")->get_node(1);
-		$form->setAttribute('onload', 'caricamentoAttrezzi();');
+		$form->setAttribute('onload', 'caricamentoAttrezzi()');
 		$form = $div->findnodes("form")->get_node(1);
 		$form->setAttribute('onsubmit', 'return validazioneFormTool();');
 	}

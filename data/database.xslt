@@ -18,15 +18,15 @@
                 <meta name="author" content="Andrea Grendene, Pietro Gabelli, Sebastiano Marchesini" />
                 <meta name="language" content="italian it" />
                 <meta name="viewport" content="width=device-width" />
-                <link rel="stylesheet" href="../css/home.css" type="text/css" media="screen and (min-width: 650px)" />
-                <link rel="stylesheet" href="../css/print.css" type="text/css" media="print" />
-                <link rel="stylesheet" type="text/css" href="../css/small-devices.css" media="screen and (max-width: 650px)" />
+                <link rel="stylesheet" href="../css/home_min.css" type="text/css" media="screen and (min-width: 650px)" />
+                <link rel="stylesheet" href="../css/print_min.css" type="text/css" media="print" />
+                <link rel="stylesheet" type="text/css" href="../css/small-devices_min.css" media="screen and (max-width: 650px)" />
                 <xsl:comment>
-                    <![CDATA[[if lte IE 8]><link rel="stylesheet" type="text/css" href="../css/explorer.css"/><![endif]]]>
+                    <![CDATA[[if lte IE 8]><link rel="stylesheet" type="text/css" href="../css/explorer_min.css"/><![endif]]]>
                 </xsl:comment>
                 <link rel="icon" href="../img/logo2.png" type="image/png" />
                 <meta http-equiv="Content-Script-Type" content="application/javascript" />
-                <script type="text/javascript" src="../script/script.js"></script>
+                <script type="text/javascript" src="../script/script_min.js"></script>
             </head>
             <body onload="caricamentoPannelloAdmin();">
                 <p class="nascosto">

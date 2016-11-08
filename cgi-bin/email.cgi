@@ -27,14 +27,14 @@ $var->removeAttribute("xmlns");
 $var->removeAttribute("lang");
 
 #Aggiorno il link ai CSS
-my $string = $doc->findnodes('//link[@href="css/home.css"]')->get_node(0);
-$string->setAttribute("href", '../css/home.css');
-$string = $doc->findnodes('//link[@href="css/print.css"]')->get_node(0);
-$string->setAttribute("href", '../css/print.css');
-$string = $doc->findnodes('//link[@href="css/small-devices.css"]')->get_node(0);
-$string->setAttribute("href", '../css/small-devices.css');
+my $string = $doc->findnodes('//link[@href="css/home_min.css"]')->get_node(0);
+$string->setAttribute("href", '../css/home_min.css');
+$string = $doc->findnodes('//link[@href="css/print_min.css"]')->get_node(0);
+$string->setAttribute("href", '../css/print_min.css');
+$string = $doc->findnodes('//link[@href="css/small-devices_min.css"]')->get_node(0);
+$string->setAttribute("href", '../css/small-devices_min.css');
 $string = $doc->findnodes('//comment()')->get_node(1);
-$string->setData('[if lte IE 8]><link rel="stylesheet" type="text/css" href="../css/explorer.css"/><![endif]');
+$string->setData('[if lte IE 8]><link rel="stylesheet" type="text/css" href="../css/explorer_min.css"/><![endif]');
 
 #Aggiorno il link dell'immagine di Google Mpas
 $string = $doc->findnodes('////img[@id="fotoMappa"]')->get_node(0);
@@ -42,7 +42,7 @@ $string->setAttribute("src", '../img/mappa.png');
 
 #Aggiorno il link dello script JavaScript
 $string = $doc->findnodes('//script')->get_node(0);
-$string->setAttribute("src", '../script/script.js');
+$string->setAttribute("src", '../script/script_min.js');
 
 #Aggiorno i link alle altre pagine
 my @links = $doc->findnodes('//a[@href="index.html"]');

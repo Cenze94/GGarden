@@ -32,14 +32,14 @@ var dettagli_form_contattaci = {
 
 var dettagli_form_plant = {
     "name": ["Nome pianta", /^[a-zA-ZÀ-ÿ0-9 -]+$/, "Inserisci il nome della pianta"],
-    "scientificName": ["Nome scientifico", /[A-Za-z- ]+/, ""],
+    "scientificName": ["Nome scientifico", /[A-Za-z- ]*/, ""],
     "type": ["Tipo", /.*/, ""],
     "dataName": ["Nome del dato", /.*/, ""],
     "dataContent": ["valore", /.*/, ""]
 };
 
 var dettagli_form_tool = {
-    "name": ["Nome attrezzo", /^[a-zA-ZÀ-ÿ0-9 -v]*$/, "Inserisci il nome dell'attrezzo"],
+    "name": ["Nome attrezzo", /^[a-zA-ZÀ-ÿ0-9 -v]+$/, "Inserisci il nome dell'attrezzo"],
     "type": ["Tipo", /.*/, ""],
     "dataName": ["Nome del dato", /.*/, ""],
     "dataContent": ["valore", /.*/, ""]
@@ -115,11 +115,10 @@ function validazioneCampo(matrix, input) {
     if (errore) {
         p.removeChild(errore);
     }
-
     var regex = matrix[input.id][1];
     var text = input.value;
     // if (((text == matrix[input.id][0])) || text.search(regex) != 0) //occhio! controllo che l'input sia diverso dal placeholder (con il primo check)
-    if (text=== "" || text.search(regex) !== 0)
+    if (text.search(regex) !== 0)
     {
         mostraErrore(matrix, input);
         return false;
@@ -136,7 +135,6 @@ function validazioneCampoDinamico(matrix, input) {
     var regex1 = matrix[input.id][1];
     var text = input.value;
     var companion=document.getElementById(matrix[input.id][3]);
-    console.log(matrix[input.id][3]);
     var c_p=companion.parentNode;
     var c_errore=document.getElementById(matrix[input.id][3] + "errore");
     var ris=true;
@@ -144,7 +142,6 @@ function validazioneCampoDinamico(matrix, input) {
         c_p.removeChild(c_errore);
     }
     var text2 = companion.value; //prendo il valore del secondo valore
-    console.log(text2);
     if (((text == matrix[input.id][0])) || text.search(regex1) !== 0) //occhio! controllo che l'input sia diverso dal placeholder (con il primo check)
     {
         mostraErrore(matrix, input);
@@ -236,14 +233,12 @@ function validazioneForm(matrix, Mstatica) {
             risultato = validazioneCampo(matrix, input);
         else
             risultato = validazioneCampoDinamico(matrix, input);
-        console.log(key, risultato);
         corretto = corretto && risultato;
     }
     return corretto;
 }
 
 function mostraErrore(matrix, input) {
-    console.log(input);
     var p = input.parentNode;
     var e = document.createElement("strong");
     e.className = "errorSuggestion";
@@ -298,7 +293,7 @@ function addInputPrice(divName) {
 }
 
 function addInputData(divName) {
-    var toInsert = '<li><div class="inputsL"><label for="dataName" class="inputL">Dato (es. Altezza):</label><input type="text" name="dataName\[\]" id="dataName' + (counter_valore + 1)+'" class="inputL"/></div><div class="inputsR"><label for="dataContent' + (counter_valore + 1) + '" class="inputR">Formato (es. 10cm):</label><input type="text" name="dato\[\]" id="dataContent' + (counter_valore + 1) + '" class="inputR"/></div></li>';
+    var toInsert = '<li><div class="inputsL"><label for="dataName" class="inputL">Dato (es. Altezza):</label><input type="text" name="dataName\[\]" id="dataName' + (counter_valore + 1)+'" class="inputL"/></div><div class="inputsR"><label for="dataContent' + (counter_valore + 1) + '" class="inputR">Formato (es. 10cm):</label><input type="text" name="dataContent\[\]" id="dataContent' + (counter_valore + 1) + '" class="inputR"/></div></li>';
     counter_valore = addInput(divName, counter_valore, toInsert);
     dettagli_dynamic_data['dataName'+counter_valore] = ["Nome del dato", /.*/, "","dataContent"+counter_valore,/.*/, ""];
     dettagli_dynamic_data['dataContent'+counter_valore] = ["valore", /.*/, ""];

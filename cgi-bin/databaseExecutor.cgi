@@ -292,9 +292,12 @@ for(my $i=0; $i<scalar @prices && $checkPrices!=0; $i++) {
 		splice(@prices, $i, 1);
 		splice(@formats, $i, 1);
 		$i = $i-1;
-	} elsif($prices[$i] !~ /[0-9]+[.][0-9]{2}$/ || $formats[$i] eq '') {
+	} elsif($prices[$i] !~ /[0-9]+[.]?([0-9]{1,2})?$/ || $formats[$i] eq '') {
 		$checkPrices = 0;
 	}
+	if($prices[$i] =~ /[0-9]+[.][0-9]$/) {$prices[$i]=$prices[$i]."0";}
+	elsif($prices[$i] =~ /[0-9]+[.]$/) {$prices[$i]=$prices[$i]."00";}
+	elsif($prices[$i] =~ /^[\d]+$/) {$prices[$i]=$prices[$i].".00";}
 }
 if($image ne '' && ($imageFormat eq '' || ($imageFormat ne 'jpeg' && $imageFormat ne 'jpg' && $imageFormat ne 'gif' && $imageFormat ne 'png' && $imageFormat ne 'svg' && $imageFormat ne 'bmp'))){
 	&error($operation, "formato errato del nome dell'immagine caricata");

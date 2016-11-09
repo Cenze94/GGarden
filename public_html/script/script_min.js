@@ -1,1 +1,339 @@
-function logform(){}function nascondi(){var a=document.getElementById("login");"block"!=a.style.display?a.style.display="block":a.style.display="none"}function caricamentoPianta(){return caricamento(dettagli_form_plant,!0)}function caricamentoAttrezzi(){return caricamento(dettagli_form_tool,!0)}function caricamentoContattaci(){return caricamento(dettagli_form_contattaci,!1)}function caricamentoPannelloAdmin(){var a=document.getElementById("login");return a.style.display="none",caricamento(dettagli_form_admin,!1)}function caricamento(a,b){if(b===!0){var c=document.getElementById("image");c.onchange=function(){checkImage(this)}}for(var d in a){var e=document.getElementById(d);campoDefault(a,e),e.onfocus=function(){campoPerInput(a,this)},e.onblur=function(){validazioneCampo(a,this)}}}function campoDefault(a,b){""===b.value&&(b.value=a[b.id][0])}function campoPerInput(a,b){b.value==a[b.id][0]&&(b.value="")}function validazioneCampo(a,b){var c=b.parentNode,d=document.getElementById(b.id+"errore");d&&c.removeChild(d);var e=a[b.id][1],f=b.value;return 0===f.search(e)||(mostraErrore(a,b),!1)}function validazioneCampoDinamico(a,b){var c=b.parentNode,d=document.getElementById(b.id+"errore");d&&c.removeChild(d);var e=a[b.id][1],f=b.value,g=document.getElementById(a[b.id][3]),h=g.parentNode,i=document.getElementById(a[b.id][3]+"errore"),j=!0;i&&h.removeChild(i);var k=g.value;if(f!=a[b.id][0]&&0===f.search(e)||(mostraErrore(a,b),j=!1),""===k){var l=document.createElement("strong");l.className="errorSuggestion",l.id=a[b.id][3]+"errore",l.appendChild(document.createTextNode("Inserisci un formato")),h.appendChild(l),j=!1}return""===f&&""===k&&(j=!0),j}function checkPictureType(a){return"gif"==a||"png"==a||"svg"==a||"bmp"==a||"jpeg"==a||"jpg"==a}function checkImage(){var a=document.getElementById("image"),b=a.parentNode,c=document.getElementById(a.id+"errore");c&&b.removeChild(c);var d=a.value;if(""===d)return!0;var e=d.substring(d.lastIndexOf(".")+1).toLowerCase();return!!checkPictureType(e)||(errImg(a),!1)}function validazioneFormPlant(){var a=checkImage(),b=validazioneForm(dettagli_form_plant,!0),c=validazioneForm(dettagli_dynamic_price,!1),d=validazioneForm(dettagli_dynamic_data,!0),e=a&&b&&c&&d;return e===!0?dettagli_dynamic_price={}:document.getElementById("errors").innerHTML="Sono presenti errori, potresti ricontrollare?",e}function validazioneFormTool(){var a=checkImage(),b=validazioneForm(dettagli_form_tool,!0),c=validazioneForm(dettagli_dynamic_price,!1),d=validazioneForm(dettagli_dynamic_data,!0),e=a&&b&&c&&d;return e===!0?dettagli_dynamic_price={}:document.getElementById("errors").innerHTML="Sono presenti errori, potresti ricontrollare?",e}function validazioneFormContattaci(){var a=validazioneForm(dettagli_form_contattaci,!0);return a===!1&&(document.getElementById("errors").innerHTML="Sono presenti errori, potresti ricontrollare?"),a}function validazioneForm(a,b){var c=!0,d=!1;for(var e in a){var f=document.getElementById(e);d=b===!0?validazioneCampo(a,f):validazioneCampoDinamico(a,f),c=c&&d}return c}function mostraErrore(a,b){var c=b.parentNode,d=document.createElement("strong");d.className="errorSuggestion",d.id=b.id+"errore",d.appendChild(document.createTextNode(a[b.id][2])),c.appendChild(d)}function errImg(a){var b=a.parentNode,c=document.createElement("strong");c.className="errorSuggestion",c.id=document.getElementById("image").id+"errore",c.appendChild(document.createTextNode("Inserisci un file immagine")),b.appendChild(c)}function addNInputData(a,b){for(var c=1;c<b;++c)dettagli_dynamic_data["dataName"+c]=["Nome del dato",/.*/,"","dataContent"+c,/.*/,""],dettagli_dynamic_data["dataContent"+c]=["valore",/.*/,""],counter_valore++;caricamento(dettagli_dynamic_data,!1)}function addNInputPrice(a,b){for(var c={},d=1;d<b;++d)c["price"+d]=["",/^\d+[\.]?(\d{1,2})?$/,"Inserisci il prezzo separato da un punto"],c["format"+d]=["",/.*/,""],dettagli_dynamic_price["price"+d]=["",/^\d+[\.]?(\d{1,2})?$/,"Inserisci il prezzo separato da un punto","format"+d,"",/.*/,""],counter_prezzo++;caricamento(c,!1)}function addInputPrice(a){var b='<li><div class="inputsL"><label for="price" class="inputL">Prezzo (es. 7.50): &euro; </label><input type="text" name="price[]" id="price'+(counter_prezzo+1)+'" class="inputL"/></div><div class="inputsR"><label for="format'+(counter_prezzo+1)+'" class="inputR">Formato (es. al pezzo):</label><input type="text" name="format[]" id="format'+(counter_prezzo+1)+'" class="inputR"/></div></li>';counter_prezzo=addInput(a,counter_prezzo,b);var c={};c["price"+counter_prezzo]=["",/^\d+[\.]?(\d{1,2})?$/,"Inserisci il prezzo separato da un punto"],c["format"+counter_prezzo]=["",/.*/,""],dettagli_dynamic_price["price"+counter_prezzo]=["",/^\d+[\.]?(\d{1,2})?$/,"Inserisci il prezzo separato da un punto","format"+counter_prezzo,"",/.*/,""],caricamento(c,!1)}function addInputData(a){var b='<li><div class="inputsL"><label for="dataName" class="inputL">Dato (es. Altezza):</label><input type="text" name="dataName[]" id="dataName'+(counter_valore+1)+'" class="inputL"/></div><div class="inputsR"><label for="dataContent'+(counter_valore+1)+'" class="inputR">Formato (es. 10cm):</label><input type="text" name="dataContent[]" id="dataContent'+(counter_valore+1)+'" class="inputR"/></div></li>';counter_valore=addInput(a,counter_valore,b),dettagli_dynamic_data["dataName"+counter_valore]=["Nome del dato",/.*/,"","dataContent"+counter_valore,/.*/,""],dettagli_dynamic_data["dataContent"+counter_valore]=["valore",/.*/,""],caricamento(dettagli_dynamic_data,!1)}function addInput(a,b,c){var d=document.createElement("span");return d.innerHTML=c,document.getElementById(a).appendChild(d),b++,b}function replaceMap(){var a=document.getElementById("visualizzaMappa");a.innerHTML='<iframe id=\'frameMappa\' class=\'noprint\' src=\'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2800.9012391702986!2d11.885443115555669!3d45.41133107910034!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x477eda58b44676df%3A0xfacae5884fca17f5!2sTorre+Archimede%2C+Via+Trieste%2C+63%2C+35121+Padova+PD!5e0!3m2!1sit!2sit!4v1472819512186\'></iframe><img id="fotoMappa" class="print" src="img/mappa.png" alt="Mappa della sede di GGarden" />'}function loadPics(){if(document.getElementById&&document.getElementsByTagName)for(var a=document.getElementById("minipics").getElementsByTagName("a"),b=0;b<a.length;b++)a[b].onclick=function(){return Show(this),!1}}function Show(a){var b=document.getElementById("bigimage");b.src=a.getAttribute("href");var c=a.getElementsByTagName("img")[0],d=document.getElementById("titolo");d.removeChild(d.lastChild),d.appendChild(document.createTextNode(c.title))}var dettagli_form_contattaci={first_name:["Mario",/^[A-Za-z]+/,"Inserisci il tuo nome"],last_name:["Rossi",/^[A-Z][a-z]+( ([A-Z][a-z]+))?/,"Inserisci il tuo cognome"],email:["Inserire e-mail",/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,"Inserisci un indirizzo email valido"]},dettagli_form_plant={name:["Nome pianta",/^[a-zA-ZÀ-ÿ0-9 -]+$/,"Inserisci il nome della pianta"],scientificName:["Nome scientifico",/[A-Za-z- ]*/,""],type:["Tipo",/.*/,""],dataName:["Nome del dato",/.*/,""],dataContent:["valore",/.*/,""]},dettagli_form_tool={name:["Nome attrezzo",/^[a-zA-ZÀ-ÿ0-9 -v]+$/,"Inserisci il nome dell'attrezzo"],type:["Tipo",/.*/,""],dataName:["Nome del dato",/.*/,""],dataContent:["valore",/.*/,""]},dettagli_form_admin={inputUsername:["Username",/.*/,""],inputPassword:["Password",/.*/,""]},dettagli_dynamic_data={},dettagli_dynamic_price={price:["",/^\d+[\.]?(\d{1,2})?$/,"Inserisci il prezzo separato da un punto","format"]},counter_prezzo=0,counter_valore=0;
+function logform() {
+    // if(document.getElementById('log').clicked{
+    // prompt(“Inserisci la login:”,“guest”);
+    // }
+}
+
+// funzione per rendere a scomparsa il login dell'amministratore
+function nascondi() {
+    //salvo sulla variabile nasc, lo style dell'elemento passato
+
+    var e = document.getElementById("login");
+    if (e.style.display != "block")
+        e.style.display = "block";
+    else
+        e.style.display = "none";
+}
+
+// Funzioni per la form delle pagine
+/*
+chiave: nome dell'input da controllare
+[0]: prima indicazione per la compilazione dell'input
+[1]: l'espressione regolare da controllare
+[2]: hint nel caso in cui l'input fornito sia sbagliato
+*/
+
+// Campi dati per le varie form
+var dettagli_form_contattaci = {
+    "first_name": ["Mario", /^[A-Za-z]+/, "Inserisci il tuo nome"],
+    "last_name": ["Rossi", /^[A-Z][a-z]+( ([A-Z][a-z]+))?/, "Inserisci il tuo cognome"],
+    "email": ["Inserire e-mail", /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/, "Inserisci un indirizzo email valido"],
+    "comments": ["Scrivi qui la tua domanda", /.+/, "Inserisci la domanda"]
+};
+
+var dettagli_form_plant = {
+    "name": ["Nome pianta", /^[a-zA-ZÀ-ÿ0-9 -]+$/, "Inserisci il nome della pianta"],
+    "scientificName": ["Nome scientifico", /[A-Za-z- ]*/, ""],
+    "type": ["Tipo", /.*/, ""],
+    "dataName": ["Nome del dato", /.*/, ""],
+    "dataContent": ["valore", /.*/, ""]
+};
+
+var dettagli_form_tool = {
+    "name": ["Nome attrezzo", /^[a-zA-ZÀ-ÿ0-9 -v]+$/, "Inserisci il nome dell'attrezzo"],
+    "type": ["Tipo", /.*/, ""],
+    "dataName": ["Nome del dato", /.*/, ""],
+    "dataContent": ["valore", /.*/, ""]
+};
+
+var dettagli_form_admin = {
+    "inputUsername": ["Username", /.*/, ""],
+    "inputPassword": ["Password", /.*/, ""]
+};
+
+var dettagli_dynamic_data = {};
+
+var dettagli_dynamic_price = {
+    "price": ["", /^\d+[\.]?(\d{1,2})?$/, "Inserisci il prezzo separato da un punto", "format"]
+    //"price": ["", /^\d+[\.]?(\d{2})$/, "Inserisci il prezzo separato da un punto", "format"]
+};
+
+function caricamentoPianta() {
+    return caricamento(dettagli_form_plant, true);
+}
+
+function caricamentoAttrezzi() {
+    return caricamento(dettagli_form_tool, true);
+}
+
+function caricamentoContattaci() {
+    return caricamento(dettagli_form_contattaci, false);
+}
+
+function caricamentoPannelloAdmin() {
+    var e = document.getElementById('login');
+    e.style.display = 'none';
+    return caricamento(dettagli_form_admin, false);
+}
+
+// Funzione che data la matrice dei campi dati, li inserisce all'interno della form e stabilisce i controlli
+function caricamento(matrix, checkImg) //carica i dati nei campi
+{
+    if (checkImg === true) {
+        var img = document.getElementById("image");
+        img.onchange = function() {
+            checkImage(this);
+        };
+    }
+
+    for (var key in matrix) {
+        var input = document.getElementById(key);
+        campoDefault(matrix, input);
+
+        input.onfocus = function() {
+            campoPerInput(matrix, this);
+        }; //toglie l'aiuto
+        input.onblur = function() {
+            validazioneCampo(matrix, this);
+        }; //fa la validazione del campo
+    }
+}
+
+function campoDefault(matrix, input) {
+    if (input.value === "") {
+        input.value = matrix[input.id][0];
+    }
+}
+
+function campoPerInput(matrix, input) {
+    if (input.value == matrix[input.id][0]) {
+        input.value = "";
+    }
+}
+
+function validazioneCampo(matrix, input) {
+    var p = input.parentNode; //prende lo span
+    var errore = document.getElementById(input.id + "errore");
+    if (errore) {
+        p.removeChild(errore);
+    }
+    var regex = matrix[input.id][1];
+    var text = input.value;
+    // if (((text == matrix[input.id][0])) || text.search(regex) != 0) //occhio! controllo che l'input sia diverso dal placeholder (con il primo check)
+    if (text.search(regex) !== 0)
+    {
+        mostraErrore(matrix, input);
+        return false;
+    }
+    return true;
+}
+
+function validazioneCampoDinamico(matrix, input) {
+    var p = input.parentNode; //prende lo span
+    var errore = document.getElementById(input.id + "errore");
+    if (errore) {
+        p.removeChild(errore);
+    }
+    var regex1 = matrix[input.id][1];
+    var text = input.value;
+    var companion=document.getElementById(matrix[input.id][3]);
+    var c_p=companion.parentNode;
+    var c_errore=document.getElementById(matrix[input.id][3] + "errore");
+    var ris=true;
+    if (c_errore) {
+        c_p.removeChild(c_errore);
+    }
+    var text2 = companion.value; //prendo il valore del secondo valore
+    if (((text == matrix[input.id][0])) || text.search(regex1) !== 0) //occhio! controllo che l'input sia diverso dal placeholder (con il primo check)
+    {
+        mostraErrore(matrix, input);
+        ris = false;
+    }
+    if (text2 === "")
+    {
+        var e = document.createElement("strong");
+        e.className = "errorSuggestion";
+        e.id = matrix[input.id][3] + "errore";
+        e.appendChild(document.createTextNode("Inserisci un formato"));
+        c_p.appendChild(e);
+        ris = false;
+    }
+    if(text === "" && text2 ==="")
+        ris = true;
+    return ris;
+}
+
+// Funzioni per il controllo sul tipo dell'immagine inserita nella form
+function checkPictureType(Extension) {
+    return (Extension == "gif" || Extension == "png" || Extension == "svg" || Extension == "bmp" || Extension == "jpeg" || Extension == "jpg");
+}
+
+function checkImage() {
+    var fuData = document.getElementById('image');
+    var p = fuData.parentNode; //prende lo span
+    var errore = document.getElementById(fuData.id + "errore");
+    if (errore) {
+        p.removeChild(errore);
+    }
+    var FileUploadPath = fuData.value;
+
+    if (FileUploadPath === '') {
+        // alert("Please upload an image");
+        // errImg(fuData);
+        return true;
+    } 
+    else {
+        var Extension = FileUploadPath.substring(
+            FileUploadPath.lastIndexOf('.') + 1).toLowerCase();
+        if (checkPictureType(Extension)){
+            return true;
+        } 
+        else {
+            errImg(fuData);
+            return false;
+        }
+    }
+}
+
+function validazioneFormPlant() {
+    var rImg = checkImage(); 
+    var rFrm = validazioneForm(dettagli_form_plant, true); 
+    var vDynPrc = validazioneForm(dettagli_dynamic_price, false);
+    var vDynDt = validazioneForm(dettagli_dynamic_data, true);
+    var valRes= (rImg && rFrm && vDynPrc && vDynDt);
+    if (valRes === true)
+        dettagli_dynamic_price={};
+    else document.getElementById('errors').innerHTML="Sono presenti errori, potresti ricontrollare?";
+    return valRes;
+}
+
+function validazioneFormTool() {
+    var rImg = checkImage(); 
+    var rFrm = validazioneForm(dettagli_form_tool, true); 
+    var vDynPrc = validazioneForm(dettagli_dynamic_price, false);
+    var vDynDt = validazioneForm(dettagli_dynamic_data, true);
+    var valRes= (rImg && rFrm && vDynPrc && vDynDt);
+    if (valRes === true)
+        dettagli_dynamic_price={};
+    else document.getElementById('errors').innerHTML="Sono presenti errori, potresti ricontrollare?";
+    return valRes;
+}
+
+function validazioneFormContattaci(){
+    var ris= validazioneForm(dettagli_form_contattaci, true);
+    if(ris===false)
+        document.getElementById('errors').innerHTML="Sono presenti errori, potresti ricontrollare?";
+    return ris;
+}
+
+function validazioneForm(matrix, Mstatica) {
+    var corretto = true;
+    var risultato=false;
+    for (var key in matrix) {
+        var input = document.getElementById(key);
+        if(Mstatica===true)
+            risultato = validazioneCampo(matrix, input);
+        else
+            risultato = validazioneCampoDinamico(matrix, input);
+        corretto = corretto && risultato;
+    }
+    return corretto;
+}
+
+function mostraErrore(matrix, input) {
+    var p = input.parentNode;
+    var e = document.createElement("strong");
+    e.className = "errorSuggestion";
+    e.id = input.id + "errore";
+    e.appendChild(document.createTextNode(matrix[input.id][2]));
+    p.appendChild(e);
+}
+
+function errImg(fuData) {
+    var p = fuData.parentNode;
+    var e = document.createElement("strong");
+    e.className = "errorSuggestion";
+    e.id = (document.getElementById("image")).id + "errore";
+    e.appendChild(document.createTextNode("Inserisci un file immagine"));
+    p.appendChild(e);
+}
+
+// Funzioni per aumentare dinamicamente il numero di campi dati della form
+
+var counter_prezzo = 0;
+var counter_valore = 0;
+
+function addNInputData(divname, number) {
+    for(var i=1; i<number; ++i){
+        dettagli_dynamic_data['dataName'+i] = ["Nome del dato", /.*/, "","dataContent"+i,/.*/, ""];
+        dettagli_dynamic_data['dataContent'+i] = ["valore", /.*/, ""];
+        counter_valore++;
+    }
+    caricamento(dettagli_dynamic_data, false);
+}
+
+function addNInputPrice(divName, number) {
+    var to_set={};
+    for(var i=1; i<number; ++i){
+        to_set['price' + i] = ["", /^\d+[\.]?(\d{1,2})?$/, "Inserisci il prezzo separato da un punto"];
+        to_set['format' + i] = ["", /.*/, ""];
+        dettagli_dynamic_price['price'+i]=["", /^\d+[\.]?(\d{1,2})?$/, "Inserisci il prezzo separato da un punto", "format"+i, "", /.*/, ""];
+        counter_prezzo++;
+    }
+    caricamento(to_set, false);
+}
+
+function addInputPrice(divName) { 
+    var toInsert = '<li><div class="inputsL"><label for="price" class="inputL">Prezzo (es. 7.50): &euro; </label><input type="text" name="price\[\]" id="price' + (counter_prezzo + 1) + '" class="inputL"/></div><div class="inputsR"><label for="format' + (counter_prezzo + 1) + '" class="inputR">Formato (es. al pezzo):</label><input type="text" name="format\[\]" id="format' + (counter_prezzo + 1) + '" class="inputR"/></div></li>';
+    counter_prezzo = addInput(divName, counter_prezzo, toInsert);
+    var to_set={};
+    to_set['price' + counter_prezzo] = ["", /^\d+[\.]?(\d{1,2})?$/, "Inserisci il prezzo separato da un punto"];
+    to_set['format' + counter_prezzo] = ["", /.*/, ""];
+    dettagli_dynamic_price['price'+counter_prezzo]=["", /^\d+[\.]?(\d{1,2})?$/, "Inserisci il prezzo separato da un punto", "format"+counter_prezzo, "", /.*/, ""];
+    // dettagli_dynamic_price['format'+counter_prezzo]=["", /.*/, ""];
+    caricamento(to_set, false);
+}
+
+function addInputData(divName) {
+    var toInsert = '<li><div class="inputsL"><label for="dataName" class="inputL">Dato (es. Altezza):</label><input type="text" name="dataName\[\]" id="dataName' + (counter_valore + 1)+'" class="inputL"/></div><div class="inputsR"><label for="dataContent' + (counter_valore + 1) + '" class="inputR">Formato (es. 10cm):</label><input type="text" name="dataContent\[\]" id="dataContent' + (counter_valore + 1) + '" class="inputR"/></div></li>';
+    counter_valore = addInput(divName, counter_valore, toInsert);
+    dettagli_dynamic_data['dataName'+counter_valore] = ["Nome del dato", /.*/, "","dataContent"+counter_valore,/.*/, ""];
+    dettagli_dynamic_data['dataContent'+counter_valore] = ["valore", /.*/, ""];
+    caricamento(dettagli_dynamic_data, false);
+}
+
+function addInput(divName, counter, toInsert) {
+    var newspan = document.createElement('span');
+    newspan.innerHTML = toInsert;
+    document.getElementById(divName).appendChild(newspan);
+    counter++;
+    return counter;
+}
+
+
+//funzione che sostituisce l'immagine della mappa con la mappa in google maps
+function replaceMap() {
+    var map = document.getElementById("visualizzaMappa");
+    map.innerHTML = "<iframe id='frameMappa' class='noprint' src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2800.9012391702986!2d11.885443115555669!3d45.41133107910034!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x477eda58b44676df%3A0xfacae5884fca17f5!2sTorre+Archimede%2C+Via+Trieste%2C+63%2C+35121+Padova+PD!5e0!3m2!1sit!2sit!4v1472819512186'></iframe><img id=\"fotoMappa\" class=\"print\" src=\"img/mappa.png\" alt=\"Mappa della sede di GGarden\" />";
+}
+// fine
+
+// Funzioni per la pagina Realizzazioni
+function loadPics() {
+    if (!document.getElementById || !document.getElementsByTagName) return;
+    var links = document.getElementById("minipics").getElementsByTagName("a");
+    for (var i = 0; i < links.length; i++)
+        links[i].onclick = function() {
+            Show(this);
+            return (false);
+        };
+}
+
+function Show(obj) {
+    var bigimg = document.getElementById("bigimage");
+    bigimg.src = obj.getAttribute("href");
+    var smallimg = obj.getElementsByTagName("img")[0];
+    var t = document.getElementById("titolo");
+    t.removeChild(t.lastChild);
+    t.appendChild(document.createTextNode(smallimg.title));
+}

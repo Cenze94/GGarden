@@ -27,7 +27,8 @@ chiave: nome dell'input da controllare
 var dettagli_form_contattaci = {
     "first_name": ["Mario", /^[A-Za-z]+/, "Inserisci il tuo nome"],
     "last_name": ["Rossi", /^[A-Z][a-z]+( ([A-Z][a-z]+))?/, "Inserisci il tuo cognome"],
-    "email": ["Inserire e-mail", /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/, "Inserisci un indirizzo email valido"]
+    "email": ["Inserire e-mail", /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/, "Inserisci un indirizzo email valido"],
+    "comments": ["Scrivi qui la tua domanda", /.+/, "Inserisci la domanda"]
 };
 
 var dettagli_form_plant = {
@@ -53,7 +54,8 @@ var dettagli_form_admin = {
 var dettagli_dynamic_data = {};
 
 var dettagli_dynamic_price = {
-    "price": ["", /^\d+[\.]?(\d{1,2})?$/, "Inserisci il prezzo separato da un punto", "format"]
+    "price": ["", /^\d+[\.]?(\d{2})?$/, "Inserisci il prezzo separato da un punto", "format"]
+    //"price": ["", /^\d+[\.]?(\d{2})$/, "Inserisci il prezzo separato da un punto", "format"]
 };
 
 function caricamentoPianta() {

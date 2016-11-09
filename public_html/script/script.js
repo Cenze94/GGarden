@@ -54,7 +54,7 @@ var dettagli_form_admin = {
 var dettagli_dynamic_data = {};
 
 var dettagli_dynamic_price = {
-    "price": ["", /^\d+[\.]?(\d{2})?$/, "Inserisci il prezzo separato da un punto", "format"]
+    "price": ["", /^\d+[\.]?(\d{1,2})?$/, "Inserisci il prezzo separato da un punto", "format"]
     //"price": ["", /^\d+[\.]?(\d{2})$/, "Inserisci il prezzo separato da un punto", "format"]
 };
 

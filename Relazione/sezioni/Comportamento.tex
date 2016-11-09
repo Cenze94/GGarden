@@ -4,8 +4,14 @@
 		\item Il controllo lato client dei dati inseriti nella form della pagina "Contattaci", tramite l'uso d'espressioni regolari; in particolare si desidera che nome e cognome siano composti da soli caratteri e che l'indirizzo e-mail sia valido. Non sono previsti controlli sul messaggio da inviare.
 		\item La sostituzione dell'immagine della mappa con l'iFrame della mappa di Google Maps;
 		\item Nella pagina relativa alle vendite, una funzione s'occupa di nascondere la form d'accesso amministratore e renderla visibile alla pressione del pulsante "Accedi come amministratore".
-		\item La generazione di nuove coppie prezzo-formato, dato-formato all'interno della form d'inserimento prodotti, un'altra funzione s'occupa di fare il controllo sugli stessi prima di procedere all'inserimento, in maniera analoga alla funzione nella pagina "Contattaci", usando espressioni regolari per verificare la correttezza del dato inserito e fornire un suggerimento all'utente;
+		\item La generazione di nuove coppie prezzo-formato, dato-formato all'interno della form d'inserimento prodotti, altre due funzioni s'occupano di fare il controllo sugli stessi prima di procedere all'inserimento, in maniera analoga alla funzione nella pagina "Contattaci", usando espressioni regolari per verificare la correttezza del dato inserito e fornire un suggerimento all'utente;
 	\end{itemize}
+	L'obiettivo per le funzioni di inserimento e cotrollo era di:
+	\begin{itemize}\itemsep1pt
+		\item Rendere obbligatorio l'inserimento dei primi tre campi dato (nome, cognome, email) nella form di \textbf{Contattaci.html};
+		\item Per i campi di modifica/inserimento prodotto, erano obbligatori i campi nome, la coppia prezzo-formato se uno dei due era non nullo.
+	\end{itemize}
+	Entrambe poi si occupavano dell'inserimento dei valori di defaut nelle form e del controllo sulla validità dei dati inseriti.\\
 	Sapendo che Javascript più essere disabilitato dall'utente o può non essere disponibile, abbiamo:
 	\begin{itemize}\itemsep1pt
 		\item inserito all'interno di tag \textit{<noscript>} degli aiuti alla compilazione della form della pagina contattaci, come pure all'interno della pagina d'inserimento/modifica prodotto per segnalare l'assenza delle funzioni per che aggiungono nuovi campi dati

@@ -34,16 +34,21 @@ sub updateOperation {
 		$head -> appendTextChild('title', "Modifica prodotto - Ggarden");
 		my $desc = $doc->findnodes("//head/meta[\@name='description']")->get_node(1);
 		$desc->setAttribute('content', "Tramite questa pagina si può procedere alla modifica di un prodotto presente all'interno del catalogo di GGarden");
+		my $value = $doc -> findnodes("//span[\@id='dest']") -> get_node(1);
+		my $text = "";
 
 	my $form = $doc->findnodes("//body")->get_node(1);
 	my $setOnLoadBody=$form->getAttribute('onload');
 
 	my $node = $doc->findnodes("//div[\@id='content']/form/fieldset/legend")->get_node(1);
 	if($itemType eq 'pianta') {
+		$text = $doc -> createTextNode ('Modifica pianta');
 		$node->appendTextNode('Inserisci i dati da modificare della pianta selezionata:');
 	} elsif($itemType eq 'attrezzo') {
+		$text = $doc -> createTextNode ('Modifica attrezzo');
 		$node->appendTextNode('Inserisci i dati da modificare dell\'attrezzo selezionato:');
 	}
+	$value -> appendChild($text);
 	$node = $node->findnodes("..")->get_node(1);
 	my $string = $parserxml->parse_string("<input type='hidden' name='id' value='$id'/>");
 	$string = $string->removeChild($string->firstChild());
@@ -179,12 +184,17 @@ sub createOperation {
 	my $doc = $_[0];
 	$doc->setStandalone(0);
 	my $itemType = $_[1];
+	my $value = $doc -> findnodes("//span[\@id='dest']") -> get_node(1);
+	my $text="";
 	my $node = $doc->findnodes("//div[\@id='content']/form/fieldset/legend")->get_node(1);
 	if($itemType eq 'pianta') {
+		$text = $doc -> createTextNode ('Aggiungi pianta');
 		$node->appendTextNode('Inserisci i dati della nuova pianta:');
 	} elsif($itemType eq 'attrezzo') {
+		$text = $doc -> createTextNode ('Aggiungi attrezzo');
 		$node->appendTextNode('Inserisci i dati del nuovo attrezzo:');
 	}
+	$value -> appendChild($text);
 	$node = $node->findnodes("../ul/li/p/input[\@type='submit']")->get_node(1);
 	$node->setAttribute('value', "Aggiungi prodotto");
 	print "Content-type: text/html; charset=utf-8\n\n";

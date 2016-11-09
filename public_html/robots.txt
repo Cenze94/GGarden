@@ -1,5 +1,0 @@
-User-agent: *
-Disallow: databaseExecutor.cgi
-Disallow: email.cgi
-Disallow: log.cgi
-Disallow: logout.cgi
